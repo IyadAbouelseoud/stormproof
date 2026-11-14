@@ -1,29 +1,90 @@
 import React from 'react';
+import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { SCREEN_METADATA } from '../navigation';
+import { fmtDate, fmtNum } from '../format';
+import { useMission } from '../store';
+import { useNavigation } from '../navigation';
+import { AltitudeChart } from '../ui/AltitudeChart';
+import { Button, VerdictStamp } from '../ui/components';
+import { MainVerdict } from './Report';
+import { ScreenFrame } from './ScreenFrame';
+
+function RunColumn({ label, r }: { label: string; r: SimResult }): React.JSX.Element {
+  const { t, lang } = useI18n();
+  const d = r.design;
+  return (
+    <section className="refly-col" aria-label={label}>
+      <h3 className="type-label section-label">{label}</h3>
+      <MainVerdict r={r} />
+      <p className="type-data refly-design">
+        {d.formFactor} · {t(`orbit.${d.orbit.type}`)} {fmtNum(lang, d.orbit.altitudeKm)} {t('unit.km')} · {fmtDate(lang, d.launchDate)}
+      </p>
+      <div className="req-row">
+        {r.score.requirements.map((q) => (
+          <VerdictStamp key={q.id} size="s" state={q.met ? 'ok' : 'fail'} title={t(`req.${q.id}`)} />
+        ))}
+      </div>
+      <p className="type-small">
+        {t('report.score', { met: r.score.requirementsMet, total: r.score.requirements.length, score: r.score.total })}
+      </p>
+    </section>
+  );
+}
 
 export function Refly(): React.JSX.Element {
   const { t } = useI18n();
-  const meta = SCREEN_METADATA.Refly;
+  const baseline = useMission((s) => s.baseline);
+  const flight = useMission((s) => s.flight);
+  const keepBaseline = useMission((s) => s.keepBaseline);
+  const clearBaseline = useMission((s) => s.clearBaseline);
+  const setScreen = useNavigation((s) => s.setScreen);
+  const same = baseline && flight && baseline.truth === flight.truth;
+
+  const changeOne = () => {
+    keepBaseline();
+    setScreen('Build');
+  };
+
+  if (!flight) {
+    return (
+      <ScreenFrame id="Refly">
+        <p className="type-body">{t('refly.need_flight')}</p>
+        <Button onClick={() => setScreen('Launch')}>{t('screens.launch')}</Button>
+      </ScreenFrame>
+    );
+  }
 
   return (
-    <article className="screen-card" aria-labelledby="screen-heading-refly">
-      <header className="screen-header">
-        <h2 id="screen-heading-refly" className="type-heading screen-title">
-          {t(meta.nameKey)}
-        </h2>
-        <span className="segment-tag type-label">
-          {t(meta.segmentKey)}
-        </span>
-      </header>
-      <div className="screen-placeholder-body">
-        <p className="type-body screen-description">
-          {t('screens.placeholder_desc', {
-            name: t(meta.nameKey),
-            segment: t(meta.segmentKey),
-          })}
-        </p>
+    <ScreenFrame id="Refly">
+      <p className="type-small">{t('refly.seed', { seed: flight.design.seed })}</p>
+      {baseline && !same ? (
+        <>
+          <AltitudeChart
+            title={t('refly.chart')}
+            lines={[
+              { timeline: flight.truth.timeline, kind: 'truth', label: t('refly.second') },
+              { timeline: baseline.truth.timeline, kind: 'alt', label: t('refly.first') },
+            ]}
+          />
+          <div className="refly-split">
+            <RunColumn label={t('refly.first')} r={baseline.truth} />
+            <RunColumn label={t('refly.second')} r={flight.truth} />
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="type-body">{t('refly.explain')}</p>
+          <RunColumn label={t('refly.first')} r={flight.truth} />
+        </>
+      )}
+      <div className="btn-row">
+        <Button onClick={changeOne}>{t('refly.change_one')}</Button>
+        {baseline && (
+          <Button variant="secondary" onClick={clearBaseline}>
+            {t('refly.clear')}
+          </Button>
+        )}
       </div>
-    </article>
+    </ScreenFrame>
   );
 }

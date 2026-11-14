@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import type { RoleId } from '@stormproof/engine';
+import { useMission } from './store';
 
 export type ScreenId =
   | 'Brief'
@@ -81,8 +83,22 @@ export const SCREEN_METADATA: Record<ScreenId, ScreenMeta> = {
   },
 };
 
+/** Team mode: which role owns the decisions on each screen (Flight: everyone votes). */
+export const SCREEN_OWNER: Record<ScreenId, RoleId | null> = {
+  Brief: 'systems-lead',
+  Build: 'power-spacecraft',
+  Orbit: 'orbit-comms',
+  Launch: 'science',
+  Flight: null,
+  Report: 'systems-lead',
+  Refly: 'systems-lead',
+};
+
 export interface NavigationState {
   currentScreen: ScreenId;
+  /** Team mode hot-seat: the role that must take the device before the screen is shown. */
+  handoverTo: RoleId | null;
+  confirmHandover: () => void;
   screens: readonly ScreenId[];
   currentIndex: number;
   canGoBack: boolean;
@@ -92,8 +108,17 @@ export interface NavigationState {
   prevScreen: () => void;
 }
 
+function handoverFor(from: ScreenId, to: ScreenId): RoleId | null {
+  if (!useMission.getState().teamMode) return null;
+  const a = SCREEN_OWNER[from];
+  const b = SCREEN_OWNER[to];
+  return b && a !== b ? b : null;
+}
+
 export const useNavigation = create<NavigationState>((set, get) => ({
   currentScreen: 'Brief',
+  handoverTo: null,
+  confirmHandover: () => set({ handoverTo: null }),
   screens: SCREENS,
   currentIndex: 0,
   canGoBack: false,
@@ -102,6 +127,7 @@ export const useNavigation = create<NavigationState>((set, get) => ({
     const idx = SCREENS.indexOf(screen);
     if (idx !== -1) {
       set({
+        handoverTo: handoverFor(get().currentScreen, screen),
         currentScreen: screen,
         currentIndex: idx,
         canGoBack: idx > 0,
@@ -114,7 +140,8 @@ export const useNavigation = create<NavigationState>((set, get) => ({
     if (currentIndex < SCREENS.length - 1) {
       const nextIdx = currentIndex + 1;
       set({
-        currentScreen: SCREENS[nextIdx],
+        handoverTo: handoverFor(SCREENS[currentIndex]!, SCREENS[nextIdx]!),
+        currentScreen: SCREENS[nextIdx]!,
         currentIndex: nextIdx,
         canGoBack: true,
         canGoNext: nextIdx < SCREENS.length - 1,
@@ -126,7 +153,8 @@ export const useNavigation = create<NavigationState>((set, get) => ({
     if (currentIndex > 0) {
       const prevIdx = currentIndex - 1;
       set({
-        currentScreen: SCREENS[prevIdx],
+        handoverTo: handoverFor(SCREENS[currentIndex]!, SCREENS[prevIdx]!),
+        currentScreen: SCREENS[prevIdx]!,
         currentIndex: prevIdx,
         canGoBack: prevIdx > 0,
         canGoNext: true,

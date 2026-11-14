@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import enTranslations from './en.json';
 import arTranslations from './ar.json';
+import engineAr from './engine-ar.json';
 
 export type Language = 'en' | 'ar';
 export type Direction = 'ltr' | 'rtl';
@@ -103,15 +104,24 @@ export interface TranslatableMsg {
  * Helper to translate engine Msg objects.
  */
 export function tMsg(msg: TranslatableMsg): string {
-  const currentLang = useI18nStore.getState().lang;
-  const currentDict = dictionaries[currentLang];
-  const translation = currentDict?.[msg.key];
-  if (translation !== undefined) {
-    return interpolate(translation, msg.params);
+  return translateMsg(useI18nStore.getState().lang, msg);
+}
+
+const ENGINE_AR = engineAr as Record<string, string>;
+
+/**
+ * Engine Msg: Arabic template from engine-ar.json when every placeholder has a param;
+ * otherwise the engine's own English text (`en`), which already has the numbers filled in.
+ */
+export function translateMsg(lang: Language, msg: TranslatableMsg): string {
+  if (lang === 'ar') {
+    const tpl = ENGINE_AR[msg.key] ?? dictionaries.ar[msg.key];
+    if (tpl !== undefined) {
+      const needed = [...tpl.matchAll(/\{(\w+)\}/g)].map((m) => m[1]!);
+      if (needed.every((k) => msg.params?.[k] !== undefined)) return interpolate(tpl, msg.params);
+    }
   }
-  if (msg.en !== undefined) {
-    return interpolate(msg.en, msg.params);
-  }
+  if (msg.en !== undefined) return msg.en;
   return msg.key;
 }
 
@@ -128,8 +138,11 @@ export function useI18n() {
   const tBound = (key: string, params?: Record<string, string | number>) =>
     translate(lang, key, params);
 
+  const tMsgBound = (msg: TranslatableMsg) => translateMsg(lang, msg);
+
   return {
     t: tBound,
+    tMsg: tMsgBound,
     lang,
     dir,
     setLanguage,
