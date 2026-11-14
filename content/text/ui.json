@@ -1,0 +1,403 @@
+{
+  "screens": [
+    {
+      "id": "brief",
+      "title": {
+        "en": "Mission Brief",
+        "ar": "موجز المهمة"
+      },
+      "instruction": {
+        "en": "Choose a scenario, then see what your satellite must do.",
+        "ar": "اختر سيناريو، ثم تعرّف إلى مهمة قمرك."
+      },
+      "empty": {
+        "en": "Choose Angola or Jeddah to begin.",
+        "ar": "اختر أنغولا أو جدة للبدء."
+      }
+    },
+    {
+      "id": "build",
+      "title": {
+        "en": "Satellite Build",
+        "ar": "تصميم القمر"
+      },
+      "instruction": {
+        "en": "Choose parts that fit your mission, satellite, and budget.",
+        "ar": "اختر أجزاء تناسب مهمتك وقمرك وميزانيتك."
+      },
+      "empty": {
+        "en": "Your satellite has no parts yet. Choose one to start.",
+        "ar": "لا يحتوي قمرك على أجزاء بعد. اختر جزءًا للبدء."
+      }
+    },
+    {
+      "id": "orbit",
+      "title": {
+        "en": "Orbit Choice",
+        "ar": "اختيار المدار"
+      },
+      "instruction": {
+        "en": "Choose an orbit and check how height changes image detail and drag.",
+        "ar": "اختر مدارًا، ولاحظ أثر الارتفاع في تفاصيل الصورة والسحب."
+      },
+      "empty": {
+        "en": "Choose an orbit to see its mission tradeoffs.",
+        "ar": "اختر مدارًا لمعرفة مفاضلاته لمهمتك."
+      }
+    },
+    {
+      "id": "launch",
+      "title": {
+        "en": "Launch Plan",
+        "ar": "خطة الإطلاق"
+      },
+      "instruction": {
+        "en": "Choose a rocket and launch date, then check the fit.",
+        "ar": "اختر صاروخًا وموعد إطلاق، ثم تحقّق من ملاءمتهما."
+      },
+      "empty": {
+        "en": "Choose a rocket and date to complete your plan.",
+        "ar": "اختر صاروخًا وموعدًا لإكمال خطتك."
+      }
+    },
+    {
+      "id": "flight",
+      "title": {
+        "en": "Flight Replay",
+        "ar": "محاكاة الرحلة"
+      },
+      "instruction": {
+        "en": "Watch the Sun's real history change your satellite's flight.",
+        "ar": "شاهد كيف يغيّر السجل الشمسي الفعلي رحلة قمرك."
+      },
+      "empty": {
+        "en": "Launch your mission to watch its flight.",
+        "ar": "أطلق مهمتك لمشاهدة رحلتها."
+      }
+    },
+    {
+      "id": "report",
+      "title": {
+        "en": "Mission Report",
+        "ar": "تقرير المهمة"
+      },
+      "instruction": {
+        "en": "See what happened, why it happened, and what to change.",
+        "ar": "اعرف ما حدث وسببه وما الذي يمكنك تغييره."
+      },
+      "empty": {
+        "en": "Complete a flight to see its report.",
+        "ar": "أكمل رحلة لعرض تقريرها."
+      }
+    },
+    {
+      "id": "refly",
+      "title": {
+        "en": "Fly Again",
+        "ar": "أعِد الإطلاق"
+      },
+      "instruction": {
+        "en": "Change one choice and compare the new flight.",
+        "ar": "غيّر خيارًا واحدًا وقارن الرحلة الجديدة."
+      },
+      "empty": {
+        "en": "Choose one change before flying again.",
+        "ar": "اختر تغييرًا واحدًا قبل إعادة الإطلاق."
+      }
+    }
+  ],
+  "buttons": [
+    {
+      "id": "next",
+      "text": {
+        "en": "Next",
+        "ar": "التالي"
+      }
+    },
+    {
+      "id": "back",
+      "text": {
+        "en": "Back",
+        "ar": "رجوع"
+      }
+    },
+    {
+      "id": "launch",
+      "text": {
+        "en": "Launch",
+        "ar": "أطلق"
+      }
+    },
+    {
+      "id": "fly_again",
+      "text": {
+        "en": "Fly Again",
+        "ar": "أعِد الإطلاق"
+      }
+    },
+    {
+      "id": "change_one_thing",
+      "text": {
+        "en": "Change One Thing",
+        "ar": "غيّر خيارًا واحدًا"
+      }
+    },
+    {
+      "id": "copy_mission_code",
+      "text": {
+        "en": "Copy Mission Code",
+        "ar": "انسخ رمز المهمة"
+      }
+    },
+    {
+      "id": "load_mission_code",
+      "text": {
+        "en": "Load Mission Code",
+        "ar": "حمّل رمز المهمة"
+      }
+    },
+    {
+      "id": "language",
+      "text": {
+        "en": "Language",
+        "ar": "اللغة"
+      }
+    },
+    {
+      "id": "theme_paper",
+      "text": {
+        "en": "Paper Theme",
+        "ar": "المظهر الورقي"
+      }
+    },
+    {
+      "id": "theme_night",
+      "text": {
+        "en": "Night Theme",
+        "ar": "المظهر الليلي"
+      }
+    },
+    {
+      "id": "storm_ride_out",
+      "text": {
+        "en": "Ride Out Storm",
+        "ar": "واجه العاصفة"
+      }
+    },
+    {
+      "id": "storm_safe_mode",
+      "text": {
+        "en": "Safe Mode",
+        "ar": "الوضع الآمن"
+      }
+    },
+    {
+      "id": "see_cause_chain",
+      "text": {
+        "en": "See Cause Chain",
+        "ar": "اعرض سلسلة الأسباب"
+      }
+    },
+    {
+      "id": "start_mission",
+      "text": {
+        "en": "Start Mission",
+        "ar": "ابدأ المهمة"
+      }
+    }
+  ],
+  "roles": [
+    {
+      "id": "role1",
+      "name": {
+        "en": "Structure and Power",
+        "ar": "الهيكل والطاقة"
+      },
+      "line": {
+        "en": "Fit the satellite body, panels, and battery.",
+        "ar": "اختر هيكل القمر وألواحه وبطاريته."
+      }
+    },
+    {
+      "id": "role2",
+      "name": {
+        "en": "Payload Lead",
+        "ar": "مسؤول الحمولة"
+      },
+      "line": {
+        "en": "Choose the camera and image detail your mission needs.",
+        "ar": "اختر الكاميرا وتفاصيل الصورة التي تحتاجها مهمتك."
+      }
+    },
+    {
+      "id": "role3",
+      "name": {
+        "en": "Orbit and Launch",
+        "ar": "المدار والإطلاق"
+      },
+      "line": {
+        "en": "Pick the orbit, rocket, and launch date.",
+        "ar": "اختر المدار والصاروخ وموعد الإطلاق."
+      }
+    },
+    {
+      "id": "role4",
+      "name": {
+        "en": "Comms and Data",
+        "ar": "الاتصالات والبيانات"
+      },
+      "line": {
+        "en": "Choose how your satellite sends mission data.",
+        "ar": "اختر طريقة إرسال قمرك لبيانات المهمة."
+      }
+    }
+  ],
+  "onboarding": [
+    {
+      "en": "FACSAT-2 was planned for the forecast Sun. It met the real one and fell about 2.5 years early.",
+      "ar": "خُطط للقمر FACSAT-2 وفق الشمس المتوقعة. لكنه واجه الشمس الفعلية وسقط قبل موعده بنحو سنتين ونصف."
+    },
+    {
+      "en": "You choose the parts, the orbit, the rocket and the launch date.",
+      "ar": "أنت تختار الأجزاء والمدار والصاروخ وموعد الإطلاق."
+    },
+    {
+      "en": "Then the Sun's real history flies your satellite and shows you why it lived or died.",
+      "ar": "ثم يطير سجل الشمس الفعلي بقمرك ويُريك لماذا عاش أو سقط."
+    }
+  ],
+  "glossary": [
+    {
+      "id": "drag",
+      "term": {
+        "en": "Drag",
+        "ar": "السحب (Drag)"
+      },
+      "plain": {
+        "en": "Air resistance that pulls a satellite down as the upper air thickens.",
+        "ar": "مقاومة الهواء التي تسحب القمر إلى الأسفل عندما تزداد كثافة طبقات الجو العليا."
+      }
+    },
+    {
+      "id": "ballistic_coefficient",
+      "term": {
+        "en": "Ballistic coefficient",
+        "ar": "المعامل الباليستي (Ballistic coefficient)"
+      },
+      "plain": {
+        "en": "A measure of how a satellite's mass and shape affect its response to drag.",
+        "ar": "مقياس يوضح أثر كتلة القمر وشكله في استجابته للسحب."
+      }
+    },
+    {
+      "id": "sun_synchronous_orbit",
+      "term": {
+        "en": "Sun-synchronous orbit",
+        "ar": "مدار متزامن مع الشمس (Sun-synchronous orbit)"
+      },
+      "plain": {
+        "en": "An orbit that passes over the same place at the same local time every day.",
+        "ar": "مدار يمر فوق المكان نفسه في التوقيت المحلي نفسه كل يوم."
+      }
+    },
+    {
+      "id": "gsd",
+      "term": {
+        "en": "Ground sample distance (GSD)",
+        "ar": "دقة العينة الأرضية (GSD)"
+      },
+      "plain": {
+        "en": "The ground detail each image pixel covers. It gets coarser at higher altitude.",
+        "ar": "التفاصيل الأرضية التي يغطيها كل بكسل في الصورة. وتقل دقتها كلما زاد الارتفاع."
+      }
+    },
+    {
+      "id": "revisit",
+      "term": {
+        "en": "Revisit",
+        "ar": "تكرار المرور (Revisit)"
+      },
+      "plain": {
+        "en": "How often your satellite passes over the same place.",
+        "ar": "عدد مرات مرور قمرك فوق المكان نفسه."
+      }
+    },
+    {
+      "id": "f107",
+      "term": {
+        "en": "F10.7",
+        "ar": "مؤشر F10.7 الشمسي"
+      },
+      "plain": {
+        "en": "A number for how active the Sun is. It drives how thick the upper air gets.",
+        "ar": "رقم يقيس نشاط الشمس. وهو يحدّد مدى كثافة طبقات الجو العليا."
+      }
+    },
+    {
+      "id": "solar_cycle",
+      "term": {
+        "en": "Solar cycle",
+        "ar": "الدورة الشمسية (Solar cycle)"
+      },
+      "plain": {
+        "en": "The Sun's activity rises and falls over about 11 years. The air around Earth swells and shrinks with it.",
+        "ar": "يرتفع نشاط الشمس وينخفض على مدى نحو 11 سنة، ويتمدد الهواء حول الأرض ويتقلص معه."
+      }
+    },
+    {
+      "id": "orbit_decay",
+      "term": {
+        "en": "Orbit decay",
+        "ar": "اضمحلال المدار (Orbit decay)"
+      },
+      "plain": {
+        "en": "The gradual lowering of an orbit as drag pulls a satellite down.",
+        "ar": "انخفاض المدار تدريجيًا عندما يسحب الاحتكاك القمر إلى الأسفل."
+      }
+    },
+    {
+      "id": "disposal",
+      "term": {
+        "en": "Disposal",
+        "ar": "التخلّص المداري (Disposal)"
+      },
+      "plain": {
+        "en": "The time a satellite takes to leave orbit after its mission, checked against a rule.",
+        "ar": "المدة التي يحتاجها القمر لمغادرة المدار بعد مهمته، وتُقارن بقاعدة محددة."
+      }
+    },
+    {
+      "id": "cubesat_u",
+      "term": {
+        "en": "CubeSat unit",
+        "ar": "وحدة CubeSat (CubeSat unit)"
+      },
+      "plain": {
+        "en": "A CubeSat size unit; this game lets you design from 1U to 6U.",
+        "ar": "وحدة لقياس حجم CubeSat؛ تتيح لك اللعبة تصميم قمر من 1U إلى 6U."
+      }
+    },
+    {
+      "id": "downlink",
+      "term": {
+        "en": "Downlink",
+        "ar": "إرسال البيانات إلى الأرض (Downlink)"
+      },
+      "plain": {
+        "en": "Sending data from your satellite to a ground station.",
+        "ar": "إرسال البيانات من قمرك إلى محطة أرضية."
+      }
+    },
+    {
+      "id": "eclipse",
+      "term": {
+        "en": "Eclipse",
+        "ar": "الكسوف المداري (Eclipse)"
+      },
+      "plain": {
+        "en": "The part of an orbit when Earth blocks sunlight from a satellite.",
+        "ar": "الجزء من المدار الذي تحجب فيه الأرض ضوء الشمس عن القمر."
+      }
+    }
+  ]
+}

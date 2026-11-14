@@ -1,0 +1,193 @@
+{
+  "messages": [
+    {
+      "key": "cause.sun_days",
+      "text": {
+        "en": "The real Sun changed your lifetime by {days} days against the forecast: more solar heat, thicker air, more drag. Try a different launch year.",
+        "ar": "غيّرت الشمس الفعلية مدة بقاء قمرك بمقدار {days} يومًا عن التوقع: حرارة شمسية أكبر وهواء أكثر كثافة وسحب أشد. جرّب سنة إطلاق مختلفة."
+      }
+    },
+    {
+      "key": "cause.density",
+      "text": {
+        "en": "The air was {factor} times denser, so drag pulled your satellite down sooner. Try a different launch year.",
+        "ar": "كان الهواء أكثر كثافة بمقدار {factor} مرة، فسحبه الاحتكاك إلى الأسفل مبكرًا. جرّب سنة إطلاق مختلفة."
+      }
+    },
+    {
+      "key": "cause.slip",
+      "text": {
+        "en": "Your rocket slipped {months} months. You flew into a different Sun than the one you planned for. Leave a margin in your launch date.",
+        "ar": "تأخر صاروخك {months} شهرًا، فواجه قمرك شمسًا غير التي خططت لها. اترك هامشًا في موعد الإطلاق."
+      }
+    },
+    {
+      "key": "cause.storm",
+      "text": {
+        "en": "Storms pulled your orbit down {km} km more than a quiet Sun would. Try a higher orbit, or safe mode during alerts.",
+        "ar": "سحبت العواصف مدارك إلى الأسفل بمقدار {km} km أكثر مما كانت ستفعله شمس هادئة. جرّب مدارًا أعلى، أو الوضع الآمن عند التنبيهات."
+      }
+    },
+    {
+      "key": "cause.propulsion",
+      "text": {
+        "en": "Your fuel added {days} days to the flight. A bigger tank or a higher orbit could add more.",
+        "ar": "أضاف وقودك {days} يومًا إلى الرحلة. قد يضيف خزان أكبر أو مدار أعلى مزيدًا من الأيام."
+      }
+    },
+    {
+      "key": "cause.verdict",
+      "text": {
+        "en": "Verdict: {verdict}. The Sun and the air set how long your satellite lived. Change one choice and fly it again.",
+        "ar": "الحكم: {verdict}. الشمس والهواء حدّدا مدة بقاء قمرك. غيّر خيارًا واحدًا وأعِد الرحلة."
+      }
+    },
+    {
+      "key": "fit.mass_over",
+      "text": {
+        "en": "Your design is {over_kg} kg over this CubeSat's {max_kg} kg limit. Remove a part or pick a lighter one.",
+        "ar": "يتجاوز تصميمك حد كتلة هذا القمر البالغ {max_kg} kg بمقدار {over_kg} kg. أزل جزءًا أو اختر جزءًا أخف."
+      }
+    },
+    {
+      "key": "fit.power_short",
+      "text": {
+        "en": "Your parts need {short_w} W more than the panels provide. Choose larger panels or reduce power use.",
+        "ar": "تحتاج أجزاؤك إلى {short_w} W إضافية فوق ما توفره الألواح. اختر ألواحًا أكبر أو قلّل استهلاك الطاقة."
+      }
+    },
+    {
+      "key": "fit.volume_over",
+      "text": {
+        "en": "Your parts exceed the satellite volume by {over_u} U. Remove a part or choose a smaller one.",
+        "ar": "تتجاوز أجزاؤك حجم القمر بمقدار {over_u} U. أزل جزءًا أو اختر جزءًا أصغر."
+      }
+    },
+    {
+      "key": "fit.rocket_capacity",
+      "text": {
+        "en": "Your satellite weighs {mass_kg} kg, above this rocket’s {cap_kg} kg capacity. Remove mass or choose another rocket.",
+        "ar": "تبلغ كتلة قمرك {mass_kg} kg، وتتجاوز سعة هذا الصاروخ البالغة {cap_kg} kg. خفّض الكتلة أو اختر صاروخًا آخر."
+      }
+    },
+    {
+      "key": "fit.orbit_unsupported",
+      "text": {
+        "en": "{rocket} cannot reach your chosen {altitude_km} km orbit. Choose another orbit or rocket.",
+        "ar": "لا يستطيع {rocket} الوصول إلى مدارك المختار على ارتفاع {altitude_km} km. اختر مدارًا أو صاروخًا آخر."
+      }
+    },
+    {
+      "key": "fit.before_first_flight",
+      "text": {
+        "en": "{rocket} cannot fly before {date}, so your launch date is too early. Choose a later date.",
+        "ar": "لا يستطيع {rocket} الإطلاق قبل {date}، لذا فإن موعدك مبكر جدًا. اختر موعدًا لاحقًا."
+      }
+    },
+    {
+      "key": "fit.budget_over",
+      "text": {
+        "en": "Your design exceeds the budget by {over_usd}, so it does not fit. Remove a costly part or choose another launch option.",
+        "ar": "يتجاوز تصميمك الميزانية بمقدار {over_usd}، لذلك لا يلائمها. أزل جزءًا مرتفع التكلفة أو اختر خيار إطلاق آخر."
+      }
+    },
+    {
+      "key": "outcome.reentered",
+      "text": {
+        "en": "Your satellite re-entered on {date} after {days} days. Drag lowered its orbit over time.",
+        "ar": "عاد قمرك إلى الغلاف الجوي في {date} بعد {days} يومًا. خفّض السحب مداره مع مرور الوقت."
+      }
+    },
+    {
+      "key": "outcome.alive",
+      "text": {
+        "en": "Your satellite is still alive after {years} years because drag has not brought it down yet.",
+        "ar": "لا يزال قمرك حيًّا بعد {years} سنوات لأن السحب لم يُسقطه بعد."
+      }
+    },
+    {
+      "key": "outcome.alive_forecast_end",
+      "text": {
+        "en": "Your satellite survived {years} years through the forecast period. Solar activity shaped the drag during its flight.",
+        "ar": "بقي قمرك حيًّا {years} سنوات خلال فترة التوقع. أثّر النشاط الشمسي في السحب أثناء رحلته."
+      }
+    },
+    {
+      "key": "outcome.reentered_before_event",
+      "text": {
+        "en": "Your satellite re-entered on {date}, before the event, so it could not capture an image. Try a longer-lived design.",
+        "ar": "عاد قمرك إلى الغلاف الجوي في {date} قبل الحدث، لذلك لم يتمكن من التقاط صورة. جرّب تصميمًا يدوم أطول."
+      }
+    },
+    {
+      "key": "disposal.fcc_pass",
+      "text": {
+        "en": "Your disposal time is {years} years, within the FCC’s 5-year limit. Your design passes this check.",
+        "ar": "مدة التخلص من قمرك {years} سنوات، ضمن حد FCC البالغ 5 سنوات. اجتاز تصميمك هذا الفحص."
+      }
+    },
+    {
+      "key": "disposal.fcc_fail",
+      "text": {
+        "en": "Your disposal time is {years} years, beyond the FCC’s 5-year limit. Choose a lower orbit to come down sooner.",
+        "ar": "مدة التخلص من قمرك {years} سنوات، وتتجاوز حد FCC البالغ 5 سنوات. اختر مدارًا أخفض ليهبط أسرع."
+      }
+    },
+    {
+      "key": "disposal.nasa_pass",
+      "text": {
+        "en": "Your disposal time is {years} years, within NASA’s 25-year limit. Your design passes this check.",
+        "ar": "مدة التخلص من قمرك {years} سنوات، ضمن حد NASA البالغ 25 سنة. اجتاز تصميمك هذا الفحص."
+      }
+    },
+    {
+      "key": "disposal.nasa_fail",
+      "text": {
+        "en": "Your disposal time is {years} years, beyond NASA’s 25-year limit. Choose a lower orbit to come down sooner.",
+        "ar": "مدة التخلص من قمرك {years} سنوات، وتتجاوز حد NASA البالغ 25 سنة. اختر مدارًا أخفض ليهبط أسرع."
+      }
+    },
+    {
+      "key": "event.look_met",
+      "text": {
+        "en": "Your satellite looked at Jeddah {days} days after the flood and captured the aftermath. Try a closer pass for a fresher image.",
+        "ar": "رصد قمرك جدة بعد {days} يومًا من الفيضان والتقط ما خلّفه. جرّب مرورًا أقرب زمنيًا لصورة أحدث."
+      }
+    },
+    {
+      "key": "event.look_missed",
+      "text": {
+        "en": "Your satellite passed {days} days from the flood and missed the useful look. Change the launch date to pass sooner.",
+        "ar": "مرّ قمرك بعد {days} يومًا من الفيضان، وفاته الرصد المفيد. غيّر موعد الإطلاق ليمر في وقت أقرب."
+      }
+    },
+    {
+      "key": "event.optical_cloud",
+      "text": {
+        "en": "Cloud blocked the optical camera on {date}, hiding the ground. Try the radar-camera design study for another view.",
+        "ar": "حجبت السحب الأرض عن الكاميرا الضوئية في {date}. جرّب دراسة تصميم كاميرا الرادار للحصول على رؤية مختلفة."
+      }
+    },
+    {
+      "key": "storm.vote_prompt",
+      "text": {
+        "en": "A storm alert is active. Solar activity can increase drag. Choose how your satellite responds.",
+        "ar": "صدر تنبيه بعاصفة. قد يزيد النشاط الشمسي السحب. اختر طريقة استجابة قمرك."
+      }
+    },
+    {
+      "key": "storm.safe_mode",
+      "text": {
+        "en": "You chose safe mode during the storm. Solar activity raised drag. Try riding it out next time and compare.",
+        "ar": "اخترت الوضع الآمن أثناء العاصفة. زاد النشاط الشمسي السحب. جرّب مواجهة العاصفة في المرة القادمة وقارن."
+      }
+    },
+    {
+      "key": "storm.ride_out",
+      "text": {
+        "en": "You chose to ride out the storm. Solar activity raised drag. Try safe mode next time and compare.",
+        "ar": "اخترت مواجهة العاصفة. زاد النشاط الشمسي السحب. جرّب الوضع الآمن في المرة القادمة وقارن."
+      }
+    }
+  ]
+}

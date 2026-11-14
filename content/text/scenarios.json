@@ -1,0 +1,258 @@
+{
+  "scenarios": [
+    {
+      "id": "angola",
+      "title": {
+        "en": "Watch the Cunene",
+        "ar": "راقب منطقة كونه"
+      },
+      "tagline": {
+        "en": "Keep your drought-watch satellite alive.",
+        "ar": "أبقِ قمر مراقبة الجفاف حيًّا."
+      },
+      "story": [
+        {
+          "beat": "setup",
+          "text": {
+            "en": "The Cunene region needs drought watch. Your satellite must stay alive and pass overhead. Can your design do both?",
+            "ar": "تحتاج منطقة كونه إلى مراقبة الجفاف. يجب أن يبقى قمرك حيًّا ويمر فوقها. هل ينجح تصميمك في الأمرين؟"
+          }
+        },
+        {
+          "beat": "stakes",
+          "text": {
+            "en": "If your satellite falls early, you lose later images of the region. How long can you keep it flying?",
+            "ar": "إذا سقط قمرك مبكرًا، ستفقد صورًا لاحقة للمنطقة. كم من الوقت تستطيع إبقاءه في المدار؟"
+          }
+        },
+        {
+          "beat": "twist",
+          "text": {
+            "en": "Funda is your ground station. The real Sun may differ from the forecast. Which launch year keeps your satellite alive?",
+            "ar": "فندا هي محطتك الأرضية. قد تختلف الشمس الفعلية عن التوقعات. أي سنة إطلاق تُبقي قمرك حيًّا؟"
+          }
+        }
+      ],
+      "mission": {
+        "en": "Design a CubeSat to watch drought in the Cunene region and send its data to Funda.",
+        "ar": "صمّم قمرًا من نوع CubeSat لمراقبة الجفاف في منطقة كونه وإرسال بياناته إلى فندا."
+      },
+      "role": {
+        "en": "You design a drought-watch satellite.",
+        "ar": "أنت تصمّم قمرًا لمراقبة الجفاف."
+      },
+      "why": {
+        "en": "The Sun heats the upper air, which drags satellites down. Your launch year can change how long your satellite lives.",
+        "ar": "تسخّن الشمس طبقات الجو العليا، فتسحب الأقمار نحو الأرض. ويمكن لسنة الإطلاق أن تغيّر مدة بقاء قمرك."
+      },
+      "requirements": {
+        "revisit": {
+          "label": {
+            "en": "Revisit rate",
+            "ar": "تكرار المرور"
+          },
+          "why": {
+            "en": "Your satellite must return over the region at least every {revisit_days} days.",
+            "ar": "يجب أن يعود قمرك فوق المنطقة مرة كل {revisit_days} يومًا على الأكثر."
+          }
+        },
+        "gsd": {
+          "label": {
+            "en": "Image detail",
+            "ar": "تفاصيل الصورة"
+          },
+          "why": {
+            "en": "Higher orbits blur smaller features. Aim for {gsd_m} m ground detail.",
+            "ar": "تُظهر المدارات الأعلى تفاصيل أقل وضوحًا. استهدف دقة أرضية قدرها {gsd_m} m."
+          }
+        },
+        "data": {
+          "label": {
+            "en": "Data to send",
+            "ar": "البيانات المرسلة"
+          },
+          "why": {
+            "en": "Your satellite must send {data_gb} GB of image data to Funda.",
+            "ar": "يجب أن يرسل قمرك {data_gb} GB من بيانات الصور إلى فندا."
+          }
+        },
+        "lifetime": {
+          "label": {
+            "en": "Mission lifetime",
+            "ar": "مدة المهمة"
+          },
+          "why": {
+            "en": "Keep the satellite alive for {lifetime_days} days of drought watch.",
+            "ar": "أبقِ القمر حيًّا لمدة {lifetime_days} يومًا لمراقبة الجفاف."
+          }
+        },
+        "cost": {
+          "label": {
+            "en": "Mission budget",
+            "ar": "ميزانية المهمة"
+          },
+          "why": {
+            "en": "Fit your design and launch within {budget}.",
+            "ar": "اجعل تصميمك وإطلاقه ضمن ميزانية {budget}."
+          }
+        }
+      },
+      "win": {
+        "en": "Your satellite stays alive, returns useful images, and sends its data to Funda. What would one design change improve?",
+        "ar": "يبقى قمرك حيًّا، ويعود بصور مفيدة، ويرسل بياناته إلى فندا. ما التغيير الواحد الذي قد يحسّن تصميمك؟"
+      },
+      "fail": {
+        "en": "Your satellite falls before it can complete the watch. Which one change could keep it up longer?",
+        "ar": "يسقط قمرك قبل أن يكمل المراقبة. ما التغيير الواحد الذي قد يبقيه في المدار مدة أطول؟"
+      },
+      "limits": [
+        {
+          "en": "Images show the region; they do not predict drought.",
+          "ar": "تُظهر الصور المنطقة، لكنها لا تتنبأ بالجفاف."
+        },
+        {
+          "en": "Funda’s location in the game is approximate.",
+          "ar": "موقع فندا في اللعبة تقريبي."
+        },
+        {
+          "en": "AngoSat-1 was lost to a power problem in December 2017.",
+          "ar": "فُقد AngoSat-1 بسبب مشكلة في الطاقة في ديسمبر 2017."
+        }
+      ]
+    },
+    {
+      "id": "jeddah",
+      "title": {
+        "en": "Jeddah After Rain",
+        "ar": "جدة بعد المطر"
+      },
+      "tagline": {
+        "en": "Keep a camera overhead when the water comes.",
+        "ar": "أبقِ الكاميرا فوق المدينة حين تصل المياه."
+      },
+      "story": [
+        {
+          "beat": "setup",
+          "text": {
+            "en": "On 24 November 2022, heavy rain flooded Jeddah. Can your satellite stay alive until the event?",
+            "ar": "في 24 نوفمبر 2022، تسببت أمطار غزيرة بفيضان في جدة. هل يبقى قمرك حيًّا حتى وقوع الحدث؟"
+          }
+        },
+        {
+          "beat": "stakes",
+          "text": {
+            "en": "Your camera needs a clear view. Cloud can hide the water on the flood day. Can you still get an image?",
+            "ar": "تحتاج كاميرتك إلى رؤية واضحة. قد تحجب السحب المياه يوم الفيضان. هل تستطيع التقاط صورة رغم ذلك؟"
+          }
+        },
+        {
+          "beat": "twist",
+          "text": {
+            "en": "One satellite passes only every few days. What did the water do, and could your camera see it?",
+            "ar": "يمر القمر الواحد فوق الموقع مرة كل بضعة أيام. ماذا فعلت المياه، وهل استطاعت كاميرتك رؤيتها؟"
+          }
+        }
+      ],
+      "mission": {
+        "en": "Replay Jeddah’s flood. Keep a satellite alive, overhead, and able to see through cloud.",
+        "ar": "أعِد محاكاة فيضان جدة. أبقِ قمرًا حيًّا فوق المدينة وقادرًا على الرؤية عبر السحب."
+      },
+      "role": {
+        "en": "You design a satellite to observe the flood.",
+        "ar": "أنت تصمّم قمرًا لمراقبة الفيضان."
+      },
+      "why": {
+        "en": "Rain caused the flood; the Sun only sets satellite lifetime. Your optical camera may meet cloud on flood day.",
+        "ar": "تسببت الأمطار بالفيضان، أما الشمس فتحدد مدة بقاء القمر فقط. وقد تحجب السحب كاميرتك الضوئية يوم الفيضان."
+      },
+      "requirements": {
+        "revisit": {
+          "label": {
+            "en": "Revisit rate",
+            "ar": "تكرار المرور"
+          },
+          "why": {
+            "en": "Your satellite must pass over Jeddah at least every {revisit_days} days.",
+            "ar": "يجب أن يمر قمرك فوق جدة مرة كل {revisit_days} يومًا على الأكثر."
+          }
+        },
+        "gsd": {
+          "label": {
+            "en": "Image detail",
+            "ar": "تفاصيل الصورة"
+          },
+          "why": {
+            "en": "Higher orbits blur smaller features. Aim for {gsd_m} m ground detail.",
+            "ar": "تُظهر المدارات الأعلى تفاصيل أقل وضوحًا. استهدف دقة أرضية قدرها {gsd_m} m."
+          }
+        },
+        "data": {
+          "label": {
+            "en": "Data to send",
+            "ar": "البيانات المرسلة"
+          },
+          "why": {
+            "en": "Your satellite must send {data_gb} GB of image data.",
+            "ar": "يجب أن يرسل قمرك {data_gb} GB من بيانات الصور."
+          }
+        },
+        "lifetime": {
+          "label": {
+            "en": "Mission lifetime",
+            "ar": "مدة المهمة"
+          },
+          "why": {
+            "en": "Keep the satellite alive until the event, {lifetime_days} days later.",
+            "ar": "أبقِ القمر حيًّا حتى الحدث، بعد {lifetime_days} يومًا."
+          }
+        },
+        "cost": {
+          "label": {
+            "en": "Mission budget",
+            "ar": "ميزانية المهمة"
+          },
+          "why": {
+            "en": "Fit your design and launch within {budget}.",
+            "ar": "اجعل تصميمك وإطلاقه ضمن ميزانية {budget}."
+          }
+        },
+        "event-look": {
+          "label": {
+            "en": "Event image",
+            "ar": "صورة الحدث"
+          },
+          "why": {
+            "en": "Try to capture Jeddah within {look_days} days of the flood.",
+            "ar": "حاول تصوير جدة خلال {look_days} يومًا من الفيضان."
+          }
+        }
+      },
+      "win": {
+        "en": "Your satellite is alive and overhead. It captures the water, if cloud allows. What would you change for a clearer view?",
+        "ar": "قمرك حيّ وفوق المدينة. يلتقط صورة للمياه إذا سمحت السحب. ما التغيير الذي يحسّن الرؤية؟"
+      },
+      "fail": {
+        "en": "Your satellite misses the event, or cloud blocks its camera. Which one change could help it see?",
+        "ar": "يفوّت قمرك الحدث، أو تحجب السحب كاميرته. ما التغيير الواحد الذي قد يساعده على الرؤية؟"
+      },
+      "limits": [
+        {
+          "en": "One small satellite revisits a spot only every few days, so it cannot warn of a flood lasting hours.",
+          "ar": "لا يعود القمر الصغير إلى الموقع إلا كل بضعة أيام، لذلك لا يستطيع التحذير من فيضان يستمر ساعات."
+        },
+        {
+          "en": "Rain caused the flood. The Sun only changes how long your satellite lives.",
+          "ar": "تسببت الأمطار بالفيضان. تغيّر الشمس مدة بقاء قمرك فقط."
+        },
+        {
+          "en": "The radar camera is a design study; no 6U radar imager has flown.",
+          "ar": "كاميرا الرادار دراسة تصميمية؛ لم يسبق لقمر 6U حمل مصوّر راداري."
+        },
+        {
+          "en": "Rain estimates over Saudi Arabia are imperfect; event figures come from secondary sources.",
+          "ar": "تقديرات الأمطار فوق السعودية غير مثالية، وأرقام الحدث من مصادر ثانوية."
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,8 @@ errs, warns = [], []
 def walk(o, path, field, key):
     if isinstance(o, dict) and set(o) == {"en","ar"}:
         check(o, path, field, key); return
+    if isinstance(o, dict) and ("en" in o) != ("ar" in o):
+        errs.append(f"{path}: has only one of en/ar"); return
     if isinstance(o, dict):
         for k, v in o.items(): walk(v, f"{path}.{k}", k, key)
     elif isinstance(o, list):

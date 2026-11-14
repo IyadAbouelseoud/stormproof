@@ -85,3 +85,48 @@ After each task: tests green, commit "E<n>: ...", one HANDOFF.md line. At about 
 </limit_protocol>
 
 **Update 2026-11-14 (cloud tags are in, no longer placeholder):** `content/evidence/jeddah-cloud-2022-11.json` now holds Dua's read-by-eye tags; set no `_placeholder` flag. Tag values are `clear|partly|cloudy|no-image`. `no-image` (26 Nov) is NOT usable for optical (unknown, conservative) and the UI says 'no image'. Evidence screenshots: `content/evidence/jeddah-cloud-2022-11-DD.jpg`. Contract change `event-look` is APPROVED by Iyad (2026-11-14 11:32); log it in ISSUES.md.
+
+---
+
+# PART 2 (added 2026-11-14 12:40): integration, open issues and Fable-pass readiness
+
+Do this AFTER E1-E4 and F1-F8 above, unless a task says "before". Branch feature/jeddah. Same rules as AGENTS.md. Every contract change is additive, logged in ISSUES.md, and Angola results stay byte-identical. Iyad approved the `event-look` change (11:32) and the three exposures in G2 (to confirm in chat before merge).
+
+## G1. Content text is in (content/text/*.json): wire it in
+Files: `content/text/scenarios.json`, `parts.json`, `messages.json`, `ui.json`. Written with ChatGPT and fixed by Claude; validated with `python3 qa/validate_content.py <file>` (must print ERRORS: none; the warning about "11" in the solar-cycle glossary line is intended). Every text field is `{en, ar}`; placeholders are `{name}` and identical in both languages.
+- Replace every English-only part, rocket, scenario and screen string in web/ with these. Keep the adapter pure: `t(field)` returns the active language; unknown ids fall back to English and log once in dev.
+- Part ids to match in content/parts.json (the engine catalog must use these ids exactly): camera-budget, camera-standard, camera-sharp, camera-radar (Jeddah only), panels-small/medium/large, battery-small/medium/large, radio-slow/standard/fast, computer-basic/standard/large, pointing-basic/standard/precise, fuel-small, fuel-large. Rockets: electron, spacex-rideshare. If the catalog uses other ids, add a mapping in the adapter, never rename text ids.
+- Numbers stay game-balanced or sourced in the catalog; the text files contain no part numbers by design. Do not add any.
+- Test: a vitest that loads all four files, checks both languages exist for every id used by the catalog and the UI, and that every `{placeholder}` in a message has a param supplied by the engine (see G2).
+- README, AI-use section: add "Interface and story text drafted with ChatGPT and edited with Claude; all facts come from content/sources.csv and AGENTS.md; numbers come from the engine." Required by the AI-disclosure rule.
+
+## G2. Close Renad's open contract requests (additive, log in ISSUES.md)
+Renad's adapter works around these and labels each on screen. Replace the workarounds with real fields, then remove the on-screen labels:
+1. **Message params.** Today some engine messages stay English in Arabic mode because their numbers are not passed separately. Make every plain-language `Msg` carry `{key, params, en}` with `key` from `content/text/messages.json` and `params` exactly the placeholder names listed there: cause.sun_days{days}, cause.density{factor}, cause.slip{months}, cause.storm{km}, cause.propulsion{days}, cause.verdict{verdict}, fit.mass_over{over_kg,max_kg}, fit.power_short{short_w}, fit.volume_over{over_u}, fit.rocket_capacity{mass_kg,cap_kg}, fit.orbit_unsupported{rocket,altitude_km}, fit.before_first_flight{rocket,date}, fit.budget_over{over_usd}, outcome.reentered{date,days}, outcome.alive{years}, outcome.alive_forecast_end{years}, outcome.reentered_before_event{date}, disposal.fcc_pass/fail{years}, disposal.nasa_pass/fail{years}, event.look_met/missed{days}, event.optical_cloud{date}, storm.vote_prompt/safe_mode/ride_out{}. Pass plain numbers and ISO dates; the UI formats currency and dates per language. `cause.verdict`'s `{verdict}` is a short noun phrase supplied by the engine in both languages (add it to the Msg as `params.verdict` plus an Arabic variant via the content file, not hard-coded in the engine). The English `en` field stays as the fallback and for tests.
+2. **Altitude thresholds.** Export read-only constants (reentry 120 km, hourly stepping below 250 km, plus the lowest and highest altitude the density table covers: 150 and 800 km) for the Orbit screen, with `src` in constants.ts. No new physics.
+3. **Ground track.** Expose the existing 30-second ground track from orbit.ts as an optional `SimResult.groundTrack` (array of [lat,lon] for one day, decimated to at most 720 points). Deterministic, no change to existing fields.
+4. **Map coastline.** Add one simplified, public-domain coastline file under web/public/data (Natural Earth style, simplified to under 150 kB, GeoJSON or TopoJSON). Pipeline script builds it from a source file the person supplies; if no source file is available offline, ship a clearly labelled coarse hand-simplified outline instead and log it in ISSUES.md. Add the source and licence to sources.csv (verify the licence yourself; do not assume). No runtime network call (rule 6).
+5. **Story text** is G1.
+6. **Arabic gaps** (part, rocket and scenario names English-only) are closed by G1.
+
+## G3. SpaceX price (evidence in content/evidence/spacex-rideshare-2026-11-14*.jpg)
+The SpaceX estimator showed a flat $0.35 million for SSO, no earlier than March 2027, at 6, 12 and 50 kg (a minimum charge). Source id `spacex-rideshare-min-price` in sources.csv. Do not state a price per kg; none was shown.
+- Add optional `Rocket.minPriceUsd` (additive). For `spacex-rideshare`: price = 350000 USD flat for any CubeSat up to 12 kg; mark it "estimate, not a quote" in the UI and report; label the catalog entry `src: spacex-rideshare-min-price`.
+- Do not touch Electron's price unless its `src` is missing: if it is "game-balanced" or unsourced, say so on screen.
+- Test: 6 kg and 12 kg give the same launch cost; golden tests unchanged.
+
+## G4. Jeddah weather evidence
+Cloud tags are final for now (read by eye from NASA Worldview, MODIS Terra true colour): 23 Nov partly, 24 Nov cloudy, 25 Nov clear, 26 Nov no-image, 27 Nov clear. See `content/evidence/jeddah-cloud-2022-11.json` and the five screenshots. Rules: `no-image` is not usable for optical (conservative); the UI says "cloud at the Terra overpass" and shows the screenshot of the event day on the Report screen as real NASA imagery with credit "NASA Worldview, MODIS Terra" (these are Dua's screenshots, not generated). Do not show the Dry-baseline HLS image as the flood. Re-check the calibration target (optical design fails the event look on cloud days, radar passes but busts budget or mass margin, at least three balanced designs score high) and rebalance game numbers only, never the sourced ones.
+- IMERG layer id `IMERG_Rain_Rate` is untested against live GIBS: if the fetch fails, log it in ISSUES.md and show no rain image. Never fake one.
+
+## G5. Gemini art (AI-generated, illustration only)
+Files: web/public/img/art/*.webp (untagged; the app overlays `.sp-si-tag`), tagged copies in content/pitch-art/*-si.webp. Placement: P1 title/Brief hero, P2 Angola scenario card, P3 ground-station panel, P5 Build screen exploded view, P6 pitch/Report backdrop, P7 Jeddah scenario card ONLY (stretch, and only while VITE_JEDDAH is on). Every use shows the visible "SI-generated" tag and the note from web/public/img/art/README.md ("illustration, not real imagery"). Add bilingual alt text (en and ar, one plain sentence each, describing the picture, never claiming it is real) to a new `content/text/art-alt.json`. No NASA logos, no people.
+
+## G6. Housekeeping before the Fable pass
+- AGENTS.md golden-2 line: replace "launch years 2021-2025" with "launch years 2021-2044 (the deck spans 2021-2044; 2027+ are the fair pass/fail points)". README golden-2 line: "33 of 36 checkable points within +/-30%" only after the final run; the 3 known fails stay disclosed.
+- GitHub Settings > Pages > Source must be "GitHub Actions" (Iyad does this; the build agent only checks the Pages run is green).
+- Add `python3 qa/validate_content.py` for the four content files to the Pages workflow test step (fail the build on errors).
+- HANDOFF.md: add the Part 2 status line per task.
+
+## G7. Read-me list for the Fable final pass (Sat ~21:00, once)
+The reviewer should open: AGENTS.md section 8 checklist; the four content files and qa/validate_content.py; sources.csv (every number sourced, computed or "game-balanced"); content/evidence/ (SpaceX x3, Jeddah cloud x5 + JSON); the Jeddah demo script; the cause-chain wording against the engine's real params; the Arabic copy (native-speaker read still pending: flag, do not silently rewrite); axe results at 390x844 and 1440x900, EN and AR, Paper and Night; offline run (no Wi-Fi). Known open items to confirm, not hide: golden-2 three fails; Jeddah event figures are secondary sources; no 6U radar imager has flown; SpaceX figure is an estimate; cloud tags are one morning pass; IMERG layer id untested.

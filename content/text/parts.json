@@ -1,0 +1,343 @@
+{
+  "parts": [
+    {
+      "id": "camera-budget",
+      "name": {
+        "en": "Budget Camera",
+        "ar": "كاميرا اقتصادية"
+      },
+      "blurb": {
+        "en": "A camera choice that reserves more of your design budget for other parts.",
+        "ar": "خيار كاميرا يترك جزءًا أكبر من ميزانية التصميم لبقية الأجزاء."
+      },
+      "tradeoff": {
+        "en": "You give up image detail to keep more budget available.",
+        "ar": "تتنازل عن بعض تفاصيل الصورة لتبقي ميزانية أكبر متاحة."
+      }
+    },
+    {
+      "id": "camera-standard",
+      "name": {
+        "en": "Standard Camera",
+        "ar": "كاميرا قياسية"
+      },
+      "blurb": {
+        "en": "A middle-ground camera for designs balancing image detail with other needs.",
+        "ar": "كاميرا متوازنة للتصاميم التي توازن بين تفاصيل الصورة والاحتياجات الأخرى."
+      },
+      "tradeoff": {
+        "en": "You spend some room and power on image detail.",
+        "ar": "تستهلك جزءًا من المساحة والطاقة لتحسين تفاصيل الصورة."
+      }
+    },
+    {
+      "id": "camera-sharp",
+      "name": {
+        "en": "Sharp Camera",
+        "ar": "كاميرا عالية الدقة"
+      },
+      "blurb": {
+        "en": "Choose this camera when small ground features need clearer images.",
+        "ar": "اختر هذه الكاميرا عندما تحتاج إلى صور أوضح للتفاصيل الأرضية الصغيرة."
+      },
+      "tradeoff": {
+        "en": "You spend more room and power for finer image detail.",
+        "ar": "تستهلك مساحة وطاقة أكبر للحصول على تفاصيل أدق."
+      }
+    },
+    {
+      "id": "camera-radar",
+      "name": {
+        "en": "Radar Camera",
+        "ar": "كاميرا رادارية"
+      },
+      "blurb": {
+        "en": "A design study; nothing like it has flown on a 6U. It offers a radar-camera concept for your mission.",
+        "ar": "دراسة تصميمية؛ لم يسبق لشيء مشابه أن طار على قمر 6U. تعرض مفهوم كاميرا رادارية لمهمتك."
+      },
+      "tradeoff": {
+        "en": "You trade room and power for a radar-camera design study.",
+        "ar": "تتنازل عن المساحة والطاقة لصالح دراسة تصميم كاميرا رادارية."
+      }
+    },
+    {
+      "id": "panels-small",
+      "name": {
+        "en": "Small Panels",
+        "ar": "ألواح صغيرة"
+      },
+      "blurb": {
+        "en": "A compact power choice that leaves room for other satellite parts.",
+        "ar": "خيار طاقة مدمج يترك مساحة لأجزاء أخرى في القمر."
+      },
+      "tradeoff": {
+        "en": "You have less power available for your design.",
+        "ar": "تتوفر لتصميمك طاقة أقل."
+      }
+    },
+    {
+      "id": "panels-medium",
+      "name": {
+        "en": "Medium Panels",
+        "ar": "ألواح متوسطة"
+      },
+      "blurb": {
+        "en": "A middle-ground panel choice for balancing power with space.",
+        "ar": "خيار متوسط للألواح يوازن بين الطاقة والمساحة."
+      },
+      "tradeoff": {
+        "en": "You give up some space to collect more power.",
+        "ar": "تتنازل عن بعض المساحة للحصول على طاقة أكبر."
+      }
+    },
+    {
+      "id": "panels-large",
+      "name": {
+        "en": "Large Panels",
+        "ar": "ألواح كبيرة"
+      },
+      "blurb": {
+        "en": "Choose larger panels when your design needs more available power.",
+        "ar": "اختر الألواح الأكبر عندما يحتاج تصميمك إلى طاقة متاحة أكثر."
+      },
+      "tradeoff": {
+        "en": "They take room away from other satellite parts.",
+        "ar": "تشغل مساحة كان يمكن أن تستخدمها أجزاء أخرى."
+      }
+    },
+    {
+      "id": "battery-small",
+      "name": {
+        "en": "Small Battery",
+        "ar": "بطارية صغيرة"
+      },
+      "blurb": {
+        "en": "A compact battery choice that leaves room for other parts.",
+        "ar": "خيار بطارية مدمج يترك مساحة لأجزاء أخرى."
+      },
+      "tradeoff": {
+        "en": "You store less energy for times without sunlight.",
+        "ar": "تخزّن طاقة أقل للأوقات التي لا تتوفر فيها أشعة الشمس."
+      }
+    },
+    {
+      "id": "battery-medium",
+      "name": {
+        "en": "Medium Battery",
+        "ar": "بطارية متوسطة"
+      },
+      "blurb": {
+        "en": "A middle-ground battery choice for balancing stored energy with space.",
+        "ar": "خيار متوسط للبطارية يوازن بين الطاقة المخزنة والمساحة."
+      },
+      "tradeoff": {
+        "en": "You spend some room on stored energy.",
+        "ar": "تستهلك جزءًا من المساحة لتخزين الطاقة."
+      }
+    },
+    {
+      "id": "battery-large",
+      "name": {
+        "en": "Large Battery",
+        "ar": "بطارية كبيرة"
+      },
+      "blurb": {
+        "en": "Choose a larger battery when your design needs more stored energy.",
+        "ar": "اختر بطارية أكبر عندما يحتاج تصميمك إلى طاقة مخزنة أكثر."
+      },
+      "tradeoff": {
+        "en": "It takes room away from other satellite parts.",
+        "ar": "تشغل مساحة كان يمكن أن تستخدمها أجزاء أخرى."
+      }
+    },
+    {
+      "id": "radio-slow",
+      "name": {
+        "en": "Slow Radio",
+        "ar": "راديو بطيء"
+      },
+      "blurb": {
+        "en": "A low-demand radio choice for sending your mission data.",
+        "ar": "خيار راديو منخفض المتطلبات لإرسال بيانات مهمتك."
+      },
+      "tradeoff": {
+        "en": "Your data takes longer to send.",
+        "ar": "يستغرق إرسال بياناتك وقتًا أطول."
+      }
+    },
+    {
+      "id": "radio-standard",
+      "name": {
+        "en": "Standard Radio",
+        "ar": "راديو قياسي"
+      },
+      "blurb": {
+        "en": "A middle-ground radio choice for balancing data transfer with other needs.",
+        "ar": "خيار راديو متوازن لنقل البيانات مع مراعاة الاحتياجات الأخرى."
+      },
+      "tradeoff": {
+        "en": "You spend some power and room on sending data.",
+        "ar": "تستهلك بعض الطاقة والمساحة لإرسال البيانات."
+      }
+    },
+    {
+      "id": "radio-fast",
+      "name": {
+        "en": "Fast Radio",
+        "ar": "راديو سريع"
+      },
+      "blurb": {
+        "en": "Choose this radio when your mission needs to send data faster.",
+        "ar": "اختر هذا الراديو عندما تحتاج مهمتك إلى إرسال البيانات بسرعة أكبر."
+      },
+      "tradeoff": {
+        "en": "It uses more power and room.",
+        "ar": "يستهلك طاقة ومساحة أكبر."
+      }
+    },
+    {
+      "id": "computer-basic",
+      "name": {
+        "en": "Basic Computer",
+        "ar": "حاسوب بسيط"
+      },
+      "blurb": {
+        "en": "A simple computer choice that reserves room for other parts.",
+        "ar": "خيار حاسوب بسيط يترك مساحة لأجزاء أخرى."
+      },
+      "tradeoff": {
+        "en": "You have less capacity for mission tasks.",
+        "ar": "تتوفر سعة أقل لمهام المهمة."
+      }
+    },
+    {
+      "id": "computer-standard",
+      "name": {
+        "en": "Standard Computer",
+        "ar": "حاسوب قياسي"
+      },
+      "blurb": {
+        "en": "A middle-ground computer choice for balancing mission tasks with other needs.",
+        "ar": "خيار حاسوب متوازن لمهام المهمة والاحتياجات الأخرى."
+      },
+      "tradeoff": {
+        "en": "You spend some room and power on computing.",
+        "ar": "تستهلك بعض المساحة والطاقة للحوسبة."
+      }
+    },
+    {
+      "id": "computer-large",
+      "name": {
+        "en": "Large Computer",
+        "ar": "حاسوب كبير"
+      },
+      "blurb": {
+        "en": "Choose a larger computer when your design needs more computing capacity.",
+        "ar": "اختر حاسوبًا أكبر عندما يحتاج تصميمك إلى سعة حوسبة أكبر."
+      },
+      "tradeoff": {
+        "en": "It takes room and power from other parts.",
+        "ar": "يستهلك مساحة وطاقة كان يمكن أن تستخدمها أجزاء أخرى."
+      }
+    },
+    {
+      "id": "pointing-basic",
+      "name": {
+        "en": "Basic Pointing",
+        "ar": "توجيه أساسي"
+      },
+      "blurb": {
+        "en": "A basic pointing choice for aiming your satellite at its target.",
+        "ar": "خيار توجيه أساسي لتوجيه قمرك نحو هدفه."
+      },
+      "tradeoff": {
+        "en": "Your camera has less precise pointing.",
+        "ar": "يكون توجيه الكاميرا أقل دقة."
+      }
+    },
+    {
+      "id": "pointing-standard",
+      "name": {
+        "en": "Standard Pointing",
+        "ar": "توجيه قياسي"
+      },
+      "blurb": {
+        "en": "A middle-ground pointing choice for balancing aim with other needs.",
+        "ar": "خيار توجيه متوازن يراعي دقة التصويب والاحتياجات الأخرى."
+      },
+      "tradeoff": {
+        "en": "You spend some room and power on pointing.",
+        "ar": "تستهلك بعض المساحة والطاقة للتوجيه."
+      }
+    },
+    {
+      "id": "pointing-precise",
+      "name": {
+        "en": "Precise Pointing",
+        "ar": "توجيه دقيق"
+      },
+      "blurb": {
+        "en": "Choose precise pointing when your mission needs to aim carefully.",
+        "ar": "اختر التوجيه الدقيق عندما تحتاج مهمتك إلى تصويب محكم."
+      },
+      "tradeoff": {
+        "en": "It uses more room and power.",
+        "ar": "يستهلك مساحة وطاقة أكبر."
+      }
+    },
+    {
+      "id": "fuel-small",
+      "name": {
+        "en": "Small Fuel Tank",
+        "ar": "خزان وقود صغير"
+      },
+      "blurb": {
+        "en": "A compact fuel choice for making limited orbit changes.",
+        "ar": "خيار وقود مدمج لإجراء تغييرات محدودة على المدار."
+      },
+      "tradeoff": {
+        "en": "You have less fuel for changing your orbit.",
+        "ar": "يتوفر وقود أقل لتغيير مدارك."
+      }
+    },
+    {
+      "id": "fuel-large",
+      "name": {
+        "en": "Large Fuel Tank",
+        "ar": "خزان وقود كبير"
+      },
+      "blurb": {
+        "en": "Choose a larger fuel supply when your design needs more room to change orbit.",
+        "ar": "اختر كمية وقود أكبر عندما يحتاج تصميمك إلى مجال أوسع لتغيير المدار."
+      },
+      "tradeoff": {
+        "en": "It takes room from other satellite parts.",
+        "ar": "تشغل مساحة كان يمكن أن تستخدمها أجزاء أخرى."
+      }
+    }
+  ],
+  "rockets": [
+    {
+      "id": "electron",
+      "name": {
+        "en": "Rocket Lab Electron",
+        "ar": "Electron من Rocket Lab"
+      },
+      "blurb": {
+        "en": "Rocket Lab Electron can carry 200 kg to a 500 km sun-synchronous orbit.",
+        "ar": "يستطيع صاروخ Electron من Rocket Lab حمل 200 kg إلى مدار متزامن مع الشمس على ارتفاع 500 km."
+      }
+    },
+    {
+      "id": "spacex-rideshare",
+      "name": {
+        "en": "SpaceX Rideshare",
+        "ar": "مشاركة الإطلاق من SpaceX"
+      },
+      "blurb": {
+        "en": "SpaceX's rideshare page estimates $0.35 million for a small satellite to sun-synchronous orbit from March 2027. An estimate, not a quote.",
+        "ar": "تقدّر صفحة SpaceX للإطلاق المشترك 0.35 مليون دولار لقمر صغير إلى مدار متزامن مع الشمس من مارس 2027. تقدير لا عرض سعر."
+      }
+    }
+  ]
+}
