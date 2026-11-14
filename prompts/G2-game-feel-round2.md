@@ -1,6 +1,6 @@
 # Prompt G2: game feel, round 2 (header, Brief, instruments, rewards)
 
-**Who:** Renad (UI lane) or Iyad with a Sonnet `worker`. Same rules as prompt G (read it first: tokens only, no gradients/glow/emoji/starfield/confetti, `--sol` only for the Sun, transform/opacity animation, reduced motion, RTL, real values only, no new dependency, engine and contracts untouched). Fable (prompt C, Track 5) verifies and fills gaps.
+**Who:** Renad (UI lane) or Iyad with a Sonnet `worker`. Same rules as prompt G (read it first: tokens only, no gradients/glow/emoji/confetti (the shared `ui/Starfield` backdrop is the one allowed star effect, see G3), `--sol` only for the Sun, transform/opacity animation, reduced motion, RTL, real values only, no new dependency, engine and contracts untouched). Fable (prompt C, Track 5) verifies and fills gaps.
 **Why:** Iyad's playtest of the live site: the header and the Brief read like a textbook. The exploded-view hover did nothing. Done already by Claude on main: the Build exploded view now has live hotspots, a dim-the-rest spotlight and a detail card. Do not redo it.
 
 <tasks>

@@ -2,7 +2,7 @@
 
 Idea: a mission logbook on almanac paper, where the only warm colour is the real Sun.
 Two themes: **Paper** (Brief, Build, Orbit, Launch, Report) and **Night** (Flight and ops). Launch turns Paper into Night in 600 ms.
-Heritage: Arabic astronomical tradition (astrolabe rete, zij almanacs). At most one ornament per screen. No dark-starfield-neon look.
+Heritage: Arabic astronomical tradition (astrolabe rete, zij almanacs). At most one ornament per screen. Decision 2026-11-14 (Iyad): the mission screens use the Night theme with a calm CSS-only star backdrop (`ui/Starfield`, token colours, slow drift, static under reduced motion). No neon, glow, gradients or nebula blobs. Paper stays as an optional theme and for gallery/tokens pages.
 
 Day 1 (Renad's agent): generate `design/tokens.json`, `design/tokens.css` and `design/components.css` from the tables below. Do not hand-type other colours.
 

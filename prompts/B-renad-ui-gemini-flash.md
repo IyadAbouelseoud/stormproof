@@ -22,7 +22,7 @@ RULES (follow every one, every step):
 1. Write only inside `web/` and `design/`. Never edit anything in `engine/`, `pipeline/`, `content/` or `web/public/data/`. Never edit the contracts.
 2. Stack: Vite, React 19, TypeScript strict, Zustand, plain CSS. Add NO other dependency. If you think you need one, stop and ask me.
 3. Colours, sizes, fonts, spacing, radius and durations come ONLY from CSS variables made from `design/tokens.json`. Never type a hex colour or a pixel size in a component. If a token is missing, stop and tell me.
-4. The look: warm paper and ink, brass and lapis. NO starfields, neon, glows, gradients, glass, emoji, bubbly rounded cards, 3D globes. Draw everything with SVG or Canvas.
+4. The look: warm paper and ink, brass and lapis. NO neon, glows, gradients, glass, emoji, bubbly rounded cards, 3D globes. Draw everything with SVG or Canvas.
 5. Use CSS logical properties only (margin-inline-start, padding-block, inset-inline-end, text-align: start). The app must work left-to-right (English) and right-to-left (Arabic).
 6. The orange colour `sol` is only for the Sun and its effects. Never use it for buttons.
 7. All data comes through ONE file, `web/src/engineAdapter.ts`, which returns `mock-result.json` for now. Components never import the fixture directly.

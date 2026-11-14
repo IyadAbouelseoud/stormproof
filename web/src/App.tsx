@@ -11,6 +11,7 @@ import { reducedMotion } from './format';
 import { Brief, Build, Orbit, Launch, Flight, Report, Refly } from './screens';
 import { Gallery } from './screens/Gallery';
 import { Handover } from './screens/Handover';
+import { Starfield } from './ui/Starfield';
 import { TokenSwatches } from './screens/TokenSwatches';
 
 const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = { Brief, Build, Orbit, Launch, Flight, Report, Refly };
@@ -72,8 +73,8 @@ export default function App(): React.JSX.Element {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  // Paper everywhere except Flight (Night). The turn to Night takes --dur-launch (instant if reduced motion).
-  const theme = view === 'mission' && currentScreen === 'Flight' && !handoverTo ? 'night' : 'paper';
+  // Space (Night, with the star field) for the whole game; Paper only for the gallery and token pages.
+  const theme = view === 'mission' ? 'night' : 'paper';
   const prevTheme = useRef(theme);
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -104,6 +105,8 @@ export default function App(): React.JSX.Element {
   const ActiveScreen = SCREEN_COMPONENTS[currentScreen];
 
   return (
+    <>
+    <Starfield />
     <div className="app-container">
       <a className="skip-link type-label" href="#main">
         {t('shell.skip')}
@@ -150,5 +153,6 @@ export default function App(): React.JSX.Element {
         <p className="type-small footer-credit">{t('shell.credit')}</p>
       </footer>
     </div>
+    </>
   );
 }

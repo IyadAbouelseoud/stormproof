@@ -38,7 +38,7 @@ TRACK 1: Physics and validity (independent recomputation)
 
 TRACK 2: UX, accessibility, design-system conformance
 - With Playwright (add `@axe-core/playwright` as a devDependency for this pass; it is pre-approved here), walk Brief -> Re-fly at 390x844 and 1440x900, in EN and AR, in Paper and Night. Record console errors, axe violations (serious and critical must be zero), and a screenshot of each screen into `qa/screens/`.
-- Design conformance: grep `web/src` for hex colours, px font sizes or font names outside `styles/tokens.css`; any use of `--sol` on buttons, links or decoration; any gradient, glow, emoji or starfield. Check text contrast on every screen; check focus is visible; check that prefers-reduced-motion turns motion into cross-fades; check RTL mirrors layouts, chains and arrows while numbers stay readable.
+- Design conformance: grep `web/src` for hex colours, px font sizes or font names outside `styles/tokens.css`; any use of `--sol` on buttons, links or decoration; any gradient, glow or emoji (the shared `ui/Starfield` backdrop is allowed; check that no other star or particle effect exists). Check text contrast on every screen; check focus is visible; check that prefers-reduced-motion turns motion into cross-fades; check RTL mirrors layouts, chains and arrows while numbers stay readable.
 - Comprehension: the first screen must say what the game is in one line, and the Sun Stripe must be visible without scrolling at 1440x900.
 
 TRACK 3: Release hygiene
@@ -73,7 +73,7 @@ TRACK 5 (game feel, after track 4; budget about 20% of the window, cut first if 
 Problem: the live site reads as a report, not a game. The specs are prompts/G-game-feel.md (G1-G9) and prompts/G2-game-feel-round2.md (X1-X8: mission-control header, briefing-style Brief, dial gauges, medals, orbit mini-diagram; the Build exploded-view hotspots already shipped on main); Renad or a worker may already have done some of it. Extra illustrations from prompts/D2 and D3 (P8-P17) are wired where G/G2 say; missing files are skipped, never replaced by stand-ins. Sound defaults to OFF (never plays before a user tap); fix it if it is on.
 - Audit first: for each of G1-G9 and X1-X8 mark done / partly / missing from the code and the live URL (screenshots in qa/screens/). Do not redo what exists.
 - Implement the missing items in this priority: G1 launch ceremony, G2 flight motion, G3 verdict stamp and count-up, G9 first screen, G6 art wiring, G4 build feedback, G5 transitions, G7 empty states, G8 optional sound (last; drop it first).
-- Hard rules from G apply: no gradients, glows, emoji, starfield, confetti; sol only for the Sun; durations from tokens; transform/opacity only; reduced motion honoured; RTL mirrored; animation only reveals real SimResult values; no new dependency; engine, contracts, numbers untouched.
+- Hard rules from G apply: no gradients, glows, emoji, confetti (only the shared `ui/Starfield` backdrop; G3 rules apply); sol only for the Sun; durations from tokens; transform/opacity only; reduced motion honoured; RTL mirrored; animation only reveals real SimResult values; no new dependency; engine, contracts, numbers untouched.
 - Conformance gate before commit: Playwright walk with reduced motion on and off; axe serious/critical still zero; Lighthouse performance still >= 85; bundle +60 kB gzip max; art folder < 4 MB, lazy-loaded; every AI image shows the SI tag and has en and ar alt text in content/text/art-alt.json.
 - Missing art (P8-P12 not delivered) is not a blocker: skip those placements, do not draw stand-ins.
 - Re-record the two demo missions (FAIL and FIX) after Track 5 and confirm DEMO.md numbers and codes are unchanged; update DEMO.md with the new timings (launch countdown, reentry hold) so the 3-minute demo still fits.
@@ -97,3 +97,7 @@ Final release report (at most 30 lines; include G1-G9 and X1-X8 status, the qa/F
 ---
 
 > This prompt is for an agentic tool with real system access. Review the scope locks, forbidden actions and stop conditions before pasting. Confirm the paths and permissions match the actual repo.
+
+
+## Addendum (2026-11-14): prompt G3
+Run after Track 5 starts: verify prompt `G3-space-and-screens.md` is fully done (S0 backdrop contrast and perf, S1 Orbit, S2 Launch spacing, S3 Flight instruments and mission log, S4 Report debrief, S5 Re-fly, S6 consistency). Fill any gap. Conformance: contrast over the starfield on every screen, CPU idle under 3 %, no dead space at 390/768/1440 in EN and AR, 20 clean walkthroughs.

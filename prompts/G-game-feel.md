@@ -6,7 +6,7 @@
 <rules>
 Read AGENTS.md and design/README.md first. They stay binding:
 - Motion durations only from tokens (120, 240, 600 ms, plus the existing --dur-launch). CSS and SVG only; no animation library, no Canvas loop, no video.
-- No gradients, glows, blur halos, emoji, starfield, confetti. Flat shapes, hairline strokes, paper/night tokens only.
+- No gradients, glows, blur halos, emoji, confetti. The only star effect allowed is the shared `ui/Starfield` backdrop (see G3). Flat shapes, hairline strokes, paper/night tokens only.
 - `--sol` only for the Sun and its effects (storm rings, Sun Stripe, "the Sun took N days"). Actions stay lapis.
 - Every animation: transform/opacity only, honours prefers-reduced-motion (cross-fade or none), mirrors in RTL (arrows, slides, chains), never blocks input, never delays the result number.
 - Numbers shown are always the real SimResult values; animation only reveals them (count-up ends exactly on the true value).
