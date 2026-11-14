@@ -77,9 +77,13 @@ for (const [styleName, rules] of Object.entries(tokens.typography)) {
 
 // Arabic font overrides
 css += `/* Arabic font family fallbacks */
-:lang(ar) {
+:lang(ar), [lang="ar"] {
   --font-display: ${tokens.fonts['display-ar']};
   --font-text: ${tokens.fonts['text-ar']};
+}
+
+:lang(ar) .type-label, [lang="ar"] .type-label {
+  letter-spacing: normal;
 }
 `;
 

@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { useI18n } from './i18n';
+import { LanguageToggle } from './ui/LanguageToggle';
 
 const COLOR_TOKENS = [
-  { name: 'ground', desc: 'Page background' },
-  { name: 'ground-raised', desc: 'Card background' },
-  { name: 'ground-sunken', desc: 'Input/slot background' },
-  { name: 'rule', desc: 'Dividers and borders' },
-  { name: 'ink', desc: 'Primary typography' },
-  { name: 'ink-muted', desc: 'Secondary typography' },
-  { name: 'ink-faint', desc: 'Faint labels / inactive' },
-  { name: 'sol', desc: 'Sun core (reserved for Sun)' },
-  { name: 'sol-ink', desc: 'Sun text and severe drag' },
-  { name: 'sol-tint', desc: 'Sun shaded area' },
-  { name: 'lapis', desc: 'Primary actions and disposal' },
-  { name: 'lapis-tint', desc: 'Lapis accent fill' },
-  { name: 'on-lapis', desc: 'Text on lapis buttons' },
-  { name: 'brass', desc: 'Section headings and ticks' },
-  { name: 'ok', desc: 'Passing state' },
-  { name: 'warn', desc: 'Warning state' },
-  { name: 'fail', desc: 'Failing state' },
+  { name: 'ground', descKey: 'token.color.ground' },
+  { name: 'ground-raised', descKey: 'token.color.ground-raised' },
+  { name: 'ground-sunken', descKey: 'token.color.ground-sunken' },
+  { name: 'rule', descKey: 'token.color.rule' },
+  { name: 'ink', descKey: 'token.color.ink' },
+  { name: 'ink-muted', descKey: 'token.color.ink-muted' },
+  { name: 'ink-faint', descKey: 'token.color.ink-faint' },
+  { name: 'sol', descKey: 'token.color.sol' },
+  { name: 'sol-ink', descKey: 'token.color.sol-ink' },
+  { name: 'sol-tint', descKey: 'token.color.sol-tint' },
+  { name: 'lapis', descKey: 'token.color.lapis' },
+  { name: 'lapis-tint', descKey: 'token.color.lapis-tint' },
+  { name: 'on-lapis', descKey: 'token.color.on-lapis' },
+  { name: 'brass', descKey: 'token.color.brass' },
+  { name: 'ok', descKey: 'token.color.ok' },
+  { name: 'warn', descKey: 'token.color.warn' },
+  { name: 'fail', descKey: 'token.color.fail' },
 ];
 
 const SUNSTRIPE_TOKENS = [
-  { name: 'sunstripe-0', desc: 'Quiet Sun (<80 sfu)' },
-  { name: 'sunstripe-1', desc: 'Low activity (80-110 sfu)' },
-  { name: 'sunstripe-2', desc: 'Moderate (110-140 sfu)' },
-  { name: 'sunstripe-3', desc: 'Elevated (140-180 sfu)' },
-  { name: 'sunstripe-4', desc: 'High (180-220 sfu)' },
-  { name: 'sunstripe-5', desc: 'Extreme (>220 sfu)' },
+  { name: 'sunstripe-0', descKey: 'token.sunstripe.sunstripe-0' },
+  { name: 'sunstripe-1', descKey: 'token.sunstripe.sunstripe-1' },
+  { name: 'sunstripe-2', descKey: 'token.sunstripe.sunstripe-2' },
+  { name: 'sunstripe-3', descKey: 'token.sunstripe.sunstripe-3' },
+  { name: 'sunstripe-4', descKey: 'token.sunstripe.sunstripe-4' },
+  { name: 'sunstripe-5', descKey: 'token.sunstripe.sunstripe-5' },
 ];
 
 const TYPOGRAPHY_SAMPLES = [
@@ -34,62 +36,61 @@ const TYPOGRAPHY_SAMPLES = [
     className: 'type-display-xl',
     name: 'display-xl',
     desc: 'Big Shoulders Display 800, 88px / 0.92, UPPERCASE',
-    sample: 'STORMPROOF ALMANAC',
+    sampleKey: 'demo.typography.display_xl',
   },
   {
     className: 'type-display-l',
     name: 'display-l',
     desc: 'Big Shoulders Display 800, 56px / 0.95, UPPERCASE',
-    sample: 'SOLAR CYCLE 25 MISSION LOG',
+    sampleKey: 'demo.typography.display_l',
   },
   {
     className: 'type-display-ar',
     name: 'display-ar',
     desc: 'Reem Kufi 700, 48px / 1.2, Arabic Display',
-    sample: 'سجل مهمة العواصف الشمسية',
+    sampleKey: 'demo.typography.display_ar',
   },
   {
     className: 'type-heading',
     name: 'heading',
     desc: 'IBM Plex Sans 600, 22px / 1.2',
-    sample: 'Orbital Parameters & Atmospheric Drag Analysis',
+    sampleKey: 'demo.typography.heading',
   },
   {
     className: 'type-body',
     name: 'body',
     desc: 'IBM Plex Sans 400, 16px / 1.5',
-    sample:
-      'The Sun you launch into decides how long your satellite lives. FACSAT-2 was planned for the forecast Sun, met the real one, and fell 2.5 years early.',
+    sampleKey: 'demo.typography.body',
   },
   {
     className: 'type-small',
     name: 'small',
     desc: 'IBM Plex Sans 400, 13px / 1.4',
-    sample:
-      'Pre-computed NRLMSIS 2.1 neutral density orbit-averaged per day x altitude 150-800 km.',
+    sampleKey: 'demo.typography.small',
   },
   {
     className: 'type-data-l',
     name: 'data-l',
     desc: 'IBM Plex Mono 500, 32px / 1',
-    sample: '497 KM / 936 DAYS',
+    sampleKey: 'demo.typography.data_l',
   },
   {
     className: 'type-data',
     name: 'data',
     desc: 'IBM Plex Mono 400, 14px / 1.35',
-    sample: 'F10.7 = 158.4 sfu | rho = 3.42e-12 kg/m³ | Cd = 2.2',
+    sampleKey: 'demo.typography.data',
   },
   {
     className: 'type-label',
     name: 'label',
     desc: 'IBM Plex Sans 600, 11px / 1.2, UPPERCASE, 0.08em tracking',
-    sample: 'BALLISTIC COEFFICIENT / DISPOSAL RULE FCC 22-74',
+    sampleKey: 'demo.typography.label',
   },
 ];
 
 export default function App(): React.JSX.Element {
   const [theme, setTheme] = useState<'paper' | 'night'>('paper');
+  const { t } = useI18n();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -103,20 +104,23 @@ export default function App(): React.JSX.Element {
     <main className="app-container">
       <header className="app-header">
         <div>
-          <h1 className="type-display-l">STORMPROOF</h1>
-          <p className="type-body">Design Tokens & Theme Verification</p>
+          <h1 className="type-display-l">{t('app.title')}</h1>
+          <p className="type-body">{t('app.subtitle')}</p>
         </div>
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className="theme-toggle-btn type-label"
-        >
-          Theme: {theme === 'paper' ? 'Switch to Night' : 'Switch to Paper'}
-        </button>
+        <div className="header-controls">
+          <LanguageToggle />
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="theme-toggle-btn type-label"
+          >
+            {theme === 'paper' ? t('theme.switch_to_night') : t('theme.switch_to_paper')}
+          </button>
+        </div>
       </header>
 
       <section>
-        <h2 className="type-heading section-title">Theme Palette ({theme})</h2>
+        <h2 className="type-heading section-title">{t('theme.palette_title', { theme })}</h2>
         <div className="swatch-grid">
           {COLOR_TOKENS.map((token) => (
             <div key={token.name} className="swatch-card">
@@ -126,7 +130,7 @@ export default function App(): React.JSX.Element {
               />
               <div className="swatch-info">
                 <span className="type-data swatch-name">--{token.name}</span>
-                <span className="type-small swatch-desc">{token.desc}</span>
+                <span className="type-small swatch-desc">{t(token.descKey)}</span>
               </div>
             </div>
           ))}
@@ -134,7 +138,7 @@ export default function App(): React.JSX.Element {
       </section>
 
       <section>
-        <h2 className="type-heading section-title">Sun Stripe Scale (F10.7 Activity)</h2>
+        <h2 className="type-heading section-title">{t('theme.sunstripe_title')}</h2>
         <div className="swatch-grid">
           {SUNSTRIPE_TOKENS.map((token) => (
             <div key={token.name} className="swatch-card">
@@ -144,7 +148,7 @@ export default function App(): React.JSX.Element {
               />
               <div className="swatch-info">
                 <span className="type-data swatch-name">--{token.name}</span>
-                <span className="type-small swatch-desc">{token.desc}</span>
+                <span className="type-small swatch-desc">{t(token.descKey)}</span>
               </div>
             </div>
           ))}
@@ -152,14 +156,14 @@ export default function App(): React.JSX.Element {
       </section>
 
       <section>
-        <h2 className="type-heading section-title">Typography Hierarchy (9 Type Styles)</h2>
+        <h2 className="type-heading section-title">{t('theme.typography_title')}</h2>
         <div className="type-specimen-list">
           {TYPOGRAPHY_SAMPLES.map((item) => (
             <div key={item.name} className="type-specimen-card">
               <div className="type-label type-specimen-meta">
                 {item.name} — {item.desc}
               </div>
-              <div className={item.className}>{item.sample}</div>
+              <div className={item.className}>{t(item.sampleKey)}</div>
             </div>
           ))}
         </div>

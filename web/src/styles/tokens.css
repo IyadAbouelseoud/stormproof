@@ -186,7 +186,11 @@
 }
 
 /* Arabic font family fallbacks */
-:lang(ar) {
+:lang(ar), [lang="ar"] {
   --font-display: "Reem Kufi", sans-serif;
   --font-text: "IBM Plex Sans Arabic", sans-serif;
+}
+
+:lang(ar) .type-label, [lang="ar"] .type-label {
+  letter-spacing: normal;
 }
