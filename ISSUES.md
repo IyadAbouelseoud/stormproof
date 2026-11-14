@@ -48,3 +48,9 @@ Additive only; Angola results byte-identical (engine/test/angola-regression.test
 3. G2.4 coastline: CUT. The map keeps its graticule and ground-station markers; no coastline file ships.
 4. F8 axe: left for the final pass; @axe-core/playwright not installed.
 5. Art P3/P5/P6 and Flight map wiring to SimResult.groundTrack: moved to the UI lane (prompt G, G6b); not touched on feature/jeddah.
+
+## 2026-11-14 Final pass (prompt C)
+- Saturday 20:00 playtest result: not provided (nothing was pasted into the final-pass session).
+- Fuzz finding, fixed (a84278d): decodeMission leaked a raw URIError for broken percent escapes, and accepted launch dates outside 2015-2026 (or off the calendar) that made simulate() throw. Tampered codes now fail with a clean "mission code:" error; the web shows the inline "invalid code" message. No contract change.
+- mock-result.json (shared contract fixture) still carries the old hint text "about 2.5 years early". It is shown only if the data files fail to load ("Sample data" fallback, English). Not edited (fixture); the live hint comes from engine/src/closest.ts and states days.
+- Track 3 note for Iyad: `.claude/settings.json` allows `Bash(echo $NASA_API_KEY)`. Consider removing that permission; no key was found in the tree or in git history.
