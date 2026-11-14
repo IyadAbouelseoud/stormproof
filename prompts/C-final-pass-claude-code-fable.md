@@ -100,4 +100,4 @@ Final release report (at most 30 lines; include G1-G9 and X1-X8 status, the qa/F
 
 
 ## Addendum (2026-11-14): prompt G3
-Run after Track 5 starts: verify prompt `G3-space-and-screens.md` is fully done (S0 backdrop contrast and perf, S1 Orbit, S2 Launch spacing, S3 Flight instruments and mission log, S4 Report debrief, S5 Re-fly, S6 consistency). Fill any gap. Conformance: contrast over the starfield on every screen, CPU idle under 3 %, no dead space at 390/768/1440 in EN and AR, 20 clean walkthroughs.
+Run after Track 5 starts (art P18-P23 from D4 may be wired by G3 or left out): verify prompt `G3-space-and-screens.md` is fully done (S0 backdrop contrast and perf, S1 Orbit, S2 Launch spacing, S3 Flight instruments and mission log, S4 Report debrief, S5 Re-fly, S6 consistency). Fill any gap. Conformance: contrast over the starfield on every screen, CPU idle under 3 %, no dead space at 390/768/1440 in EN and AR, 20 clean walkthroughs.

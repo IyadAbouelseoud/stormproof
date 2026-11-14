@@ -28,7 +28,7 @@ Make it a mission debrief console, not a document. Header: verdict stamp + score
 ## S5. Re-fly (Refly.tsx)
 Fill the page: left "what changed" panel with a before/after table of design deltas (each row slides in), centre a big dual-run comparison (previous vs new lifetime bars racing in), right a "try next" list of 3 one-click tweaks from the engine's closest-design hint. Big "Fly again" button with the same ceremony as Launch. An empty state (no previous run) shows a drawn rocket-and-orbit illustration plus one instruction line, never a blank page.
 
-## S6. Shared
+## S6. Shared (art from D4 when delivered: P18/P19 on rocket cards, P20 Re-fly, P21 Report header, P22 empty states, P23 log border; wire lazily with Illustration, SI tag, art-alt keys)
 - Header strip, section titles and cards use one consistent "console" frame: hairline border, corner ticks, label in `type-label`.
 - Every screen has at most one ornament, no empty column wider than 48px at 1440.
 - Add `qa/screens-1440-390-EN-AR-night.md`: screenshots checklist for each screen at 1440x900 and 390x844 in EN and AR.

@@ -14,6 +14,8 @@
 .sp-shoot-b { inset-block-start: 46%; inset-inline-start: 18%; animation: sp-shoot 37s linear infinite; animation-delay: 11s; }
 @keyframes sp-shoot { 0%, 93% { opacity: 0; transform: translate3d(0, 0, 0) rotate(24deg); } 94% { opacity: 0.9; } 100% { opacity: 0; transform: translate3d(-260px, 120px, 0) rotate(24deg); } }
 @media (prefers-reduced-motion: reduce) { .sp-stars-layer, .sp-shoot { animation: none; } .sp-shoot { display: none; } }
-/* panels let some of the sky show through (opaque enough for contrast) */
-[data-theme="night"] .app-container { position: relative; z-index: 1; }
-[data-theme="night"] .screen-card, [data-theme="night"] .mission-flow-container > section { background-color: color-mix(in srgb, var(--color-ground-raised) 90%, transparent); }
+/* Stars show through the whole app: shell, rail and cards are see-through; text stays on >=60% panels */
+[data-theme="night"] .app-container { position: relative; z-index: 1; background: transparent; }
+[data-theme="night"] .cml-rail { background-color: color-mix(in srgb, var(--color-ground-raised) 55%, transparent); }
+[data-theme="night"] .screen-card { background-color: color-mix(in srgb, var(--color-ground-raised) 62%, transparent); }
+[data-theme="night"] .screen-card :is(.fit-item, .xd-card, figure) { background-color: color-mix(in srgb, var(--color-ground) 78%, transparent); }
