@@ -31,7 +31,7 @@ import { launchSlipMonths, resolveStorms, stormAlerts, type Storm } from './even
 import { fitCheck, resolveDesign } from './launch';
 import { encodeMission } from './mission-code';
 import { r1 } from './msg';
-import { fundaPasses, gsdM, revisitDays, type PassStats } from './orbit';
+import { fundaPasses, groundTrack, gsdM, revisitDays, type PassStats } from './orbit';
 import { powerBudget } from './power';
 import { createRng } from './rng';
 import { disposalFit, disposalVerdict, gauge } from './rules';
@@ -272,5 +272,6 @@ export function simulate(design: MissionDesign, data: EngineData): SimResult {
     closest: closestDesign(design),
     missionCode: encodeMission(design),
     ...(ev ? { eventReplay: ev } : {}),
+    groundTrack: groundTrack(design.orbit.type, alt),
   };
 }

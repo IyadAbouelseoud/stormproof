@@ -29,13 +29,16 @@ export function MainVerdict({ r }: { r: SimResult }): React.JSX.Element {
   return <VerdictStamp state={lived ? 'ok' : 'fail'} title={lived ? t('verdict.lived') : t('verdict.died')} detail={`${when} · ${sun}`} />;
 }
 
-function SatelliteView({ gsdM }: { gsdM: number }): React.JSX.Element {
+/** Dry HLS baseline of the scenario's place (Jeddah: 2024 dry baseline, never the flood). */
+const gibsKey = (scenarioId: string): string => (scenarioId === 'jeddah-flood' ? 'jeddah_hls' : 'angola');
+
+function SatelliteView({ gsdM, scenarioId }: { gsdM: number; scenarioId: string }): React.JSX.Element {
   const { t, lang } = useI18n();
   const [img, setImg] = useState<GibsImage | null | undefined>(undefined);
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    gibsImages().then((list) => setImg(list.find((g) => g.file.includes('angola') && g.resolutionM <= 30) ?? list[0] ?? null));
-  }, []);
+    gibsImages().then((list) => setImg(list.find((g) => g.file.includes(gibsKey(scenarioId)) && g.resolutionM <= 30) ?? list[0] ?? null));
+  }, [scenarioId]);
   // blur radius in source pixels = player GSD / image resolution (no blur when the camera is sharper)
   const factor = img ? Math.max(1, gsdM / img.resolutionM) : 1;
   useEffect(() => {
@@ -82,11 +85,11 @@ export function Report(): React.JSX.Element {
   const live = useMission((s) => s.result);
   const keepBaseline = useMission((s) => s.keepBaseline);
   const setScreen = useNavigation((s) => s.setScreen);
+  const r = flight?.truth ?? live;
   const [gibs, setGibs] = useState<GibsImage | null>(null);
   useEffect(() => {
-    gibsImages().then((l) => setGibs(l.find((g) => g.file.includes('angola') && g.resolutionM <= 30) ?? null));
-  }, []);
-  const r = flight?.truth ?? live;
+    gibsImages().then((l) => setGibs(l.find((g) => g.file.includes(gibsKey(r.design.scenarioId)) && g.resolutionM <= 30) ?? null));
+  }, [r.design.scenarioId]);
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
@@ -176,7 +179,7 @@ export function Report(): React.JSX.Element {
           <h3 id="satview-h" className="type-label section-label">
             {t('report.satview')}
           </h3>
-          <SatelliteView gsdM={gsd?.value ?? 30} />
+          <SatelliteView gsdM={gsd?.value ?? 30} scenarioId={r.design.scenarioId} />
         </section>
       </div>
 

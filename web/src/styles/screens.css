@@ -363,3 +363,4 @@ main:focus { outline: none; }
 .sp-chart-pass--ok { stroke: var(--color-ok); }
 .sp-chart-pass--blocked { stroke: var(--color-fail); }
 .sp-legend--event::before { border-block-start: 2px dashed var(--color-lapis); }
+.jd-before-after img { max-block-size: 420px; object-fit: cover; }

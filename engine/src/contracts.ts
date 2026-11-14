@@ -230,6 +230,8 @@ export interface SimResult {
   missionCode: string;
   /** Prompt E1 (additive): event replay; present only for scenarios with an event (Jeddah). Absent for Angola. */
   eventReplay?: EventReplay;
+  /** G2 (additive): one day of ground track, [latDeg, lonDeg], at most 720 points (illustrative start longitude). */
+  groundTrack?: [number, number][];
 }
 
 /** One pass over the event target inside the look window (prompt E2). */

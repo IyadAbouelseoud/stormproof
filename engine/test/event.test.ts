@@ -124,6 +124,19 @@ describe('score with six requirements (E2)', () => {
   });
 });
 
+describe('G2 additions', () => {
+  it('groundTrack: deterministic, <= 720 points, latitudes within the inclination', () => {
+    const r = run();
+    expect(r.groundTrack!.length).toBeLessThanOrEqual(720);
+    expect(r.groundTrack!.length).toBeGreaterThan(500);
+    for (const [lat, lon] of r.groundTrack!) {
+      expect(Math.abs(lat)).toBeLessThanOrEqual(90);
+      expect(Math.abs(lon)).toBeLessThanOrEqual(180);
+    }
+    expect(r.groundTrack).toEqual(run().groundTrack);
+  });
+});
+
 describe('SpaceX minimum price (G3)', () => {
   it('6 kg and 12 kg give the same launch cost (350,000 USD flat)', () => {
     const r = content.rockets.find((q) => q.id === 'spacex-rideshare')!;

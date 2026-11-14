@@ -42,7 +42,20 @@ Every number in the game is sourced, computed or labelled "game-balanced" in `co
 - **Renad**: user interface (web/)
 - **Dua**: content, art and pitch
 
+## Second scenario: Jeddah flood watch
+Design a 6U (or 3U) satellite to watch Jeddah, then replay the real storm of 24 Nov 2022. NASA GPM IMERG rain data (Early run about 4 h after the rain) warns that a flood may come; a satellite only shows what happened afterwards, and the camera type decides whether it sees through storm cloud. The Sun still decides how long the satellite lives: a low orbit can reenter before the storm. Cloud tags for 23-27 Nov 2022 were read by eye from NASA Worldview (MODIS Terra); rain frames are NASA GPM IMERG 30-minute estimates from GIBS. Demo mission codes are in `content/demo/jeddah-demo.json` and HANDOFF.md. Build with `VITE_JEDDAH=0` to hide the scenario.
+
+Honest limits of the Jeddah scenario:
+1. One small satellite revisits a place every few days. It cannot warn of a flood that lasts hours.
+2. The flood was caused by rain, never by the Sun. The Sun affects only satellite lifetime.
+3. No 6U radar imager has flown. The radar camera is a game-balanced design study. Real anchors: ICEYE SAR satellites are about 85 kg (ESA); NASA JPL RainCube, a 6U Ka-band rain profiler, is about 12 kg and draws 22 W while transmitting, looks straight down and makes profiles, not pictures.
+4. Rain estimates over Saudi Arabia are imperfect (IMERG, about 10 km). Event figures (179 mm in 6 h, 2 deaths reported) are secondary-source reports (GDACS quoting the National Center of Meteorology).
+5. The 2009 and 2011 Jeddah floods are outside the 2015-2026 timeline: background text only, no tolls printed.
+6. Cloud tags are one Terra morning pass per day, read by eye; 26 Nov had no image and counts as not usable for an optical camera.
+7. The SpaceX rideshare price (350,000 USD flat up to 12 kg) is an estimate from SpaceX's online estimator, not a quote. Electron's price is game-balanced.
+
 ## AI use
+Interface and story text drafted with ChatGPT and edited with Claude; all facts come from content/sources.csv and AGENTS.md; numbers come from the engine.
 We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthropic) wrote most of the engine, pipeline and tests under our review, Antigravity built parts of the UI, and Gemini helped with content and art. AI-generated images carry a visible "SI-generated" tag. Every physics number was checked against its source, and the golden tests below compare the engine with real missions.
 
 ## Licences

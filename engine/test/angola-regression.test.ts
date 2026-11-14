@@ -10,7 +10,8 @@ const data = testEngineData();
 const base = mockJson.design as MissionDesign;
 const FIX = new URL('./fixtures/angola-hashes.json', import.meta.url);
 
-function hash(r: SimResult): string {
+function hash(full: SimResult): string {
+  const { groundTrack: _gt, ...r } = full; // G2 adds groundTrack (new field); existing fields must stay byte-identical
   const s = JSON.stringify(r);
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 0x01000193) >>> 0;

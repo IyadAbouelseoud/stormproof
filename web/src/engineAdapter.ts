@@ -35,6 +35,9 @@ import {
   STORM_ALERT_KP,
   OMNI_END,
   BATTERY_DOD,
+  HOURLY_BELOW_KM,
+  DENSITY_MIN_ALT_KM,
+  DENSITY_MAX_ALT_KM,
   SOURCES,
 } from '../../engine/src/constants';
 import mockResultJson from '../../engine/test/fixtures/mock-result.json';
@@ -99,6 +102,11 @@ export const CONSTANTS = {
   fundaLonDeg: FUNDA_LON_DEG,
   targetLatDeg: TARGET_LAT_DEG,
   omniEnd: OMNI_END,
+  /** G2: integrator switches to hourly steps below this altitude, km. */
+  hourlyBelowKm: HOURLY_BELOW_KM,
+  /** G2: altitude range of the density table, km. */
+  densityMinAltKm: DENSITY_MIN_ALT_KM,
+  densityMaxAltKm: DENSITY_MAX_ALT_KM,
   /** Lowest safe state of charge, % (1 - depth of discharge; game-balanced). */
   batteryFloorPct: Math.round((1 - BATTERY_DOD) * 100),
 } as const;
