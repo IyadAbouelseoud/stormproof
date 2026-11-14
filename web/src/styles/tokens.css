@@ -1,0 +1,196 @@
+/**
+ * STORMPROOF Design Tokens
+ * AUTO-GENERATED from design/tokens.json. DO NOT EDIT DIRECTLY.
+ * Run "pnpm tokens" in web/ to regenerate.
+ */
+
+:root {
+  /* Fonts */
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-display-ar: "Reem Kufi", sans-serif;
+  --font-text: "IBM Plex Sans", sans-serif;
+  --font-text-ar: "IBM Plex Sans Arabic", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Radius */
+  --radius-0: 0px;
+  --radius-2: 2px;
+  --radius-4: 4px;
+
+  /* Durations */
+  --dur-fast: 120ms;
+  --dur-base: 240ms;
+  --dur-launch: 600ms;
+
+  /* Sun Stripe Scale */
+  --sunstripe-0: #1E2A44;
+  --sunstripe-1: #3D5277;
+  --sunstripe-2: #8A8F98;
+  --sunstripe-3: #E2B36A;
+  --sunstripe-4: #FF7A33;
+  --sunstripe-5: #E8361A;
+}
+
+/* Paper Theme (Default) */
+:root, [data-theme="paper"] {
+  --color-ground: #F2ECDF;
+  --ground: #F2ECDF;
+  --color-ground-raised: #FAF6EE;
+  --ground-raised: #FAF6EE;
+  --color-ground-sunken: #E7DFCF;
+  --ground-sunken: #E7DFCF;
+  --color-rule: #C9BFAC;
+  --rule: #C9BFAC;
+  --color-ink: #15171C;
+  --ink: #15171C;
+  --color-ink-muted: #545866;
+  --ink-muted: #545866;
+  --color-ink-faint: #767983;
+  --ink-faint: #767983;
+  --color-sol: #FF5A1F;
+  --sol: #FF5A1F;
+  --color-sol-ink: #B3390B;
+  --sol-ink: #B3390B;
+  --color-sol-tint: #FFD9C7;
+  --sol-tint: #FFD9C7;
+  --color-lapis: #2340B8;
+  --lapis: #2340B8;
+  --color-lapis-tint: #DCE2FA;
+  --lapis-tint: #DCE2FA;
+  --color-on-lapis: #FAF6EE;
+  --on-lapis: #FAF6EE;
+  --color-brass: #765520;
+  --brass: #765520;
+  --color-ok: #19694A;
+  --ok: #19694A;
+  --color-warn: #7A4F00;
+  --warn: #7A4F00;
+  --color-fail: #A32020;
+  --fail: #A32020;
+}
+
+/* Night Theme */
+[data-theme="night"] {
+  --color-ground: #0D1016;
+  --ground: #0D1016;
+  --color-ground-raised: #151A22;
+  --ground-raised: #151A22;
+  --color-ground-sunken: #0A0C11;
+  --ground-sunken: #0A0C11;
+  --color-rule: #2A313D;
+  --rule: #2A313D;
+  --color-ink: #ECE5D8;
+  --ink: #ECE5D8;
+  --color-ink-muted: #A6A196;
+  --ink-muted: #A6A196;
+  --color-ink-faint: #5E6470;
+  --ink-faint: #5E6470;
+  --color-sol: #FF5A1F;
+  --sol: #FF5A1F;
+  --color-sol-ink: #FF8A57;
+  --sol-ink: #FF8A57;
+  --color-sol-tint: #3A1A10;
+  --sol-tint: #3A1A10;
+  --color-lapis: #93A6FF;
+  --lapis: #93A6FF;
+  --color-lapis-tint: #1A2347;
+  --lapis-tint: #1A2347;
+  --color-on-lapis: #0D1016;
+  --on-lapis: #0D1016;
+  --color-brass: #C9A15A;
+  --brass: #C9A15A;
+  --color-ok: #5CCB98;
+  --ok: #5CCB98;
+  --color-warn: #E6B04A;
+  --warn: #E6B04A;
+  --color-fail: #FF7A7A;
+  --fail: #FF7A7A;
+}
+
+/* Typography Utility Classes */
+.type-display-xl {
+  font-family: var(--font-display);
+  font-size: 88px;
+  line-height: 0.92;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.type-display-l {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 0.95;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.type-display-ar {
+  font-family: var(--font-display-ar);
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.type-heading {
+  font-family: var(--font-text);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.type-body {
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.type-small {
+  font-family: var(--font-text);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.type-data-l {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.type-data {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.type-label {
+  font-family: var(--font-text);
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Arabic font family fallbacks */
+:lang(ar), [lang="ar"] {
+  --font-display: "Reem Kufi", sans-serif;
+  --font-text: "IBM Plex Sans Arabic", sans-serif;
+}
+
+:lang(ar) .type-label, [lang="ar"] .type-label {
+  letter-spacing: normal;
+}

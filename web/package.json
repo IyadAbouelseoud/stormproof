@@ -1,7 +1,26 @@
 {
   "name": "@stormproof/web",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "description": "Placeholder: Renad's lane (Vite + React 19) replaces this."
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tokens": "node scripts/make-tokens.mjs",
+    "fonts": "node scripts/download-fonts.mjs",
+    "test": "node scripts/test-i18n.mjs"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0"
+  }
 }
