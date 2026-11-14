@@ -9,6 +9,7 @@ export interface SunStripeProps {
   value: number;
   onChange?: (index: number) => void;
   label: string;
+  pulseStorm?: boolean;
 }
 
 const CELL = 10;
@@ -19,7 +20,7 @@ const H = 48;
  * forecast months hatched. Keyboard: Left/Right one month, PageUp/PageDown one year, Home/End.
  * The time axis runs left to right in both languages (charts keep a fixed time direction).
  */
-export function SunStripe({ months, value, onChange, label }: SunStripeProps): React.JSX.Element {
+export function SunStripe({ months, value, onChange, label, pulseStorm }: SunStripeProps): React.JSX.Element {
   const { t, lang } = useI18n();
   const pid = useId().replace(/:/g, '');
   const n = months.length;
@@ -99,6 +100,13 @@ export function SunStripe({ months, value, onChange, label }: SunStripeProps): R
             <line key={`y${m.month}`} x1={i * CELL} x2={i * CELL} y1={H} y2={H + 6} className="sp-sunstripe-yeartick" />
           ))}
           <rect x={value * CELL - 1} y={-2} width={CELL + 2} height={H + 4} className="sp-sunstripe-handle" />
+          {pulseStorm && (
+            <g transform={`translate(${value * CELL + CELL / 2}, ${H / 2})`} className="sunstripe-storm-rings">
+              <circle cx="0" cy="0" r="10" className="sunstripe-storm-ring ring-1" />
+              <circle cx="0" cy="0" r="18" className="sunstripe-storm-ring ring-2" />
+              <circle cx="0" cy="0" r="26" className="sunstripe-storm-ring ring-3" />
+            </g>
+          )}
         </svg>
         <div className="sp-sunstripe-years type-data" aria-hidden="true">
           {years

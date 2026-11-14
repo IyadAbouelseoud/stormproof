@@ -382,6 +382,63 @@
 }
 .sp-sunstripe-years span:first-child { transform: none; }
 .sp-sunstripe-cursor { color: var(--color-ink); }
+.sunstripe-storm-rings {
+  pointer-events: none;
+}
+.sunstripe-storm-ring {
+  fill: none;
+  stroke: var(--color-sol);
+  stroke-width: 1.5px;
+  animation: sunstripe-pulse-sol var(--dur-launch) ease-out infinite;
+  transform-origin: 0 0;
+}
+.sunstripe-storm-ring.ring-2 {
+  animation-delay: 120ms;
+}
+.sunstripe-storm-ring.ring-3 {
+  animation-delay: 240ms;
+}
+@keyframes sunstripe-pulse-sol {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sunstripe-storm-ring {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+/* ---------- Odometer ---------- */
+.odometer {
+  display: inline-flex;
+  direction: ltr;
+  align-items: baseline;
+  line-height: 1;
+}
+.odometer-digit-box {
+  display: inline-block;
+  block-size: 1.1em;
+  line-height: 1.1em;
+  overflow: hidden;
+  vertical-align: -0.1em;
+}
+.odometer-digit-strip {
+  display: inline-flex;
+  flex-direction: column;
+  transition: transform var(--dur-fast) ease-out;
+}
+.odometer-digit {
+  display: block;
+  block-size: 1.1em;
+  line-height: 1.1em;
+  text-align: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .odometer-digit-strip {
+    transition: none;
+  }
+}
 
 /* ---------- Altitude chart ---------- */
 .sp-chart { display: grid; gap: var(--space-8); }
@@ -405,15 +462,17 @@
 }
 .sp-chart-line { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
 .sp-chart-line--truth { stroke: var(--color-ink); }
+.sp-chart-line--truth.sp-chart-line--reentered { stroke: var(--color-fail); }
 .sp-chart-line--plan { stroke: var(--color-lapis); stroke-dasharray: 8 6; }
 .sp-chart-line--alt { stroke: var(--color-brass); stroke-dasharray: 2 3; }
 .sp-chart-gap { fill: var(--color-sol-tint); stroke: none; }
 .sp-chart-forecast { fill: var(--color-ground-raised); opacity: 0.7; }
 .sp-chart-cursor { stroke: var(--color-ink-muted); stroke-width: 1; }
+.sp-chart-cursor-dot { fill: var(--color-ink); stroke: var(--color-ground-raised); stroke-width: 1.5; }
 .sp-chart-burn {
   fill: none;
-  stroke: var(--color-sol);
-  stroke-width: 4;
+  stroke: var(--color-fail);
+  stroke-width: 3;
   stroke-linecap: round;
   stroke-dasharray: 60;
   stroke-dashoffset: 60;
@@ -466,6 +525,11 @@
 .sp-map-target { stroke: var(--color-ok); stroke-width: 0.6; stroke-dasharray: 2 2; }
 .sp-map-track { fill: none; stroke: var(--color-lapis); stroke-width: 1; }
 .sp-map-station { fill: var(--color-brass); }
+.sp-map-sat-body { fill: var(--color-ink); stroke: var(--color-ground-raised); stroke-width: 1px; }
+.sp-map-sat-wing { stroke: var(--color-lapis); stroke-width: 1.5px; }
+.sp-map-earth-disc { fill: var(--color-ground-sunken); stroke: var(--color-rule); stroke-width: 1px; }
+.sp-map-orbit-path { fill: none; stroke: var(--color-lapis); stroke-width: 1px; stroke-dasharray: 2 2; }
+.sp-map-sat-ring-dot { fill: var(--color-sol-ink); stroke: var(--color-ground-raised); stroke-width: 1px; }
 
 /* ---------- input ---------- */
 .sp-input {

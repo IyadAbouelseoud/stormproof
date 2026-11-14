@@ -121,9 +121,18 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
           {t('chart.reentry_line', { km: CONSTANTS.reentryAltKm })}
         </text>
         {lines.map((l, i) => (
-          <path key={i} d={pathOf(limit(l.timeline, cursor ?? 0))} className={`sp-chart-line sp-chart-line--${l.kind}`} />
+          <path
+            key={i}
+            d={pathOf(limit(l.timeline, cursor ?? 0))}
+            className={`sp-chart-line sp-chart-line--${l.kind} ${l.kind === 'truth' && burn ? 'sp-chart-line--reentered' : ''}`}
+          />
         ))}
-        {cur && reveal && <line x1={sx(dayOf(cur.date))} x2={sx(dayOf(cur.date))} y1={PAD.t} y2={H - PAD.b} className="sp-chart-cursor" />}
+        {cur && reveal && (
+          <>
+            <line x1={sx(dayOf(cur.date))} x2={sx(dayOf(cur.date))} y1={PAD.t} y2={H - PAD.b} className="sp-chart-cursor" />
+            <circle cx={sx(dayOf(cur.date))} cy={sy(cur.altitudeKm)} r="3.5" className="sp-chart-cursor-dot" />
+          </>
+        )}
         {burn && (
           <path
             d={`M${sx(dayOf(last.date)) - 40},${sy(CONSTANTS.reentryAltKm + 25)} Q${sx(dayOf(last.date)) - 10},${sy(CONSTANTS.reentryAltKm + 5)} ${sx(dayOf(last.date))},${sy(CONSTANTS.reentryAltKm)}`}

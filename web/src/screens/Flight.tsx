@@ -4,10 +4,11 @@ import { useI18n } from '../i18n';
 import { fmtDate, fmtNum, reducedMotion } from '../format';
 import { useMission, ROLES, majority } from '../store';
 import { useNavigation } from '../navigation';
-import { CONSTANTS, groundTrack, partById } from '../engineAdapter';
+import { CONSTANTS, groundTrack, partById, sunMonths } from '../engineAdapter';
 import { AltitudeChart } from '../ui/AltitudeChart';
 import { GroundMap } from '../ui/GroundMap';
 import { Button, RoleChip } from '../ui/components';
+import { SunStripe } from '../ui/SunStripe';
 import { ScreenFrame } from './ScreenFrame';
 
 const EMPTY_TL: TimelineDay[] = [];
@@ -15,9 +16,31 @@ const EMPTY_TL: TimelineDay[] = [];
 /** Days advanced per second at each speed (display pacing only, not data). */
 const SPEEDS = [
   { id: '1x', dps: 10 },
-  { id: '10x', dps: 100 },
-  { id: '100x', dps: 1000 },
+  { id: '4x', dps: 40 },
+  { id: '16x', dps: 160 },
 ] as const;
+
+function Odometer({ num }: { num: number }): React.JSX.Element {
+  const digits = String(num).split('');
+  return (
+    <span className="odometer" aria-hidden="true">
+      {digits.map((d, i) => (
+        <span key={i} className="odometer-digit-box">
+          <span
+            className="odometer-digit-strip"
+            style={{ transform: `translateY(-${Number(d) * 10}%)` }}
+          >
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+              <span key={n} className="odometer-digit">
+                {n}
+              </span>
+            ))}
+          </span>
+        </span>
+      ))}
+    </span>
+  );
+}
 
 function StormCard({ kp, date, onDone }: { kp: number; date: string; onDone: () => void }): React.JSX.Element {
   const { t, lang } = useI18n();
@@ -90,6 +113,7 @@ export function Flight(): React.JSX.Element {
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(0);
   const [alert, setAlert] = useState<number | null>(null);
+  const [verdictVisible, setVerdictVisible] = useState(false);
   const seen = useRef(new Set<number>());
 
   useEffect(() => {
@@ -98,6 +122,21 @@ export function Flight(): React.JSX.Element {
 
   const tl = flight?.truth.timeline ?? EMPTY_TL;
   const n = tl.length;
+  const ended = cursor >= n - 1;
+  const outcome = flight?.truth.outcome;
+
+  useEffect(() => {
+    if (!ended) {
+      setVerdictVisible(false);
+      return;
+    }
+    if (reducedMotion() || outcome?.kind !== 'reentered') {
+      setVerdictVisible(true);
+      return;
+    }
+    const timer = window.setTimeout(() => setVerdictVisible(true), 600);
+    return () => window.clearTimeout(timer);
+  }, [ended, outcome?.kind]);
   const alerts = useMemo(
     () => tl.map((d, i) => (d.stormKp !== null && d.stormKp >= CONSTANTS.stormAlertKp ? i : -1)).filter((i) => i >= 0),
     [tl],
@@ -163,8 +202,7 @@ export function Flight(): React.JSX.Element {
   if (!flight || n === 0) return <ScreenFrame id="Flight">{t('engine.loading')}</ScreenFrame>;
 
   const day = tl[Math.min(cursor, n - 1)]!;
-  const ended = cursor >= n - 1;
-  const outcome = flight.truth.outcome;
+  const flightOutcome = flight.truth.outcome;
   const storage = (partById(flight.design.parts.computer) as unknown as { storageMB?: number } | undefined)?.storageMB;
   const ci = Math.min(cursor, n - 1);
   const delivered = stats.delivered[ci] ?? 0;
@@ -172,11 +210,15 @@ export function Flight(): React.JSX.Element {
   const track = groundTrack(flight.design, 3, cursor * 15);
   const { bins, binMin } = stats;
   const curBin = Math.floor((cursor / n) * bins);
+  const months = sunMonths();
+  const mIdx = months ? Math.max(0, months.findIndex((m) => m.month === day.date.slice(0, 7))) : 0;
+  const isStorm = day.stormKp !== null && day.stormKp >= CONSTANTS.stormAlertKp;
 
   const restart = () => {
     seen.current.clear();
     setCursor(0);
     setAlert(null);
+    setVerdictVisible(false);
     setPlaying(true);
   };
 
@@ -193,13 +235,21 @@ export function Flight(): React.JSX.Element {
             </Button>
           ))}
         </div>
-        <Button variant="quiet" onClick={() => { setCursor(n - 1); setPlaying(false); }} disabled={alert !== null || ended}>
+        <Button
+          variant="quiet"
+          onClick={() => {
+            setCursor(n - 1);
+            setPlaying(false);
+            setVerdictVisible(true);
+          }}
+          disabled={alert !== null || ended}
+        >
           {t('flight.skip')}
         </Button>
         <p className="flight-clock type-data" aria-live="off">
           <span>{fmtDate(lang, day.date)}</span>
-          <span>
-            {t('flight.day')} {fmtNum(lang, cursor)}
+          <span className="flight-clock-day">
+            {t('flight.day')} <Odometer num={cursor} />
           </span>
           <span>
             {fmtNum(lang, day.altitudeKm)} {t('unit.km')}
@@ -209,6 +259,12 @@ export function Flight(): React.JSX.Element {
       </div>
 
       {alert !== null && tl[alert] && <StormCard kp={tl[alert]!.stormKp ?? 0} date={tl[alert]!.date} onDone={() => { setAlert(null); setPlaying(true); }} />}
+
+      {months && (
+        <section className="flight-sun" aria-label={t('launch.date')}>
+          <SunStripe months={months} value={mIdx} label={t('launch.date')} pulseStorm={isStorm} />
+        </section>
+      )}
 
       <div className="flight-grid">
         <section className="flight-chart" aria-labelledby="alt-chart-h">
@@ -224,14 +280,14 @@ export function Flight(): React.JSX.Element {
             gapFill
             reveal={!ended}
             cursor={cursor}
-            burn={ended && outcome.kind === 'reentered' && !reducedMotion()}
+            burn={ended && flightOutcome.kind === 'reentered' && !reducedMotion()}
           />
         </section>
         <section className="flight-map" aria-labelledby="map-h">
           <h3 id="map-h" className="type-label section-label">
             {t('flight.map')}
           </h3>
-          <GroundMap track={track} title={t('flight.map')} />
+          <GroundMap track={track} title={t('flight.map')} cursor={cursor} />
           <p className="type-small">{t('map.note')}</p>
         </section>
         <section className="flight-battery" aria-labelledby="bat-h">
@@ -278,19 +334,19 @@ export function Flight(): React.JSX.Element {
         </section>
       </div>
 
-      {ended && (
+      {ended && verdictVisible && (
         <section className="reentry" aria-live="polite">
-          {outcome.kind === 'reentered' ? (
+          {flightOutcome.kind === 'reentered' ? (
             <>
-              <p className="type-label">{t('flight.reentered_on', { date: fmtDate(lang, outcome.date) })}</p>
+              <p className="type-label">{t('flight.reentered_on', { date: fmtDate(lang, flightOutcome.date) })}</p>
               <p className="type-data-l reentry-days">
                 {fmtNum(lang, flight.truth.lifetimeDays)} <span className="type-data sp-unit">{t('unit.days')}</span>
               </p>
             </>
-          ) : outcome.kind === 'alive' ? (
-            <p className="type-body">{t('flight.alive', { asOf: fmtDate(lang, outcome.asOf), date: fmtDate(lang, outcome.predictedReentry) })}</p>
+          ) : flightOutcome.kind === 'alive' ? (
+            <p className="type-body">{t('flight.alive', { asOf: fmtDate(lang, flightOutcome.asOf), date: fmtDate(lang, flightOutcome.predictedReentry) })}</p>
           ) : (
-            <p className="type-body">{t('flight.alive_end', { asOf: fmtDate(lang, outcome.asOf), years: fmtNum(lang, outcome.minYears) })}</p>
+            <p className="type-body">{t('flight.alive_end', { asOf: fmtDate(lang, flightOutcome.asOf), years: fmtNum(lang, flightOutcome.minYears) })}</p>
           )}
           <Button onClick={() => setScreen('Report')}>{t('flight.to_report')}</Button>
         </section>

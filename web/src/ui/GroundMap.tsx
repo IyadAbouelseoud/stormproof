@@ -6,12 +6,15 @@ import { CONSTANTS, type TrackPoint } from '../engineAdapter';
  * 2D equirectangular map (no globe): graticule, equator, the ground track, the Funda ground station
  * (approximate) and the target latitude. No coastline data ships yet (content request in HANDOFF).
  */
-export function GroundMap({ track, title }: { track: TrackPoint[][]; title: string }): React.JSX.Element {
+export function GroundMap({ track, title, cursor }: { track: TrackPoint[][]; title: string; cursor?: number }): React.JSX.Element {
   const { t } = useI18n();
   const x = (lon: number) => lon + 180;
   const y = (lat: number) => 90 - lat;
   const lons = [-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150];
   const lats = [-60, -30, 30, 60];
+  const currSat = track[0]?.[0];
+  const ringAngle = cursor !== undefined ? ((cursor * 15) * Math.PI) / 180 : 0;
+
   return (
     <figure className="sp-map" dir="ltr">
       <svg viewBox="0 0 360 180" className="sp-map-svg" role="img" aria-label={title}>
@@ -29,6 +32,26 @@ export function GroundMap({ track, title }: { track: TrackPoint[][]; title: stri
         ))}
         <g transform={`translate(${x(CONSTANTS.fundaLonDeg)},${y(CONSTANTS.fundaLatDeg)})`}>
           <rect x="-2" y="-2" width="4" height="4" className="sp-map-station" />
+        </g>
+        {currSat && (
+          <g transform={`translate(${x(currSat.lon)},${y(currSat.lat)})`} className="sp-map-sat">
+            <rect x="-3" y="-3" width="6" height="6" className="sp-map-sat-body" />
+            <line x1="-7" y1="0" x2="-3" y2="0" className="sp-map-sat-wing" />
+            <line x1="3" y1="0" x2="7" y2="0" className="sp-map-sat-wing" />
+          </g>
+        )}
+        {/* Orbit ring with traveling satellite marker */}
+        <g className="sp-map-orbit-ring" transform="translate(324, 34)">
+          <circle cx="0" cy="0" r="14" className="sp-map-earth-disc" />
+          <circle cx="0" cy="0" r="22" className="sp-map-orbit-path" />
+          {cursor !== undefined && (
+            <circle
+              cx={(22 * Math.cos(ringAngle)).toFixed(1)}
+              cy={(22 * Math.sin(ringAngle)).toFixed(1)}
+              r="2.5"
+              className="sp-map-sat-ring-dot"
+            />
+          )}
         </g>
       </svg>
       <figcaption className="sp-map-legend type-small">
