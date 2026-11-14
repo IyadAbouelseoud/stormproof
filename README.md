@@ -33,6 +33,7 @@ Deploy: every push to `main` runs `.github/workflows/pages.yml` (engine and pipe
 - **NASA solar-cycle prediction** (MSFC, Oct 2026 release): monthly sunspot number and Ap to Oct 2041, used after OMNI ends; sunspot number converted to F10.7 with a least-squares fit on 2015-2026 OMNI data.
 - **NASA CCMC DONKI** geomagnetic storms (GST), 2015-2026: storm flags and storm alerts.
 - **NASA GIBS / Worldview** imagery (MODIS, HLS L30/S30) of the Cunene/Namibe area; credits in `web/public/img/gibs/credits.json`.
+- **NASA GPM IMERG** 30-minute rain estimates (about 10 km) and **MODIS Terra** true colour for 23-27 Nov 2022, both from GIBS, in the Jeddah scenario.
 - **NASA Launch Services Program** CubeSat area-to-mass medians (1U 0.014, 3U 0.010, 6U 0.007 m2/kg), **JPL** Concept Maturity Level design margins (35%), **NASA-STD-8719.14C** (25-year disposal), Goddard MDL and **NASA CubeSat 101** for design context.
 
 Every number in the game is sourced, computed or labelled "game-balanced" in `content/sources.csv`.
@@ -53,6 +54,8 @@ Honest limits of the Jeddah scenario:
 5. The 2009 and 2011 Jeddah floods are outside the 2015-2026 timeline: background text only, no tolls printed.
 6. Cloud tags are one Terra morning pass per day, read by eye; 26 Nov had no image and counts as not usable for an optical camera.
 7. The SpaceX rideshare price (350,000 USD flat up to 12 kg) is an estimate from SpaceX's online estimator, not a quote. Electron's price is game-balanced.
+8. The rain frames use the GIBS layer `IMERG_Precipitation_Rate_30min`. A layer called `IMERG_Rain_Rate` does not exist in GIBS.
+9. The dry Jeddah picture is an HLS 30 m baseline from 4 Jul 2024, not the flood. The flood-day picture is MODIS Terra, 24 Nov 2022, and shows cloud.
 
 ## AI use
 Interface and story text drafted with ChatGPT and edited with Claude; all facts come from content/sources.csv and AGENTS.md; numbers come from the engine.
@@ -61,7 +64,8 @@ We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthr
 ## Licences
 - **NRLMSIS 2.1** (U.S. Naval Research Laboratory, run via pymsis) is licensed for non-commercial use only. We ship only pre-computed density tables, never the model.
 - NRLMSIS is NRL, not NASA. NASA data is credited wherever it is used. No NASA logos or insignia are used.
-- Fonts are OFL and self-hosted.
+- Fonts are self-hosted under the SIL Open Font License 1.1: Big Shoulders Display, IBM Plex Sans, IBM Plex Sans Arabic and IBM Plex Mono (licence texts in `web/public/fonts/OFL-*.txt`).
+- NASA data and imagery are not copyrighted in the United States; we credit each dataset on screen and here, and NASA does not endorse this project.
 
 ## Validation (golden tests, `engine/test/golden.test.ts`)
 1. **FACSAT-2** (6U, 497 km SSO, launched 15 Apr 2023): truth-mode reentry 26 Oct 2025 vs real 27 Oct 2025 (tolerance +/-60 days); 450 / 400 / 300 km waypoints within +/-30 km. Plan/truth lifetime ratio 1.44 (paper: 1.52).
@@ -77,4 +81,6 @@ We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthr
 - **Forecast after 29 Oct 2026:** the Sun after that date is NASA's prediction (monthly), shaded "forecast" in the game. Satellites still in orbit in Oct 2041 are reported as ">= N years".
 - **Plan mode Sun:** a reconstruction of the 2019 panel forecast (peak sunspot number 115 in Jul 2025); before Dec 2019 it uses real OMNI data; cycle 26 in plan mode repeats the cycle-25 shape (game-balanced).
 - **Orbit averaging:** densities are averaged over 12 points per orbit (SSO: 2 UT times; 51.6 deg: 4 node local times). The Funda ground station position is approximate.
+- **Map:** the 2D map has no coastline (no offline coastline source shipped). It draws a graticule, the ground track, the target latitude and the ground station only.
+- **Illustrations:** every picture in `web/public/img/art` is AI-generated and tagged "SI-generated" on screen. They are illustration only, never data or real places. Real imagery is the NASA GIBS pictures on the Report screen.
 - **Game balance:** part masses, costs, launch slips (0-12 months), storm reset chance and score weights are game-balanced and labelled as such.
