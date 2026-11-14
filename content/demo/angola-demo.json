@@ -1,0 +1,73 @@
+{
+  "_note": "Final pass, Track 4: the two Angola missions for the pitch demo. Numbers are engine output, locked by engine/test/demo.test.ts. See DEMO.md.",
+  "missions": [
+    {
+      "id": "angola-fail",
+      "expect": "480 km, launched 15 Apr 2023: the 2019 forecast Sun promises 1219 days, the real Sun gives 833 (reentry 25 Aug 2025). Misses the 1095-day requirement; every fit check passes.",
+      "numbers": {
+        "lifetimeDays": 833,
+        "planLifetimeDays": 1219,
+        "sunTookDays": 386,
+        "reentry": "2025-08-25",
+        "score": 78,
+        "requirementsMet": 4
+      },
+      "design": {
+        "scenarioId": "angola",
+        "parts": {
+          "camera": "camera-standard",
+          "panels": "panels-large",
+          "battery": "battery-medium",
+          "radio": "radio-fast",
+          "computer": "computer-standard",
+          "pointing": "pointing-precise",
+          "fuel": "fuel-small"
+        },
+        "formFactor": "6U",
+        "orbit": {
+          "type": "SSO",
+          "altitudeKm": 480
+        },
+        "rocketId": "spacex-rideshare",
+        "launchDate": "2023-04-15",
+        "mode": "truth",
+        "seed": 20230415
+      },
+      "code": "SP1-YW5nb2xhfmNhbWVyYS1zdGFuZGFyZH5wYW5lbHMtbGFyZ2V-YmF0dGVyeS1tZWRpdW1-cmFkaW8tZmFzdH5jb21wdXRlci1zdGFuZGFyZH5wb2ludGluZy1wcmVjaXNlfmZ1ZWwtc21hbGx-NlV-U340ODB-c3BhY2V4LXJpZGVzaGFyZX4yMDIzLTA0LTE1fnR-MjAyMzA0MTV-fg"
+    },
+    {
+      "id": "angola-fix",
+      "expect": "Same satellite at 500 km: 1313 days (still flying on 29 Oct 2026, reenters about 18 Dec 2026 on NASA's forecast Sun). All five requirements met, FCC 5-year rule met (3.6 years).",
+      "numbers": {
+        "lifetimeDays": 1313,
+        "planLifetimeDays": 1730,
+        "sunTookDays": 417,
+        "predictedReentry": "2026-12-18",
+        "score": 95,
+        "requirementsMet": 5
+      },
+      "design": {
+        "scenarioId": "angola",
+        "parts": {
+          "camera": "camera-standard",
+          "panels": "panels-large",
+          "battery": "battery-medium",
+          "radio": "radio-fast",
+          "computer": "computer-standard",
+          "pointing": "pointing-precise",
+          "fuel": "fuel-small"
+        },
+        "formFactor": "6U",
+        "orbit": {
+          "type": "SSO",
+          "altitudeKm": 500
+        },
+        "rocketId": "spacex-rideshare",
+        "launchDate": "2023-04-15",
+        "mode": "truth",
+        "seed": 20230415
+      },
+      "code": "SP1-YW5nb2xhfmNhbWVyYS1zdGFuZGFyZH5wYW5lbHMtbGFyZ2V-YmF0dGVyeS1tZWRpdW1-cmFkaW8tZmFzdH5jb21wdXRlci1zdGFuZGFyZH5wb2ludGluZy1wcmVjaXNlfmZ1ZWwtc21hbGx-NlV-U341MDB-c3BhY2V4LXJpZGVzaGFyZX4yMDIzLTA0LTE1fnR-MjAyMzA0MTV-fg"
+    }
+  ]
+}
