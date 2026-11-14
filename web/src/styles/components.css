@@ -274,7 +274,19 @@
 }
 .sp-stamp--warn { --state: var(--color-warn); }
 .sp-stamp--fail { --state: var(--color-fail); }
+.sp-stamp--l {
+  animation: sp-stamp-slam var(--dur-base) ease-out forwards;
+}
 .sp-stamp--l .sp-stamp-title { letter-spacing: 0.06em; }
+@keyframes sp-stamp-slam {
+  0% { transform: scale(1.12); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sp-stamp--l {
+    animation: none;
+  }
+}
 .sp-stamp--s {
   border-width: 1px;
   border-style: solid;
@@ -282,6 +294,62 @@
   padding-inline: var(--space-8);
 }
 .sp-stamp-detail { color: var(--color-ink); }
+
+/* Requirement row stagger */
+.req-row-animated {
+  animation: req-row-reveal var(--dur-base) ease-out both;
+  animation-delay: calc(var(--dur-fast) * var(--i));
+}
+@keyframes req-row-reveal {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .req-row-animated {
+    animation: none;
+  }
+}
+
+/* Sun-resilience meter */
+.sun-resilience-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-block-start: var(--space-12);
+  inline-size: 100%;
+  max-inline-size: 20rem;
+}
+.sun-resilience-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.sun-resilience-track {
+  block-size: var(--space-8);
+  background-color: var(--color-ground-sunken);
+  border: 1px solid var(--color-rule);
+  position: relative;
+  overflow: hidden;
+}
+.sun-resilience-fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: calc(var(--fill) * 100%);
+  background-color: var(--color-sol);
+  transition: inline-size var(--dur-base) ease-out;
+}
+
+/* Plan flown sweep line */
+.sunstripe-sweep-line {
+  stroke: var(--color-lapis);
+  stroke-width: 2px;
+  animation: sunstripe-sweep var(--dur-launch) ease-out forwards;
+}
+@keyframes sunstripe-sweep {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
 
 /* ---------- MissionTicket ---------- */
 .sp-ticket {

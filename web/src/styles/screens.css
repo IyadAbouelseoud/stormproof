@@ -312,6 +312,7 @@ main:focus { outline: none; }
   padding-block-start: var(--space-16);
 }
 .reentry-days { color: var(--color-sol-ink); }
+.report-plan-flown { color: var(--color-ok); margin-block-start: var(--space-8); }
 
 /* ---------- Report ---------- */
 .sun-took-n { color: var(--color-sol-ink); }

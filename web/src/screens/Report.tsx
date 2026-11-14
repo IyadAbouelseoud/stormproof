@@ -1,12 +1,34 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { fmtDate, fmtNum } from '../format';
+import { fmtDate, fmtNum, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
 import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { ScreenFrame } from './ScreenFrame';
+
+function CountUp({ target, durationMs = 600 }: { target: number; durationMs?: number }): React.JSX.Element {
+  const [val, setVal] = useState(reducedMotion() ? target : 0);
+  useEffect(() => {
+    if (reducedMotion() || target === 0) {
+      setVal(target);
+      return;
+    }
+    let raf = 0;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / durationMs);
+      setVal(Math.round(p * target));
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else setVal(target);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, durationMs]);
+
+  return <>{val}</>;
+}
 
 /** Main verdict: LIVED if the lifetime requirement is met, else DIED; with date and "the Sun took N days". */
 export function MainVerdict({ r }: { r: SimResult }): React.JSX.Element {
@@ -101,7 +123,7 @@ export function Report(): React.JSX.Element {
         </h3>
         <p className="type-display-xl sun-took-n">
           {p.planIsLowerBound ? `${t('common.at_least')} ` : ''}
-          {fmtNum(lang, Math.abs(p.sunTookDays))}
+          <CountUp target={Math.abs(p.sunTookDays)} />
           <span className="type-data sp-unit"> {t('unit.days')}</span>
         </p>
         <p className="type-small">
@@ -114,23 +136,39 @@ export function Report(): React.JSX.Element {
           {t('report.requirements')}
         </h3>
         <div className="req-grid">
-          {r.score.requirements.map((q) => (
-            <VerdictStamp
-              key={q.id}
-              size="s"
-              state={q.met ? 'ok' : 'fail'}
-              title={`${t(`req.${q.id}`)}: ${q.met ? t('req.met') : t('req.missed')}`}
-              detail={
-                <span className="type-data">
-                  {fmtNum(lang, q.value)} {unitText(t, q.unit)} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
-                </span>
-              }
-            />
+          {r.score.requirements.map((q, idx) => (
+            <div key={q.id} className="req-row-animated" style={{ '--i': idx } as React.CSSProperties}>
+              <VerdictStamp
+                size="s"
+                state={q.met ? 'ok' : 'fail'}
+                title={`${t(`req.${q.id}`)}: ${q.met ? t('req.met') : t('req.missed')}`}
+                detail={
+                  <span className="type-data">
+                    {fmtNum(lang, q.value)} {unitText(t, q.unit)} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
+                  </span>
+                }
+              />
+            </div>
           ))}
+        </div>
+        <div className="sun-resilience-panel">
+          <div className="sun-resilience-head">
+            <span className="type-label">{t('report.sun_resilience')}</span>
+            <span className="type-data">{fmtNum(lang, r.score.sunResilience)} / 20</span>
+          </div>
+          <div className="sun-resilience-track" aria-hidden="true">
+            <div
+              className="sun-resilience-fill"
+              style={{ '--fill': `${r.score.sunResilience / 20}` } as React.CSSProperties}
+            />
+          </div>
         </div>
         <p className="type-small">
           {t('report.score', { met: r.score.requirementsMet, total: r.score.requirements.length, score: r.score.total })}
         </p>
+        {r.score.requirementsMet === r.score.requirements.length && (
+          <p className="type-label report-plan-flown">{t('report.plan_flown')}</p>
+        )}
         <p className="type-small">{tMsg(r.disposal.reason)}</p>
       </section>
 
