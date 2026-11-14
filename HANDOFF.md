@@ -19,11 +19,15 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T1.5 (= prompt A T1.3 rest + T1.4) flight.ts simulate(design, data): plan/truth/truth-no-slip flights, seeded slip (truth only; timeline[0] = actual launch), DONKI storm flags + vote, daily power/data/battery timeline, outcomes reentered / alive (predicted on forecast Sun) / alive-at-forecast-end (>= N y), gauges, disposal, score. causes.ts (sun days, density x, slip, storm km over baseline, propulsion, verdict; 3..5). closest.ts (FACSAT-2 only, sourced). mission-code.ts ("SP1-" + base64url, pure ES, no DOM/Node). decay.ts reboost (fuel dv -> da = 2a dv/v). index.ts: createEngine(engineDataFrom(raw)) or setEngineData + simulate(design). content/sources.csv created (engine constants + golden refs). Engine 47 + 1 todo; 5-60 ms per simulate.
 
+- T1.6 .github/workflows/pages.yml: on push to main / PR: pnpm install, engine tests, pipeline pytest (uv), web build (--if-present), upload web/dist and deploy to Pages only when web/dist/index.html exists (web/ on main is still a placeholder). Needs repo Settings > Pages > Source: GitHub Actions. Not yet run on GitHub.
+
+- T1.7 README: name, challenge, summary, how to run, NASA datasets, team, AI use, NRLMSIS licence, golden results, disclosed limits.
+
 ## In progress
 -
 
 ## Next (resume prompt)
-- "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Continue Iyad's lane at prompt A T1.5 (tell Renad to switch her adapter; see ISSUES 'Engine wiring'), then T1.6 Pages deploy workflow, T1.7 README."
+- "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Prompt A T1.1-T1.7 are done. Next: merge lane/renad when ready and check the Pages run on GitHub; replace content-stub with content/*.json when Dua's content lands; golden 2 when DAS values arrive."
 
 ## Blocked / disclosed limits
 - contracts.ts adds `stormPolicy?: 'ride-out' | 'safe-mode'` (needed by T1.4 events.ts; not listed in s4) and an i18n `Msg` {key, params, en} for all plain-language text.
