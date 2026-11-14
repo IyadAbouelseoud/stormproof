@@ -1,0 +1,109 @@
+{
+ "model": "NRLMSIS 2.1 via pymsis 0.13.0 (NRL; non-commercial licence: only pre-computed tables ship)",
+ "drivers": "NASA OMNIWeb F10.7 (adjusted->observed, previous day) + 81-day mean + daily Ap; after 2026-10-29 the NASA Oct 2026 solar-cycle prediction (SSN->F10.7 fit)",
+ "encoding": "log10(rho kg/m^3), little-endian float32, row-major [row][alt]",
+ "alt_km": {
+  "start": 150,
+  "step": 10,
+  "count": 66
+ },
+ "orbit_average": {
+  "points_per_orbit": 12,
+  "sso": {
+   "ltan_h": 22.5,
+   "ut_h": [
+    0.0,
+    12.0
+   ],
+   "inclination": "J2 sun-synchronous per altitude"
+  },
+  "iss": {
+   "inclination_deg": 51.6,
+   "ltan_h": [
+    0.0,
+    6.0,
+    12.0,
+    18.0
+   ],
+   "ut_h": [
+    0.0
+   ]
+  }
+ },
+ "storm_correction": {
+  "factor": 1.875,
+  "dates": [
+   "2022-02-03",
+   "2022-02-04",
+   "2022-02-05"
+  ],
+  "tables": "truth",
+  "source": "Fang et al. 2022"
+ },
+ "tables": {
+  "sso_truth": {
+   "file": "density_sso_truth.bin",
+   "rows": 4500,
+   "axis": {
+    "daily": {
+     "start": "2015-01-01",
+     "end": "2026-10-29",
+     "rows": 4320
+    },
+    "monthly": {
+     "start": "2026-11-15",
+     "end": "2041-10-15",
+     "rows": 180,
+     "day_of_month": 15,
+     "forecast": true
+    }
+   }
+  },
+  "sso_plan": {
+   "file": "density_sso_plan.bin",
+   "rows": 322,
+   "axis": {
+    "daily": null,
+    "monthly": {
+     "start": "2015-01-15",
+     "end": "2041-10-15",
+     "rows": 322,
+     "day_of_month": 15,
+     "forecast": false
+    }
+   }
+  },
+  "iss_truth": {
+   "file": "density_iss_truth.bin",
+   "rows": 4500,
+   "axis": {
+    "daily": {
+     "start": "2015-01-01",
+     "end": "2026-10-29",
+     "rows": 4320
+    },
+    "monthly": {
+     "start": "2026-11-15",
+     "end": "2041-10-15",
+     "rows": 180,
+     "day_of_month": 15,
+     "forecast": true
+    }
+   }
+  },
+  "iss_plan": {
+   "file": "density_iss_plan.bin",
+   "rows": 322,
+   "axis": {
+    "daily": null,
+    "monthly": {
+     "start": "2015-01-15",
+     "end": "2041-10-15",
+     "rows": 322,
+     "day_of_month": 15,
+     "forecast": false
+    }
+   }
+  }
+ }
+}

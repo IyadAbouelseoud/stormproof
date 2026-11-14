@@ -24,27 +24,6 @@ const downloads = [
     dest: 'OFL-BigShouldersDisplay.txt',
   },
 
-  // Reem Kufi
-  {
-    url: 'https://raw.githubusercontent.com/fontsource/font-files/main/fonts/google/reem-kufi/files/reem-kufi-arabic-400-normal.woff2',
-    dest: 'reem-kufi-arabic-400.woff2',
-  },
-  {
-    url: 'https://raw.githubusercontent.com/fontsource/font-files/main/fonts/google/reem-kufi/files/reem-kufi-arabic-700-normal.woff2',
-    dest: 'reem-kufi-arabic-700.woff2',
-  },
-  {
-    url: 'https://raw.githubusercontent.com/fontsource/font-files/main/fonts/google/reem-kufi/files/reem-kufi-latin-400-normal.woff2',
-    dest: 'reem-kufi-latin-400.woff2',
-  },
-  {
-    url: 'https://raw.githubusercontent.com/fontsource/font-files/main/fonts/google/reem-kufi/files/reem-kufi-latin-700-normal.woff2',
-    dest: 'reem-kufi-latin-700.woff2',
-  },
-  {
-    url: 'https://raw.githubusercontent.com/google/fonts/main/ofl/reemkufi/OFL.txt',
-    dest: 'OFL-ReemKufi.txt',
-  },
 
   // IBM Plex Sans
   {

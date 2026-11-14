@@ -1,0 +1,142 @@
+{
+  "_status": "READ FROM CHARTS BY EYE (pixel measurement of slides 9 and 10, 6U blue line). Uncertainty about +/-0.1 yr at 430 km and +/-0.15 yr at 550 km. Not official DAS output. Do not edit values except by re-reading the deck.",
+  "source": {
+    "title": "Variation in Predicted Orbital Lifetime Due to Launch Year",
+    "author": "Caley Burke, NASA Launch Services Program (KSC)",
+    "date": "2024-08-06",
+    "ntrs": "20240003618",
+    "pdf_pages_used": [
+      9,
+      10,
+      15,
+      19,
+      20
+    ],
+    "deck_file": "nasa.pdf (34 pages, image-only)"
+  },
+  "das_inputs_from_slide_19": {
+    "das_version": "3.2.3",
+    "solar_flux_data": "F10 release dated 2023-09-27 (a PREDICTION, not the real Sun)",
+    "inclination_deg": 51.6,
+    "raan_deg": 0,
+    "argument_of_perigee_deg": 0,
+    "altitude": "'Perigee altitude' 430 km (slide 19) and 550 km (slide 20); whether the orbit is circular is not stated on the slide",
+    "launch_date_within_year": "NOT STATED on the slides; the x axis is Launch Year (one point per year, 2021 to 2044)",
+    "slide_20_inputs": "READ: identical to slide 19 except perigee altitude 550 km (DAS 3.2.3, F10 release 20230927, inclination 51.6 deg, RAAN 0 deg, argument of perigee 0 deg)",
+    "not_on_slides": "eccentricity/apogee, launch date inside the year, drag coefficient and mass: not shown. The slide notes in the original PowerPoint may list them; the PDF we have is a print-to-PDF without notes."
+  },
+  "spacecraft": {
+    "form": "6U",
+    "area_to_mass_m2_per_kg": 0.007,
+    "note": "ballistic coefficient implied by Cd 2.2: Cd*A/m = 0.0154 m2/kg, i.e. m/(Cd*A) = 64.9 kg/m2"
+  },
+  "curves_6U_lifetime_years": {
+    "launch_year": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037,
+      2038,
+      2039,
+      2040,
+      2041,
+      2042,
+      2043,
+      2044
+    ],
+    "alt_430_km": [
+      2.1,
+      1.29,
+      0.93,
+      1.31,
+      1.21,
+      1.32,
+      1.76,
+      3.07,
+      4.14,
+      3.62,
+      2.85,
+      1.98,
+      1.2,
+      0.88,
+      0.77,
+      0.79,
+      0.96,
+      1.74,
+      3.87,
+      4.25,
+      3.6,
+      2.77,
+      1.94,
+      1.21
+    ],
+    "alt_550_km": [
+      13.72,
+      12.83,
+      12.38,
+      12.2,
+      11.7,
+      11.31,
+      10.89,
+      10.45,
+      9.82,
+      9.14,
+      8.33,
+      7.5,
+      6.85,
+      9.58,
+      10.68,
+      10.95,
+      11.01,
+      10.92,
+      10.51,
+      9.88,
+      9.08,
+      8.24,
+      7.41,
+      6.85
+    ]
+  },
+  "envelopes": {
+    "430_km": {
+      "min": 0.77,
+      "max": 4.25
+    },
+    "550_km": {
+      "min": 6.85,
+      "max": 13.72
+    }
+  },
+  "caveats": [
+    "DAS used a Sept 2023 solar-flux PREDICTION for every year. Our truth mode uses the real Sun through Oct 2026. So launch years 2021 to 2026 are NOT a like-for-like comparison: real Cycle 25 peaked higher than the 2023 prediction.",
+    "Launch years 2027 and later use a prediction on both sides (ours: NASA Oct 2026 prediction; theirs: Sept 2023). These are the fairest points for a pass/fail check.",
+    "Inclination is 51.6 deg (ISS-type), so use our 51.6 deg density table, not the SSO table.",
+    "The deck's 'launch year' start date inside the year is unknown. Test with the same date for all years (say 1 Jan) and disclose; do not tune it to pass.",
+    "The 550 km curve has a jump between 2033 and 2034 (6.85 to 9.58 years): it is in the deck, not a reading error."
+  ],
+  "test_definition": {
+    "name": "golden 2",
+    "tolerance": "+/-30% (our own choice)",
+    "pass_fail_points": "launch years 2027-2044, both altitudes, 6U, 51.6 deg",
+    "informational_points": "launch years 2021-2026 (different Sun); report the ratio but do not fail",
+    "shape_checks": [
+      "the 430 km lifetime peaks near 2029-2030 and 2040 and is lowest near 2035",
+      "the 550 km lifetime has its sharp rise between launch years 2033 and 2034",
+      "lifetime at 550 km is always longer than at 430 km for the same launch year"
+    ],
+    "never": "No parameter fitting to pass this test. If it fails, disclose the ratio in README and keep the test."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_note": "Golden tests, AGENTS.md s5. Never loosen tolerances.",
+  "facsat2": {
+    "source": "AGENTS.md s5 golden 1 (FACSAT-2 orbit history and reentry)",
+    "launch": "2023-04-15",
+    "altKm": 497,
+    "orbit": "sso",
+    "ballisticCoefficientKgM2": 72.3,
+    "betaTolerance": 0.2,
+    "fittedBallisticCoefficientKgM2": 68.43,
+    "fitNote": "One Cd*A/m fit (allowed by AGENTS.md s5): beta 72.3 -> 68.43 kg/m2 (-5.3%). Unfitted run reentered 2025-12-26 (+60 d, 6.6% long) and was at 350 km on 2025-10-02.",
+    "reentry": "2025-10-27",
+    "reentryToleranceDays": 60,
+    "waypoints": [["2024-08-29", 450], ["2025-03-03", 400], ["2025-10-02", 300]],
+    "waypointToleranceKm": 30,
+    "paperPlanTruthRatio": 1.52
+  },
+  "starlink": {
+    "source": "AGENTS.md s5 golden 3 (Feb 2022 Starlink loss; Fang et al. 2022)",
+    "date": "2022-02-03",
+    "altKm": 210,
+    "maxTruthDays": 7,
+    "stormDays": ["2022-02-03", "2022-02-04", "2022-02-05"],
+    "stormFactor": 1.875,
+    "lifeAltKm": 500,
+    "maxStormLifeCostFraction": 0.01
+  }
+}

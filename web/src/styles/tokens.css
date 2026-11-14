@@ -7,7 +7,7 @@
 :root {
   /* Fonts */
   --font-display: "Big Shoulders Display", sans-serif;
-  --font-display-ar: "Reem Kufi", sans-serif;
+  --font-display-ar: "IBM Plex Sans Arabic", sans-serif;
   --font-text: "IBM Plex Sans", sans-serif;
   --font-text-ar: "IBM Plex Sans Arabic", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -187,7 +187,7 @@
 
 /* Arabic font family fallbacks */
 :lang(ar), [lang="ar"] {
-  --font-display: "Reem Kufi", sans-serif;
+  --font-display: "IBM Plex Sans Arabic", sans-serif;
   --font-text: "IBM Plex Sans Arabic", sans-serif;
 }
 

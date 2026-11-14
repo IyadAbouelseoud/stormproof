@@ -32,13 +32,13 @@ Rule: `sol` is reserved for the Sun and its effects. Actions use `lapis`.
 Sun Stripe (quiet to active): #1E2A44, #3D5277, #8A8F98, #E2B36A, #FF7A33, #E8361A. Steps at F10.7 = 80 / 110 / 140 / 180 / 220 sfu (game-balanced).
 
 ## Type
-Fonts (self-hosted woff2, OFL): Big Shoulders Display 800 (display, upper case); Reem Kufi (Arabic display); IBM Plex Sans and IBM Plex Sans Arabic (text); IBM Plex Mono (data).
+Fonts (self-hosted woff2, OFL): Big Shoulders Display 800 (display, upper case); IBM Plex Sans Arabic 700 (Arabic display; Reem Kufi dropped 2026-11-14, hard to read); IBM Plex Sans and IBM Plex Sans Arabic (text); IBM Plex Mono (data).
 
 | Style | Size / line height | Notes |
 |---|---|---|
 | display-xl | 88 / 0.92 | Big Shoulders, upper case |
 | display-l | 56 / 0.95 | Big Shoulders, upper case |
-| display-ar | 48 / 1.2 | Reem Kufi |
+| display-ar | 48 / 1.2 | IBM Plex Sans Arabic 700 |
 | heading | 22 / 1.2 | weight 600 |
 | body | 16 / 1.5 | |
 | small | 13 / 1.4 | |

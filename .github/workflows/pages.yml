@@ -1,0 +1,68 @@
+# Test the engine and pipeline, build web/ and publish it to GitHub Pages on every push to main.
+# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+name: test-and-deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      has_site: ${{ steps.site.outputs.has_site }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4 # version from package.json "packageManager"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Engine tests (incl. golden tests)
+        run: pnpm --filter @stormproof/engine test
+
+      - uses: astral-sh/setup-uv@v6
+      - name: Pipeline tests (offline, on the committed data files)
+        working-directory: pipeline
+        run: uv run pytest -q
+
+      - name: Build web (relative asset paths)
+        run: pnpm --filter @stormproof/web run --if-present build
+
+      - name: Check for a built site
+        id: site
+        run: |
+          if [ -f web/dist/index.html ]; then echo "has_site=true" >> "$GITHUB_OUTPUT"; else echo "has_site=false" >> "$GITHUB_OUTPUT"; echo "::notice::web/dist not built yet (web/ placeholder); skipping deploy"; fi
+
+      - if: steps.site.outputs.has_site == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.build.outputs.has_site == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

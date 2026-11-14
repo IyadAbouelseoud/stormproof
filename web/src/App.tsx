@@ -69,7 +69,7 @@ const TYPOGRAPHY_SAMPLES = [
   {
     className: 'type-display-ar',
     name: 'display-ar',
-    desc: 'Reem Kufi 700, 48px / 1.2, Arabic Display',
+    desc: 'IBM Plex Sans Arabic 700, 48px / 1.2, Arabic Display',
     sampleKey: 'demo.typography.display_ar',
   },
   {

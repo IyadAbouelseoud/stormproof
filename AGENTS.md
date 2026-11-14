@@ -32,7 +32,7 @@ Iyad merges to main at least hourly; main auto-deploys to GitHub Pages (Netlify 
 - Web: Vite, React 19, TypeScript, Zustand, plain CSS from tokens, SVG/Canvas. No UI kit, no Tailwind. Own i18n (en/ar) with CSS logical properties; RTL support.
 - pnpm workspace, Node 22 LTS.
 - Pre-approved dependencies only: react, react-dom, zustand, vite, @vitejs/plugin-react, typescript, vitest, @playwright/test, pymsis, numpy, requests, pytest. Ask before adding any other (the final pass may add @axe-core/playwright).
-- Fonts (OFL, self-hosted woff2): Big Shoulders Display 800, Reem Kufi, IBM Plex Sans, IBM Plex Sans Arabic, IBM Plex Mono.
+- Fonts (OFL, self-hosted woff2): Big Shoulders Display 800, IBM Plex Sans, IBM Plex Sans Arabic (also Arabic display, weight 700), IBM Plex Mono. Reem Kufi dropped 2026-11-14 (Iyad: hard to read).
 
 File layout:
 ```
