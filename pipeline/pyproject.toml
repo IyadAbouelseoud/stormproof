@@ -1,0 +1,16 @@
+[project]
+name = "stormproof-pipeline"
+version = "0.0.0"
+description = "Fetch NASA data and build pre-computed tables for Stormproof."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy",
+    "pymsis",
+    "requests",
+]
+
+[dependency-groups]
+dev = ["pytest"]
+
+[tool.uv]
+package = false

@@ -1,0 +1,7 @@
+{
+  "name": "@stormproof/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Placeholder: Renad's lane (Vite + React 19) replaces this."
+}
