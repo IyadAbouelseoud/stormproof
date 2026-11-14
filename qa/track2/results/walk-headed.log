@@ -1,0 +1,9 @@
+FAIL #1 1440x900 en walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+FAIL #2 1440x900 ar walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+FAIL #3 390x844 en walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+FAIL #4 390x844 ar walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+RESULT 0/4 clean (headed)
+#1 1440x900 en :: walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+#2 1440x900 ar :: walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+#3 390x844 en :: walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/
+#4 390x844 ar :: walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/

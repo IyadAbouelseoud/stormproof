@@ -433,6 +433,33 @@ export function groundTrack(design: MissionDesign, orbits = 3, startOrbit = 0): 
   return segs.filter((s) => s.length > 1);
 }
 
+/**
+ * Ground track for the Flight map from SimResult.groundTrack (the engine's one-day track, [lat, lon] pairs):
+ * a window of `orbits` revolutions starting `startOrbit` revolutions in (wrapping within the day), split at the
+ * antimeridian. Falls back to the adapter's own track when the result carries none (mock data).
+ */
+export function trackFromResult(result: SimResult, design: MissionDesign, orbits = 3, startOrbit = 0): TrackPoint[][] {
+  const pts = result.groundTrack;
+  if (!pts || pts.length < 2) return groundTrack(design, orbits, startOrbit);
+  const perOrbit = (pts.length - 1) / (86400 / periodS(design.orbit.altitudeKm));
+  const count = Math.min(pts.length - 1, Math.max(2, Math.round(orbits * perOrbit)));
+  const span = pts.length - count;
+  const first = span > 0 ? Math.round(startOrbit * perOrbit) % span : 0;
+  const segs: TrackPoint[][] = [];
+  let cur: TrackPoint[] = [];
+  for (let i = first; i <= first + count; i++) {
+    const [lat, lon] = pts[i]!;
+    const prev = cur[cur.length - 1];
+    if (prev && Math.abs(lon - prev.lon) > 180) {
+      segs.push(cur);
+      cur = [];
+    }
+    cur.push({ lat, lon });
+  }
+  segs.push(cur);
+  return segs.filter((s) => s.length > 1);
+}
+
 // ---------------------------------------------------------------------------
 // Knock-on trail (built only from numbers in two results)
 // ---------------------------------------------------------------------------

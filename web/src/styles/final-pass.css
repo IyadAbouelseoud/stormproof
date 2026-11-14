@@ -11,3 +11,10 @@
   aspect-ratio: auto;
   block-size: clamp(72px, 14vh, 140px);
 }
+
+/* Report: the backdrop picture was clipped by its slot, which cut the SI tag. The frame now sets the shape. */
+.report-p6-slot { aspect-ratio: auto; overflow: visible; border: 0; }
+.report-p6-slot .art-frame { aspect-ratio: 16 / 9; block-size: auto; }
+
+/* Re-fly, first flight: the one-click tweaks under the first-flight summary. */
+.refly-first-tweaks { display: flex; flex-direction: column; gap: var(--space-12); margin-block-start: var(--space-16); }

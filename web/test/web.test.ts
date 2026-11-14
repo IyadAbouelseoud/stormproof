@@ -105,6 +105,21 @@ describe('engineAdapter', () => {
     expect(Math.max(...lats)).toBeLessThanOrEqual(51.6 + 1e-6);
     expect(Math.max(...lats)).toBeGreaterThan(50);
   });
+
+  it('the Flight map track is cut from SimResult.groundTrack (final pass, carryover 3)', async () => {
+    const A = await import('../src/engineAdapter');
+    const d = { ...A.defaultDesign(), orbit: { type: 'ISS51.6' as const, altitudeKm: 400 } };
+    const r = A.simulate(d);
+    expect(r.groundTrack!.length).toBeGreaterThan(100);
+    const engine = new Set(r.groundTrack!.map(([lat, lon]) => `${lat},${lon}`));
+    for (const start of [0, 15, 4000]) {
+      const pts = A.trackFromResult(r, d, 3, start).flat();
+      expect(pts.length).toBeGreaterThan(50);
+      for (const p of pts) expect(engine.has(`${p.lat},${p.lon}`)).toBe(true);
+    }
+    const { groundTrack: _g, ...noTrack } = r;
+    expect(A.trackFromResult(noTrack as typeof r, d).flat().length).toBeGreaterThan(50);
+  });
 });
 
 describe('store', () => {

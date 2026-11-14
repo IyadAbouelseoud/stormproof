@@ -103,6 +103,8 @@
   "engine.mock": "بيانات نموذجية",
   "engine.mock_notice": "لم تُحمَّل ملفات البيانات، لذا تظهر نتيجة نموذجية ثابتة.",
   "fit.count": "{fail} من {total} فحوص لم تنجح",
+  "fit.all_pass": "نجحت كل الفحوص ({total})",
+  "report.sun_took_slip": "لو أُطلق في الموعد المخطط لأخذت الشمس {sun} يومًا. تأخّر الإطلاق أعاد {slip} يومًا: الصافي {net} يومًا.",
   "fit.fail": "رسوب",
   "fit.pass": "نجاح",
   "fit.title": "فحص الملاءمة",
@@ -205,6 +207,7 @@
   "refly.chart": "رحلتان بالبذرة نفسها",
   "refly.clear": "انسَ الرحلة الأولى",
   "refly.explain": "غيّر شيئًا واحدًا وطِر مجددًا بالبذرة نفسها لترى ما الذي كسبته.",
+  "refly.param": "الإعداد",
   "refly.first": "الرحلة الأولى",
   "refly.need_flight": "طِر مرة أولًا.",
   "refly.what_changed": "ما الذي تغير",
@@ -267,7 +270,7 @@
   "role.science.owns": "تاريخ الإطلاق",
   "role.power-spacecraft.owns": "البناء: القطع والهيكل",
   "role.orbit-comms.owns": "المدار والصاروخ",
-  "shell.credit": "بيانات NASA OMNIWeb تشغّل نموذج NRLMSIS 2.1 ‏(NRL). العواصف: NASA DONKI. الصور: NASA GIBS/Worldview. توقعات الشمس: ناسا.",
+  "shell.credit": "بيانات NASA OMNIWeb تشغّل نموذج NRLMSIS 2.1 ‏(NRL). العواصف: NASA DONKI. الصور: NASA GIBS/Worldview. الشمس بعد أكتوبر 2026: توقّع ناسا للدورة الشمسية (MSFC).",
   "shell.skip": "انتقل إلى المحتوى",
   "shell.views": "العروض",
   "si.tag": "مولّد بالذكاء الاصطناعي",
@@ -514,5 +517,5 @@
   "report.passport": "جواز المهمة",
   "disposal.fcc": "FCC 5 سنوات",
   "disposal.nasa": "NASA 25 سنة",
-  "header.status": "اليوم 0 · السيناريو {name} · الدرجة"
+  "header.status": "السيناريو {name} · الدرجة"
 }

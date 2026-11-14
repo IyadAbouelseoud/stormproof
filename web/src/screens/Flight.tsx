@@ -4,7 +4,7 @@ import { useI18n } from '../i18n';
 import { fmtDate, fmtNum, reducedMotion } from '../format';
 import { useMission, ROLES, majority } from '../store';
 import { useNavigation } from '../navigation';
-import { CONSTANTS, groundTrack, partById, sunMonths } from '../engineAdapter';
+import { CONSTANTS, trackFromResult, partById, sunMonths } from '../engineAdapter';
 import { AltitudeChart } from '../ui/AltitudeChart';
 import { GroundMap } from '../ui/GroundMap';
 import { Button, RoleChip } from '../ui/components';
@@ -260,7 +260,7 @@ export function Flight(): React.JSX.Element {
   const ci = Math.min(cursor, n - 1);
   const delivered = stats.delivered[ci] ?? 0;
   const lost = stats.lost[ci] ?? 0;
-  const track = groundTrack(flight.design, 3, cursor * 15);
+  const track = trackFromResult(flight.truth, flight.design, 3, cursor * 15);
   const { bins, binMin } = stats;
   const curBin = Math.floor((cursor / n) * bins);
   const months = sunMonths();

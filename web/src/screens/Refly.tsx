@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { SimResult, MissionDesign } from '@stormproof/engine';
 import { useI18n } from '../i18n';
 import { fmtDate, fmtNum, fmtSigned, reducedMotion } from '../format';
+import { partName, rocketName } from '../content';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
 import { AltitudeChart } from '../ui/AltitudeChart';
@@ -128,27 +129,27 @@ export function Refly(): React.JSX.Element {
     const f = flight.truth.design;
 
     deltas.push({
-      label: 'Form Factor',
+      label: t('build.frame'),
       before: b.formFactor,
       after: f.formFactor,
       changed: b.formFactor !== f.formFactor,
     });
     deltas.push({
-      label: 'Altitude',
-      before: `${b.orbit.altitudeKm} km`,
-      after: `${f.orbit.altitudeKm} km`,
+      label: t('orbit.altitude'),
+      before: `${fmtNum(lang, b.orbit.altitudeKm)} ${t('unit.km')}`,
+      after: `${fmtNum(lang, f.orbit.altitudeKm)} ${t('unit.km')}`,
       changed: b.orbit.altitudeKm !== f.orbit.altitudeKm,
     });
     deltas.push({
-      label: 'Orbit Type',
-      before: b.orbit.type,
-      after: f.orbit.type,
+      label: t('orbit.type'),
+      before: t(`orbit.${b.orbit.type}`),
+      after: t(`orbit.${f.orbit.type}`),
       changed: b.orbit.type !== f.orbit.type,
     });
     deltas.push({
-      label: 'Rocket',
-      before: b.rocketId,
-      after: f.rocketId,
+      label: t('orbit.rocket'),
+      before: rocketName(b.rocketId, lang, b.rocketId),
+      after: rocketName(f.rocketId, lang, f.rocketId),
       changed: b.rocketId !== f.rocketId,
     });
     // Check parts
@@ -157,9 +158,9 @@ export function Refly(): React.JSX.Element {
       const p2 = (f.parts as Record<string, string>)[slot];
       if (p1 !== p2) {
         deltas.push({
-          label: slot.toUpperCase(),
-          before: p1 ?? '—',
-          after: p2 ?? '—',
+          label: t(`slot.${slot}`),
+          before: p1 ? partName(p1, lang, p1) : '—',
+          after: p2 ? partName(p2, lang, p2) : '—',
           changed: true,
         });
       }
@@ -245,9 +246,9 @@ export function Refly(): React.JSX.Element {
             <table className="refly-deltas-table type-small">
               <thead>
                 <tr>
-                  <th scope="col">Param</th>
-                  <th scope="col">Run 1</th>
-                  <th scope="col">Run 2</th>
+                  <th scope="col">{t('refly.param')}</th>
+                  <th scope="col">{t('refly.first')}</th>
+                  <th scope="col">{t('refly.second')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -338,8 +339,19 @@ export function Refly(): React.JSX.Element {
         </div>
       ) : (
         <div className="refly-single-layout console-panel">
-          <p className="type-body">{t('refly.explain')}</p>
           <RunColumn label={t('refly.first')} r={flight.truth} />
+          {/* Final pass: the one-click tweaks are most useful right after the first flight (they keep it as the baseline). */}
+          <section className="refly-first-tweaks" aria-labelledby="tweaks-first-h">
+            <h3 id="tweaks-first-h" className="type-label section-label">{t('refly.try_next')}</h3>
+            <div className="refly-tweaks-list">
+              {tweaks.map((tw) => (
+                <button key={tw.id} type="button" className="refly-tweak-btn console-tile" onClick={tw.apply}>
+                  <span className="tweak-icon" aria-hidden="true"><BoltMark /></span>
+                  <span className="type-small tweak-label">{tw.label}</span>
+                </button>
+              ))}
+            </div>
+          </section>
         </div>
       )}
 

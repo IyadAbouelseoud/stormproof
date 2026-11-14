@@ -49,14 +49,14 @@ export function FitVerdicts(): React.JSX.Element {
           {t('fit.title')}
         </h3>
         <span className="type-data type-small">
-          {t('fit.count', { fail: fails.length, total: result.fit.length })}
+          {t(fails.length ? 'fit.count' : 'fit.all_pass', { fail: fails.length, total: result.fit.length })}
         </span>
       </div>
       <VerdictStamp
         state={state}
         size="s"
         title={t(`fit.verdict.${state}`)}
-        detail={t('fit.count', { fail: fails.length, total: result.fit.length })}
+        detail={t(fails.length ? 'fit.count' : 'fit.all_pass', { fail: fails.length, total: result.fit.length })}
       />
       <ul className="fit-list">
         {[...fails, ...result.fit.filter((f) => f.pass)].slice(0, 4).map((f) => (

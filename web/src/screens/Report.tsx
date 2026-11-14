@@ -133,6 +133,9 @@ export function Report(): React.JSX.Element {
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
+  // The cause chain states the Sun's effect at the planned launch date; the headline is net of the launch slip.
+  const sunCause = r.causes.find((c) => c.id === 'sun');
+  const sunCauseDays = sunCause && r.causes.some((c) => c.id === 'launch-slip') ? Math.abs(sunCause.effect.value) : null;
   const sunResilience = Math.max(0, Math.min(20, r.score.total - Math.round((r.score.requirementsMet * 80) / r.score.requirements.length)));
 
   useEffect(() => {
@@ -244,6 +247,11 @@ export function Report(): React.JSX.Element {
               <p className="type-small">
                 {t('report.sun_took_detail', { plan: fmtNum(lang, p.planLifetimeDays), truth: fmtNum(lang, p.truthLifetimeDays) })}
               </p>
+              {sunCauseDays !== null && sunCauseDays !== p.sunTookDays && p.sunTookDays >= 0 && (
+                <p className="type-small">
+                  {t('report.sun_took_slip', { sun: fmtNum(lang, sunCauseDays), slip: fmtNum(lang, sunCauseDays - p.sunTookDays), net: fmtNum(lang, p.sunTookDays) })}
+                </p>
+              )}
             </div>
           </div>
         </section>
