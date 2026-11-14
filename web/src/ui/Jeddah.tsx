@@ -84,6 +84,12 @@ export function Limits({ scenarioId }: { scenarioId: string }): React.JSX.Elemen
       <h3 id="limits-h" className="type-label section-label">{t('jeddah.limits')}</h3>
       <ul className="type-small">
         {st.limits.map((l, i) => <li key={i}>{tx(l, lang)}</li>)}
+        {scenario(scenarioId)?.event && (
+          <>
+            <li>{t('jeddah.limit.anchors')}</li>
+            <li>{t('jeddah.event.background')}</li>
+          </>
+        )}
       </ul>
     </section>
   );

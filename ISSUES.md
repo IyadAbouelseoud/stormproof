@@ -41,3 +41,10 @@ Additive only; Angola results byte-identical (engine/test/angola-regression.test
 - G3 done: Rocket.minPriceUsd; spacex-rideshare 350,000 USD flat ("estimate, not a quote" on the Orbit card); Electron price labelled game-balanced on screen. Test: 6 kg and 3U/6U same launch cost.
 - G5 partial: P1 Brief hero, P2 Angola card, P7 Jeddah card with SI tag + bilingual alt (content/text/art-alt.json). P3, P5, P6 placements not done.
 - F8 axe: @axe-core/playwright is not installed (final-pass dependency, AGENTS.md s3); no axe run was made. Jeddah Playwright smoke (web/scripts/smoke-jeddah.mjs) passes at 390x844 and 1440x900, EN and AR: no console errors, no external requests, no overflow.
+
+## 2026-11-14 Decisions from Iyad on the prompt E open items
+1. G2.1 message keys: ACCEPTED as is. The engine keeps its own Msg keys; no migration. Angola hashes stay byte-identical (re-checked against main: the same 6 hashes pass on main and on feature/jeddah).
+2. G2 changes: confirmed by Iyad in chat at 12:26; treated as approved.
+3. G2.4 coastline: CUT. The map keeps its graticule and ground-station markers; no coastline file ships.
+4. F8 axe: left for the final pass; @axe-core/playwright not installed.
+5. Art P3/P5/P6 and Flight map wiring to SimResult.groundTrack: moved to the UI lane (prompt G, G6b); not touched on feature/jeddah.

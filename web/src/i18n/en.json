@@ -388,5 +388,6 @@
   "jeddah.variant.camera": "Same orbit, other camera",
   "jeddah.variant.earlier": "Launch a year earlier",
   "req.event-look": "Event look",
-  "req.none": "none"
+  "req.none": "none",
+  "jeddah.limit.anchors": "Real anchors: ICEYE radar satellites weigh about 85 kg (ESA); NASA JPL RainCube, a 6U Ka-band rain radar, weighs about 12 kg, uses 22 W while transmitting, looks straight down and makes rain profiles, not pictures."
 }

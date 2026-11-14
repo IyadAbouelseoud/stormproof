@@ -332,7 +332,6 @@ main:focus { outline: none; }
 .jd-card { display: flex; flex-direction: column; gap: var(--space-8); text-align: start; }
 .jd-card-art { position: relative; display: block; margin: 0; }
 .jd-card-art img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-2); }
-.jd-card-art .sp-si-tag { position: absolute; inset-block-start: var(--space-8); inset-inline-start: var(--space-8); }
 .brief-art img { aspect-ratio: 4 / 3; }
 .jd-tags { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8); }
 .jd-event, .jd-limits, .jd-trade, .jd-alive, .jd-report {
