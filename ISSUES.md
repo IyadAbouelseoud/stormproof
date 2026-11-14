@@ -18,3 +18,13 @@ Behaviour notes (no contract change):
 - truth mode applies a seeded launch slip (0-12 months): `timeline[0].date` is the ACTUAL launch date and may be later than `design.launchDate`; the slip is the cause with id `launch-slip` (months). The mock's `timeline[0].date === design.launchDate` holds only in plan mode.
 - `missionCode` is `SP1-...` and round-trips through `decodeMission`.
 - Timeline rows are daily for the whole flight (up to about 9,800 rows when alive to 2041); sample for charts in the UI.
+
+## 2026-11-14 Prompt E1/E2 contract change (APPROVED by Iyad 2026-11-14 11:32)
+Additive only; Angola results byte-identical (engine/test/angola-regression.test.ts, stored hashes in fixtures/angola-hashes.json).
+- `RequirementId` gains `'event-look'` (value = days to the first useful look, -1 when none; sense max; met never true at -1).
+- `SimResult.eventReplay?` (`EventReplay`, `EventLook` in contracts.ts): adds `reentryDate` and `revisitDays` beyond the prompt's list (both needed by the UI). Absent for Angola.
+- catalog.ts (not frozen): `Scenario.targetLatDeg/targetLonDeg/lookWindowDays/event/requirementSet/textId`, `Part.cameraType/offNadirFactor/scenarios`, `Rocket.minPriceUsd` (G3), `Content.cloudTags`.
+- flight.ts reads `scenario.targetLatDeg` (fallback TARGET_LAT_DEG = Angola). Revisit requirement now multiplies the swath by the pointing part's `offNadirFactor` (default 1; the stub has none, so Angola unchanged).
+- Score weight: with N requirements each is worth 80/N (Angola N=5: 16, unchanged; Jeddah N=6: 13.33).
+- Cause chain: new cause id `cloud` (optical: looks blocked; radar: looks through cloud). Trimming order to keep <= 5: propulsion, storm, launch-slip.
+- Radar event revisit is halved (it also images on night crossings). game-balanced, in sources.csv cam-radar-study.

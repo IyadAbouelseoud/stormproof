@@ -31,11 +31,12 @@ import { launchSlipMonths, resolveStorms, stormAlerts, type Storm } from './even
 import { fitCheck, resolveDesign } from './launch';
 import { encodeMission } from './mission-code';
 import { r1 } from './msg';
-import { fundaPasses, gsdM, revisitDays, swathKm, type PassStats } from './orbit';
+import { fundaPasses, gsdM, revisitDays, type PassStats } from './orbit';
 import { powerBudget } from './power';
 import { createRng } from './rng';
 import { disposalFit, disposalVerdict, gauge } from './rules';
 import { score } from './score';
+import { cameraKind, eventReplay, lookSwathKm } from './event';
 
 export type TableName = 'sso_truth' | 'sso_plan' | 'iss_truth' | 'iss_plan';
 
@@ -96,6 +97,8 @@ export function simulate(design: MissionDesign, data: EngineData): SimResult {
   const radio = part('radio');
   const computer = part('computer');
   const fuel = part('fuel');
+  const pointing = part('pointing');
+  const targetLatDeg = res.scenario.targetLatDeg ?? TARGET_LAT_DEG;
 
   // ---- design-time budgets (at the design altitude) ----
   const power = powerBudget(res.parts, alt);
@@ -189,13 +192,23 @@ export function simulate(design: MissionDesign, data: EngineData): SimResult {
     comms: gauge('comms', r1(needMin), r1(passes.contactMinPerDay), 'min/day', 0),
     time: gauge('time', lifetimeDays, res.scenario.lifetimeMinDays, 'days', 0, 'min'),
   };
+  const ev = eventReplay({
+    scenario: res.scenario,
+    camera,
+    pointing,
+    timeline,
+    fit,
+    cloud: res.scenario.event ? data.content.cloudTags?.[res.scenario.event.cloudTagsFile] : undefined,
+    seed: design.seed,
+  });
   const sc = score(res.scenario, {
-    revisitDays: revisitDays(swathKm(camera.swathAt500Km ?? 0, alt), alt, TARGET_LAT_DEG),
+    revisitDays: revisitDays(lookSwathKm(camera, pointing, alt), alt, targetLatDeg),
     gsdM: gsdM(camera.gsdAt500M ?? Infinity, alt),
     dataDeliveredGB: deliveredMB / 1000,
     lifetimeDays,
     costUsd: res.costUsd,
     truthOverPlan: plan.days > 0 ? truth.days / plan.days : 0,
+    eventLookDays: ev?.firstUsefulLookDays ?? null,
   });
 
   // ---- causes ----
@@ -236,6 +249,7 @@ export function simulate(design: MissionDesign, data: EngineData): SimResult {
     climbKm: f.run.climbedKm,
     outcome,
     lifetimeDays,
+    event: ev ? { camera: cameraKind(camera), replay: ev } : null,
   });
 
   return {
@@ -257,5 +271,6 @@ export function simulate(design: MissionDesign, data: EngineData): SimResult {
     causes,
     closest: closestDesign(design),
     missionCode: encodeMission(design),
+    ...(ev ? { eventReplay: ev } : {}),
   };
 }

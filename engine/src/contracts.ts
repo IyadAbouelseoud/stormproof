@@ -170,7 +170,8 @@ export interface DisposalVerdict {
   reason: Msg;
 }
 
-export type RequirementId = 'revisit' | 'gsd' | 'data-delivered' | 'lifetime' | 'cost';
+/** 'event-look' added by prompt E1 (approved by Iyad 2026-11-14 11:32; ISSUES.md). Only event scenarios use it. */
+export type RequirementId = 'revisit' | 'gsd' | 'data-delivered' | 'lifetime' | 'cost' | 'event-look';
 
 export interface Requirement {
   id: RequirementId;
@@ -227,4 +228,30 @@ export interface SimResult {
   causes: Cause[];
   closest: ClosestDesign;
   missionCode: string;
+  /** Prompt E1 (additive): event replay; present only for scenarios with an event (Jeddah). Absent for Angola. */
+  eventReplay?: EventReplay;
+}
+
+/** One pass over the event target inside the look window (prompt E2). */
+export interface EventLook {
+  date: ISODate;
+  /** Days after the event date (0.1 d). */
+  days: number;
+  camera: 'optical' | 'radar';
+  usable: boolean;
+  why: Msg;
+}
+
+export interface EventReplay {
+  date: ISODate;
+  /** In orbit on the event date. */
+  alive: boolean;
+  reentryBeforeEvent: boolean;
+  /** Reentry date when it happened before the event, else null. */
+  reentryDate: ISODate | null;
+  /** Mean revisit of the target on the event day, days (null if not alive or no swath). */
+  revisitDays: number | null;
+  /** Days from the event date to the first usable pass, or null. */
+  firstUsefulLookDays: number | null;
+  looks: EventLook[];
 }

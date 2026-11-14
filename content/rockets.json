@@ -1,0 +1,7 @@
+{
+  "_note": "Engine catalog (engine/src/catalog.ts Rocket). Ids match content/text/parts.json rockets.",
+  "rockets": [
+    { "id": "electron", "name": "Rocket Lab Electron", "capacityKg": 200, "orbits": ["SSO", "ISS51.6"], "minAltKm": 300, "maxAltKm": 700, "priceUsdPerKg": 37500, "firstFlight": "2018-01-21", "src": "AGENTS.md s5 (200 kg to 500 km SSO); price, orbits, altitudes and first-flight date game-balanced" },
+    { "id": "spacex-rideshare", "name": "SpaceX rideshare", "capacityKg": 830, "orbits": ["SSO"], "minAltKm": 450, "maxAltKm": 600, "priceUsdPerKg": 0, "minPriceUsd": 350000, "firstFlight": "2021-01-24", "src": "spacex-rideshare-min-price (estimate, not a quote); capacity, altitudes and first-flight date game-balanced" }
+  ]
+}

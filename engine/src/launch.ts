@@ -35,7 +35,7 @@ export function resolveDesign(design: MissionDesign, content: Content): Resolved
   const massKg = bus.massKg + parts.reduce((s, p) => s + p.massKg, 0);
   const units = bus.units + parts.reduce((s, p) => s + p.units, 0);
   const partsCostUsd = bus.costUsd + parts.reduce((s, p) => s + p.costUsd, 0);
-  const launchCostUsd = massKg * rocket.priceUsdPerKg;
+  const launchCostUsd = Math.max(rocket.minPriceUsd ?? 0, massKg * rocket.priceUsdPerKg);
   return { parts, byslot, rocket, scenario, massKg, units, partsCostUsd, launchCostUsd, costUsd: partsCostUsd + launchCostUsd };
 }
 
