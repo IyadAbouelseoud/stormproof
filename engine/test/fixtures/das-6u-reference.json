@@ -1,0 +1,43 @@
+{
+  "_status": "ENVELOPE ONLY. UNVERIFIED. Values were read by eye from charts in a NASA slide deck; no per-launch-year values are recorded here. Do not invent any.",
+  "source": {
+    "title": "Variation in Predicted Orbital Lifetime Due to Launch Year",
+    "author": "Caley Burke (NASA Launch Services Program)",
+    "date": "2024-08-06",
+    "ntrs": "20240003618",
+    "note": "The deck uses NASA's DAS-style lifetime predictions. Our model is a different one (NRLMSIS + our own decay), so this is a sanity check, not a calibration."
+  },
+  "spacecraft": {
+    "form": "6U CubeSat",
+    "area_to_mass_m2_per_kg": 0.007,
+    "area_to_mass_source": "NASA LSP median for 6U (same deck family); engine/AGENTS.md uses this value"
+  },
+  "envelopes": [
+    {
+      "altitude_km": 430,
+      "lifetime_years_min": 0.8,
+      "lifetime_years_max": 4.2,
+      "read_from": "chart",
+      "launch_year_span_covered": "NOT RECORDED: confirm on the deck page before relying on the span"
+    },
+    {
+      "altitude_km": 550,
+      "lifetime_years_min": 6.8,
+      "lifetime_years_max": 13.7,
+      "read_from": "chart",
+      "launch_year_span_covered": "NOT RECORDED: confirm on the deck page before relying on the span"
+    }
+  ],
+  "other_deck_figures": [
+    "Launch year can change lifetime by up to 2.5x within 2 years and up to 5x over a solar cycle.",
+    "Example from the deck: launch in 2035 gives 1.6 y, launch in 2038 gives 7.4 y (altitude/size of that example not recorded here).",
+    "Launch slip example: 3.1 y becomes about 6.8 y with a 1.5 y slip."
+  ],
+  "test_definition": {
+    "name": "golden 2 (envelope version)",
+    "rule": "For each altitude, run our engine for a 6U (area-to-mass 0.007) over the SAME launch-year span the deck page shows. The minimum and maximum lifetimes we get must each be within +/-30% of the envelope min and max above. The tolerance is our own choice.",
+    "if_span_unknown": "Run the test over the whole real-Sun history 2015-2026 AND report the result as informational only, not pass/fail, and disclose that in README.",
+    "never": "Do not fit parameters to pass this test, and do not fabricate per-year points."
+  },
+  "to_upgrade_to_per_year_test": "Iyad: attach nasa.pdf (the 'Variation in Predicted Orbital Lifetime Due to Launch Year' deck, image-only) to Claude Code, have it read the chart pages as images, and write one value per launch year and altitude here with the page number, marked read_from: chart."
+}
