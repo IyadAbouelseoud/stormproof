@@ -43,7 +43,9 @@ export function CmlRail(): React.JSX.Element {
 
   return (
     <nav className="cml-rail" aria-label={t('cml.rail_label')}>
-      <div className="cml-rail-track" aria-hidden="true" />
+      <div className="cml-rail-track" aria-hidden="true">
+        <div className="cml-rail-progress" style={{ inlineSize: `${(currentCmlIndex / 3) * 100}%` }} />
+      </div>
       <ol className="cml-rail-list">
         {CML_STEPS.map((step) => {
           const isCurrent = currentCmlIndex === step.stepIndex;

@@ -63,6 +63,12 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+.sp-btn:active:not(:disabled),
+.sp-btn-nav:active,
+.cml-rail-button:active,
+.lang-toggle-btn:active {
+  transform: translateY(1px);
+}
 
 .btn-row {
   display: flex;

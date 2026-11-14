@@ -97,9 +97,24 @@
   inset-inline-start: var(--space-48);
   inset-inline-end: var(--space-48);
   inset-block-start: calc(var(--space-12) + var(--space-8));
-  block-size: 1px;
+  block-size: 2px;
   background-color: var(--color-rule);
   z-index: 1;
+  overflow: hidden;
+}
+
+.cml-rail-progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  background-color: var(--color-brass);
+  transition: inline-size var(--dur-base) ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cml-rail-progress {
+    transition: none;
+  }
 }
 
 .cml-rail-list {
@@ -192,6 +207,44 @@
   min-block-size: calc(var(--space-64) * 4);
   display: flex;
   flex-direction: column;
+  animation: screen-transition var(--dur-base) ease-out;
+}
+
+@keyframes screen-transition {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[dir="rtl"] .screen-card {
+  animation-name: screen-transition-rtl;
+}
+
+@keyframes screen-transition-rtl {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-card,
+  [dir="rtl"] .screen-card {
+    animation-name: screen-transition-reduced;
+  }
+  @keyframes screen-transition-reduced {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 .screen-header {
