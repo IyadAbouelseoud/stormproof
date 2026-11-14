@@ -17,7 +17,15 @@ pnpm --filter @stormproof/web dev    # the game (web/), http://localhost:3000
 pnpm --filter @stormproof/web build  # static site in web/dist (relative paths, works offline)
 ```
 
-The app makes no network calls at runtime: all data ships as static files in `web/public/data`.
+The app makes no network calls at runtime: all data ships as static files in `web/public/data`. There is no service worker: for a room with no Wi-Fi, serve the built site locally (`pnpm --filter @stormproof/web preview`).
+
+Pitch demo and its check (see `DEMO.md`):
+
+```sh
+pnpm --filter @stormproof/web build
+pnpm --filter @stormproof/web preview --port 4172   # in one terminal
+cd web && node scripts/demo-walk.mjs                # in another: plays the scripted demo, checks every number on screen
+```
 Rebuilding the data (optional, needs internet; a NASA API key in `pipeline/.env` for DONKI only):
 
 ```sh
@@ -72,6 +80,10 @@ We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthr
 2. **NASA DAS 6U curves** at 430 and 550 km, 51.6 deg (NASA LSP, "Variation in Predicted Orbital Lifetime Due to Launch Year", NTRS 20240003618; values read from the charts by eye): **18 of 21 checkable points within +/-30%, 3 fail** (see Limits). No parameter was fitted. All three shape checks pass: the 430 km life peaks near 2029 and is lowest in 2035; the 550 km life rises from 2033 to 2034; 550 km always outlives 430 km.
 3. **Starlink trap** (210 km, 3 Feb 2022): reenters in 1.3 days on the real Sun vs 2.8 days on the forecast; at 500 km the same storm costs 0.066% of life (under 1%).
 
+Independent check (`qa/independent_check.py`, `qa/TRACK1.md`): a separate Python implementation of period, sun-synchronous inclination, eclipse fraction, drag decay on the shipped tables (RK4, different step) and the launch-fit check agrees with the engine on 51 values; the largest difference is 0.34%. The Sun-data rules (adjusted to observed F10.7, 81-day mean, forecast join, the Feb 2022 factor) are re-checked on the shipped files by `qa/track1/pipeline_check.py`.
+
+QA reports from the final pass: `qa/TRACK1.md` (physics), `qa/TRACK2.md` (crash walks, accessibility, overflow), `qa/TRACK3.md` (release hygiene), `qa/FUNCTIONAL.md` (functional matrix, fuzz, data audit), `qa/JUDGE_ANSWERS.md`.
+
 ## Disclosed limits
 - **One drag fit (golden 1):** the FACSAT-2 ballistic coefficient was fitted once from 72.3 to 68.43 kg/m2 (-5.3%, inside the allowed +/-20%). Unfitted, the satellite reentered 26 Dec 2025 (60 days late) and missed the 2 Oct 2025 waypoint (350 vs 300 km).
 - **FACSAT-2 reference numbers come from a preprint** (Vargas Dominguez, Angel, Buitrago, arXiv:2609.24534v1, Sep 2026; not peer-reviewed): declared service life at least 5 years, 926 days in orbit, mean F10.7 170.8 sfu against 139 sfu in the official-2019-forecast scenario, which gives a lifetime 1.52 times longer. The paper uses NRLMSISE-00; we use NRLMSIS 2.1, so our fitted plan/truth ratio (1.44) differs from the paper's 1.52. The launch date (15 Apr 2023) comes from a satellite catalogue, not the paper.
@@ -83,4 +95,7 @@ We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthr
 - **Orbit averaging:** densities are averaged over 12 points per orbit (SSO: 2 UT times; 51.6 deg: 4 node local times). The Funda ground station position is approximate.
 - **Map:** the 2D map has no coastline (no offline coastline source shipped). It draws a graticule, the ground track, the target latitude and the ground station only.
 - **Illustrations:** every picture in `web/public/img/art` is AI-generated and tagged "SI-generated" on screen. They are illustration only, never data or real places. Real imagery is the NASA GIBS pictures on the Report screen.
+- **Launch slip:** truth flights include a seeded launch slip of 0-12 months, so the headline "the Sun took N days" is net of the slip; the Report prints both numbers.
+- **Pictures offline:** pictures load on demand; without a network the hosted site cannot fetch a picture it has not shown yet. Served locally, nothing needs the network.
+- **Sources table on the Report** covers the Report's numbers. Part and rocket numbers carry their tag on the cards; GIBS pictures are credited in `web/public/img/gibs/credits.json` rather than in `content/sources.csv`.
 - **Game balance:** part masses, costs, launch slips (0-12 months), storm reset chance and score weights are game-balanced and labelled as such.

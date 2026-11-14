@@ -18,3 +18,9 @@
 
 /* Re-fly, first flight: the one-click tweaks under the first-flight summary. */
 .refly-first-tweaks { display: flex; flex-direction: column; gap: var(--space-12); margin-block-start: var(--space-16); }
+
+/* Cause chain: one fix per cause (content/text/messages.json advice lines). */
+.sp-cause-tip { display: block; color: var(--color-ink-muted); font-weight: 400; }
+
+/* Launch at 390: a rocket card may not push its grid wider than the screen. */
+.rocket-card, .rocket-card > * { min-inline-size: 0; }

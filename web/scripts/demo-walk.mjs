@@ -5,7 +5,7 @@ import { chromium } from '@playwright/test';
 const BASE = process.argv[2] ?? 'http://localhost:4172/';
 const W = Number(process.env.W ?? 1440), H = Number(process.env.H ?? 900);
 const b = await chromium.launch({ channel: 'chrome' });
-const p = await b.newPage({ viewport: { width: W, height: H } });
+const p = await b.newPage({ viewport: { width: W, height: H }, reducedMotion: process.env.RM === '1' ? 'reduce' : 'no-preference' });
 const errs = [];
 const bad = [];
 p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));

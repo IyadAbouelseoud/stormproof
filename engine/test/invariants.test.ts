@@ -128,6 +128,8 @@ describe('mission code: tampered codes are rejected cleanly (final pass, Track 6
     ['a date that is not on the calendar', { 12: '2023-02-31' }, 'mission code: bad date'],
     ['a negative altitude', { 10: '-500' }, 'mission code: bad number'],
     ['an exponent altitude', { 10: '5e9' }, 'mission code: bad number'],
+    ['an altitude above the density table (5000 km)', { 10: '5000' }, 'mission code: bad number'],
+    ['an altitude below the density table (40 km)', { 10: '40' }, 'mission code: bad number'],
   ] as [string, Record<number, string>, string][])('%s', (_name, over, message) => {
     expect(() => decodeMission(fields(over))).toThrow(message);
   });

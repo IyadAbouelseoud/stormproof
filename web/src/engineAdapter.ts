@@ -444,11 +444,14 @@ export function trackFromResult(result: SimResult, design: MissionDesign, orbits
   const perOrbit = (pts.length - 1) / (86400 / periodS(design.orbit.altitudeKm));
   const count = Math.min(pts.length - 1, Math.max(2, Math.round(orbits * perOrbit)));
   const span = pts.length - count;
-  const first = span > 0 ? Math.round(startOrbit * perOrbit) % span : 0;
+  const start = Number.isFinite(startOrbit) && startOrbit > 0 ? startOrbit : 0;
+  const first = span > 0 ? Math.round(start * perOrbit) % span : 0;
   const segs: TrackPoint[][] = [];
   let cur: TrackPoint[] = [];
   for (let i = first; i <= first + count; i++) {
-    const [lat, lon] = pts[i]!;
+    const pt = pts[i];
+    if (!pt) continue;
+    const [lat, lon] = pt;
     const prev = cur[cur.length - 1];
     if (prev && Math.abs(lon - prev.lon) > 180) {
       segs.push(cur);

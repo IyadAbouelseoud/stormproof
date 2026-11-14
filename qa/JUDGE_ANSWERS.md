@@ -19,7 +19,7 @@ Measured effect of the real Sun, same satellite, same orbit (`content/demo/angol
 ## 2. What is real and what is a mock-up?
 
 Real (computed in the browser from shipped data, no network):
-- Orbit decay from pre-computed NRLMSIS 2.1 densities, power, data and link budgets, fit checks, disposal rules, score, cause chain. 160 engine tests pass; 3 are marked known failures (below).
+- Orbit decay from pre-computed NRLMSIS 2.1 densities, power, data and link budgets, fit checks, disposal rules, score, cause chain. 164 engine tests pass; 3 are marked known failures (below).
 - An independent Python re-implementation agrees with the engine on 51 values, largest difference 0.34% (`qa/independent_check.py`, `qa/TRACK1.md`).
 - FACSAT-2 check: our model reenters it on 26 Oct 2025; the real date is 27 Oct 2025 (after one disclosed drag fit of -5.3%).
 - Starlink Feb 2022 check: a 210 km orbit reenters in 1.27 days on the real Sun, 2.80 days on the forecast.

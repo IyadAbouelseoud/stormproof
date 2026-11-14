@@ -2,6 +2,7 @@
  * Mission codes: a compact, URL-safe, content-independent encoding of a MissionDesign.
  * Format: "SP1-" + base64url(UTF-8 of the fields joined by '~'). Pure; no content lookup.
  */
+import { DENSITY_MAX_ALT_KM, DENSITY_MIN_ALT_KM } from './constants';
 import type { FormFactor, MissionDesign, OrbitType, PartSlot, RoleAssignments, RoleId, SimMode, StormPolicy } from './contracts';
 
 const VERSION = 'SP1';
@@ -111,7 +112,7 @@ export function decodeMission(code: string): MissionDesign {
   if (!orbitType || !simMode) throw new Error('mission code: bad orbit or mode');
   const altitudeKm = Number(alt);
   const seedN = Number(seed);
-  if (!/^\d+(\.\d+)?$/.test(alt!) || !Number.isFinite(altitudeKm) || !/^\d+$/.test(seed!) || seedN > 0xffffffff) throw new Error('mission code: bad number');
+  if (!/^\d+(\.\d+)?$/.test(alt!) || !Number.isFinite(altitudeKm) || altitudeKm < DENSITY_MIN_ALT_KM || altitudeKm > DENSITY_MAX_ALT_KM || !/^\d+$/.test(seed!) || seedN > 0xffffffff) throw new Error('mission code: bad number');
   if (!validLaunchDate(date!)) throw new Error('mission code: bad date');
 
   const parts = Object.fromEntries(SLOTS.map((s, i) => [s, dec(partIds[i]!)])) as MissionDesign['parts'];

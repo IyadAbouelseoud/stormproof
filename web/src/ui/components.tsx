@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { decodeMission, type Cause, type Gauge as GaugeT, type Part, type RoleId } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { partName } from '../content';
+import { messageTemplate, partName } from '../content';
 import { fmtCompact, fmtNum, fmtSigned } from '../format';
 import { useMission } from '../store';
 
@@ -537,7 +537,10 @@ export function MissionTicket({ code }: { code: string }): React.JSX.Element {
 
   const handleLoad = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputCode.trim()) return;
+    if (!inputCode.trim()) {
+      setLoadError(t('ticket.invalid'));
+      return;
+    }
     try {
       const d = decodeMission(inputCode.trim());
       setLoadError(null);
@@ -607,8 +610,21 @@ export function MissionTicket({ code }: { code: string }): React.JSX.Element {
 // CauseChain
 // ---------------------------------------------------------------------------
 
+/** Engine cause key -> advice line in content/text/messages.json (engine keys are kept as they are; carryover 4). */
+const CAUSE_ADVICE: Record<string, string> = { 'cause.sun.took': 'cause.sun_days', 'cause.density': 'cause.density', 'cause.slip': 'cause.slip', 'cause.storm': 'cause.storm', 'cause.fuel': 'cause.propulsion' };
+
 export function CauseChain({ causes }: { causes: Cause[] }): React.JSX.Element {
   const { tMsg, t, lang } = useI18n();
+  // "Cause + one fix": the last sentence of the advice text, shown once per distinct tip, only when it needs no numbers.
+  const seen = new Set<string>();
+  const tipFor = (key: string): string | null => {
+    const text = messageTemplate(CAUSE_ADVICE[key] ?? '', lang);
+    const tip = text?.split(/(?<=[.؟!])\s+/).pop()?.trim();
+    if (!tip || tip.includes('{') || seen.has(tip)) return null;
+    seen.add(tip);
+    return tip;
+  };
+  const tips = causes.map((c) => tipFor(c.label.key));
   return (
     <ol className="sp-causes" aria-label={t('causes.title')}>
       {causes.map((c, i) => (
@@ -616,7 +632,10 @@ export function CauseChain({ causes }: { causes: Cause[] }): React.JSX.Element {
           <span className="type-data sp-cause-n" aria-hidden="true">
             {i + 1}
           </span>
-          <span className="type-body sp-cause-text">{tMsg(c.label)}</span>
+          <span className="type-body sp-cause-text">
+            {tMsg(c.label)}
+            {tips[i] && <span className="type-small sp-cause-tip"> {tips[i]}</span>}
+          </span>
           <span className="type-data sp-cause-effect">
             {fmtNum(lang, c.effect.value, 2)} <span className="sp-unit">{unitText(t, c.effect.unit)}</span>
           </span>
