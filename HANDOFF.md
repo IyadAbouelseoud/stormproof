@@ -38,7 +38,7 @@ Updated by the agent at every checkpoint (tests green, committed).
 -
 
 ## Next (resume prompt)
-- Iyad (engine/pipeline): "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Prompt A T1.1-T1.7 are done. Next: merge lane/renad when ready and check the Pages run on GitHub; replace content-stub with content/*.json when Dua's content lands; golden 2 runs with 3 disclosed known fails (re-read slide 20 inputs if possible)."
+- Iyad (engine/pipeline): "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Prompt A T1.1-T1.7 are done. Next: merge lane/renad when ready and check the Pages run on GitHub; replace content-stub with content/*.json when Dua's content lands; golden 2 keeps its 3 disclosed known fails (430/2039, 550/2033, 550/2034): FINAL, Iyad 2026-11-14. Do not tune Cd*A/m, density, inputs or tolerances to close them."
 - Renad (web/): "Read AGENTS.md, HANDOFF.md, and prompts/B-renad-ui-gemini-flash.md. Continue Renad's lane at STEP U1d (shell, routing and CML rail)."
 
 ## Blocked / disclosed limits
