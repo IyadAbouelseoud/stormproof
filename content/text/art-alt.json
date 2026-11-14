@@ -1,81 +1,46 @@
 {
-  "art": [
-    {
-      "id": "p1",
-      "alt": {
-        "en": "Editorial illustration of a satellite mission in orbit near the Sun",
-        "ar": "رسم توضيحي لمهمة قمر اصطناعي في المدار بالقرب من الشمس"
-      }
-    },
-    {
-      "id": "p2",
-      "alt": {
-        "en": "Editorial illustration of the Cunene river basin in Angola",
-        "ar": "رسم توضيحي لحوض نهر كونيني في أنغولا"
-      }
-    },
-    {
-      "id": "p3",
-      "alt": {
-        "en": "Editorial illustration of Funda satellite ground station dish antenna",
-        "ar": "رسم توضيحي لهوائي محطة فوندا الأرضية للأقمار الاصطناعية"
-      }
-    },
-    {
-      "id": "p5",
-      "alt": {
-        "en": "Exploded technical diagram of a six unit CubeSat structure and subsystems",
-        "ar": "مخطط فني تفصيلي لهيكل قمر كيوبسات بست وحدات وأنظمته الفرعية"
-      }
-    },
-    {
-      "id": "p6",
-      "alt": {
-        "en": "Editorial illustration of satellite orbital trajectory data report",
-        "ar": "رسم توضيحي لتقرير بيانات مسار القمر الاصطناعي المداري"
-      }
-    },
-    {
-      "id": "p7",
-      "alt": {
-        "en": "Editorial illustration of storm clouds and flood basin near Jeddah",
-        "ar": "رسم توضيحي لسحب العواصف وحوض تصريف السيول قرب جدة"
-      }
-    },
-    {
-      "id": "p8",
-      "alt": {
-        "en": "Editorial illustration of two stage rocket on launch pad at dusk",
-        "ar": "رسم توضيحي لصاروخ إطلاق ذي مرحلتين على منصة الإطلاق عند الغسق"
-      }
-    },
-    {
-      "id": "p9",
-      "alt": {
-        "en": "Editorial illustration of small satellite in Earth orbit",
-        "ar": "رسم توضيحي لقمر اصطناعي صغير في مدار الأرض"
-      }
-    },
-    {
-      "id": "p10",
-      "alt": {
-        "en": "Editorial illustration of satellite atmospheric reentry descent path",
-        "ar": "رسم توضيحي لمسار هبوط القمر الاصطناعي أثناء العودة للغلاف الجوي"
-      }
-    },
-    {
-      "id": "p11",
-      "alt": {
-        "en": "Editorial illustration of solar storm emission rings towards Earth",
-        "ar": "رسم توضيحي لحلقات انبعاثات العاصفة الشمسية باتجاه الأرض"
-      }
-    },
-    {
-      "id": "p12",
-      "alt": {
-        "en": "Editorial illustration of successful satellite mission completion in orbit",
-        "ar": "رسم توضيحي لاكتمال مهمة القمر الاصطناعي بنجاح في مداره"
-      }
-    }
-  ]
+  "art-p1-brief-hero-v1": {
+    "en": "Illustration of a satellite mission in orbit near the Sun.",
+    "ar": "رسم توضيحي لمهمة قمر اصطناعي في المدار بالقرب من الشمس."
+  },
+  "art-p2-angola-card-v1": {
+    "en": "Illustration of the Cunene river basin in Angola.",
+    "ar": "رسم توضيحي لحوض نهر كونيني في أنغولا."
+  },
+  "art-p3-ground-station-v1": {
+    "en": "Illustration of Funda satellite ground station dish antenna.",
+    "ar": "رسم توضيحي لهوائي محطة فوندا الأرضية للأقمار الاصطناعية."
+  },
+  "art-p5-build-diagram-v1": {
+    "en": "Exploded technical diagram of a six unit CubeSat structure and subsystems.",
+    "ar": "مخطط فني تفصيلي لهيكل قمر كيوبسات بست وحدات وأنظمته الفرعية."
+  },
+  "art-p6-report-backdrop-v1": {
+    "en": "Illustration of satellite orbital trajectory data report.",
+    "ar": "رسم توضيحي لتقرير بيانات مسار القمر الاصطناعي المداري."
+  },
+  "art-p7-jeddah-flood-v1": {
+    "en": "Illustration of storm clouds and flood basin near Jeddah.",
+    "ar": "رسم توضيحي لسحب العواصف وحوض تصريف السيول قرب جدة."
+  },
+  "art-p8-launch-header-v1": {
+    "en": "Illustration of a generic two-stage rocket on a launch pad at dusk.",
+    "ar": "رسم توضيحي لصاروخ عام من مرحلتين على منصة إطلاق عند الغروب."
+  },
+  "art-p9-flight-header-v1": {
+    "en": "Illustration of a small CubeSat flying along an orbit above Earth.",
+    "ar": "رسم توضيحي لقمر صناعي صغير من نوع كيوبسات يتحرك على مدار فوق الأرض."
+  },
+  "art-p10-reentry-lost-v1": {
+    "en": "Illustration of a CubeSat falling toward Earth during atmospheric reentry.",
+    "ar": "رسم توضيحي لقمر كيوبسات أثناء سقوطه نحو الأرض عند دخول الغلاف الجوي."
+  },
+  "art-p11-solar-storm-v1": {
+    "en": "Illustration of the Sun drawn as orange concentric rings on an astronomical plate.",
+    "ar": "رسم توضيحي للشمس على هيئة حلقات برتقالية متداخلة على لوحة فلكية."
+  },
+  "art-p12-mission-flown-v1": {
+    "en": "Illustration of Earth seen from above with orbit rings and a small CubeSat.",
+    "ar": "رسم توضيحي للأرض مع حلقات مدارية وقمر كيوبسات صغير."
+  }
 }
