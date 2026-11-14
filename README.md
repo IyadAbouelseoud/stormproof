@@ -52,13 +52,14 @@ We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthr
 
 ## Validation (golden tests, `engine/test/golden.test.ts`)
 1. **FACSAT-2** (6U, 497 km SSO, launched 15 Apr 2023): truth-mode reentry 26 Oct 2025 vs real 27 Oct 2025 (tolerance +/-60 days); 450 / 400 / 300 km waypoints within +/-30 km. Plan/truth lifetime ratio 1.44 (paper: 1.52).
-2. **NASA DAS 6U curves** at 430 and 550 km: *not run* (see Limits).
+2. **NASA DAS 6U curves** at 430 and 550 km, 51.6 deg (NASA LSP, "Variation in Predicted Orbital Lifetime Due to Launch Year", NTRS 20240003618; values read from the charts by eye): **18 of 21 checkable points within +/-30%, 3 fail** (see Limits). No parameter was fitted. All three shape checks pass: the 430 km life peaks near 2029 and is lowest in 2035; the 550 km life rises from 2033 to 2034; 550 km always outlives 430 km.
 3. **Starlink trap** (210 km, 3 Feb 2022): reenters in 1.3 days on the real Sun vs 2.8 days on the forecast; at 500 km the same storm costs 0.066% of life (under 1%).
 
 ## Disclosed limits
 - **One drag fit (golden 1):** the FACSAT-2 ballistic coefficient was fitted once from 72.3 to 68.43 kg/m2 (-5.3%, inside the allowed +/-20%). Unfitted, the satellite reentered 26 Dec 2025 (60 days late) and missed the 2 Oct 2025 waypoint (350 vs 300 km).
 - **Storm under-response:** empirical atmosphere models under-respond to geomagnetic storms. Only the Feb 2022 storm is corrected (density x1.875 on 3-5 Feb 2022, Fang et al. 2022).
-- **Golden test 2 not run:** it needs NASA DAS reference lifetimes, which we did not have in time.
+- **Golden test 2 (NASA DAS) fails at 3 points**, kept as marked known failures in `engine/test/golden.test.ts` (tolerance not loosened): 430 km launched 2039, 2.57 vs 3.87 years (ratio 0.67); 550 km launched 2033, 4.76 vs 6.85 years (0.69); 550 km launched 2034, 5.25 vs 9.58 years (0.55). Our 550 km lives run 12-31% short of DAS for every launch year 2027-2032 as well, and our 2033-to-2034 rise is much smaller (+10% vs +40%). Likely reasons, none tested: DAS used a Sept 2023 solar-flux prediction, while we use NASA's Oct 2026 prediction and NRLMSIS 2.1; the deck does not say on which day of the launch year it starts (we use 1 Jan) or whether the orbit is circular; the reference values are read off chart images (about +/-0.1 to 0.15 years).
+- **Golden test 2 coverage:** our tables end in Oct 2041, so 10 later points only give a lower bound ("still in orbit"; each is checked to be no more than 30% above DAS), and 6 points launch after the tables end and are not checked. Launch years 2021-2026 are reported but not judged (DAS used a 2023 prediction, we fly the real Sun).
 - **Forecast after 29 Oct 2026:** the Sun after that date is NASA's prediction (monthly), shaded "forecast" in the game. Satellites still in orbit in Oct 2041 are reported as ">= N years".
 - **Plan mode Sun:** a reconstruction of the 2019 panel forecast (peak sunspot number 115 in Jul 2025); before Dec 2019 it uses real OMNI data; cycle 26 in plan mode repeats the cycle-25 shape (game-balanced).
 - **Orbit averaging:** densities are averaged over 12 points per orbit (SSO: 2 UT times; 51.6 deg: 4 node local times). The Funda ground station position is approximate.

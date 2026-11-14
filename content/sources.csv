@@ -39,3 +39,4 @@ closest-distance,"50 km = 1 y = form factor",-,game-balanced,,Closest-design met
 electron-capacity,200,kg,sourced,AGENTS.md s5 (Electron to 500 km SSO),
 bus-mass,"0.5/1.4/2.6",kg,game-balanced,,1U/3U/6U structure+EPS+harness (engine/src/catalog.ts)
 cds-max-mass,"2/6/12",kg,sourced,CubeSat Design Specification Rev 14.1 (Cal Poly),1U/3U/6U
+das-6u-curves,430/550,km,sourced,"NASA LSP (C. Burke), Variation in Predicted Orbital Lifetime Due to Launch Year, NTRS 20240003618 (2024)","Golden 2 reference; values read by eye from chart images (engine/test/fixtures/das-6u-reference.json)"

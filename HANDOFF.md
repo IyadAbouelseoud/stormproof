@@ -26,11 +26,15 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T1.7 README: name, challenge, summary, how to run, NASA datasets, team, AI use, NRLMSIS licence, golden results, disclosed limits.
 
+- Merged lane/renad (U1a-U1c) into main; HANDOFF conflict resolved (both lanes' Done lines and resume prompts kept). Lockfile valid, web builds (237 kB JS), web i18n checks pass.
+
+- Golden 2 (NASA DAS 6U, 51.6 deg, iss_truth table, 1 Jan launches, Cd*A/m 0.0154, no fit) from Iyad's chart-read fixture das-6u-reference.json: 18/21 checkable points within +/-30%; 3 KNOWN FAIL (it.fails, decided by Iyad): 430/2039 0.67, 550/2033 0.69, 550/2034 0.55. 550 km runs 0.69-0.88 for 2027-2033. 10 lower-bound points (alive at Oct 2041) checked <= DAS +30%; 6 launches after table end skipped; 2021-2026 informational. 3 shape checks pass. Engine 79 + 3 expected fail + 6 skipped.
+
 ## In progress
 -
 
 ## Next (resume prompt)
-- Iyad (engine/pipeline): "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Prompt A T1.1-T1.7 are done. Next: merge lane/renad when ready and check the Pages run on GitHub; replace content-stub with content/*.json when Dua's content lands; golden 2 when DAS values arrive."
+- Iyad (engine/pipeline): "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Prompt A T1.1-T1.7 are done. Next: merge lane/renad when ready and check the Pages run on GitHub; replace content-stub with content/*.json when Dua's content lands; golden 2 runs with 3 disclosed known fails (re-read slide 20 inputs if possible)."
 - Renad (web/): "Read AGENTS.md, HANDOFF.md, and prompts/B-renad-ui-gemini-flash.md. Continue Renad's lane at STEP U1d (shell, routing and CML rail)."
 
 ## Blocked / disclosed limits
@@ -40,7 +44,7 @@ Updated by the agent at every checkpoint (tests green, committed).
 - Plan Sun before Dec 2019 = real OMNI; cycle 26 in plan = cycle-25 shape +11 y (game-balanced).
 - Orbit average: 12 points/orbit; SSO 2 UTs, ISS 4 node local times. MSIS storm under-response: only Feb 2022 x1.875 corrected.
 - Golden 1 fit disclosed: unfitted beta 72.3 reentered 2025-12-26 (+60 d, 6.6% long) and missed the 2025-10-02 waypoint (350 vs 300 km); fitted plan/truth ratio 1.44 vs paper 1.52.
-- Golden 2 (NASA DAS 6U 430/550 km) not run: needs DAS output values from Iyad/Dua.
+- Golden 2: 3 known fails (see Done); 550 km systematically short; reference values are chart-read, not DAS output; deck's launch day-of-year and slide 20 inputs unknown.
 - @types/node install was blocked by the permission classifier; tests use engine/test/node-shim.d.ts instead (no new dependency).
 - Local Node is v24; CI targets Node 22 LTS.
 - simulate() runs on content-stub.json until content/parts.json, rockets.json, scenarios/angola.json land (game-balanced stub). With the stub the Angola revisit requirement is unmeetable (30 km swath -> about 84 d vs 10 d target): content balance, not engine.
