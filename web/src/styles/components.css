@@ -163,14 +163,25 @@
 
 /* Dial gauge instrument (X3) */
 .sp-dial-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   inline-size: 100%;
 }
+.sp-dial-readout {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  pointer-events: none;
+}
 .sp-dial-svg {
   inline-size: 100%;
-  max-inline-size: 120px;
+  max-inline-size: 150px;
   block-size: auto;
   display: block;
 }
@@ -186,12 +197,15 @@
   font-family: var(--font-mono);
   font-size: var(--font-size-heading);
   font-weight: 600;
-  fill: var(--color-ink);
+  color: var(--color-ink);
+  white-space: nowrap;
 }
+.sp-dial-num--sm { font-size: var(--font-size-body); }
 .sp-dial-unit {
   font-family: var(--font-text);
   font-size: var(--font-size-label);
-  fill: var(--color-ink-muted);
+  color: var(--color-ink-muted);
+  white-space: nowrap;
 }
 .sp-gauge-value {
   display: flex;

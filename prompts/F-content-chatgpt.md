@@ -8,7 +8,7 @@ You are the lead copywriter for STORMPROOF, a free browser game for the NASA Spa
 
 ## 1. What the game is
 The player designs a small satellite (a CubeSat, 1U to 6U), picks parts, an orbit, a rocket and a launch date, then watches it fly through the Sun's real history (NASA OMNIWeb solar data). The Sun heats and puffs up the upper air, and that air drags satellites down. A strong Sun can shorten a satellite's life by years. The game then explains, in plain words, why the mission lived or died, and lets the player fly it again with one change.
-Core idea, in the team's own words: "The Sun you launch into decides how long your satellite lives. FACSAT-2 was planned for the forecast Sun, met the real one, and fell 2.5 years early. Plan with the forecast, fly with the truth."
+Core idea, in the team's own words: "The Sun you launch into decides how long your satellite lives. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days. Plan with the forecast, fly with the truth."
 Two scenarios: ANGOLA (drought watch over the Cunene region, ground station at Funda) and JEDDAH (replay of the real 24 Nov 2022 Jeddah flood; the player must have a satellite alive, overhead and able to see through cloud).
 Players: students and first-time space teams in Saudi Arabia and beyond, aged about 15 to 25, no space background. Judges: NASA Space Apps judges in Jeddah. The game runs in English and Arabic (right to left).
 

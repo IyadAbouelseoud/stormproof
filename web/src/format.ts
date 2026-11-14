@@ -7,6 +7,11 @@ export function fmtNum(lang: Language, v: number, maxFrac = 1): string {
   return new Intl.NumberFormat(loc(lang), { maximumFractionDigits: maxFrac }).format(v);
 }
 
+/** Compact number for tight instruments: 1263000 -> 1.3M, 12500 -> 12.5K. */
+export function fmtCompact(lang: Language, v: number): string {
+  return new Intl.NumberFormat(loc(lang), { notation: 'compact', maximumFractionDigits: 1 }).format(v);
+}
+
 export function fmtSigned(lang: Language, v: number, maxFrac = 1): string {
   const s = fmtNum(lang, Math.abs(v), maxFrac);
   return v > 0 ? `+${s}` : v < 0 ? `−${s}` : s;

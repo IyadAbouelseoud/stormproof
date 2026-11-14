@@ -1,7 +1,7 @@
 # STORMPROOF: agent rules
 
 NASA Space Apps Challenge 2026, Jeddah. Challenge: Space Mission Design Game.
-Pitch: "The Sun you launch into decides how long your satellite lives. FACSAT-2 was planned for the forecast Sun, met the real one, and fell 2.5 years early. Plan with the forecast, fly with the truth."
+Pitch: "The Sun you launch into decides how long your satellite lives. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days. Plan with the forecast, fly with the truth."
 
 Read this file fully before any task. Update HANDOFF.md at every checkpoint.
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { decodeMission, type Cause, type Gauge as GaugeT, type Part, type RoleId } from '@stormproof/engine';
 import { useI18n } from '../i18n';
 import { partName } from '../content';
-import { fmtNum, fmtSigned } from '../format';
+import { fmtCompact, fmtNum, fmtSigned } from '../format';
 import { useMission } from '../store';
 
 /** Localized unit label; falls back to the raw unit when no key exists. */
@@ -73,6 +73,8 @@ export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): Re
   // tick ratio at required margin
   const tickRatio = gauge.requiredMarginPct > 0 ? 1 / (1 + gauge.requiredMarginPct / 100) : null;
   const unitLabel = unitText(t, gauge.unit);
+  // Compact in the dial only (1,263,000 -> 1.3M); the full value stays in the title and the footer.
+  const dialText = Math.abs(gauge.value) >= 10000 ? fmtCompact(lang, gauge.value) : fmtNum(lang, gauge.value);
 
   // Dial arc geometry: semicircle radius 36, center (50, 48), length 113.1
   const arcLength = 113.1;
@@ -147,14 +149,12 @@ export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): Re
             />
           )}
 
-          {/* Center value and unit */}
-          <text x="50" y="42" textAnchor="middle" className="sp-dial-num type-data">
-            {fmtNum(lang, gauge.value)}
-          </text>
-          <text x="50" y="52" textAnchor="middle" className="sp-dial-unit type-small">
-            {unitLabel}
-          </text>
         </svg>
+        {/* Readout is HTML, not SVG text: real px sizes from tokens, never clipped by the arc. */}
+        <div className="sp-dial-readout" title={`${fmtNum(lang, gauge.value)} ${unitLabel}`}>
+          <span className={`sp-dial-num type-data ${dialText.length > 4 ? 'sp-dial-num--sm' : ''}`}>{dialText}</span>
+          <span className="sp-dial-unit type-small">{unitLabel}</span>
+        </div>
       </div>
 
       <div className="type-small sp-gauge-foot">
