@@ -7,6 +7,7 @@ import { useNavigation } from '../navigation';
 import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
+import { EmptyState } from '../ui/EmptyState';
 import { ScreenFrame } from './ScreenFrame';
 
 function CountUp({ target, durationMs = 600 }: { target: number; durationMs?: number }): React.JSX.Element {
@@ -117,7 +118,7 @@ export function Report(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Report">
-      {!flight && <p className="type-small brief-stub">{t('report.not_flown')}</p>}
+      {!flight && <EmptyState icon="report" text={t('report.not_flown')} />}
       <MainVerdict r={r} />
       <Illustration
         id={lived ? 'p12' : 'p10'}

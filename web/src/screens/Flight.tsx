@@ -10,6 +10,7 @@ import { GroundMap } from '../ui/GroundMap';
 import { Button, RoleChip } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
+import { EmptyState } from '../ui/EmptyState';
 import { ScreenFrame } from './ScreenFrame';
 
 const EMPTY_TL: TimelineDay[] = [];
@@ -200,7 +201,12 @@ export function Flight(): React.JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, speed, n, alerts]);
 
-  if (!flight || n === 0) return <ScreenFrame id="Flight">{t('engine.loading')}</ScreenFrame>;
+  if (!flight || n === 0)
+    return (
+      <ScreenFrame id="Flight">
+        <EmptyState icon="flight" text={t('flight.empty')} />
+      </ScreenFrame>
+    );
 
   const day = tl[Math.min(cursor, n - 1)]!;
   const flightOutcome = flight.truth.outcome;
