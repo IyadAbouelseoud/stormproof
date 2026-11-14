@@ -9,6 +9,7 @@ import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
+import { ReportMedals } from '../ui/ReportMedals';
 import { playStampThud, playSuccessChord } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
@@ -141,6 +142,7 @@ export function Report(): React.JSX.Element {
         alt={lived ? t('verdict.lived') : t('verdict.died')}
         className="report-verdict-art"
       />
+      <ReportMedals r={r} />
 
       <section className="sun-took" aria-labelledby="sun-took-h">
         <h3 id="sun-took-h" className="type-label section-label">

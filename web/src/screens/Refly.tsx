@@ -1,7 +1,7 @@
 import React from 'react';
 import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { fmtDate, fmtNum } from '../format';
+import { fmtDate, fmtNum, fmtSigned } from '../format';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
 import { AltitudeChart } from '../ui/AltitudeChart';
@@ -34,7 +34,7 @@ function RunColumn({ label, r }: { label: string; r: SimResult }): React.JSX.Ele
 }
 
 export function Refly(): React.JSX.Element {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const baseline = useMission((s) => s.baseline);
   const flight = useMission((s) => s.flight);
   const keepBaseline = useMission((s) => s.keepBaseline);
@@ -77,6 +77,16 @@ export function Refly(): React.JSX.Element {
               { timeline: baseline.truth.timeline, kind: 'alt', label: t('refly.first') },
             ]}
           />
+          <div className="refly-deltas">
+            <span className={`delta-chip ${flight.truth.lifetimeDays - baseline.truth.lifetimeDays >= 0 ? 'delta-chip--up' : 'delta-chip--down'}`}>
+              <span className="delta-arrow" aria-hidden="true">{flight.truth.lifetimeDays - baseline.truth.lifetimeDays >= 0 ? '↑' : '↓'}</span>
+              <span className="type-data">{fmtSigned(lang, flight.truth.lifetimeDays - baseline.truth.lifetimeDays)} {t('unit.days')}</span>
+            </span>
+            <span className={`delta-chip ${flight.truth.score.total - baseline.truth.score.total >= 0 ? 'delta-chip--up' : 'delta-chip--down'}`}>
+              <span className="delta-arrow" aria-hidden="true">{flight.truth.score.total - baseline.truth.score.total >= 0 ? '↑' : '↓'}</span>
+              <span className="type-data">{fmtSigned(lang, flight.truth.score.total - baseline.truth.score.total)} pts</span>
+            </span>
+          </div>
           <div className="refly-split">
             <RunColumn label={t('refly.first')} r={baseline.truth} />
             <RunColumn label={t('refly.second')} r={flight.truth} />

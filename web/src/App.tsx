@@ -5,13 +5,14 @@ import { CmlRail } from './ui/CmlRail';
 import { NavigationControls } from './ui/NavigationControls';
 import { useNavigation, type ScreenId } from './navigation';
 import { useMission } from './store';
-import { loadEngine, useEngineStatus } from './engineAdapter';
+import { loadEngine, scenario, useEngineStatus } from './engineAdapter';
 import { isSoundEnabled, setSoundEnabled, playPartSnap } from './sound';
 import { reducedMotion } from './format';
 import { Brief, Build, Orbit, Launch, Flight, Report, Refly } from './screens';
 import { Gallery } from './screens/Gallery';
 import { Handover } from './screens/Handover';
 import { Starfield } from './ui/Starfield';
+import { HeaderOrbitScene } from './ui/HeaderOrbitScene';
 import { TokenSwatches } from './screens/TokenSwatches';
 
 const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = { Brief, Build, Orbit, Launch, Flight, Report, Refly };
@@ -20,11 +21,53 @@ type View = 'mission' | 'gallery' | 'tokens';
 const viewOf = (hash: string): View =>
   hash === '#gallery' ? 'gallery' : hash === '#tokens' || hash === '#swatches' ? 'tokens' : 'mission';
 
+function ScoreCountUp({ target }: { target: number }): React.JSX.Element {
+  const [val, setVal] = useState(target);
+  const prev = useRef(target);
+  useEffect(() => {
+    if (reducedMotion() || prev.current === target) {
+      setVal(target);
+      prev.current = target;
+      return;
+    }
+    const startVal = prev.current;
+    prev.current = target;
+    const start = performance.now();
+    const dur = 240;
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / dur);
+      setVal(Math.round(startVal + p * (target - startVal)));
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else setVal(target);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target]);
+  return <>{val}</>;
+}
+
 function SoundToggle(): React.JSX.Element {
   const { t } = useI18n();
   const [enabled, setEnabled] = useState(isSoundEnabled);
+  const [showTooltip, setShowTooltip] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('sp-sound-tooltip-seen') !== '1';
+    } catch {
+      return false;
+    }
+  });
+
+  const dismiss = () => {
+    setShowTooltip(false);
+    try {
+      localStorage.setItem('sp-sound-tooltip-seen', '1');
+    } catch {}
+  };
 
   const toggle = () => {
+    dismiss();
     const next = !enabled;
     setEnabled(next);
     setSoundEnabled(next);
@@ -32,22 +75,31 @@ function SoundToggle(): React.JSX.Element {
   };
 
   return (
-    <button
-      type="button"
-      className="sound-toggle-btn type-label"
-      onClick={toggle}
-      aria-label={t('sound.toggle')}
-      aria-pressed={enabled}
-    >
-      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" className="sound-icon">
-        {enabled ? (
-          <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9 5 A4 4 0 0 1 9 11 M11 3 A7 7 0 0 1 11 13" stroke="currentColor" strokeWidth="1.2" fill="none" />
-        ) : (
-          <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9.5 6.5 L13.5 10.5 M13.5 6.5 L9.5 10.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
-        )}
-      </svg>
-      <span>{enabled ? t('sound.on') : t('sound.off')}</span>
-    </button>
+    <div className="sound-toggle-wrapper">
+      <button
+        type="button"
+        className="sound-toggle-btn"
+        onClick={toggle}
+        aria-label={t('sound.toggle')}
+        aria-pressed={enabled}
+      >
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" className="sound-icon">
+          {enabled ? (
+            <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9 5 A4 4 0 0 1 9 11 M11 3 A7 7 0 0 1 11 13" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          ) : (
+            <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9.5 6.5 L13.5 10.5 M13.5 6.5 L9.5 10.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
+          )}
+        </svg>
+      </button>
+      {showTooltip && (
+        <div className="sound-tooltip type-small" role="tooltip" onClick={dismiss}>
+          <span>{t('sound.tooltip')}</span>
+          <button type="button" className="sound-tooltip-close" aria-label="Dismiss" onClick={dismiss}>
+            ×
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -57,6 +109,8 @@ export default function App(): React.JSX.Element {
   const handoverTo = useNavigation((s) => s.handoverTo);
   const status = useEngineStatus((s) => s.status);
   const refresh = useMission((s) => s.refresh);
+  const result = useMission((s) => s.result);
+  const sc = scenario(result.design.scenarioId);
   const [view, setView] = useState<View>(() => viewOf(window.location.hash));
 
   useEffect(() => {
@@ -115,8 +169,12 @@ export default function App(): React.JSX.Element {
         <div className="app-title-group">
           <h1 className="type-display-l app-title">{t('app.title')}</h1>
           <p className="type-small app-pitch">{t('app.pitch')}</p>
+          <div className="header-status-strip type-data" aria-live="polite">
+            DAY 0 · SCENARIO {(sc?.name || result.design.scenarioId).toUpperCase()} · SCORE <ScoreCountUp target={result.score.total} />/100
+          </div>
         </div>
         <div className="header-controls">
+          <HeaderOrbitScene />
           {status === 'loading' && <span className="type-label engine-status">{t('engine.loading')}</span>}
           {status === 'mock' && <span className="type-label engine-status engine-status--mock">{t('engine.mock')}</span>}
           <SoundToggle />

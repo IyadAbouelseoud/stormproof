@@ -7,6 +7,7 @@ import { fmtNum } from '../format';
 import { useMission } from '../store';
 import { ALT_MAX_KM, ALT_MIN_KM, altitudeBands, rockets, useEngineStatus, type AltitudeBands } from '../engineAdapter';
 import { Button, SrcTag, VerdictStamp } from '../ui/components';
+import { OrbitMiniDiagram } from '../ui/OrbitMiniDiagram';
 import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
@@ -75,6 +76,7 @@ export function Orbit(): React.JSX.Element {
         <p className="type-data-l orbit-alt-value">
           {fmtNum(lang, alt)} <span className="type-data sp-unit">{t('unit.km')}</span>
         </p>
+        <OrbitMiniDiagram altitudeKm={alt} bands={bands} />
         <div className="alt-slider" dir="ltr">
           <div className="alt-band" aria-hidden="true">
             {bands?.dragBelowKm != null && <div className="alt-band-drag" style={{ insetInlineStart: 0, inlineSize: pct(bands.dragBelowKm) }} />}

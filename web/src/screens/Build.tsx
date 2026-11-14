@@ -43,7 +43,7 @@ function ExplodedDiagram(): React.JSX.Element {
         <p className="type-small build-exploded-hint">{t('build.exploded_hint')}</p>
       </div>
       <div className="build-exploded-media">
-        <div className="art-frame xd-frame" onMouseLeave={() => setHover(null)}>
+        <div className="art-frame xd-frame" dir="ltr" onMouseLeave={() => setHover(null)}>
           <img src={`${import.meta.env.BASE_URL}img/art/art-p5-6u-exploded-v1.webp`} alt={t('build.exploded_title')} loading="lazy" className="xd-img" />
           <svg className={`xd-dim ${active ? 'xd-dim--on' : ''}`} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <defs>
@@ -60,7 +60,7 @@ function ExplodedDiagram(): React.JSX.Element {
                 key={`${id}${i}`}
                 type="button"
                 className={`xd-spot ${active === id ? 'xd-spot--on' : ''}`}
-                style={{ insetInlineStart: `${h.x}%`, insetBlockStart: `${h.y}%` }}
+                style={{ left: `${h.x}%`, top: `${h.y}%` }}
                 aria-label={t(`slot.${id}`)}
                 aria-pressed={pinned === id}
                 onMouseEnter={() => setHover(id)}
@@ -151,9 +151,9 @@ export function GaugeRow(): React.JSX.Element {
           <span className="trail-empty type-small">{t('trail.empty')}</span>
         ) : (
           <>
-            <span className="trail-step">{t(lastChange === 'formFactor' ? 'build.frame' : `slot.${lastChange}`)}</span>
-            {trail.map((s) => (
-              <span key={s.gauge} className="trail-step">
+            <span className="trail-step" style={{ '--i': 0 } as React.CSSProperties}>{t(lastChange === 'formFactor' ? 'build.frame' : `slot.${lastChange}`)}</span>
+            {trail.map((s, idx) => (
+              <span key={s.gauge} className="trail-step" style={{ '--i': idx + 1 } as React.CSSProperties}>
                 <span className="trail-arrow" aria-hidden="true">
                   {' → '}
                 </span>

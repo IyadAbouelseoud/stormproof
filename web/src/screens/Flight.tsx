@@ -64,9 +64,26 @@ function StormCard({ kp, date, onDone }: { kp: number; date: string; onDone: () 
 
   return (
     <div className="storm-card" role="alertdialog" aria-labelledby="storm-h" aria-describedby="storm-d" tabIndex={-1} ref={ref}>
-      <h3 id="storm-h" className="type-heading storm-title">
-        {t('storm.title', { kp: fmtNum(lang, kp) })}
-      </h3>
+      <div className="storm-card-header">
+        <div className="storm-countdown-wrap" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32" className="storm-countdown-ring">
+            <circle cx="16" cy="16" r="13" fill="none" stroke="var(--color-rule)" strokeWidth="2" />
+            <circle
+              cx="16"
+              cy="16"
+              r="13"
+              fill="none"
+              stroke="var(--color-sol)"
+              strokeWidth="2"
+              strokeDasharray="81.68"
+              className="storm-countdown-arc"
+            />
+          </svg>
+        </div>
+        <h3 id="storm-h" className="type-heading storm-title">
+          {t('storm.title', { kp: fmtNum(lang, kp) })}
+        </h3>
+      </div>
       <p id="storm-d" className="type-small">
         {t('storm.body', { date: fmtDate(lang, date) })}
       </p>

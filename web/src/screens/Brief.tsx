@@ -1,15 +1,15 @@
 import React from 'react';
 import { useI18n } from '../i18n';
-import { fmtNum } from '../format';
+import { fmtNum, fmtUsd } from '../format';
 import { useMission, ROLES } from '../store';
 import { useNavigation } from '../navigation';
 import { scenario, sunMonths, useEngineStatus } from '../engineAdapter';
-import { Button, RoleChip, SrcTag, unitText } from '../ui/components';
-import { Illustration } from '../ui/Illustration';
+import { Button, ReqIcon, RoleChip, SiTag, SrcTag, unitText } from '../ui/components';
+import { MissionEmblem } from '../ui/MissionEmblem';
 import { SunStripe } from '../ui/SunStripe';
-import { artAlt, scenarioText, tx } from '../content';
+import { scenarioText, tx } from '../content';
 import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
-import { fmtUsd } from '../format';
+import { playPartSnap } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 export function Brief(): React.JSX.Element {
@@ -27,51 +27,101 @@ export function Brief(): React.JSX.Element {
   const event = result.eventReplay !== undefined;
   const REQ_TEXT: Record<string, string> = { 'data-delivered': 'data' };
   const params = sc
-    ? { revisit_days: fmtNum(lang, sc.revisitMaxDays), gsd_m: fmtNum(lang, sc.gsdMaxM), data_gb: fmtNum(lang, sc.dataDeliveredMinGB), lifetime_days: fmtNum(lang, sc.lifetimeMinDays), budget: fmtUsd(lang, sc.budgetUsd), look_days: fmtNum(lang, sc.lookWindowDays ?? 0) }
+    ? {
+        revisit_days: fmtNum(lang, sc.revisitMaxDays),
+        gsd_m: fmtNum(lang, sc.gsdMaxM),
+        data_gb: fmtNum(lang, sc.dataDeliveredMinGB),
+        lifetime_days: fmtNum(lang, sc.lifetimeMinDays),
+        budget: fmtUsd(lang, sc.budgetUsd),
+        look_days: fmtNum(lang, sc.lookWindowDays ?? 0),
+      }
     : {};
   const fill = (s: string) => s.replace(/\{(\w+)\}/g, (m, k: string) => String((params as Record<string, string>)[k] ?? m));
-  const hero = 'art-p1-title-hero-v1.webp';
   const months = sunMonths();
+
+  // Banner art: P2 Angola or P7 Jeddah at 21:9 aspect ratio
+  const bannerArt = result.design.scenarioId === 'jeddah-flood' ? 'art-p7-jeddah-flood-v1.webp' : 'art-p2-angola-drought-v1.webp';
+
+  // Visible story: ONE sentence of story (max 20 words)
+  const storyRaw = st?.story[0]?.text ? tx(st.story[0].text, lang) : (st?.mission ? tx(st.mission, lang) : '');
+  const sentenceMatch = storyRaw.match(/^[^.!?؟]+[.!?؟]?/);
+  const firstSentence = sentenceMatch ? sentenceMatch[0] : storyRaw.split(' ').slice(0, 20).join(' ');
 
   return (
     <ScreenFrame id="Brief">
-      <div className="brief-hook-card">
-        <p className="type-heading brief-game-desc">{t('brief.game_desc')}</p>
-        <p className="type-body brief-hook-text">{t('brief.hook')}</p>
+      {/* Scenario Banner with SI tag and mission emblem (X2) */}
+      <div className="brief-banner brief-stagger" style={{ '--delay': '0ms' } as React.CSSProperties}>
+        <div className="brief-banner-media">
+          <img
+            src={`${import.meta.env.BASE_URL}img/art/${bannerArt}`}
+            alt={tx(st?.title, lang, sc?.name ?? '')}
+            className="brief-banner-img"
+            loading="eager"
+          />
+          <SiTag />
+          <MissionEmblem size={72} />
+        </div>
       </div>
-      <ScenarioPicker />
-      <div className="brief-layout">
-        <div className="brief-text">
-          <p className="type-label brief-kicker">{t('brief.kicker')}</p>
-          <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{tx(st?.title, lang, sc?.name ?? '')}</h3>
-          {st?.story.map((b) => (
-            <p key={b.beat} className="type-body brief-story">{tx(b.text, lang)}</p>
-          ))}
-          {st && <p className="type-body brief-story"><strong>{tx(st.mission, lang)}</strong></p>}
-          <ul className="brief-reqs">
-            {reqs.map((r) => (
-              <li key={r.id} className="brief-req">
-                <span className="type-label">{tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.label, lang, t(`req.${r.id}`))}</span>
-                <span className="type-small">{fill(tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.why, lang))}</span>
-                <span className="type-data-l">
+
+      <div className="brief-briefing-header brief-stagger" style={{ '--delay': '120ms' } as React.CSSProperties}>
+        <p className="type-label brief-kicker">{t('brief.kicker')}</p>
+        <h2 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>
+          {tx(st?.title, lang, sc?.name ?? '')}
+        </h2>
+        <p className="type-body brief-story-visible">{firstSentence}</p>
+        <details className="brief-story-disclosure">
+          <summary className="type-label">{t('brief.read_full')}</summary>
+          <div className="brief-story-dropdown">
+            {st?.story.map((b) => (
+              <p key={b.beat} className="type-body brief-story-beat">
+                {tx(b.text, lang)}
+              </p>
+            ))}
+            {st && (
+              <p className="type-body brief-story-mission">
+                <strong>{tx(st.mission, lang)}</strong>
+              </p>
+            )}
+            {sc && (
+              <p className="type-small brief-src">
+                {t('brief.targets_from')} <SrcTag src={sc.src} />
+              </p>
+            )}
+            {status === 'mock' && <p className="type-small brief-stub">{t('engine.mock_notice')}</p>}
+          </div>
+        </details>
+      </div>
+
+      {/* Objective tiles in a grid (3 columns at 1440, 2 at 390) (X2) */}
+      <section className="brief-objectives" aria-label={t('report.requirements')}>
+        <div className="brief-obj-grid">
+          {reqs.map((r, idx) => {
+            const whyText = fill(tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.why, lang));
+            const labelText = tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.label, lang, t(`req.${r.id}`));
+            return (
+              <div
+                key={r.id}
+                className="brief-obj-tile brief-stagger"
+                tabIndex={0}
+                style={{ '--delay': `${240 + idx * 120}ms` } as React.CSSProperties}
+              >
+                <div className="brief-obj-head">
+                  <ReqIcon id={r.id} />
+                  <span className="brief-obj-ring" aria-hidden="true" />
+                </div>
+                <span className="type-label brief-obj-label">{labelText}</span>
+                <span className="type-data-l brief-obj-target">
                   {r.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, r.target)}
                   <span className="type-data sp-unit"> {unitText(t, r.unit)}</span>
                 </span>
-              </li>
-            ))}
-          </ul>
-          {sc && (
-            <p className="type-small brief-src">
-              {t('brief.targets_from')} <SrcTag src={sc.src} />
-            </p>
-          )}
-          {status === 'mock' && <p className="type-small brief-stub">{t('engine.mock_notice')}</p>}
+                {whyText && <span className="type-small brief-obj-why">{whyText}</span>}
+              </div>
+            );
+          })}
         </div>
-        <div className="brief-hero">
-          <Illustration id="p1" src={`${import.meta.env.BASE_URL}img/art/${hero}`} alt={artAlt(hero, lang)} />
-          <p className="type-small">{t('art.note')}</p>
-        </div>
-      </div>
+      </section>
+
+      {/* Sun Stripe compact display (X2) */}
       {months && (
         <section className="brief-sunstripe-section" aria-label={t('sun.legend')}>
           <div className="brief-sunstripe-box">
@@ -82,14 +132,28 @@ export function Brief(): React.JSX.Element {
           </p>
         </section>
       )}
+
+      {/* Single focal CTA button: full width on mobile, RTL arrow mirroring, 1px depress + sound (X2) */}
       <div className="brief-start-cta">
-        <Button className="brief-start-btn" onClick={() => setScreen('Build')}>
+        <Button
+          className="brief-start-btn"
+          onClick={() => {
+            playPartSnap();
+            setScreen('Build');
+          }}
+        >
           <span className="type-display-l">{t('brief.start_mission')}</span>
+          <span className="brief-start-arrow" aria-hidden="true">
+            {lang === 'ar' ? '←' : '→'}
+          </span>
         </Button>
       </div>
+
+      <ScenarioPicker />
       {event && <EventCard />}
       <Limits scenarioId={result.design.scenarioId} />
 
+      {/* Team mode setup */}
       <section className="team-setup" aria-labelledby="team-setup-h">
         <h3 id="team-setup-h" className="type-heading">{t('team.title')}</h3>
         <div className="btn-row" role="group" aria-label={t('team.title')}>

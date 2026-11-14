@@ -35,6 +35,67 @@
   max-inline-size: 60ch;
 }
 
+.header-status-strip {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-label);
+  color: var(--color-brass);
+  letter-spacing: 0.06em;
+  margin-block-start: var(--space-4);
+}
+
+.header-orbit-scene {
+  display: flex;
+  align-items: center;
+}
+
+.header-orbit-svg {
+  display: block;
+}
+
+.sound-toggle-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.sound-tooltip {
+  position: absolute;
+  inset-block-start: calc(100% + var(--space-8));
+  inset-inline-end: 0;
+  background-color: var(--color-ground-raised);
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-12);
+  white-space: nowrap;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: sp-tooltip-in var(--dur-fast) ease;
+}
+
+@keyframes sp-tooltip-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sound-tooltip-close {
+  background: none;
+  border: none;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--font-size-body);
+  line-height: 1;
+  padding: 0;
+}
+
+.sound-tooltip-close:hover {
+  color: var(--color-ink);
+}
+
 .header-controls {
   display: flex;
   align-items: center;
@@ -181,6 +242,22 @@
 .cml-rail-step.cml-step--current .cml-brass-tick-container {
   border: 1px solid var(--color-brass);
   background-color: var(--color-ground-sunken);
+}
+
+.cml-rail-step.cml-step--pulse .cml-brass-tick-container {
+  animation: cml-pulse var(--dur-base) ease;
+}
+
+@keyframes cml-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cml-rail-step.cml-step--pulse .cml-brass-tick-container {
+    animation: none;
+  }
 }
 
 .cml-rail-step.cml-step--current .cml-step-label {

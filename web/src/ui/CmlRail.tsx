@@ -36,6 +36,55 @@ export const CML_STEPS: readonly CmlStepItem[] = [
   },
 ] as const;
 
+function CmlStepIcon({ id }: { id: string }): React.JSX.Element {
+  const p = {
+    className: 'cml-brass-tick',
+    viewBox: '0 0 16 16',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.2,
+    xmlns: 'http://www.w3.org/2000/svg',
+    'aria-hidden': true,
+  };
+  switch (id) {
+    case 'cocktail_napkin':
+      return (
+        <svg {...p}>
+          <polygon points="2,3 14,3 14,11 6,11 2,7" />
+          <line x1="6" y1="11" x2="2" y2="7" />
+        </svg>
+      );
+    case 'initial_feasibility':
+      return (
+        <svg {...p}>
+          <rect x="4" y="4" width="8" height="8" rx="1" />
+          <line x1="2" y1="8" x2="4" y2="8" />
+          <line x1="12" y1="8" x2="14" y2="8" />
+        </svg>
+      );
+    case 'trade_space':
+      return (
+        <svg {...p}>
+          <ellipse cx="8" cy="8" rx="6" ry="3" transform="rotate(-30 8 8)" />
+          <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+        </svg>
+      );
+    case 'point_design':
+      return (
+        <svg {...p}>
+          <path d="M 8 2 L 12 7 L 10 13 L 6 13 L 4 7 Z" />
+          <circle cx="8" cy="7" r="1.5" fill="currentColor" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...p}>
+          <rect x="6" y="1" width="4" height="14" rx="1" fill="currentColor" />
+        </svg>
+      );
+  }
+}
+
 export function CmlRail(): React.JSX.Element {
   const { t } = useI18n();
   const { currentScreen, setScreen } = useNavigation();
@@ -54,7 +103,7 @@ export function CmlRail(): React.JSX.Element {
           return (
             <li
               key={step.id}
-              className={`cml-rail-step ${isCurrent ? 'cml-step--current' : ''} ${isCompleted ? 'cml-step--completed' : ''}`}
+              className={`cml-rail-step ${isCurrent ? 'cml-step--current cml-step--pulse' : ''} ${isCompleted ? 'cml-step--completed' : ''}`}
               aria-current={isCurrent ? 'step' : undefined}
             >
               <button
@@ -63,21 +112,7 @@ export function CmlRail(): React.JSX.Element {
                 onClick={() => setScreen(step.targetScreen)}
               >
                 <span className="cml-brass-tick-container" aria-hidden="true">
-                  <svg
-                    className="cml-brass-tick"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6"
-                      y="1"
-                      width="4"
-                      height="14"
-                      rx="1"
-                      fill="currentColor"
-                    />
-                  </svg>
+                  <CmlStepIcon id={step.id} />
                 </span>
                 <span className="cml-step-label type-label">
                   {t(step.labelKey)}
