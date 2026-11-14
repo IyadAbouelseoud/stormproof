@@ -28,8 +28,8 @@
 /* warp burst on every screen change: stars stretch vertically for 600 ms */
 .sp-stars--warp .sp-par { transform: scaleY(1.6); transition: transform 600ms ease-in; }
 @media (prefers-reduced-motion: reduce) { .sp-stars-layer, .sp-shoot, .sp-hero { animation: none; } .sp-shoot { display: none; } .sp-par { transform: none; transition: none; } .sp-stars--warp .sp-par { transform: none; } }
-/* Stars show through the whole app: shell, rail and cards are see-through; text stays on >=60% panels */
+/* Stars show through the whole app: shell, rail and cards are see-through; text stays on >=75% panels for >=4.5:1 contrast */
 [data-theme="night"] .app-container { position: relative; z-index: 1; background: transparent; }
-[data-theme="night"] .cml-rail { background-color: color-mix(in srgb, var(--color-ground-raised) 55%, transparent); }
-[data-theme="night"] .screen-card { background-color: color-mix(in srgb, var(--color-ground-raised) 62%, transparent); }
-[data-theme="night"] .screen-card :is(.fit-item, .xd-card, figure) { background-color: color-mix(in srgb, var(--color-ground) 78%, transparent); }
+[data-theme="night"] .cml-rail { background-color: color-mix(in srgb, var(--color-ground-raised) 70%, transparent); }
+[data-theme="night"] .screen-card { background-color: color-mix(in srgb, var(--color-ground-raised) 80%, transparent); }
+[data-theme="night"] .screen-card :is(.fit-item, .xd-card, figure, .console-panel) { background-color: color-mix(in srgb, var(--color-ground) 90%, transparent); }

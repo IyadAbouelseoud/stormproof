@@ -618,3 +618,28 @@ export function CauseChain({ causes }: { causes: Cause[] }): React.JSX.Element {
     </ol>
   );
 }
+
+export function CheckMark({ size = 12 }: { size?: number }): React.JSX.Element {
+  return (
+    <svg viewBox="0 0 12 12" width={size} height={size} aria-hidden="true" className="sp-icon-check" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <polyline points="2,6 5,9 10,3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function CrossMark({ size = 12 }: { size?: number }): React.JSX.Element {
+  return (
+    <svg viewBox="0 0 12 12" width={size} height={size} aria-hidden="true" className="sp-icon-cross" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <line x1="2" y1="2" x2="10" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <line x1="10" y1="2" x2="2" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function BoltMark({ size = 12 }: { size?: number }): React.JSX.Element {
+  return (
+    <svg viewBox="0 0 12 12" width={size} height={size} aria-hidden="true" className="sp-icon-bolt" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <polygon points="7,1 2,7 6,7 5,11 10,5 6,5" fill="currentColor" />
+    </svg>
+  );
+}

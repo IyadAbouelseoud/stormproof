@@ -57,6 +57,7 @@ try {
         await shot(name);
         if (name !== 'launch') await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
       }
+      await page.waitForSelector('.launch-btn:not([disabled])', { timeout: 10000 });
       await page.click('.launch-btn');
       await page.waitForSelector('.screen--flight');
       const theme = await page.evaluate(() => document.documentElement.dataset.theme);
@@ -93,6 +94,7 @@ try {
       await page.locator('.sp-btn:has-text("3U"), .sp-btn:has-text("6U")').first().click();
       await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
       await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
+      await page.waitForSelector('.launch-btn:not([disabled])', { timeout: 10000 });
       await page.click('.launch-btn');
       await page.click('.flight-controls .sp-btn--quiet', { timeout: 1000 }).catch(() => {});
       for (let i = 0; i < 10 && !(await page.locator('.reentry').count()); i++) {

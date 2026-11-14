@@ -62,6 +62,15 @@ export function Starfield(): React.JSX.Element {
   }, [currentScreen]);
 
   useEffect(() => {
+    const onWarp = () => {
+      setWarp((n) => n + 1);
+      window.setTimeout(() => setWarp(0), 700);
+    };
+    window.addEventListener('sp-warp', onWarp);
+    return () => window.removeEventListener('sp-warp', onWarp);
+  }, []);
+
+  useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let raf = 0;
     let x = 0;

@@ -49,6 +49,7 @@ try {
       await page.waitForSelector('.jd-alive');
       await shot('orbit');
       await next();
+      await page.waitForSelector('.launch-btn:not([disabled])', { timeout: 10000 });
       await page.click('.launch-btn');
       await page.waitForSelector('.screen--flight');
       for (let i = 0; i < 40 && !(await page.locator('.reentry').count()); i++) {

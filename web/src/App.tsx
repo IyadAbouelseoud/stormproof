@@ -103,6 +103,28 @@ function SoundToggle(): React.JSX.Element {
   );
 }
 
+function ThemeToggle({ theme, onToggle }: { theme: 'night' | 'paper'; onToggle: () => void }): React.JSX.Element {
+  const { t } = useI18n();
+  const label = t(theme === 'night' ? 'theme.switch_to_paper' : 'theme.switch_to_night');
+  return (
+    <button
+      type="button"
+      className="theme-toggle-btn"
+      onClick={onToggle}
+      aria-label={label}
+      title={label}
+    >
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" className="theme-icon">
+        {theme === 'night' ? (
+          <path d="M13.5 10.5 A6 6 0 1 1 5.5 2.5 A5 5 0 0 0 13.5 10.5 Z" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+        ) : (
+          <path d="M8 3.5 A4.5 4.5 0 1 1 8 12.5 A4.5 4.5 0 1 1 8 3.5 M8 1 L8 2.5 M8 13.5 L8 15 M1 8 L2.5 8 M13.5 8 L15 8" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        )}
+      </svg>
+    </button>
+  );
+}
+
 export default function App(): React.JSX.Element {
   const { t } = useI18n();
   const currentScreen = useNavigation((s) => s.currentScreen);
@@ -127,8 +149,25 @@ export default function App(): React.JSX.Element {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  // Space (Night, with the star field) for the whole game; Paper only for the gallery and token pages.
-  const theme = view === 'mission' ? 'night' : 'paper';
+  // Space (Night, with the star field) for the whole game; Paper as optional toggle (saved in localStorage).
+  const [missionTheme, setMissionTheme] = useState<'night' | 'paper'>(() => {
+    if (typeof window === 'undefined') return 'night';
+    try {
+      const saved = localStorage.getItem('sp-mission-theme');
+      if (saved === 'paper' || saved === 'night') return saved;
+    } catch {}
+    return 'night';
+  });
+
+  const toggleTheme = () => {
+    const next = missionTheme === 'night' ? 'paper' : 'night';
+    setMissionTheme(next);
+    try {
+      localStorage.setItem('sp-mission-theme', next);
+    } catch {}
+  };
+
+  const theme = view === 'mission' ? missionTheme : 'paper';
   const prevTheme = useRef(theme);
   useLayoutEffect(() => {
     const root = document.documentElement;
@@ -177,6 +216,7 @@ export default function App(): React.JSX.Element {
           <HeaderOrbitScene />
           {status === 'loading' && <span className="type-label engine-status">{t('engine.loading')}</span>}
           {status === 'mock' && <span className="type-label engine-status engine-status--mock">{t('engine.mock')}</span>}
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <SoundToggle />
           <LanguageToggle />
         </div>

@@ -11,6 +11,7 @@ import { Button, RoleChip } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
+import { MissionLog } from '../ui/MissionLog';
 import { playReentryLowTone } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
@@ -160,12 +161,13 @@ export function Flight(): React.JSX.Element {
     const timer = window.setTimeout(() => setVerdictVisible(true), 600);
     return () => window.clearTimeout(timer);
   }, [ended, outcome?.kind]);
+
   const alerts = useMemo(
     () => tl.map((d, i) => (d.stormKp !== null && d.stormKp >= CONSTANTS.stormAlertKp ? i : -1)).filter((i) => i >= 0),
     [tl],
   );
 
-  // per-flight precomputation, so each animation frame is O(1) apart from the chart
+  // Per-flight precomputation for battery and data
   const stats = useMemo(() => {
     const delivered = new Float64Array(tl.length);
     const lost = new Float64Array(tl.length);
@@ -189,7 +191,20 @@ export function Flight(): React.JSX.Element {
     return { delivered, lost, bins, binMin };
   }, [tl]);
 
-  // play loop
+  // Space bar toggles play/pause
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'Space' && (e.target as HTMLElement)?.tagName !== 'BUTTON' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
+        e.preventDefault();
+        if (ended) restart();
+        else setPlaying((p) => !p);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [ended]);
+
+  // Play loop
   const pos = useRef(0);
   useEffect(() => {
     if (!playing || n === 0) return;
@@ -222,23 +237,24 @@ export function Flight(): React.JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing, speed, n, alerts]);
 
-  if (!flight || n === 0)
-    return (
-      <ScreenFrame id="Flight">
-        <EmptyState icon="flight" text={t('flight.empty')} />
-      </ScreenFrame>
-    );
-
-  const safeIdx = Math.max(0, Math.min(Math.floor(cursor), n - 1));
-  const day = tl[safeIdx] ?? tl[0];
-  if (!day) {
-    console.error('DEBUG: No day available!', { cursor, safeIdx, n, tlLen: tl.length });
+  if (!flight || n === 0) {
     return (
       <ScreenFrame id="Flight">
         <EmptyState icon="flight" text={t('flight.empty')} />
       </ScreenFrame>
     );
   }
+
+  const safeIdx = Math.max(0, Math.min(Math.floor(cursor), n - 1));
+  const day = tl[safeIdx] ?? tl[0];
+  if (!day) {
+    return (
+      <ScreenFrame id="Flight">
+        <EmptyState icon="flight" text={t('flight.empty')} />
+      </ScreenFrame>
+    );
+  }
+
   const flightOutcome = flight.truth.outcome;
   const storage = (partById(flight.design.parts.computer) as unknown as { storageMB?: number } | undefined)?.storageMB;
   const ci = Math.min(cursor, n - 1);
@@ -259,56 +275,92 @@ export function Flight(): React.JSX.Element {
     setPlaying(true);
   };
 
+  const densityStr = day.densityKgM3 ? day.densityKgM3.toExponential(2) : '—';
+
   return (
     <ScreenFrame id="Flight">
       <Illustration id="p9" src="img/art/art-p9-flight-header-v1.webp" alt={t('flight.map')} className="flight-header-art" />
-      <div className="flight-controls">
-        <Button onClick={() => (ended ? restart() : setPlaying((p) => !p))} disabled={alert !== null} aria-label={playing ? t('flight.pause') : t('flight.play')}>
-          {ended ? t('flight.replay') : playing ? t('flight.pause') : t('flight.play')}
-        </Button>
-        <div className="btn-row" role="group" aria-label={t('flight.speed')}>
-          {SPEEDS.map((s, i) => (
-            <Button key={s.id} variant="secondary" pressed={speed === i} onClick={() => setSpeed(i)}>
-              <span className="type-data">{s.id}</span>
-            </Button>
-          ))}
+
+      {/* Flight Control Toolbar & Comprehensive Telemetry Instrument HUD */}
+      <div className="flight-instrument-toolbar console-panel">
+        <div className="flight-playback-controls flight-controls">
+          <Button
+            onClick={() => (ended ? restart() : setPlaying((p) => !p))}
+            disabled={alert !== null}
+            aria-label={playing ? t('flight.pause') : t('flight.play')}
+          >
+            {ended ? t('flight.replay') : playing ? t('flight.pause') : t('flight.play')}
+          </Button>
+
+          <div className="btn-row" role="group" aria-label={t('flight.speed')}>
+            {SPEEDS.map((s, i) => (
+              <Button key={s.id} variant="secondary" pressed={speed === i} onClick={() => setSpeed(i)}>
+                <span className="type-data">{s.id}</span>
+              </Button>
+            ))}
+          </div>
+
+          <Button
+            variant="quiet"
+            onClick={() => {
+              setCursor(n - 1);
+              setPlaying(false);
+              setVerdictVisible(true);
+            }}
+            disabled={alert !== null || ended}
+          >
+            {t('flight.skip')}
+          </Button>
         </div>
-        <Button
-          variant="quiet"
-          onClick={() => {
-            setCursor(n - 1);
-            setPlaying(false);
-            setVerdictVisible(true);
-          }}
-          disabled={alert !== null || ended}
-        >
-          {t('flight.skip')}
-        </Button>
-        <p className="flight-clock type-data" aria-live="off">
-          <span>{fmtDate(lang, day.date)}</span>
-          <span className="flight-clock-day">
-            {t('flight.day')} <Odometer num={cursor} />
-          </span>
-          <span>
-            {fmtNum(lang, day.altitudeKm)} {t('unit.km')}
-          </span>
+
+        {/* Live Instrument HUD Readout */}
+        <div className="flight-hud-readout type-data" aria-live="off">
+          <div className="hud-metric">
+            <span className="type-label hud-label">{t('launch.date')}</span>
+            <span className="hud-val">{fmtDate(lang, day.date)}</span>
+          </div>
+
+          <div className="hud-metric hud-metric--day">
+            <span className="type-label hud-label">{t('flight.day')}</span>
+            <span className="hud-val"><Odometer num={cursor} /></span>
+          </div>
+
+          <div className="hud-metric">
+            <span className="type-label hud-label">{t('orbit.altitude')}</span>
+            <span className="hud-val">{fmtNum(lang, day.altitudeKm, 1)} {t('unit.km')}</span>
+          </div>
+
+          <div className="hud-metric">
+            <span className="type-label hud-label">{t('flight.density')}</span>
+            <span className="hud-val">{densityStr} <span className="sp-unit">kg/m³</span></span>
+          </div>
+
+          <div className={`hud-metric ${isStorm ? 'hud-metric--storm' : ''}`}>
+            <span className="type-label hud-label">{t('flight.storm_alert')}</span>
+            <span className="hud-val">
+              {day.stormKp !== null ? `Kp ${fmtNum(lang, day.stormKp)}` : 'NOMINAL'}
+            </span>
+          </div>
+
           {day.forecast && <span className="flight-forecast type-label">{t('sun.forecast')}</span>}
-        </p>
+        </div>
       </div>
 
-      {alert !== null && tl[alert] && <StormCard kp={tl[alert]!.stormKp ?? 0} date={tl[alert]!.date} onDone={() => { setAlert(null); setPlaying(true); }} />}
-
-      {months && (
-        <section className="flight-sun" aria-label={t('launch.date')}>
-          <SunStripe months={months} value={mIdx} label={t('launch.date')} pulseStorm={isStorm} />
-        </section>
+      {alert !== null && tl[alert] && (
+        <StormCard kp={tl[alert]!.stormKp ?? 0} date={tl[alert]!.date} onDone={() => { setAlert(null); setPlaying(true); }} />
       )}
 
-      <div className="flight-grid">
+      {/* Row 1: Top Linked Instruments (Altitude Chart & Sun Stripe) */}
+      <div className="flight-charts-row console-panel">
         <section className="flight-chart" aria-labelledby="alt-chart-h">
-          <h3 id="alt-chart-h" className="type-label section-label">
-            {t('flight.altitude')}
-          </h3>
+          <div className="console-panel-header">
+            <h3 id="alt-chart-h" className="type-label section-label">
+              {t('flight.altitude')}
+            </h3>
+            <span className="type-small type-data">
+              SCRUB: DRAG OR ARROW KEYS · SPACE: PLAY/PAUSE
+            </span>
+          </div>
           <AltitudeChart
             title={t('flight.altitude')}
             lines={[
@@ -320,65 +372,113 @@ export function Flight(): React.JSX.Element {
             cursor={cursor}
             burn={ended && flightOutcome.kind === 'reentered' && !reducedMotion()}
             event={flight.truth.eventReplay ? { date: flight.truth.eventReplay.date, label: t('jeddah.chart.event'), looks: flight.truth.eventReplay.looks } : undefined}
+            onScrub={(i) => setCursor(i)}
           />
         </section>
-        <section className="flight-map" aria-labelledby="map-h">
-          <h3 id="map-h" className="type-label section-label">
-            {t('flight.map')}
-          </h3>
-          <GroundMap track={track} title={t('flight.map')} cursor={cursor} />
-          <p className="type-small">{t('map.note')}</p>
-        </section>
-        <section className="flight-battery" aria-labelledby="bat-h">
-          <h3 id="bat-h" className="type-label section-label">
-            {t('flight.battery')}
-          </h3>
-          <svg viewBox={`0 0 ${bins} 40`} preserveAspectRatio="none" className="battery-strip" role="img" aria-label={t('flight.battery_aria', { pct: fmtNum(lang, day.batteryPct) })}>
-            {binMin.map((m, b) => (
-              <rect key={b} x={b} width={1.02} y={40 - (m / 100) * 40} height={(m / 100) * 40} className={`battery-bar ${b <= curBin ? 'battery-bar--past' : ''} ${m < CONSTANTS.batteryFloorPct ? 'battery-bar--low' : ''}`} />
-            ))}
-          </svg>
-          <p className="type-data">
-            {fmtNum(lang, day.batteryPct)}% <span className="type-small">{t('flight.battery_now')}</span>
-          </p>
-        </section>
-        <section className="flight-data" aria-labelledby="data-h">
-          <h3 id="data-h" className="type-label section-label">
-            {t('flight.data')}
-          </h3>
-          <div className="bucket" aria-hidden="true">
-            <div className="bucket-fill" style={{ '--fill': storage ? Math.min(1, day.dataStoredMB / storage) : 0 } as React.CSSProperties} />
-          </div>
-          <dl className="data-stats type-small">
-            <div>
-              <dt>{t('flight.stored')}</dt>
-              <dd className="type-data">
-                {fmtNum(lang, day.dataStoredMB, 0)}
-                {storage ? ` / ${fmtNum(lang, storage, 0)}` : ''} {t('unit.MB')}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('flight.delivered')}</dt>
-              <dd className="type-data">
-                {fmtNum(lang, delivered / 1000, 1)} {t('unit.GB')}
-              </dd>
-            </div>
-            <div>
-              <dt>{t('flight.lost')}</dt>
-              <dd className="type-data">
-                {fmtNum(lang, lost / 1000, 1)} {t('unit.GB')}
-              </dd>
-            </div>
-          </dl>
-        </section>
+
+        {months && (
+          <section className="flight-sun" aria-label={t('launch.date')}>
+            <SunStripe
+              months={months}
+              value={mIdx}
+              label={t('launch.date')}
+              pulseStorm={isStorm}
+              onChange={(i) => {
+                const m = months[i];
+                if (m) {
+                  const targetIdx = tl.findIndex((d) => d.date.startsWith(m.month));
+                  if (targetIdx >= 0) setCursor(targetIdx);
+                }
+              }}
+            />
+          </section>
+        )}
       </div>
 
+      {/* Row 2: Ground Map and Mission Log Row (Side by Side) */}
+      <div className="flight-map-log-row">
+        {/* Left: Mission Log Panel */}
+        <MissionLog
+          result={flight.truth}
+          currentDayIndex={safeIdx}
+          onSelectDay={(idx) => setCursor(idx)}
+        />
+
+        {/* Right: Ground Map & Telemetry Instruments */}
+        <div className="flight-map-telemetry-col">
+          <section className="flight-map console-panel" aria-labelledby="map-h">
+            <div className="console-panel-header">
+              <h3 id="map-h" className="type-label section-label">
+                {t('flight.map')}
+              </h3>
+            </div>
+            <GroundMap track={track} title={t('flight.map')} cursor={cursor} />
+            <p className="type-small map-note">{t('map.note')}</p>
+          </section>
+
+          {/* Telemetry gauges: Battery & Storage */}
+          <div className="flight-telemetry-subgrid">
+            <section className="flight-battery console-panel" aria-labelledby="bat-h">
+              <h3 id="bat-h" className="type-label section-label">
+                {t('flight.battery')}
+              </h3>
+              <svg viewBox={`0 0 ${bins} 40`} preserveAspectRatio="none" className="battery-strip" role="img" aria-label={t('flight.battery_aria', { pct: fmtNum(lang, day.batteryPct) })}>
+                {binMin.map((m, b) => (
+                  <rect
+                    key={b}
+                    x={b}
+                    width={1.02}
+                    y={40 - (m / 100) * 40}
+                    height={(m / 100) * 40}
+                    className={`battery-bar ${b <= curBin ? 'battery-bar--past' : ''} ${m < CONSTANTS.batteryFloorPct ? 'battery-bar--low' : ''}`}
+                  />
+                ))}
+              </svg>
+              <p className="type-data">
+                {fmtNum(lang, day.batteryPct)}% <span className="type-small">{t('flight.battery_now')}</span>
+              </p>
+            </section>
+
+            <section className="flight-data console-panel" aria-labelledby="data-h">
+              <h3 id="data-h" className="type-label section-label">
+                {t('flight.data')}
+              </h3>
+              <div className="bucket" aria-hidden="true">
+                <div className="bucket-fill" style={{ '--fill': storage ? Math.min(1, day.dataStoredMB / storage) : 0 } as React.CSSProperties} />
+              </div>
+              <dl className="data-stats type-small">
+                <div>
+                  <dt>{t('flight.stored')}</dt>
+                  <dd className="type-data">
+                    {fmtNum(lang, day.dataStoredMB, 0)}
+                    {storage ? ` / ${fmtNum(lang, storage, 0)}` : ''} {t('unit.MB')}
+                  </dd>
+                </div>
+                <div>
+                  <dt>{t('flight.delivered')}</dt>
+                  <dd className="type-data">
+                    {fmtNum(lang, delivered / 1000, 1)} {t('unit.GB')}
+                  </dd>
+                </div>
+                <div>
+                  <dt>{t('flight.lost')}</dt>
+                  <dd className="type-data">
+                    {fmtNum(lang, lost / 1000, 1)} {t('unit.GB')}
+                  </dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      {/* Outcome Verdict Section */}
       {ended && verdictVisible && (
-        <section className="reentry" aria-live="polite">
+        <section className="reentry console-panel" aria-live="polite">
           {flightOutcome.kind === 'reentered' ? (
             <>
               <p className="type-label">{t('flight.reentered_on', { date: fmtDate(lang, flightOutcome.date) })}</p>
-              <p className="type-data-l reentry-days">
+              <p className="type-display-xl reentry-days">
                 {fmtNum(lang, flight.truth.lifetimeDays)} <span className="type-data sp-unit">{t('unit.days')}</span>
               </p>
             </>

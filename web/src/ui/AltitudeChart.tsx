@@ -22,11 +22,13 @@ export interface AltitudeChartProps {
   title: string;
   /** Event marker (prompt E F5): vertical line on the event date and one tick per pass (usable or blocked). */
   event?: { date: string; label: string; looks: { date: string; usable: boolean }[] };
+  /** Interactive scrub callback */
+  onScrub?: (index: number) => void;
 }
 
 const W = 1000;
 const H = 360;
-const PAD = { l: 56, r: 16, t: 16, b: 32 };
+const PAD = { l: 64, r: 28, t: 24, b: 36 };
 const DAY = 86400000;
 const dayOf = (iso: string): number => Date.parse(`${iso}T00:00:00Z`) / DAY;
 
@@ -34,7 +36,7 @@ const dayOf = (iso: string): number => Date.parse(`${iso}T00:00:00Z`) / DAY;
  * SVG altitude chart on a shared date axis. Truth solid ink, plan dashed lapis, gap in sol-tint,
  * a rule at the reentry altitude (120 km). Forecast days (after OMNI ends) are shaded.
  */
-export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, event }: AltitudeChartProps): React.JSX.Element {
+export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, event, onScrub }: AltitudeChartProps): React.JSX.Element {
   const { t, lang } = useI18n();
   const geo = useMemo(() => {
     const all = lines.flatMap((l) => l.timeline);
@@ -104,10 +106,71 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, eve
     : undefined;
   const cur = curIdx !== undefined ? first.timeline[curIdx] : undefined;
   const last = first.timeline[first.timeline.length - 1]!;
+  const hasReentered = burn || (last && last.altitudeKm <= CONSTANTS.reentryAltKm + 5);
+
+  const handlePointer = (e: React.PointerEvent<SVGSVGElement>) => {
+    if (!onScrub || !first.timeline.length) return;
+    if (e.type === 'pointermove' && e.buttons === 0) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const xFrac = Math.max(0, Math.min(1, (e.clientX - r.left - (PAD.l / W) * r.width) / (((W - PAD.l - PAD.r) / W) * r.width)));
+    const targetDay = x0 + xFrac * (x1 - x0);
+    const tl = first.timeline;
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    for (let i = 0; i < tl.length; i++) {
+      const diff = Math.abs(dayOf(tl[i]!.date) - targetDay);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = i;
+      }
+    }
+    onScrub(closestIdx);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!onScrub || cursor === undefined || !first.timeline.length) return;
+    const maxIdx = first.timeline.length - 1;
+    if (e.key === 'ArrowLeft') {
+      onScrub(Math.max(0, cursor - 1));
+      e.preventDefault();
+    } else if (e.key === 'ArrowRight') {
+      onScrub(Math.min(maxIdx, cursor + 1));
+      e.preventDefault();
+    } else if (e.key === 'PageDown') {
+      onScrub(Math.max(0, cursor - 30));
+      e.preventDefault();
+    } else if (e.key === 'PageUp') {
+      onScrub(Math.min(maxIdx, cursor + 30));
+      e.preventDefault();
+    } else if (e.key === 'Home') {
+      onScrub(0);
+      e.preventDefault();
+    } else if (e.key === 'End') {
+      onScrub(maxIdx);
+      e.preventDefault();
+    }
+  };
 
   return (
-    <figure className="sp-chart" dir="ltr">
-      <svg viewBox={`0 0 ${W} ${H}`} className="sp-chart-svg" role="img" aria-label={title}>
+    <figure
+      className="sp-chart"
+      dir="ltr"
+      tabIndex={onScrub ? 0 : -1}
+      role={onScrub ? 'slider' : 'figure'}
+      aria-label={title}
+      aria-valuemin={0}
+      aria-valuemax={first.timeline.length - 1}
+      aria-valuenow={cursor}
+      onKeyDown={handleKeyDown}
+    >
+      <svg
+        viewBox={`0 0 ${W} ${H}`}
+        className="sp-chart-svg"
+        role="img"
+        aria-label={title}
+        onPointerDown={handlePointer}
+        onPointerMove={handlePointer}
+      >
         {fDay !== undefined && (
           <rect x={sx(fDay)} y={PAD.t} width={Math.max(0, W - PAD.r - sx(fDay))} height={H - PAD.t - PAD.b} className="sp-chart-forecast" />
         )}
@@ -147,6 +210,14 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, eve
             d={`M${sx(dayOf(last.date)) - 40},${sy(CONSTANTS.reentryAltKm + 25)} Q${sx(dayOf(last.date)) - 10},${sy(CONSTANTS.reentryAltKm + 5)} ${sx(dayOf(last.date))},${sy(CONSTANTS.reentryAltKm)}`}
             className="sp-chart-burn"
           />
+        )}
+        {hasReentered && (
+          <g className="sp-chart-reentry-stamp" transform={`translate(${Math.max(PAD.l + 10, sx(dayOf(last.date)) - 115)}, ${sy(CONSTANTS.reentryAltKm) - 24})`}>
+            <rect x="0" y="0" width="115" height="20" fill="var(--color-ground-raised)" stroke="var(--color-sol)" strokeWidth="1.5" />
+            <text x="57" y="14" textAnchor="middle" className="type-label" fill="var(--color-sol)">
+              REENTRY: 120 KM
+            </text>
+          </g>
         )}
         {event && (
           <g className="sp-chart-event">

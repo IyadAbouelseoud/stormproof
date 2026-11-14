@@ -108,7 +108,6 @@ main:focus { outline: none; }
   inset-inline-end: var(--space-12);
   inset-block-end: var(--space-12);
   z-index: 2;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
 }
 
 /* Staged reveal on load: 120ms stagger (X2) */
@@ -933,4 +932,986 @@ main:focus { outline: none; }
     animation: none;
     stroke-dashoffset: 40.84;
   }
+}
+
+/* ==========================================================================
+   Prompt G3: Space look & Per-screen game redesign console styles
+   ========================================================================== */
+
+/* Console Panels & Tiles */
+.console-panel {
+  position: relative;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  background-color: color-mix(in srgb, var(--color-ground-raised) 80%, transparent);
+  padding: var(--space-16);
+  box-sizing: border-box;
+}
+
+.console-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-12);
+  margin-block-end: var(--space-12);
+  border-block-end: 1px solid var(--color-rule);
+  padding-block-end: var(--space-8);
+}
+
+.console-tile {
+  background-color: color-mix(in srgb, var(--color-ground) 90%, transparent);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  color: var(--color-ink);
+  transition: transform var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  cursor: pointer;
+}
+
+.console-tile:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-lapis);
+}
+
+.console-tile:active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .console-tile {
+    transition: none;
+  }
+  .console-tile:hover,
+  .console-tile:active {
+    transform: none;
+  }
+}
+
+/* S1. Orbit Mission-Planning Table */
+.orbit-table-layout {
+  display: grid;
+  gap: var(--space-24);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .orbit-table-layout {
+    grid-template-columns: 1.4fr 1fr;
+  }
+}
+
+.orbit-scene-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-12);
+}
+
+.orbit-scene-svg {
+  inline-size: 100%;
+  max-inline-size: 420px;
+  block-size: auto;
+  display: block;
+}
+
+.orbit-satellite-pivot {
+  animation: orbit-satellite-spin 20s linear infinite;
+  transform-origin: 240px 240px;
+}
+
+@keyframes orbit-satellite-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-satellite-pivot {
+    animation: none;
+  }
+}
+
+.orbit-type-tiles {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.orbit-tile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  inline-size: 100%;
+  text-align: start;
+}
+
+.orbit-tile--selected {
+  border-color: var(--color-lapis);
+  outline: 1px solid var(--color-lapis);
+  background-color: color-mix(in srgb, var(--color-lapis) 10%, var(--color-ground));
+}
+
+.orbit-tile-icon-wrap {
+  flex-shrink: 0;
+}
+
+.orbit-tile-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex-grow: 1;
+}
+
+.orbit-tile-title {
+  color: var(--color-ink);
+}
+
+.orbit-tile-desc {
+  color: var(--color-ink-muted);
+}
+
+.orbit-tile-check {
+  color: var(--color-lapis);
+  font-weight: bold;
+}
+
+.sun-risk-strip {
+  margin-block-start: var(--space-16);
+}
+
+.sun-risk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-12);
+}
+
+@media (max-width: 600px) {
+  .sun-risk-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sun-risk-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-12);
+  background-color: var(--color-ground);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+}
+
+.sun-risk-tile--delta {
+  border-color: color-mix(in srgb, var(--color-sol) 50%, var(--color-rule));
+}
+
+.fcc-snap-badge {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-8);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  border: 1px solid currentColor;
+}
+
+.fcc-snap-badge--ok {
+  color: var(--color-lapis);
+  background-color: color-mix(in srgb, var(--color-lapis) 15%, transparent);
+}
+
+.fcc-snap-badge--warn {
+  color: var(--color-sol);
+  background-color: color-mix(in srgb, var(--color-sol) 15%, transparent);
+}
+
+.alt-scale-fcc-mark {
+  color: var(--color-brass);
+}
+
+/* S2. Launch Spacing, Rockets & Pre-Flight Checklist */
+.launch-prep-grid {
+  display: grid;
+  gap: var(--space-24);
+  margin-block: var(--space-24);
+  align-items: stretch;
+}
+
+@media (min-width: 840px) {
+  .launch-prep-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rocket-card-grid {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.rocket-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: var(--space-16);
+  padding: var(--space-12);
+  inline-size: 100%;
+  text-align: start;
+}
+
+.rocket-card--selected {
+  border-color: var(--color-lapis);
+  outline: 1px solid var(--color-lapis);
+  background-color: color-mix(in srgb, var(--color-lapis) 8%, var(--color-ground));
+}
+
+.rocket-portrait-slot {
+  inline-size: 80px;
+  block-size: 110px;
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-ground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rocket-card-art {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rocket-portrait-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.rocket-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  justify-content: space-between;
+}
+
+.rocket-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.rocket-name {
+  color: var(--color-ink);
+}
+
+.rocket-cap-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.rocket-cap-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-ink-muted);
+}
+
+.rocket-cap-bar {
+  block-size: 6px;
+  background-color: var(--color-rule);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.rocket-cap-fill {
+  block-size: 100%;
+  transition: inline-size var(--dur-base) ease;
+}
+
+.rocket-cap-fill--ok {
+  background-color: var(--color-lapis);
+}
+
+.rocket-cap-fill--over {
+  background-color: var(--color-sol);
+}
+
+.rocket-card-specs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--color-ink-muted);
+}
+
+.rocket-fit-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.rocket-fit--ok {
+  color: var(--color-lapis);
+}
+
+.rocket-fit--mismatch {
+  color: var(--color-sol);
+}
+
+.rocket-range-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.preflight-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.preflight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-ground);
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.preflight-item--pending {
+  opacity: 0.35;
+}
+
+.preflight-item--ticked {
+  opacity: 1;
+}
+
+.preflight-checkbox {
+  font-family: inherit;
+  font-weight: bold;
+  inline-size: 18px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.preflight-item--pass .preflight-checkbox {
+  color: var(--color-lapis);
+}
+
+.preflight-item--fail .preflight-checkbox {
+  color: var(--color-sol);
+}
+
+.preflight-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.preflight-check-name {
+  color: var(--color-ink);
+}
+
+.preflight-reason {
+  color: var(--color-ink-muted);
+}
+
+.launch-go {
+  margin-block-start: var(--space-24);
+  min-block-size: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* S3. Flight Console & Instruments */
+.flight-instrument-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-16);
+  margin-block-end: var(--space-16);
+}
+
+.flight-playback-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.flight-hud-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.hud-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-label {
+  font-size: var(--font-size-small);
+  color: var(--color-ink-muted);
+}
+
+.hud-val {
+  color: var(--color-ink);
+}
+
+.hud-metric--storm {
+  color: var(--color-sol);
+}
+
+.flight-charts-row {
+  margin-block-end: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.flight-map-log-row {
+  display: grid;
+  gap: var(--space-24);
+  margin-block-end: var(--space-24);
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .flight-map-log-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mission-log-panel {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+}
+
+.log-live-status {
+  padding-block: var(--space-2);
+  padding-inline: var(--space-8);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  border: 1px solid currentColor;
+}
+
+.log-live-status--ok {
+  color: var(--color-lapis);
+}
+
+.log-live-status--warn {
+  color: var(--color-sol);
+}
+
+.log-live-status--fail {
+  color: var(--color-sol);
+}
+
+.log-border-art {
+  inline-size: 100%;
+  block-size: 6px;
+  object-fit: cover;
+  margin-block-end: var(--space-8);
+}
+
+.mission-log-stream {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-block-size: 380px;
+  overflow-y: auto;
+  padding-inline-end: var(--space-4);
+}
+
+.log-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-12);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  background-color: var(--color-ground);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+.log-entry:hover,
+.log-entry:focus-visible {
+  border-color: var(--color-lapis);
+}
+
+.log-entry--active {
+  border-color: var(--color-lapis);
+  background-color: color-mix(in srgb, var(--color-lapis) 12%, var(--color-ground));
+}
+
+.log-entry-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-ink-muted);
+}
+
+.log-entry-icon {
+  color: var(--color-lapis);
+}
+
+.log-entry--warn .log-entry-icon {
+  color: var(--color-sol);
+}
+
+.log-entry--fail .log-entry-icon {
+  color: var(--color-sol);
+}
+
+.log-entry-title {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.log-entry-detail {
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.flight-map-telemetry-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.flight-telemetry-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+@media (max-width: 600px) {
+  .flight-telemetry-subgrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* S4. Report Debrief Console */
+.report-debrief-header {
+  margin-block-end: var(--space-24);
+  position: relative;
+  overflow: hidden;
+}
+
+.report-debrief-art {
+  inline-size: 100%;
+  max-block-size: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-2);
+  margin-block-end: var(--space-12);
+}
+
+.report-header-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.report-score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.report-score-label {
+  color: var(--color-ink-muted);
+}
+
+.report-score-value {
+  color: var(--color-ink);
+}
+
+.report-console-grid {
+  display: grid;
+  gap: var(--space-24);
+  margin-block-end: var(--space-24);
+}
+
+@media (min-width: 900px) {
+  .report-console-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.report-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* GIBS Viewfinder Frame */
+.satview-viewfinder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.viewfinder-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  background-color: var(--color-ground);
+}
+
+.satview-canvas {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.viewfinder-bracket {
+  position: absolute;
+  inline-size: 14px;
+  block-size: 14px;
+  border-color: var(--color-brass);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.viewfinder-bracket.tl {
+  inset-block-start: 6px;
+  inset-inline-start: 6px;
+  border-block-start-width: 2px;
+  border-inline-start-width: 2px;
+  border-block-end-width: 0;
+  border-inline-end-width: 0;
+}
+
+.viewfinder-bracket.tr {
+  inset-block-start: 6px;
+  inset-inline-end: 6px;
+  border-block-start-width: 2px;
+  border-inline-end-width: 2px;
+  border-block-end-width: 0;
+  border-inline-start-width: 0;
+}
+
+.viewfinder-bracket.bl {
+  inset-block-end: 6px;
+  inset-inline-start: 6px;
+  border-block-end-width: 2px;
+  border-inline-start-width: 2px;
+  border-block-start-width: 0;
+  border-inline-end-width: 0;
+}
+
+.viewfinder-bracket.br {
+  inset-block-end: 6px;
+  inset-inline-end: 6px;
+  border-block-end-width: 2px;
+  border-inline-end-width: 2px;
+  border-block-start-width: 0;
+  border-inline-start-width: 0;
+}
+
+.satview-caption {
+  color: var(--color-ink-muted);
+}
+
+.satview-credit {
+  color: var(--color-brass);
+}
+
+/* Disposal Dial */
+.disposal-dial-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.disposal-dial-svg {
+  inline-size: 100%;
+  max-inline-size: 240px;
+  block-size: auto;
+  display: block;
+}
+
+.disposal-dial-val-arc {
+  transition: stroke-dashoffset 600ms ease-out;
+}
+
+.disposal-tick-label {
+  font-size: 9px;
+}
+
+.disposal-verdict-chips {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.disposal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  padding-inline: var(--space-8);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  border: 1px solid var(--color-rule);
+}
+
+.disposal-chip--pass {
+  color: var(--color-lapis);
+  border-color: var(--color-lapis);
+}
+
+.disposal-chip--fail {
+  color: var(--color-sol);
+  border-color: var(--color-sol);
+}
+
+.disposal-reason {
+  color: var(--color-ink-muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* Twin Gauges */
+.twin-gauges-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.twin-gauge-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.twin-gauge-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.twin-gauge-track {
+  block-size: 8px;
+  background-color: var(--color-rule);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.twin-gauge-bar {
+  block-size: 100%;
+  transition: inline-size 600ms ease-out;
+}
+
+.twin-gauge-bar--truth {
+  background-color: var(--color-ink);
+}
+
+.twin-gauge-bar--plan {
+  background-color: var(--color-lapis);
+}
+
+.twin-sun-delta {
+  margin-block-start: var(--space-8);
+  padding: var(--space-12);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  background-color: var(--color-ground);
+}
+
+/* Mission Code card & P6 Slot */
+.mission-code-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.report-p6-slot {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+}
+
+.report-p6-slot .report-backdrop-art {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.report-nav-actions {
+  margin-block-start: var(--space-24);
+}
+
+/* S5. Re-Fly Layout */
+.refly-header-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  margin-block-end: var(--space-24);
+}
+
+.refly-diptych-art {
+  inline-size: 140px;
+  block-size: 70px;
+  object-fit: cover;
+  border-radius: var(--radius-2);
+  flex-shrink: 0;
+}
+
+.refly-tri-layout {
+  display: grid;
+  gap: var(--space-24);
+  margin-block-end: var(--space-24);
+}
+
+@media (min-width: 1100px) {
+  .refly-tri-layout {
+    grid-template-columns: 1fr 1.6fr 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .refly-tri-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.refly-deltas-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+.refly-deltas-table th,
+.refly-deltas-table td {
+  padding-block: var(--space-6);
+  padding-inline: var(--space-8);
+  border-block-end: 1px solid var(--color-rule);
+  text-align: start;
+}
+
+.delta-row--changed {
+  background-color: color-mix(in srgb, var(--color-brass) 10%, transparent);
+}
+
+.delta-new-val {
+  color: var(--color-brass);
+}
+
+.refly-racing-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-block-end: var(--space-16);
+}
+
+.racing-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.racing-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-ink-muted);
+}
+
+.racing-bar-track {
+  block-size: 8px;
+  background-color: var(--color-rule);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.racing-bar-fill {
+  block-size: 100%;
+  transition: inline-size 600ms ease-out;
+}
+
+.racing-bar-fill--base {
+  background-color: var(--color-ink-muted);
+}
+
+.racing-bar-fill--new {
+  background-color: var(--color-lapis);
+}
+
+.refly-tweaks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.refly-tweak-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  inline-size: 100%;
+  text-align: start;
+}
+
+.tweak-icon {
+  color: var(--color-brass);
+}
+
+.tweak-label {
+  color: var(--color-ink);
+}
+
+.refly-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-20);
+}
+
+.refly-fly-again-btn {
+  min-inline-size: 220px;
+}
+
+.refly-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-32);
+  gap: var(--space-16);
+}
+
+.refly-empty-art {
+  max-inline-size: 240px;
+  block-size: auto;
+  border-radius: var(--radius-2);
+}
+
+.refly-empty-desc {
+  max-inline-size: 420px;
+  color: var(--color-ink-muted);
 }
