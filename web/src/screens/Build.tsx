@@ -4,10 +4,64 @@ import { useI18n } from '../i18n';
 import { fmtSigned, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partsFor } from '../engineAdapter';
-import { Button, Gauge, PartCard, unitText } from '../ui/components';
+import { Button, Gauge, PartCard, SlotIcon, unitText } from '../ui/components';
 import { ScreenFrame } from './ScreenFrame';
 
 const FRAMES: FormFactor[] = ['1U', '3U', '6U'];
+
+function ExplodedDiagram(): React.JSX.Element {
+  const { t } = useI18n();
+  const [activeSlot, setActiveSlot] = useState<string | null>(null);
+
+  const subsystems = [
+    { id: 'camera', label: 'camera' },
+    { id: 'panels', label: 'panels' },
+    { id: 'battery', label: 'battery' },
+    { id: 'radio', label: 'radio' },
+    { id: 'computer', label: 'computer' },
+    { id: 'pointing', label: 'pointing' },
+    { id: 'fuel', label: 'fuel' },
+  ];
+
+  return (
+    <section className="build-exploded" aria-labelledby="exploded-h">
+      <div className="build-exploded-header">
+        <h3 id="exploded-h" className="type-label section-label">
+          {t('build.exploded_title')}
+        </h3>
+        <p className="type-small build-exploded-hint">{t('build.exploded_hint')}</p>
+      </div>
+      <div className="build-exploded-media">
+        <div className="art-frame aspect-16-9">
+          <img
+            src="img/art/art-p5-6u-exploded-v1.webp"
+            alt={t('build.exploded_title')}
+            loading="lazy"
+            className="art-img"
+          />
+          <span className="sp-si-tag type-label">SI-generated</span>
+        </div>
+        <ul className="build-exploded-chips" aria-label={t('build.exploded_title')}>
+          {subsystems.map((s) => (
+            <li key={s.id}>
+              <button
+                type="button"
+                className={`exploded-chip type-small ${activeSlot === s.id ? 'exploded-chip--active' : ''}`}
+                onMouseEnter={() => setActiveSlot(s.id)}
+                onMouseLeave={() => setActiveSlot(null)}
+                onFocus={() => setActiveSlot(s.id)}
+                onBlur={() => setActiveSlot(null)}
+              >
+                <SlotIcon slot={s.id} />
+                <span>{t(`slot.${s.label}`)}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
 
 /** Six gauges plus the knock-on trail (built only from the gauge deltas of two results). */
 export function GaugeRow(): React.JSX.Element {
@@ -70,6 +124,7 @@ export function Build(): React.JSX.Element {
   return (
     <ScreenFrame id="Build">
       <GaugeRow />
+      <ExplodedDiagram />
       <section className="build-frame" aria-labelledby="frame-h">
         <h3 id="frame-h" className="type-label section-label">
           {t('build.frame')}
@@ -84,8 +139,9 @@ export function Build(): React.JSX.Element {
       </section>
       {PART_SLOTS.map((slot) => (
         <section key={slot} className="part-group" aria-labelledby={`slot-${slot}`}>
-          <h3 id={`slot-${slot}`} className="type-label section-label">
-            {t(`slot.${slot}`)}
+          <h3 id={`slot-${slot}`} className="type-label section-label slot-heading">
+            <SlotIcon slot={slot} />
+            <span>{t(`slot.${slot}`)}</span>
           </h3>
           <div className="part-grid">
             {partsFor(slot).map((p) => (
