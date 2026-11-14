@@ -59,7 +59,7 @@ export function DisposalDial({ result }: DisposalDialProps): React.JSX.Element {
         <path
           d={arcD}
           fill="none"
-          stroke={fccPass ? 'var(--color-lapis)' : nasaPass ? 'var(--color-brass)' : 'var(--color-sol)'}
+          stroke={fccPass ? 'var(--color-lapis)' : nasaPass ? 'var(--color-brass)' : 'var(--color-fail)'}
           strokeWidth="10"
           strokeLinecap="round"
           className="disposal-dial-val-arc"
@@ -81,7 +81,7 @@ export function DisposalDial({ result }: DisposalDialProps): React.JSX.Element {
           className="type-label disposal-tick-label"
           fill="var(--color-ink-muted)"
         >
-          FCC 5y
+          {t('disposal.fcc')}
         </text>
 
         {/* NASA 25-year tick */}
@@ -100,7 +100,7 @@ export function DisposalDial({ result }: DisposalDialProps): React.JSX.Element {
           className="type-label disposal-tick-label"
           fill="var(--color-ink-muted)"
         >
-          NASA 25y
+          {t('disposal.nasa')}
         </text>
 
         {/* Center Readout */}
@@ -119,11 +119,11 @@ export function DisposalDial({ result }: DisposalDialProps): React.JSX.Element {
       <div className="disposal-verdict-chips">
         <span className={`disposal-chip ${fccPass ? 'disposal-chip--pass' : 'disposal-chip--fail'}`}>
           <span className="chip-mark">{fccPass ? <CheckMark /> : <CrossMark />}</span>
-          <span>FCC 5y (FCC 22-74)</span>
+          <span>{t('disposal.fcc')} (FCC 22-74)</span>
         </span>
         <span className={`disposal-chip ${nasaPass ? 'disposal-chip--pass' : 'disposal-chip--fail'}`}>
           <span className="chip-mark">{nasaPass ? <CheckMark /> : <CrossMark />}</span>
-          <span>NASA 25y (STD-8719.14)</span>
+          <span>{t('disposal.nasa')} (STD-8719.14)</span>
         </span>
       </div>
 

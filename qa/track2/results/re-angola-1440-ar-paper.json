@@ -1,0 +1,307 @@
+{
+ "axe": [
+  {
+   "key": "angola-1440-ar-paper-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-ar-paper-report",
+   "kind": "CLIPPED-Y",
+   "sel": "div.report-p6-slot",
+   "sh": 369,
+   "ch": 345,
+   "text": "SI-generated"
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.3 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": []
+}

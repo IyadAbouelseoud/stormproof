@@ -1,0 +1,502 @@
+{
+ "tag": "1440-en",
+ "rows": [
+  {
+   "screen": "Brief",
+   "control": "DOM text",
+   "action": "grep Brief initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Layout",
+   "action": "horizontal overflow Brief initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Back",
+   "action": "inspect on first screen",
+   "expected": "disabled",
+   "actual": "ok",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Theme toggle",
+   "action": "click",
+   "expected": "data-theme flips",
+   "actual": "night -> paper -> night",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Sound toggle",
+   "action": "click twice",
+   "expected": "toggles, default off, no error",
+   "actual": "false -> true -> false",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Sound tooltip dismiss",
+   "action": "click Dismiss",
+   "expected": "tooltip hides",
+   "actual": "present=0 after=0",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Language toggle",
+   "action": "click twice",
+   "expected": "html lang/dir flips and back, design kept",
+   "actual": "en,ltr | ar,rtl | en,ltr",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Story disclosure",
+   "action": "open <details>",
+   "expected": "full story visible",
+   "actual": "ok",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Objective tiles",
+   "action": "focus each tile",
+   "expected": "focusable, text clean",
+   "actual": "5 tiles",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Scenario picker",
+   "action": "Angola -> Jeddah -> Angola",
+   "expected": "no Jeddah state in Angola",
+   "actual": "jeddahShown=true eventCards after=0 jeddah-ish text in Angola=undefined",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Solo / Team",
+   "action": "click Team, type names, back to Solo",
+   "expected": "name inputs appear, accept text, hide on Solo",
+   "actual": "inputs=4 values=Amal,عمر,Lee,Noor afterSolo=0 keptOnReturn=Amal,عمر,Lee,Noor",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Links",
+   "action": "footer links",
+   "expected": "gallery/tokens/return navigate",
+   "actual": "#main,#,#gallery,#tokens",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "CML rail",
+   "action": "click each of 4 steps",
+   "expected": "each navigates to a screen",
+   "actual": "brief > build > orbit > launch",
+   "pass": true
+  },
+  {
+   "screen": "Brief",
+   "control": "Team off",
+   "action": "ensure Solo",
+   "expected": "solo",
+   "actual": "ok",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Start mission",
+   "action": "click",
+   "expected": "navigates to Build",
+   "actual": "build",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "DOM text",
+   "action": "grep Build initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Layout",
+   "action": "horizontal overflow Build initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Form factor 1U/3U/6U",
+   "action": "click each",
+   "expected": "gauges change; button pressed",
+   "actual": "1U:true:MASS OVER 4.2 kg Limit 2 Margin −52.4% (need 35%) 2.2 over l | 3U:true:MASS TIGHT 5.1 kg Limit 6 Margin +17.6% (need 35%) POWER OK  | 6U:true:MASS OK 6.3 kg Limit 12 Margin +90.5% (need 35%) POWER OK 8.",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Part cards",
+   "action": "click every card in every slot",
+   "expected": "selection moves; mission code/gauges change; no console error",
+   "actual": "groups=7 clicks=20 bad=",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Exploded hotspots",
+   "action": "click each hotspot and chip",
+   "expected": "pins slot (aria-pressed), card shown, Change button scrolls",
+   "actual": "0:true:CAMERA Standard Camera The camera sets how sharp your pictur || 1:true:SOLAR PANELS Medium Panels Panels turn sunlight into power.  || 2:false:SOLAR PANELS Medium Panels Panels turn sunlight into power.  || 3:true",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Hotspot count vs form factor",
+   "action": "1U selected",
+   "expected": "hotspots only for parts that exist (no dead hotspot) - informational",
+   "actual": "8 hotspots at 1U (7 slots, panels x2)",
+   "pass": true
+  },
+  {
+   "screen": "Build",
+   "control": "Fuel slot",
+   "action": "options",
+   "expected": "a zero-fuel option exists",
+   "actual": "2 fuel options (no \"none\" option)",
+   "pass": false
+  },
+  {
+   "screen": "Orbit",
+   "control": "Next",
+   "action": "click",
+   "expected": "goes to Orbit",
+   "actual": "orbit",
+   "pass": true
+  },
+  {
+   "screen": "Orbit",
+   "control": "DOM text",
+   "action": "grep Orbit initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Orbit",
+   "control": "Layout",
+   "action": "horizontal overflow Orbit initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Orbit",
+   "control": "Altitude slider",
+   "action": "keyboard Arrow/Home/End + fill",
+   "expected": "value changes within 150..800; min/max clamp",
+   "actual": "min=200 max=800 step=10 500->510->End 800->Home 200->500 500",
+   "pass": true
+  },
+  {
+   "screen": "Orbit",
+   "control": "Altitude extremes",
+   "action": "150 and 800 km",
+   "expected": "screen shows verdict, no NaN",
+   "actual": "150:clean | 800:clean | 500:clean",
+   "pass": true
+  },
+  {
+   "screen": "Orbit",
+   "control": "Orbit tiles",
+   "action": "ISS then SSO",
+   "expected": "aria-pressed/selected flips; altitude stays valid",
+   "actual": "true | true",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "DOM text",
+   "action": "grep Launch initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Layout",
+   "action": "horizontal overflow Launch initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Launch date SunStripe",
+   "action": "keyboard Left/Right/PageUp/Home/End",
+   "expected": "aria-valuenow changes and clamps; date label updates",
+   "actual": "99->100->112->Home 0->End 143/143 ->Home,Left 0 text=\"Dec 2026: F10.7 119 sfu (forecast)\" bad=",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Launch date extremes",
+   "action": "Jan 2015 and Oct/Dec 2026",
+   "expected": "no NaN; checklist shows a verdict",
+   "actual": "Home: Jan 2015: F10.7 137.5 sfu launchBtnDisabled=true bad=0 | End: Dec 2026: F10.7 119 sfu (forecast) launchBtnDisabled=true bad=0",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Launch date pointer",
+   "action": "click mid stripe",
+   "expected": "value changes",
+   "actual": "79",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Rocket cards",
+   "action": "click each",
+   "expected": "selected state follows; checklist updates",
+   "actual": "0:true | 1:true",
+   "pass": true
+  },
+  {
+   "screen": "Launch",
+   "control": "Launch button",
+   "action": "state with valid design",
+   "expected": "enabled after checklist ticks (about 1.3 s), click goes to Flight",
+   "actual": "ok",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "DOM text",
+   "action": "grep Flight initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Layout",
+   "action": "horizontal overflow Flight initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Play/Pause",
+   "action": "click Play, wait, click again",
+   "expected": "clock advances, then stops",
+   "actual": "LAUNCH DATE May 15, 2023 DAY 0 1 2 3 4 5 6 7 8 9 ALTITUDE 500 km DENSITY 6.77e-13 kg/m³ STORM ALERT NOMINAL -> LAUNCH DATE May 31, 2023 DAY 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 ALTITUDE 499.1 km DENSITY 7.90e-13 kg/m³",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Speed 1x/4x/16x",
+   "action": "click each, measure clock rate",
+   "expected": "monotonic faster; aria-pressed follows",
+   "actual": "1x: 10d/s pressed=true | 4x: 41d/s pressed=true | 16x: 83d/s pressed=true",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Scrub (chart)",
+   "action": "focus chart, ArrowRight/ArrowLeft, drag, Space",
+   "expected": "altitude readout changes with scrub; Space toggles play",
+   "actual": "alt 174 -> 194 -> 184 -> drag 184",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "DOM text",
+   "action": "grep Flight end",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Layout",
+   "action": "horizontal overflow Flight end",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Flight",
+   "control": "Skip to end",
+   "action": "click",
+   "expected": "run completes, reentry card appears, Skip disabled",
+   "actual": "reentry card=1 skipDisabled=true",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "DOM text",
+   "action": "grep Report initial",
+   "expected": "no undefined/NaN/[object/Infinity/raw keys",
+   "actual": "clean",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Layout",
+   "action": "horizontal overflow Report initial",
+   "expected": "<= 1px",
+   "actual": "0px",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission ticket Copy",
+   "action": "click Copy code (clipboard permission denied vs granted)",
+   "expected": "shows Copied or a clean failure chip",
+   "actual": "chip=\"Copied.\" clipboardMatchesCode=true",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Sources drawer",
+   "action": "toggle <summary>",
+   "expected": "opens, lists rows, no raw keys",
+   "actual": "open=1 chars=2389 bad=/\\b(?:brief|build|orbit|launch|flight|report|refly|screens|buttons|fit|cause|gauge|part|rocket|score|req|jeddah|sun|map|nav|segment|app|medal|team|role|storm|disposal)\\.[a-z0-9_]+(?:\\.[a-z0-9_]+)*\\b",
+   "pass": false
+  },
+  {
+   "screen": "Report",
+   "control": "Apply design hint",
+   "action": "click \"Apply design\"",
+   "expected": "applies and shows a visible confirmation or navigates",
+   "actual": "code same=false screen report->report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Medals",
+   "action": "focus/hover each medal",
+   "expected": "text clean",
+   "actual": "3 medals",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste empty + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=0 unchanged=true crashed=false screen=report",
+   "pass": false
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste whitespace + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=0 unchanged=true crashed=false screen=report",
+   "pass": false
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste wrong prefix + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste truncated + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste tampered + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste bad chars + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste unknown scenario id + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste unknown part id + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste unknown rocket id + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste year 2619 + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste altitude 5000 + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=0 unchanged=false crashed=false screen=report",
+   "pass": false
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste altitude -40 + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=0 unchanged=false crashed=false screen=report",
+   "pass": false
+  },
+  {
+   "screen": "Report",
+   "control": "Mission code field",
+   "action": "paste bad %-escape + Load",
+   "expected": "inline error, design unchanged, no crash",
+   "actual": "inlineError=1 unchanged=true crashed=false screen=report",
+   "pass": true
+  }
+ ],
+ "problems": []
+}

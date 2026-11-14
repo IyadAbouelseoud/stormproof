@@ -6,6 +6,7 @@ import { NavigationControls } from './ui/NavigationControls';
 import { useNavigation, type ScreenId } from './navigation';
 import { useMission } from './store';
 import { loadEngine, scenario, useEngineStatus } from './engineAdapter';
+import { tx, scenarioText } from './content';
 import { isSoundEnabled, setSoundEnabled, playPartSnap } from './sound';
 import { reducedMotion } from './format';
 import { Brief, Build, Orbit, Launch, Flight, Report, Refly } from './screens';
@@ -126,7 +127,7 @@ function ThemeToggle({ theme, onToggle }: { theme: 'night' | 'paper'; onToggle: 
 }
 
 export default function App(): React.JSX.Element {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const currentScreen = useNavigation((s) => s.currentScreen);
   const handoverTo = useNavigation((s) => s.handoverTo);
   const status = useEngineStatus((s) => s.status);
@@ -209,7 +210,7 @@ export default function App(): React.JSX.Element {
           <h1 className="type-display-l app-title">{t('app.title')}</h1>
           <p className="type-small app-pitch">{t('app.pitch')}</p>
           <div className="header-status-strip type-data" aria-live="polite">
-            DAY 0 · SCENARIO {(sc?.name || result.design.scenarioId).toUpperCase()} · SCORE <ScoreCountUp target={result.score.total} />/100
+            {t('header.status', { name: (tx(scenarioText(result.design.scenarioId)?.title, lang, sc?.name || result.design.scenarioId)) })} <ScoreCountUp target={result.score.total} />/100
           </div>
         </div>
         <div className="header-controls">

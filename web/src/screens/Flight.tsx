@@ -358,7 +358,7 @@ export function Flight(): React.JSX.Element {
               {t('flight.altitude')}
             </h3>
             <span className="type-small type-data">
-              SCRUB: DRAG OR ARROW KEYS · SPACE: PLAY/PAUSE
+              {t('flight.scrub_hint')}
             </span>
           </div>
           <AltitudeChart

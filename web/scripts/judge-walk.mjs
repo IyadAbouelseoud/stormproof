@@ -1,0 +1,68 @@
+// Final pass, Track 4: the pitch demo path with viewport screenshots. cwd web/, preview at BASE.
+// Usage: BASE=http://localhost:4178/ ALT=480 TAG=fail node scripts/judge-walk.mjs
+import { chromium } from '@playwright/test';
+const BASE = process.env.BASE ?? 'http://localhost:4178/';
+const ALT = Number(process.env.ALT ?? 480);
+const TAG = process.env.TAG ?? 'fail';
+const W = Number(process.env.W ?? 1440), H = Number(process.env.H ?? 900);
+const out = `../qa/screens/judge-${TAG}-${W}`;
+const b = await chromium.launch({ channel: 'chrome' });
+const p = await b.newPage({ viewport: { width: W, height: H } });
+const errs = [];
+p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
+p.on('pageerror', (e) => errs.push('pageerror ' + e.message));
+const shot = async (name, full = false) => { await p.waitForTimeout(700); await p.screenshot({ path: `${out}-${name}.png`, fullPage: full }); };
+const next = () => p.click('.nav-controls-bar .sp-btn-nav >> nth=1');
+const t0 = Date.now();
+await p.goto(BASE);
+await p.waitForFunction(() => !document.querySelector('.engine-status'), null, { timeout: 20000 });
+await p.waitForTimeout(1500);
+await shot('1-brief');
+await shot('1-brief-full', true);
+await next();
+await p.locator('#slot-pointing').locator('xpath=..').locator('.sp-part').nth(2).click();
+await shot('2-build');
+await next();
+await p.waitForTimeout(1500);
+const slider = p.locator('.screen--orbit input[type=range]');
+await slider.focus();
+const cur = Number(await slider.inputValue());
+for (let i = 0; i < Math.abs(cur - ALT) / 10; i++) await p.keyboard.press(ALT < cur ? 'ArrowLeft' : 'ArrowRight');
+await p.waitForTimeout(1500);
+console.log('altitude now', await slider.inputValue());
+await shot('3-orbit');
+await shot('3-orbit-full', true);
+await next();
+await shot('4-launch');
+await shot('4-launch-full', true);
+await p.waitForSelector('.launch-btn:not([disabled])', { timeout: 15000 });
+const tl = Date.now();
+await p.click('.launch-btn');
+await p.waitForSelector('.screen--flight', { timeout: 20000 });
+console.log('launch ceremony ms', Date.now() - tl);
+await shot('5-flight-start');
+await p.click('.flight-controls .sp-btn >> nth=0');
+await p.waitForTimeout(2500);
+await shot('5-flight-playing');
+for (let i = 0; i < 60 && !(await p.locator('.reentry').count()); i++) {
+  const storm = p.locator('.storm-card .sp-btn').first();
+  if (await storm.count()) { await shot('5-flight-storm'); await storm.click(); }
+  await p.click('.flight-controls .sp-btn--quiet', { timeout: 1000 }).catch(() => {});
+  await p.waitForTimeout(300);
+}
+await shot('5-flight-end');
+await shot('5-flight-end-full', true);
+if (await p.locator('.reentry .sp-btn').count()) await p.click('.reentry .sp-btn'); else await next();
+await p.waitForSelector('.screen--report', { timeout: 15000 });
+await p.waitForTimeout(2500);
+await shot('6-report');
+await shot('6-report-full', true);
+console.log('REPORT TEXT\n' + (await p.locator('.screen--report').innerText()).replace(/\n{2,}/g, '\n').slice(0, 3500));
+await p.evaluate(() => window.scrollTo(0, 0));
+await next().catch(() => {});
+await p.waitForTimeout(1500);
+await shot('7-refly');
+await shot('7-refly-full', true);
+console.log('REFLY TEXT\n' + (await p.locator('main').innerText()).replace(/\n{2,}/g, '\n').slice(0, 1500));
+console.log('errors', errs.length, errs.slice(0, 5), 'total ms', Date.now() - t0);
+await b.close();

@@ -1,0 +1,311 @@
+{
+ "axe": [
+  {
+   "key": "jeddah-390-ar-paper-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "jeddah-390-ar-paper-report",
+   "kind": "CLIPPED-Y",
+   "sel": "div.report-p6-slot",
+   "sh": 194,
+   "ch": 170,
+   "text": "SI-generated"
+  },
+  {
+   "key": "jeddah-390-ar-paper-report",
+   "kind": "scrollable",
+   "sel": "table.sources-table.type-small",
+   "sw": 451,
+   "cw": 306,
+   "text": "الرقمالقيمةالوسمالمصدرالعمر (الشمس الفعل"
+  },
+  {
+   "key": "jeddah-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:717 d",
+   "b": "div.nav-status.type-data:الشاشة 6 من 7"
+  },
+  {
+   "key": "jeddah-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:25 y",
+   "b": "p.type-small.footer-credit:بيانات NASA OMN"
+  }
+ ],
+ "dials": [
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "7.9",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.2 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "600",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "3.2",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,394",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "jeddah-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": []
+}

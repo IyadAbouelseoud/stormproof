@@ -1,0 +1,527 @@
+{
+ "optical-fails": {
+  "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1idWRnZXR-cGFuZWxzLWxhcmdlfmJhdHRlcnktbWVkaXVtfnJhZGlvLWZhc3R-Y29tcHV0ZXItc3RhbmRhcmR-cG9pbnRpbmctcHJlY2lzZX5mdWVsLXNtYWxsfjZVflN-NTAwfnNwYWNleC1yaWRlc2hhcmV-MjAyMS0wNi0wMX50fjF-fg",
+  "outcome": {
+   "kind": "reentered",
+   "date": "2025-08-26"
+  },
+  "lifetimeDays": 1394,
+  "planLifetimeDays": 2111,
+  "truthLifetimeDays": 1394,
+  "sunTookDays": 717,
+  "score": 80,
+  "requirementsMet": 5,
+  "requirements": [
+   {
+    "id": "revisit",
+    "value": 3.4,
+    "target": 5,
+    "unit": "days",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "gsd",
+    "value": 30,
+    "target": 30,
+    "unit": "m",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "data-delivered",
+    "value": 837,
+    "target": 100,
+    "unit": "GB",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "lifetime",
+    "value": 1394,
+    "target": 365,
+    "unit": "days",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "cost",
+    "value": 1233000,
+    "target": 1900000,
+    "unit": "USD",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "event-look",
+    "value": -1,
+    "target": 2,
+    "unit": "days",
+    "sense": "max",
+    "met": false
+   }
+  ],
+  "gauges": {
+   "mass": {
+    "value": 6.3,
+    "limit": 12,
+    "unit": "kg",
+    "state": "ok"
+   },
+   "power": {
+    "value": 7.9,
+    "limit": 27.94,
+    "unit": "W",
+    "state": "ok"
+   },
+   "budget": {
+    "value": 1233000,
+    "limit": 1900000,
+    "unit": "USD",
+    "state": "ok"
+   },
+   "data": {
+    "value": 600,
+    "limit": 2718.8,
+    "unit": "MB/day",
+    "state": "ok"
+   },
+   "comms": {
+    "value": 3.2,
+    "limit": 14.5,
+    "unit": "min/day",
+    "state": "ok"
+   },
+   "time": {
+    "value": 1394,
+    "limit": 365,
+    "unit": "days",
+    "state": "ok"
+   }
+  },
+  "fit": [
+   {
+    "check": "mass",
+    "pass": true,
+    "en": "6.3 kg fits the 12 kg 6U limit."
+   },
+   {
+    "check": "volume",
+    "pass": true,
+    "en": "Parts take 4.8 of 6 U."
+   },
+   {
+    "check": "power",
+    "pass": true,
+    "en": "Panels make 27.9 W for a 7.9 W load (253.7% margin)."
+   },
+   {
+    "check": "energy",
+    "pass": true,
+    "en": "The battery covers each 35.8 min eclipse with 390.7% margin."
+   },
+   {
+    "check": "budget",
+    "pass": true,
+    "en": "USD 1,233,000 of USD 1,900,000."
+   },
+   {
+    "check": "data",
+    "pass": true,
+    "en": "600 MB/day made, 2719 MB/day can come down."
+   },
+   {
+    "check": "comms",
+    "pass": true,
+    "en": "About 3 passes a day over Funda (approximate site)."
+   },
+   {
+    "check": "rocket-capacity",
+    "pass": true,
+    "en": "SpaceX rideshare can carry 830 kg."
+   },
+   {
+    "check": "rocket-orbit",
+    "pass": true,
+    "en": "SpaceX rideshare reaches 500 km sun-synchronous."
+   },
+   {
+    "check": "launch-window",
+    "pass": true,
+    "en": "Launch on 2021-06-01 is possible."
+   },
+   {
+    "check": "disposal",
+    "pass": true,
+    "en": "Reenters after 3.8 years: meets the FCC 5-year and NASA 25-year rules."
+   }
+  ],
+  "eventReplay": {
+   "firstUsefulLookDays": null,
+   "revisitDays": 3.4,
+   "alive": true,
+   "looks": [
+    {
+     "date": "2022-11-24",
+     "usable": false,
+     "camera": "optical"
+    }
+   ]
+  },
+  "disposal": {
+   "years": 3.8,
+   "fcc": true,
+   "nasa": true
+  }
+ },
+ "radar-over-budget": {
+  "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1yYWRhcn5wYW5lbHMtbGFyZ2V-YmF0dGVyeS1tZWRpdW1-cmFkaW8tZmFzdH5jb21wdXRlci1zdGFuZGFyZH5wb2ludGluZy1wcmVjaXNlfmZ1ZWwtc21hbGx-NlV-U341MDB-c3BhY2V4LXJpZGVzaGFyZX4yMDIxLTA2LTAxfnR-MX5-",
+  "outcome": {
+   "kind": "reentered",
+   "date": "2025-08-26"
+  },
+  "lifetimeDays": 1394,
+  "planLifetimeDays": 2111,
+  "truthLifetimeDays": 1394,
+  "sunTookDays": 717,
+  "score": 80,
+  "requirementsMet": 5,
+  "requirements": [
+   {
+    "id": "revisit",
+    "value": 4.1,
+    "target": 5,
+    "unit": "days",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "gsd",
+    "value": 15,
+    "target": 30,
+    "unit": "m",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "data-delivered",
+    "value": 3234,
+    "target": 100,
+    "unit": "GB",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "lifetime",
+    "value": 1394,
+    "target": 365,
+    "unit": "days",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "cost",
+    "value": 2013000,
+    "target": 1900000,
+    "unit": "USD",
+    "sense": "max",
+    "met": false
+   },
+   {
+    "id": "event-look",
+    "value": 0.4,
+    "target": 2,
+    "unit": "days",
+    "sense": "max",
+    "met": true
+   }
+  ],
+  "gauges": {
+   "mass": {
+    "value": 9.8,
+    "limit": 12,
+    "unit": "kg",
+    "state": "warn"
+   },
+   "power": {
+    "value": 14.9,
+    "limit": 27.94,
+    "unit": "W",
+    "state": "ok"
+   },
+   "budget": {
+    "value": 2013000,
+    "limit": 1900000,
+    "unit": "USD",
+    "state": "fail"
+   },
+   "data": {
+    "value": 2500,
+    "limit": 2718.8,
+    "unit": "MB/day",
+    "state": "ok"
+   },
+   "comms": {
+    "value": 13.3,
+    "limit": 14.5,
+    "unit": "min/day",
+    "state": "ok"
+   },
+   "time": {
+    "value": 1394,
+    "limit": 365,
+    "unit": "days",
+    "state": "ok"
+   }
+  },
+  "fit": [
+   {
+    "check": "mass",
+    "pass": true,
+    "en": "9.8 kg fits the 12 kg 6U limit."
+   },
+   {
+    "check": "volume",
+    "pass": false,
+    "en": "Parts need 6.3 U but a 6U has 6 U."
+   },
+   {
+    "check": "power",
+    "pass": true,
+    "en": "Panels make 27.9 W for a 14.9 W load (87.5% margin)."
+   },
+   {
+    "check": "energy",
+    "pass": true,
+    "en": "The battery covers each 35.8 min eclipse with 160.2% margin."
+   },
+   {
+    "check": "budget",
+    "pass": false,
+    "en": "Costs USD 2,013,000, over the USD 1,900,000 budget."
+   },
+   {
+    "check": "data",
+    "pass": true,
+    "en": "2500 MB/day made, 2719 MB/day can come down."
+   },
+   {
+    "check": "comms",
+    "pass": true,
+    "en": "About 3 passes a day over Funda (approximate site)."
+   },
+   {
+    "check": "rocket-capacity",
+    "pass": true,
+    "en": "SpaceX rideshare can carry 830 kg."
+   },
+   {
+    "check": "rocket-orbit",
+    "pass": true,
+    "en": "SpaceX rideshare reaches 500 km sun-synchronous."
+   },
+   {
+    "check": "launch-window",
+    "pass": true,
+    "en": "Launch on 2021-06-01 is possible."
+   },
+   {
+    "check": "disposal",
+    "pass": true,
+    "en": "Reenters after 3.8 years: meets the FCC 5-year and NASA 25-year rules."
+   }
+  ],
+  "eventReplay": {
+   "firstUsefulLookDays": 0.4,
+   "revisitDays": 2,
+   "alive": true,
+   "looks": [
+    {
+     "date": "2022-11-24",
+     "usable": true,
+     "camera": "radar"
+    }
+   ]
+  },
+  "disposal": {
+   "years": 3.8,
+   "fcc": true,
+   "nasa": true
+  }
+ },
+ "lean-radar-recovery": {
+  "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1yYWRhcn5wYW5lbHMtbWVkaXVtfmJhdHRlcnktc21hbGx-cmFkaW8tZmFzdH5jb21wdXRlci1iYXNpY35wb2ludGluZy1zdGFuZGFyZH5mdWVsLXNtYWxsfjZVflN-NTAwfnNwYWNleC1yaWRlc2hhcmV-MjAyMS0wNi0wMX50fjF-fg",
+  "outcome": {
+   "kind": "reentered",
+   "date": "2025-08-26"
+  },
+  "lifetimeDays": 1394,
+  "planLifetimeDays": 2111,
+  "truthLifetimeDays": 1394,
+  "sunTookDays": 717,
+  "score": 80,
+  "requirementsMet": 5,
+  "requirements": [
+   {
+    "id": "revisit",
+    "value": 8.2,
+    "target": 5,
+    "unit": "days",
+    "sense": "max",
+    "met": false
+   },
+   {
+    "id": "gsd",
+    "value": 15,
+    "target": 30,
+    "unit": "m",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "data-delivered",
+    "value": 3234,
+    "target": 100,
+    "unit": "GB",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "lifetime",
+    "value": 1394,
+    "target": 365,
+    "unit": "days",
+    "sense": "min",
+    "met": true
+   },
+   {
+    "id": "cost",
+    "value": 1847000,
+    "target": 1900000,
+    "unit": "USD",
+    "sense": "max",
+    "met": true
+   },
+   {
+    "id": "event-look",
+    "value": 0.8,
+    "target": 2,
+    "unit": "days",
+    "sense": "max",
+    "met": true
+   }
+  ],
+  "gauges": {
+   "mass": {
+    "value": 8.8,
+    "limit": 12,
+    "unit": "kg",
+    "state": "ok"
+   },
+   "power": {
+    "value": 13.8,
+    "limit": 20.32,
+    "unit": "W",
+    "state": "ok"
+   },
+   "budget": {
+    "value": 1847000,
+    "limit": 1900000,
+    "unit": "USD",
+    "state": "ok"
+   },
+   "data": {
+    "value": 2500,
+    "limit": 2718.8,
+    "unit": "MB/day",
+    "state": "ok"
+   },
+   "comms": {
+    "value": 13.3,
+    "limit": 14.5,
+    "unit": "min/day",
+    "state": "ok"
+   },
+   "time": {
+    "value": 1394,
+    "limit": 365,
+    "unit": "days",
+    "state": "ok"
+   }
+  },
+  "fit": [
+   {
+    "check": "mass",
+    "pass": true,
+    "en": "8.8 kg fits the 12 kg 6U limit."
+   },
+   {
+    "check": "volume",
+    "pass": true,
+    "en": "Parts take 5.8 of 6 U."
+   },
+   {
+    "check": "power",
+    "pass": true,
+    "en": "Panels make 20.3 W for a 13.8 W load (47.3% margin)."
+   },
+   {
+    "check": "energy",
+    "pass": true,
+    "en": "The battery covers each 35.8 min eclipse with 38.6% margin."
+   },
+   {
+    "check": "budget",
+    "pass": true,
+    "en": "USD 1,847,000 of USD 1,900,000."
+   },
+   {
+    "check": "data",
+    "pass": true,
+    "en": "2500 MB/day made, 2719 MB/day can come down."
+   },
+   {
+    "check": "comms",
+    "pass": true,
+    "en": "About 3 passes a day over Funda (approximate site)."
+   },
+   {
+    "check": "rocket-capacity",
+    "pass": true,
+    "en": "SpaceX rideshare can carry 830 kg."
+   },
+   {
+    "check": "rocket-orbit",
+    "pass": true,
+    "en": "SpaceX rideshare reaches 500 km sun-synchronous."
+   },
+   {
+    "check": "launch-window",
+    "pass": true,
+    "en": "Launch on 2021-06-01 is possible."
+   },
+   {
+    "check": "disposal",
+    "pass": true,
+    "en": "Reenters after 3.8 years: meets the FCC 5-year and NASA 25-year rules."
+   }
+  ],
+  "eventReplay": {
+   "firstUsefulLookDays": 0.8,
+   "revisitDays": 4.1,
+   "alive": true,
+   "looks": [
+    {
+     "date": "2022-11-24",
+     "usable": true,
+     "camera": "radar"
+    }
+   ]
+  },
+  "disposal": {
+   "years": 3.8,
+   "fcc": true,
+   "nasa": true
+  }
+ }
+}

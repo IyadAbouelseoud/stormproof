@@ -1,0 +1,4 @@
+FAIL [flows-1440-en] F1 team | Continue after vote | exp: Continue closes the card and play resumes | got: card=1
+FAIL [flows-1440-en] F5 re-fly | Refly DOM text sweep | exp: no raw ids/keys | got: rawIds=spacex-rideshare,spacex-rideshare,battery-medium,battery-large bad=
+FAIL [flows-1440-en] F7 offline | Offline full flow Brief -> Re-fly (cache-reload of localhost too) | exp: whole flow works, zero requests leave origin | got: external=0  brokenImages=1 http://localhost:4174/img/art/art-p6-pitch-backdrop-v1.webp fonts-not-loaded(lazy, unused faces ok)=4 bad=0
+[flows-1440-en] rows=28 fails=3 problems=0 

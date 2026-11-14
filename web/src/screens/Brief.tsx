@@ -92,6 +92,18 @@ export function Brief(): React.JSX.Element {
         </details>
       </div>
 
+      {/* Sun Stripe compact display (X2) */}
+      {months && (
+        <section className="brief-sunstripe-section" aria-label={t('sun.legend')}>
+          <div className="brief-sunstripe-box">
+            <SunStripe months={months} value={Math.max(0, months.findIndex((m) => m.month === '2023-04'))} label={t('sun.legend')} />
+          </div>
+          <p className="type-small sun-legend">
+            {t('sun.legend')} <span className="type-data">{t('sun.steps')}</span>
+          </p>
+        </section>
+      )}
+
       {/* Objective tiles in a grid (3 columns at 1440, 2 at 390) (X2) */}
       <section className="brief-objectives" aria-label={t('report.requirements')}>
         <div className="brief-obj-grid">
@@ -120,18 +132,6 @@ export function Brief(): React.JSX.Element {
           })}
         </div>
       </section>
-
-      {/* Sun Stripe compact display (X2) */}
-      {months && (
-        <section className="brief-sunstripe-section" aria-label={t('sun.legend')}>
-          <div className="brief-sunstripe-box">
-            <SunStripe months={months} value={Math.max(0, months.findIndex((m) => m.month === '2023-04'))} label={t('sun.legend')} />
-          </div>
-          <p className="type-small sun-legend">
-            {t('sun.legend')} <span className="type-data">{t('sun.steps')}</span>
-          </p>
-        </section>
-      )}
 
       {/* Single focal CTA button: full width on mobile, RTL arrow mirroring, 1px depress + sound (X2) */}
       <div className="brief-start-cta">

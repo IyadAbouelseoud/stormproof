@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { artAlt } from '../content';
+import { useI18n } from '../i18n';
 
 export interface IllustrationProps {
   id: string;
@@ -15,6 +17,10 @@ export interface IllustrationProps {
  */
 export function Illustration({ id: _id, src, alt, aspect = '16-9', className }: IllustrationProps): React.JSX.Element | null {
   const [failed, setFailed] = useState(false);
+  const { lang } = useI18n();
+  // Bilingual alt text from content/text/art-alt.json (by file name), else the caller's text.
+  const file = src.slice(src.lastIndexOf('/') + 1);
+  const altText = artAlt(file, lang) || artAlt(file.replace(/\.webp$/, ''), lang) || alt;
 
   if (failed) return null;
 
@@ -22,7 +28,7 @@ export function Illustration({ id: _id, src, alt, aspect = '16-9', className }: 
     <div className={`art-frame aspect-${aspect} ${className ?? ''}`}>
       <img
         src={src}
-        alt={alt}
+        alt={altText}
         loading="lazy"
         className="art-img"
         onError={() => setFailed(true)}

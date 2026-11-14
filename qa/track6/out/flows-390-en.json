@@ -1,0 +1,202 @@
+{
+ "tag": "flows-390-en",
+ "rows": [
+  {
+   "flow": "F1 team",
+   "name": "Team setup",
+   "expected": "Team of 4 with names",
+   "actual": "ok",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Handover Brief->Build",
+   "expected": "handover screen names the power role and hides Build",
+   "actual": "Hand over POWER AND SPACECRAFT Lee Pass the device to Lee for Build. The previous player's choices stay hidden until you are ready. I'm ready buildHidden=true",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Handover button",
+   "expected": "Ready reveals Build",
+   "actual": "confirmed=true screen=build",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Next with handover",
+   "expected": "Orbit then Launch each hand over",
+   "actual": "handover > orbit > handover > launch",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Back across handover",
+   "expected": "Back from Launch shows handover for orbit",
+   "actual": "handover > orbit",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Flight + storm vote (2 safe-mode vs 2 ride-out, lead votes safe-mode)",
+   "expected": "tie broken by systems lead => safe-mode; vote card closes; flight continues",
+   "actual": "voteRows=4 cardAfter=1 text=Storm alert: Kp 7 NASA DONKI logged a geomagnetic storm on Nov 5, 2023. The upper air swells and drag rises. Standing vote: Safe mode. Continue Safe mode turns ",
+   "pass": true
+  },
+  {
+   "flow": "F1 team",
+   "name": "Continue after vote",
+   "expected": "Continue closes the card and play resumes",
+   "actual": "card=1",
+   "pass": false
+  },
+  {
+   "flow": "F1 team",
+   "name": "Finish flight, Report shows policy",
+   "expected": "report/mission code contains safe-mode policy and roles",
+   "actual": "policy=s roles=R=Amal,=Omar,=Lee,=Noor",
+   "pass": true
+  },
+  {
+   "flow": "F2 jumps",
+   "name": "Team off then Rail jump from Report to every step",
+   "expected": "no crash, each lands on its screen",
+   "actual": "brief > build > orbit > launch",
+   "pass": true
+  },
+  {
+   "flow": "F2 jumps",
+   "name": "Back/Next from Launch to end and back",
+   "expected": "walk forward and back, no crash, Back disabled at Brief, Next disabled at Refly",
+   "actual": "flight > report > refly",
+   "pass": true
+  },
+  {
+   "flow": "F2 jumps",
+   "name": "Back from Refly to Brief",
+   "expected": "every Back works",
+   "actual": "report > flight > launch > orbit > build > brief backDisabled=true",
+   "pass": true
+  },
+  {
+   "flow": "F3 reload/hash",
+   "name": "Reload mid-flow resets cleanly",
+   "expected": "after reload: Brief, default design, no error, team off",
+   "actual": "screen=brief hash=\"\" lang/dir=en,ltr (language is in-memory, resets) bad=0",
+   "pass": true
+  },
+  {
+   "flow": "F3 reload/hash",
+   "name": "#gallery / #tokens hash",
+   "expected": "direct load shows that view; hash change toggles; Return link goes back",
+   "actual": "gallery=\"SKIP TO CONTENT STORMPROOF  The Sun you launch into decides \" tokens=\"SKIP TO CONTENT STORMPROOF  The Sun you \" back=brief",
+   "pass": true
+  },
+  {
+   "flow": "F3 reload/hash",
+   "name": "Unknown / screen-like hashes (#build, #report, #/launch)",
+   "expected": "ignored cleanly (stay on Brief), no crash",
+   "actual": "#build:brief:rendered | #report:brief:rendered | #/launch:brief:rendered | #undefined:brief:rendered | #%E0%A4%A:brief:rendered",
+   "pass": true
+  },
+  {
+   "flow": "F3 reload/hash",
+   "name": "Browser Back button after in-app navigation",
+   "expected": "does not crash; documents behaviour",
+   "actual": "historyLen=11 afterBack screen=brief url=http://localhost:4174/#%E0%A4%A",
+   "pass": true
+  },
+  {
+   "flow": "F4 lang/theme mid-flow",
+   "name": "Change a part, toggle language and theme on Build, design persists",
+   "expected": "code identical to a flight made without toggling",
+   "actual": "selected before=7 after=7 ff=3U screen=build",
+   "pass": true
+  },
+  {
+   "flow": "F4 lang/theme mid-flow",
+   "name": "Toggle language mid-flight",
+   "expected": "flight keeps playing, state kept, no crash",
+   "actual": "day 8 -> 17 -> 23 screen=flight bad=0",
+   "pass": true
+  },
+  {
+   "flow": "F4 lang/theme mid-flow",
+   "name": "Toggle language on Report",
+   "expected": "same lifetime number, translated labels",
+   "actual": "2025,409,100,2019,770,1179,2022,2022,2019,415,415,500 | 2025,409,100,2019,770,1179,2022,2022,2019,415,415,500",
+   "pass": true
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "Report \"Change one thing\" keeps baseline and returns to Build",
+   "expected": "baseline kept, screen Build",
+   "actual": "screen=build",
+   "pass": true
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "Re-fly with one change shows deltas",
+   "expected": "Refly shows What changed table with exactly the change; lifetime delta shown",
+   "actual": "changedRows=1 text=Re-fly USER SI-GENERATED SEED 20230415 Change one thing and fly again with the same seed to see what it bought you. WHAT CHANGED Param Run 1 Run 2 FORM FACTOR 3U 3U ALTITUDE 500 km 500 km ORBIT TYPE SSO SSO ROCKET spacex-rideshare spacex-rid",
+   "pass": true
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "Refly DOM text sweep",
+   "expected": "no raw ids/keys",
+   "actual": "rawIds=spacex-rideshare,spacex-rideshare,battery-medium,battery-large bad=",
+   "pass": false
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "One-tap tweaks",
+   "expected": "each tweak flies a variant (Flight), report, Refly shows changed rows, no NaN",
+   "actual": "tweakButtons=3 0:changed=2 bad=0 1:changed=2 bad=0 2:changed=3 bad=0",
+   "pass": true
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "Forget the first flight",
+   "expected": "clears baseline, deltas disappear",
+   "actual": "deltaRows=0 forgetBtn=0",
+   "pass": true
+  },
+  {
+   "flow": "F5 re-fly",
+   "name": "Fly again / Change one thing / Clear baseline buttons",
+   "expected": "buttons act",
+   "actual": "FLY AGAIN | Change one thing",
+   "pass": true
+  },
+  {
+   "flow": "F6 scenario switch",
+   "name": "Fly Angola, Jeddah, then Angola: no Jeddah state",
+   "expected": "Angola design default again, no flight/baseline, no radar, Jeddah event card gone",
+   "actual": "jeddahRadarOptions=1 radarInAngola=0 eventElsAtLaunch=0 afterNext=flight jeddahTextInAngolaFlowScreen=false",
+   "pass": true
+  },
+  {
+   "flow": "F6 scenario switch",
+   "name": "Baseline across scenarios",
+   "expected": "after fly in Angola, switch to Jeddah and back: baseline cleared",
+   "actual": "Next from Launch with no flight -> flight (expected Flight with no flight yet)",
+   "pass": true
+  },
+  {
+   "flow": "F6 scenario switch",
+   "name": "Loading a Jeddah code while in Angola flow (baseline staleness)",
+   "expected": "loadDesign must not keep an Angola baseline when the scenario changes",
+   "actual": "afterLoad Report mentions Jeddah=true; Refly: un than forecast, and lasted 926 days. Plan with the forecast, fly with the truth. DAY 0 · SCENARIO JEDDAH FLOOD WATCH · SCORE 80/100 Sound is off. Tap to turn on × العربية COCKTAIL NAPKIN INITIAL FEASIBILITY TRADE",
+   "pass": true
+  },
+  {
+   "flow": "F7 offline",
+   "name": "Offline full flow Brief -> Re-fly (cache-reload of localhost too)",
+   "expected": "whole flow works, zero requests leave origin",
+   "actual": "external=0  brokenImages=1 http://localhost:4174/img/art/art-p6-pitch-backdrop-v1.webp fonts-not-loaded(lazy, unused faces ok)=4 bad=0",
+   "pass": false
+  }
+ ],
+ "problems": []
+}

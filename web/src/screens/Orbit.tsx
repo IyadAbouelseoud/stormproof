@@ -173,7 +173,7 @@ export function Orbit(): React.JSX.Element {
               />
               <div className="alt-scale type-data" aria-hidden="true">
                 <span>{ALT_MIN_KM} km</span>
-                <span className="alt-scale-fcc-mark">FCC 5y</span>
+                <span className="alt-scale-fcc-mark">{t('disposal.fcc')}</span>
                 <span>{ALT_MAX_KM} km</span>
               </div>
             </div>

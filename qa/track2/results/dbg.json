@@ -1,0 +1,482 @@
+{
+ "axe": [
+  {
+   "key": "angola-1440-en-night-brief",
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 3,
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "sample": [
+    ".cml-rail-step:nth-child(2) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+    ".cml-rail-step:nth-child(3) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+    ".cml-rail-step:nth-child(4) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 2,
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "sample": [
+    ".cml-rail-step:nth-child(3) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+    ".cml-rail-step:nth-child(4) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 1,
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "sample": [
+    ".cml-rail-step:nth-child(4) > .cml-rail-button > .cml-step-label.type-label ::   Element has insufficient color contrast of 3.02 (foreground color: #5e6470, background color: #13171e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "id": "color-contrast",
+   "impact": "serious",
+   "n": 3,
+   "help": "Elements must meet minimum color contrast ratio thresholds",
+   "sample": [
+    "div[aria-label=\"Plan flown: Locked\"] > .sp-medal-content > .sp-medal-status.type-small ::   Element has insufficient color contrast of 3.29 (foreground color: #5e6470, background color: #0a0c11, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+    "div[aria-label=\"Sun survivor: Locked\"] > .sp-medal-content > .sp-medal-status.type-small ::   Element has insufficient color contrast of 3.29 (foreground color: #5e6470, background color: #0a0c11, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1",
+    "div[aria-label=\"Storm rider: Locked\"] > .sp-medal-content > .sp-medal-status.type-small ::   Element has insufficient color contrast of 3.29 (foreground color: #5e6470, background color: #0a0c11, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-1440-en-night-brief",
+   "kind": "CLIPPED-Y",
+   "sel": "div.sp-stars",
+   "sh": 1587,
+   "ch": 900,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED-Y",
+   "sel": "div.sp-stars",
+   "sh": 1565,
+   "ch": 900,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "CLIPPED-Y",
+   "sel": "div.sp-stars",
+   "sh": 1546,
+   "ch": 900,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "CLIPPED-Y",
+   "sel": "div.sp-stars",
+   "sh": 1522,
+   "ch": 900,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "div.sp-stars",
+   "sh": 1490,
+   "ch": 900,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1454,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "NUM-OVERLAP",
+   "a": "span.odometer-digit:9",
+   "b": "p#storm-d.type-small:NASA DONKI logg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1454,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "NUM-OVERLAP",
+   "a": "span.odometer-digit:8",
+   "b": "p#storm-d.type-small:NASA DONKI logg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "NUM-OVERLAP",
+   "a": "span.odometer-digit:9",
+   "b": "p#storm-d.type-small:NASA DONKI logg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "NUM-OVERLAP",
+   "a": "span.odometer-digit:8",
+   "b": "p#storm-d.type-small:NASA DONKI logg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "NUM-OVERLAP",
+   "a": "span.odometer-digit:9",
+   "b": "p#storm-d.type-small:NASA DONKI logg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1447,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "NUM-OVERLAP",
+   "a": "span.log-entry-date.type-data:Sep 30, 2025",
+   "b": "p.type-body:Still flying on"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "NUM-OVERLAP",
+   "a": "span.log-entry-day.type-data:DAY 869",
+   "b": "p.type-body:Still flying on"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "NUM-OVERLAP",
+   "a": "p.log-entry-detail.type-small:Kp 8 · Density ",
+   "b": "p.type-small.footer-credit:NASA OMNIWeb da"
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1454,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "kind": "CLIPPED-Y",
+   "sel": "div.report-p6-slot",
+   "sh": 369,
+   "ch": 345,
+   "text": "SI-generated"
+  },
+  {
+   "key": "angola-1440-en-night-refly",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1451,
+   "cw": 1440,
+   "text": ""
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 10,
+   "cw": 10,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 21,
+   "cw": 21,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 38,
+   "cw": 38,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 23,
+   "cw": 23,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": [
+  "comprehension {\"found\":true,\"cls\":\"brief-sunstripe-section\",\"bottom\":1571.84375,\"h1\":\"STORMPROOF\",\"ps\":[]}"
+ ]
+}

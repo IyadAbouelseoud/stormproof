@@ -1,0 +1,17 @@
+import { createRequire } from 'node:module';
+const require = createRequire(process.cwd() + '/');
+const { chromium } = require('@playwright/test');
+const b = await chromium.launch({ channel: 'chrome' });
+const ctx = await b.newContext({ viewport: { width: 390, height: 844 } });
+const p = await ctx.newPage();
+await p.goto('http://localhost:4172/');
+await p.waitForFunction(() => !document.querySelector('.engine-status'));
+const next = () => p.click('.nav-controls-bar .sp-btn-nav >> nth=1');
+await next(); await next(); await next(); await p.waitForSelector('.launch-btn:not([disabled])'); await p.waitForTimeout(800);
+console.log('LAUNCH', await p.evaluate(() => { const g = document.querySelector('.rocket-card-grid'); const r = g.getBoundingClientRect(); return { sw: g.scrollWidth, cw: g.clientWidth, kids: [...g.querySelectorAll('*')].filter(e => e.getBoundingClientRect().right > r.right + 1).slice(0, 5).map(e => e.className + ' ' + Math.round(e.getBoundingClientRect().right - r.right)) }; }));
+await p.click('.launch-btn'); await p.waitForSelector('.screen--flight');
+await p.locator('.flight-controls .sp-btn--quiet').click(); await p.waitForSelector('.reentry'); await p.click('.reentry .sp-btn');
+await p.waitForSelector('.screen--report'); await p.waitForTimeout(2500);
+console.log('P6', await p.evaluate(() => { const s = document.querySelector('.report-p6-slot'); const sr = s.getBoundingClientRect(); return { slot: [sr.width, sr.height], sh: s.scrollHeight, kids: [...s.querySelectorAll('*')].map(e => { const r = e.getBoundingClientRect(); return e.tagName + '.' + e.className + ' ' + Math.round(r.top - sr.top) + '..' + Math.round(r.bottom - sr.top); }) }; }));
+console.log('TD', await p.evaluate(() => [...document.querySelectorAll('td.type-data')].slice(0, 3).map(e => { const r = e.getBoundingClientRect(); return e.textContent + ' ' + Math.round(r.top) + ' ' + (e.closest('details')?.open ?? 'nodetails') + ' ' + innerHeight; })));
+await b.close();

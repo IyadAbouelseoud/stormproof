@@ -1,0 +1,8 @@
+FAIL [390-en] Build | Fuel slot | options | exp: a zero-fuel option exists | got: 2 fuel options (no "none" option)
+FAIL [390-en] Report | Sources drawer | toggle <summary> | exp: opens, lists rows, no raw keys | got: open=1 chars=2389 bad=/\b(?:brief|build|orbit|launch|flight|report|refly|screens|buttons|fit|cause|gauge|part|rocket|score|req|jeddah|sun|map|nav|segment|app|medal|team|role|storm|disposal)\.[a-z0-9_]
+FAIL [390-en] Report | Mission code field | paste empty + Load | exp: inline error, design unchanged, no crash | got: inlineError=0 unchanged=true crashed=false screen=report
+FAIL [390-en] Report | Mission code field | paste whitespace + Load | exp: inline error, design unchanged, no crash | got: inlineError=0 unchanged=true crashed=false screen=report
+FAIL [390-en] Report | Mission code field | paste altitude 5000 + Load | exp: inline error, design unchanged, no crash | got: inlineError=0 unchanged=false crashed=false screen=report
+FAIL [390-en] Report | Mission code field | paste altitude -40 + Load | exp: inline error, design unchanged, no crash | got: inlineError=0 unchanged=false crashed=false screen=report
+problems so far []
+[390-en] rows=62 fails=6 problems=0

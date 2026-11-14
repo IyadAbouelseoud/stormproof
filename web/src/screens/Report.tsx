@@ -167,7 +167,7 @@ export function Report(): React.JSX.Element {
         <div className="report-header-content">
           <MainVerdict r={r} />
           <div className="report-score-box">
-            <span className="type-label report-score-label">MISSION SCORE</span>
+            <span className="type-label report-score-label">{t('report.score_label')}</span>
             <span className="type-display-xl report-score-value">
               <CountUp target={r.score.total} />
               <span className="type-small sp-unit"> / 100</span>
@@ -255,7 +255,7 @@ export function Report(): React.JSX.Element {
               {t('report.requirements')}
             </h3>
             <span className="type-data type-small">
-              {r.score.requirementsMet} / {r.score.requirements.length} MET
+              {t('report.met', { n: String(r.score.requirementsMet), total: String(r.score.requirements.length) })}
             </span>
           </div>
 
@@ -348,7 +348,7 @@ export function Report(): React.JSX.Element {
         {/* Card 7: Mission Code Console Box & P6 Backdrop */}
         <section className="report-card console-panel mission-code-card">
           <div className="console-panel-header">
-            <span className="type-label section-label">MISSION PASSPORT</span>
+            <span className="type-label section-label">{t('report.passport')}</span>
           </div>
           <MissionTicket code={r.missionCode} />
           <div className="report-p6-slot">

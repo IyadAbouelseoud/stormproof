@@ -1,0 +1,415 @@
+{
+ "axe": [
+  {
+   "key": "angola-390-en-night-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-en-night-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-en-night-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-390-en-night-brief",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-orbit",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-launch",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-launch",
+   "kind": "overflow-visible",
+   "sel": "div.rocket-card-grid",
+   "sw": 315,
+   "cw": 306,
+   "text": "SI-generatedRocket Lab ElectronsourcedCa"
+  },
+  {
+   "key": "angola-390-en-night-flight-start",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-storm",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-mid",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-en-night-report",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  },
+  {
+   "key": "angola-390-en-night-report",
+   "kind": "CLIPPED-Y",
+   "sel": "div.report-p6-slot",
+   "sh": 194,
+   "ch": 170,
+   "text": "SI-generated"
+  },
+  {
+   "key": "angola-390-en-night-report",
+   "kind": "scrollable",
+   "sel": "table.sources-table.type-small",
+   "sw": 445,
+   "cw": 306,
+   "text": "NumberValueTagSourceLifetime (real Sun)1"
+  },
+  {
+   "key": "angola-390-en-night-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:1730 d",
+   "b": "div.nav-status.type-data:Screen 6 of 7"
+  },
+  {
+   "key": "angola-390-en-night-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:25 y",
+   "b": "p.type-small.footer-credit:NASA OMNIWeb da"
+  },
+  {
+   "key": "angola-390-en-night-refly",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 464,
+   "cw": 390,
+   "text": ""
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": []
+}

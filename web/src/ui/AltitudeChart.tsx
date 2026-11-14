@@ -215,7 +215,7 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, eve
           <g className="sp-chart-reentry-stamp" transform={`translate(${Math.max(PAD.l + 10, sx(dayOf(last.date)) - 115)}, ${sy(CONSTANTS.reentryAltKm) - 24})`}>
             <rect x="0" y="0" width="115" height="20" fill="var(--color-ground-raised)" stroke="var(--color-sol)" strokeWidth="1.5" />
             <text x="57" y="14" textAnchor="middle" className="type-label" fill="var(--color-sol)">
-              REENTRY: 120 KM
+              {t('chart.reentry_stamp')}
             </text>
           </g>
         )}

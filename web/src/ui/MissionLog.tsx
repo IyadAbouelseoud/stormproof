@@ -36,7 +36,7 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
       id: 'launch-0',
       date: first.date,
       icon: 'launch',
-      title: 'Orbital Insertion',
+      title: t('log.insertion'),
       detail: `${fmtNum(lang, first.altitudeKm)} km ${result.design.orbit.type}`,
       state: 'ok',
       dayIndex: 0,
@@ -49,8 +49,8 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
           id: `storm-${i}`,
           date: d.date,
           icon: 'storm',
-          title: `Solar Storm Alert`,
-          detail: `Kp ${fmtNum(lang, d.stormKp)} · Density spike`,
+          title: t('log.storm'),
+          detail: t('log.storm_detail', { kp: fmtNum(lang, d.stormKp) }),
           state: 'warn',
           dayIndex: i,
         });
@@ -65,8 +65,8 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
           id: `look-${i}`,
           date: l.date,
           icon: 'look',
-          title: l.usable ? 'Target Acquired' : 'Target Blocked',
-          detail: l.usable ? 'Imaging pass clear' : 'Cloud obstruction detected',
+          title: t(l.usable ? 'log.target_ok' : 'log.target_blocked'),
+          detail: t(l.usable ? 'log.pass_clear' : 'log.cloud'),
           state: l.usable ? 'ok' : 'fail',
           dayIndex: matchingIdx >= 0 ? matchingIdx : 0,
         });
@@ -80,8 +80,8 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
         id: 'outcome-reentry',
         date: result.outcome.date,
         icon: 'reentry',
-        title: 'Atmospheric Reentry',
-        detail: `Final decay below 120 km`,
+        title: t('log.reentry'),
+        detail: t('log.reentry_detail'),
         state: 'fail',
         dayIndex: tl.length - 1,
       });
@@ -90,8 +90,8 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
         id: 'outcome-alive',
         date: last.date,
         icon: 'alive',
-        title: 'Mission Nominal',
-        detail: `Active in forecast horizon`,
+        title: t('log.nominal'),
+        detail: t('log.nominal_detail'),
         state: 'ok',
         dayIndex: tl.length - 1,
       });
@@ -99,22 +99,22 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
 
     // Sort newest on top
     return list.sort((a, b) => b.dayIndex - a.dayIndex);
-  }, [tl, result.eventReplay, result.outcome, result.design.orbit.type, lang]);
+  }, [tl, result.eventReplay, result.outcome, result.design.orbit.type, lang, t]);
 
   // Determine current live telemetry status line
   const currentDay = tl[Math.min(currentDayIndex, tl.length - 1)];
-  let statusText = 'NOMINAL OPERATIONS';
+  let statusText = t('log.status_nominal');
   let statusState: 'ok' | 'warn' | 'fail' = 'ok';
 
   if (currentDay) {
     if (currentDay.altitudeKm <= CONSTANTS.reentryAltKm + 10) {
-      statusText = 'REENTRY IMMINENT';
+      statusText = t('log.status_reentry');
       statusState = 'fail';
     } else if (currentDay.stormKp !== null && currentDay.stormKp >= CONSTANTS.stormAlertKp) {
-      statusText = `SOLAR STORM ALERT (Kp ${fmtNum(lang, currentDay.stormKp)})`;
+      statusText = t('log.status_storm', { kp: fmtNum(lang, currentDay.stormKp) });
       statusState = 'warn';
     } else if (currentDay.batteryPct < 30) {
-      statusText = `LOW BATTERY (${fmtNum(lang, currentDay.batteryPct)}%)`;
+      statusText = t('log.status_lowbat', { pct: fmtNum(lang, currentDay.batteryPct) });
       statusState = 'warn';
     }
   }
@@ -126,13 +126,13 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
           {t('flight.log_title') || 'Mission Log'}
         </h3>
         <span className={`log-live-status type-label log-live-status--${statusState}`}>
-          STATUS: {statusText}
+          {t('log.status')}: {statusText}
         </span>
       </div>
 
       <Illustration id="art-p23-log-border-v1" src="img/art/art-p23-log-border-v1.webp" alt="Log border" className="log-border-art" />
 
-      <div className="mission-log-stream" role="feed" aria-label="Mission Event Log">
+      <div className="mission-log-stream" role="feed" aria-label={t('flight.log_title')}>
         {entries.map((e) => {
           const isSelected = Math.abs(e.dayIndex - currentDayIndex) <= 2;
           return (
@@ -152,7 +152,7 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
                   {e.icon === 'alive' && '●'}
                 </span>
                 <span className="log-entry-date type-data">{fmtDate(lang, e.date)}</span>
-                <span className="log-entry-day type-data">DAY {e.dayIndex}</span>
+                <span className="log-entry-day type-data">{t('flight.day')} {fmtNum(lang, e.dayIndex)}</span>
               </div>
               <div className="log-entry-body">
                 <h4 className="log-entry-title type-body">{e.title}</h4>

@@ -1,0 +1,13 @@
+/* Final release pass: small layout fixes found in the judge walkthrough. Tokens only. */
+
+/* Launch and Flight: the header pictures were 16:9 at full width (about 740 px tall at 1440), which pushed the
+   Sun Stripe, the Launch button and the altitude chart below the first screen. They are now a short band. */
+.art-frame.launch-header-art,
+.art-frame.flight-header-art {
+  aspect-ratio: auto;
+  block-size: clamp(96px, 20vh, 200px);
+}
+.art-frame.launch-storm-art {
+  aspect-ratio: auto;
+  block-size: clamp(72px, 14vh, 140px);
+}

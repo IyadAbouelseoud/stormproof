@@ -45,7 +45,7 @@ export function ReportMedals({ r }: { r: SimResult }): React.JSX.Element {
       earned: stormRiderEarned,
       title: t('medal.storm_rider'),
       desc: t('medal.storm_rider_desc'),
-      calc: spansStorm ? (stormRiderEarned ? 'Survived Feb 2022' : 'Lost in Feb 2022') : 'Did not span Feb 2022',
+      calc: spansStorm ? (stormRiderEarned ? t('medal.calc_survived') : t('medal.calc_lost')) : t('medal.calc_none'),
     },
   ];
 

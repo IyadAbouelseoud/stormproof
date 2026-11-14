@@ -86,6 +86,7 @@ main:focus { outline: none; }
   position: relative;
   inline-size: 100%;
   aspect-ratio: 21 / 9;
+  max-block-size: 20vh;
   border-radius: var(--radius-2);
   overflow: hidden;
   border: 1px solid var(--color-rule);
@@ -894,7 +895,7 @@ main:focus { outline: none; }
   color: var(--color-lapis);
 }
 .sp-medal--locked .sp-medal-status {
-  color: var(--color-ink-faint);
+  color: var(--color-ink-muted);
 }
 .sp-medal-desc {
   color: var(--color-ink-muted);
@@ -1117,8 +1118,8 @@ main:focus { outline: none; }
 }
 
 .fcc-snap-badge--warn {
-  color: var(--color-sol);
-  background-color: color-mix(in srgb, var(--color-sol) 15%, transparent);
+  color: var(--color-warn);
+  background-color: color-mix(in srgb, var(--color-warn) 15%, transparent);
 }
 
 .alt-scale-fcc-mark {
@@ -1131,22 +1132,24 @@ main:focus { outline: none; }
   gap: var(--space-24);
   margin-block: var(--space-24);
   align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 @media (min-width: 840px) {
   .launch-prep-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
 .rocket-card-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-16);
 }
 
 .rocket-card {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 80px minmax(0, 1fr);
   gap: var(--space-16);
   padding: var(--space-12);
   inline-size: 100%;
@@ -1235,7 +1238,7 @@ main:focus { outline: none; }
 }
 
 .rocket-cap-fill--over {
-  background-color: var(--color-sol);
+  background-color: var(--color-fail);
 }
 
 .rocket-card-specs {
@@ -1256,7 +1259,7 @@ main:focus { outline: none; }
 }
 
 .rocket-fit--mismatch {
-  color: var(--color-sol);
+  color: var(--color-fail);
 }
 
 .rocket-range-row {
@@ -1306,7 +1309,7 @@ main:focus { outline: none; }
 }
 
 .preflight-item--fail .preflight-checkbox {
-  color: var(--color-sol);
+  color: var(--color-fail);
 }
 
 .preflight-details {
@@ -1414,11 +1417,11 @@ main:focus { outline: none; }
 }
 
 .log-live-status--warn {
-  color: var(--color-sol);
+  color: var(--color-warn);
 }
 
 .log-live-status--fail {
-  color: var(--color-sol);
+  color: var(--color-fail);
 }
 
 .log-border-art {
@@ -1471,11 +1474,11 @@ main:focus { outline: none; }
 }
 
 .log-entry--warn .log-entry-icon {
-  color: var(--color-sol);
+  color: var(--color-warn);
 }
 
 .log-entry--fail .log-entry-icon {
-  color: var(--color-sol);
+  color: var(--color-fail);
 }
 
 .log-entry-title {
@@ -1658,7 +1661,7 @@ main:focus { outline: none; }
 }
 
 .disposal-tick-label {
-  font-size: 9px;
+  font-size: var(--font-size-micro);
 }
 
 .disposal-verdict-chips {
@@ -1685,8 +1688,8 @@ main:focus { outline: none; }
 }
 
 .disposal-chip--fail {
-  color: var(--color-sol);
-  border-color: var(--color-sol);
+  color: var(--color-fail);
+  border-color: var(--color-fail);
 }
 
 .disposal-reason {
@@ -1754,6 +1757,13 @@ main:focus { outline: none; }
   border-radius: var(--radius-2);
   overflow: hidden;
   border: 1px solid var(--color-rule);
+}
+
+.report-p6-slot .art-frame {
+  aspect-ratio: auto;
+  block-size: 100%;
+  margin: 0;
+  max-inline-size: none;
 }
 
 .report-p6-slot .report-backdrop-art {
