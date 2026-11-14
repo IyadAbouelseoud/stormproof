@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Cause, Gauge as GaugeT, Part, RoleId } from '@stormproof/engine';
 import { useI18n } from '../i18n';
+import { partName } from '../content';
 import { fmtNum, fmtSigned } from '../format';
 
 /** Localized unit label; falls back to the raw unit when no key exists. */
@@ -256,8 +257,12 @@ export function PartCard({ part, selected, onSelect }: PartCardProps): React.JSX
       onClick={onSelect}
     >
       <span className="sp-part-head">
-        <span className="type-body sp-part-name">{part.name}</span>
-        <SrcTag src={part.src} />
+        <span className="type-body sp-part-name">{partName(part.id, lang, part.name)}</span>
+        {part.cameraType === 'radar' ? (
+          <span className="sp-src-tag sp-src-tag--gb type-label">{t('tag.design_study_not_6u')}</span>
+        ) : (
+          <SrcTag src={part.src} />
+        )}
       </span>
       <span className="sp-part-stats">
         {rows.map(([label, v, unit]) => (

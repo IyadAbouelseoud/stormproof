@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
+import { EventReport } from '../ui/Jeddah';
 import { fmtDate, fmtNum, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
@@ -53,13 +54,16 @@ export function MainVerdict({ r }: { r: SimResult }): React.JSX.Element {
   return <VerdictStamp state={lived ? 'ok' : 'fail'} title={lived ? t('verdict.lived') : t('verdict.died')} detail={`${when} · ${sun}`} />;
 }
 
-function SatelliteView({ gsdM }: { gsdM: number }): React.JSX.Element {
+/** Dry HLS baseline of the scenario's place (Jeddah: 2024 dry baseline, never the flood). */
+const gibsKey = (scenarioId: string): string => (scenarioId === 'jeddah-flood' ? 'jeddah_hls' : 'angola');
+
+function SatelliteView({ gsdM, scenarioId }: { gsdM: number; scenarioId: string }): React.JSX.Element {
   const { t, lang } = useI18n();
   const [img, setImg] = useState<GibsImage | null | undefined>(undefined);
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    gibsImages().then((list) => setImg(list.find((g) => g.file.includes('angola') && g.resolutionM <= 30) ?? list[0] ?? null));
-  }, []);
+    gibsImages().then((list) => setImg(list.find((g) => g.file.includes(gibsKey(scenarioId)) && g.resolutionM <= 30) ?? list[0] ?? null));
+  }, [scenarioId]);
   // blur radius in source pixels = player GSD / image resolution (no blur when the camera is sharper)
   const factor = img ? Math.max(1, gsdM / img.resolutionM) : 1;
   useEffect(() => {
@@ -106,17 +110,17 @@ export function Report(): React.JSX.Element {
   const live = useMission((s) => s.result);
   const keepBaseline = useMission((s) => s.keepBaseline);
   const setScreen = useNavigation((s) => s.setScreen);
-  const [gibs, setGibs] = useState<GibsImage | null>(null);
-  useEffect(() => {
-    gibsImages().then((l) => setGibs(l.find((g) => g.file.includes('angola') && g.resolutionM <= 30) ?? null));
-  }, []);
   const r = flight?.truth ?? live;
   const life = r.score.requirements.find((q) => q.id === 'lifetime');
   const lived = life?.met ?? false;
+  const [gibs, setGibs] = useState<GibsImage | null>(null);
+  useEffect(() => {
+    gibsImages().then((l) => setGibs(l.find((g) => g.file.includes(gibsKey(r.design.scenarioId)) && g.resolutionM <= 30) ?? null));
+  }, [r.design.scenarioId]);
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
-  const sunResilience = Math.max(0, Math.min(20, r.score.total - r.score.requirementsMet * 16));
+  const sunResilience = Math.max(0, Math.min(20, r.score.total - Math.round((r.score.requirementsMet * 80) / r.score.requirements.length)));
 
   useEffect(() => {
     playStampThud();
@@ -152,6 +156,8 @@ export function Report(): React.JSX.Element {
         </p>
       </section>
 
+      <EventReport result={r} />
+
       <section aria-labelledby="req-h">
         <h3 id="req-h" className="type-label section-label">
           {t('report.requirements')}
@@ -165,7 +171,7 @@ export function Report(): React.JSX.Element {
                 title={`${t(`req.${q.id}`)}: ${q.met ? t('req.met') : t('req.missed')}`}
                 detail={
                   <span className="type-data">
-                    {fmtNum(lang, q.value)} {unitText(t, q.unit)} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
+                    {q.id === 'event-look' && q.value < 0 ? t('req.none') : `${fmtNum(lang, q.value)} ${unitText(t, q.unit)}`} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
                   </span>
                 }
               />
@@ -232,7 +238,7 @@ export function Report(): React.JSX.Element {
           <h3 id="satview-h" className="type-label section-label">
             {t('report.satview')}
           </h3>
-          <SatelliteView gsdM={gsd?.value ?? 30} />
+          <SatelliteView gsdM={gsd?.value ?? 30} scenarioId={r.design.scenarioId} />
         </section>
       </div>
 

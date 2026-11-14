@@ -3,7 +3,7 @@
  * Not part of the frozen SimResult/MissionDesign contract; proposed to the content lane in ISSUES.md.
  * Every entry carries `src` (a sources.csv id, "AGENTS.md s5" or "game-balanced").
  */
-import type { FormFactor, OrbitType, PartSlot } from './contracts';
+import type { FormFactor, OrbitType, PartSlot, RequirementId } from './contracts';
 
 export interface Part {
   id: string;
@@ -30,6 +30,12 @@ export interface Part {
   storageMB?: number;
   /** fuel: delta-v available */
   deltaVMs?: number;
+  /** camera: 'optical' (default) or 'radar' (sees through cloud; prompt E). */
+  cameraType?: 'optical' | 'radar';
+  /** Scenario ids this part is offered in (default: all). */
+  scenarios?: string[];
+  /** pointing: swath multiplier from off-nadir pointing (default 1). game-balanced. */
+  offNadirFactor?: number;
 }
 
 export interface Rocket {
@@ -42,6 +48,8 @@ export interface Rocket {
   maxAltKm: number;
   /** Price for a CubeSat slot, USD per kg. */
   priceUsdPerKg: number;
+  /** Minimum charge, USD (G3: SpaceX estimator showed a flat 350,000 USD for 6 to 50 kg; estimate, not a quote). */
+  minPriceUsd?: number;
   /** First flight, ISO date: launches before it are rejected. */
   firstFlight: string;
   src: string;
@@ -57,12 +65,32 @@ export interface Scenario {
   dataDeliveredMinGB: number;
   lifetimeMinDays: number;
   src: string;
+  /** Id in content/text/scenarios.json when it differs from `id`. */
+  textId?: string;
+  /** Target latitude/longitude, deg (approximate). Default: TARGET_LAT_DEG (Angola). */
+  targetLatDeg?: number;
+  targetLonDeg?: number;
+  /** Days after the event in which a useful look counts (event-look requirement). */
+  lookWindowDays?: number;
+  /** Dated event replayed by event.ts; `label` is a text key, `cloudTagsFile` a key of Content.cloudTags. */
+  event?: { id: string; date: string; label: string; cloudTagsFile: string };
+  /** Requirements scored, in order. Default: the five Angola requirements. */
+  requirementSet?: RequirementId[];
+}
+
+export type CloudTag = 'clear' | 'partly' | 'cloudy' | 'no-image';
+/** content/evidence/<name>.json (read by eye from NASA Worldview). */
+export interface CloudTagFile {
+  layer: string;
+  days: { date: string; tag: CloudTag }[];
 }
 
 export interface Content {
   parts: Part[];
   rockets: Rocket[];
   scenarios: Scenario[];
+  /** Cloud tag files by name (Scenario.event.cloudTagsFile). */
+  cloudTags?: Record<string, CloudTagFile>;
 }
 
 /** CubeSat Design Specification Rev 14.1 (Cal Poly) maximum masses. */

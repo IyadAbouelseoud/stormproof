@@ -8,6 +8,7 @@ import { Button } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
 import { playLaunchTick } from '../sound';
+import { AliveIndicator } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
 
 function RocketSvg({ liftoff }: { liftoff: boolean }): React.JSX.Element {
@@ -174,6 +175,7 @@ export function Launch(): React.JSX.Element {
         <p className="type-small">{t('ptn.explain')}</p>
       </section>
 
+      <AliveIndicator result={result} />
       <section className="launch-go">
         {blocked.length > 0 && ceremony === 'idle' && (
           <p className="type-small launch-warn">{t('launch.blocked', { n: blocked.length })}</p>

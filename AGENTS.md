@@ -70,7 +70,7 @@ Engine API: `simulate(design) -> SimResult`, `encodeMission(design) -> string`, 
 - Constants: solar constant 1,361 W/m2; cell efficiency about 30%; GSD(h) = GSD(500 km) * h / 500; Funda ground station about 8.9 S, 13.2 E (approximate, label it); Electron 200 kg to 500 km SSO.
 - Golden tests (never loosen):
   1. FACSAT-2 (6U, 497 km SSO, ballistic coefficient 72.3 kg/m2 +/-20%, launched 15 Apr 2023): reentry within +/-60 days of 27 Oct 2025; about 450 km near 29 Aug 2024, 400 km near 3 Mar 2025, 300 km near 2 Oct 2025, each +/-30 km. One Cd*A/m fit allowed, then disclose. Dry run: forecast/real ratio 1.58 vs paper 1.52; absolute life 13% long before the fit.
-  2. NASA DAS 6U curves at 430 and 550 km, launch years 2021-2025, within +/-30%.
+  2. NASA DAS 6U curves at 430 and 550 km, launch years 2021-2044 (the deck spans 2021-2044; 2027+ are the fair pass/fail points), within +/-30%.
   3. Starlink trap: a circular 210 km orbit on 3 Feb 2022 reenters within days in truth mode, sooner than plan mode; at 500 km the storm costs under 1% of life.
 - 2-hour rule: if the density table is not built by 10:00 Sat, ship analytic max/min curves labelled game-balanced.
 - NASA data used: OMNIWeb (drives NRLMSIS), DONKI storms, GIBS/Worldview images (30 m floor), NASA solar-cycle prediction, NASA LSP deck, JPL CML, Goddard MDL, CubeSat 101. NRLMSIS itself is NRL, not NASA; say "NASA OMNIWeb data drives the NRLMSIS model".

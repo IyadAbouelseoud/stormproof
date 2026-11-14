@@ -91,7 +91,7 @@ describe('engineAdapter', () => {
     await A.loadEngine();
     const d = A.defaultDesign();
     const r1 = A.simulate(d);
-    const r2 = A.simulate({ ...d, parts: { ...d.parts, camera: 'cam-wide-30m' } });
+    const r2 = A.simulate({ ...d, parts: { ...d.parts, camera: 'camera-budget' } });
     const trail = A.knockOnTrail(r1, r2);
     expect(trail.length).toBeGreaterThan(0);
     for (const s of trail) expect(s.delta).toBeCloseTo(r2.gauges[s.gauge].value - r1.gauges[s.gauge].value);

@@ -40,6 +40,16 @@ jobs:
         working-directory: pipeline
         run: uv run pytest -q
 
+      - name: Validate content text (content/text/*.json)
+        run: |
+          for f in content/text/scenarios.json content/text/parts.json content/text/messages.json content/text/ui.json; do
+            python3 qa/validate_content.py "$f" | tee /tmp/v.txt
+            grep -q "ERRORS: none" /tmp/v.txt || { echo "::error::content errors in $f"; exit 1; }
+          done
+
+      - name: Web tests (i18n symmetry, content text, adapter)
+        run: pnpm --filter @stormproof/web test
+
       - name: Build web (relative asset paths)
         run: pnpm --filter @stormproof/web run --if-present build
 

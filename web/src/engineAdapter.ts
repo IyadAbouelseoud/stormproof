@@ -35,15 +35,53 @@ import {
   STORM_ALERT_KP,
   OMNI_END,
   BATTERY_DOD,
+  HOURLY_BELOW_KM,
+  DENSITY_MIN_ALT_KM,
+  DENSITY_MAX_ALT_KM,
   SOURCES,
 } from '../../engine/src/constants';
 import mockResultJson from '../../engine/test/fixtures/mock-result.json';
-import contentStub from '../../engine/test/fixtures/content-stub.json';
+import partsJson from '../../content/parts.json';
+import rocketsJson from '../../content/rockets.json';
+import angolaJson from '../../content/scenarios/angola.json';
+import jeddahJson from '../../content/scenarios/jeddah-flood.json';
+import jeddahCloudJson from '../../content/evidence/jeddah-cloud-2022-11.json';
+import jeddahDemoJson from '../../content/demo/jeddah-demo.json';
 
 export type { MissionDesign, SimResult, Part, Rocket, Scenario, PartSlot, GaugeId, RequirementId };
 
 const MOCK = mockResultJson as unknown as SimResult;
-const CONTENT = contentStub as unknown as Content;
+/** Jeddah flood watch is on unless the build sets VITE_JEDDAH=0 (prompt E hard stop). */
+export const JEDDAH_ON = import.meta.env.VITE_JEDDAH !== '0';
+
+const CONTENT: Content = {
+  parts: (partsJson as unknown as { parts: Part[] }).parts,
+  rockets: (rocketsJson as unknown as { rockets: Rocket[] }).rockets,
+  scenarios: [angolaJson as unknown as Scenario, ...(JEDDAH_ON ? [jeddahJson as unknown as Scenario] : [])],
+  cloudTags: { 'jeddah-cloud-2022-11': jeddahCloudJson as unknown as NonNullable<Content['cloudTags']>[string] },
+};
+
+export const SCENARIO_IDS: readonly string[] = CONTENT.scenarios.map((s) => s.id);
+
+/** Starting design per scenario (Jeddah: demo mission 1, the optical 6U that the storm cloud blinds). */
+const DEFAULTS: Record<string, MissionDesign> = {
+  angola: {
+    scenarioId: 'angola',
+    parts: { camera: 'camera-standard', panels: 'panels-large', battery: 'battery-medium', radio: 'radio-fast', computer: 'computer-standard', pointing: 'pointing-standard', fuel: 'fuel-small' },
+    formFactor: '6U', orbit: { type: 'SSO', altitudeKm: 500 }, rocketId: 'spacex-rideshare', launchDate: '2023-04-15', mode: 'truth', seed: (mockResultJson as unknown as SimResult).design.seed,
+  },
+  'jeddah-flood': (jeddahDemoJson as unknown as { missions: { design: MissionDesign }[] }).missions[0]!.design,
+};
+
+/** Jeddah demo missions (content/demo/jeddah-demo.json). */
+export const JEDDAH_DEMO = (jeddahDemoJson as unknown as { missions: { id: string; code: string; expect: string; design: MissionDesign }[] }).missions;
+
+/** Daily cloud tags for an event scenario, or null. */
+export function cloudTags(scenarioId: string): { date: string; tag: string; evidence?: string; note?: string }[] | null {
+  const ev = scenario(scenarioId)?.event;
+  if (!ev) return null;
+  return (CONTENT.cloudTags?.[ev.cloudTagsFile]?.days as { date: string; tag: string }[] | undefined) ?? null;
+}
 
 export const PART_SLOTS: readonly PartSlot[] = [
   'camera',
@@ -64,6 +102,11 @@ export const CONSTANTS = {
   fundaLonDeg: FUNDA_LON_DEG,
   targetLatDeg: TARGET_LAT_DEG,
   omniEnd: OMNI_END,
+  /** G2: integrator switches to hourly steps below this altitude, km. */
+  hourlyBelowKm: HOURLY_BELOW_KM,
+  /** G2: altitude range of the density table, km. */
+  densityMinAltKm: DENSITY_MIN_ALT_KM,
+  densityMaxAltKm: DENSITY_MAX_ALT_KM,
   /** Lowest safe state of charge, % (1 - depth of discharge; game-balanced). */
   batteryFloorPct: Math.round((1 - BATTERY_DOD) * 100),
 } as const;
@@ -152,9 +195,9 @@ export function isLive(): boolean {
   return engine !== null;
 }
 
-/** The default design: the one in mock-result.json (FACSAT-2-like 6U, 500 km SSO, 15 Apr 2023). */
-export function defaultDesign(): MissionDesign {
-  return structuredClone(MOCK.design);
+/** The starting design of a scenario (Angola by default). */
+export function defaultDesign(scenarioId = 'angola'): MissionDesign {
+  return structuredClone(DEFAULTS[scenarioId] ?? DEFAULTS.angola!);
 }
 
 export function mockResult(): SimResult {
@@ -198,8 +241,9 @@ export function decodeMission(code: string): MissionDesign | null {
 // Catalog (content)
 // ---------------------------------------------------------------------------
 
-export function partsFor(slot: PartSlot): Part[] {
-  return CONTENT.parts.filter((p) => p.slot === slot);
+/** Parts offered in a slot; parts with a `scenarios` list show only there (the radar study is Jeddah only). */
+export function partsFor(slot: PartSlot, scenarioId?: string): Part[] {
+  return CONTENT.parts.filter((p) => p.slot === slot && (!p.scenarios || !scenarioId || p.scenarios.includes(scenarioId)));
 }
 export function partById(id: string): Part | undefined {
   return CONTENT.parts.find((p) => p.id === id);

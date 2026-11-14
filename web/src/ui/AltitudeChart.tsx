@@ -20,6 +20,8 @@ export interface AltitudeChartProps {
   /** Reentry burn trace at the end of the first line. */
   burn?: boolean;
   title: string;
+  /** Event marker (prompt E F5): vertical line on the event date and one tick per pass (usable or blocked). */
+  event?: { date: string; label: string; looks: { date: string; usable: boolean }[] };
 }
 
 const W = 1000;
@@ -32,13 +34,14 @@ const dayOf = (iso: string): number => Date.parse(`${iso}T00:00:00Z`) / DAY;
  * SVG altitude chart on a shared date axis. Truth solid ink, plan dashed lapis, gap in sol-tint,
  * a rule at the reentry altitude (120 km). Forecast days (after OMNI ends) are shaded.
  */
-export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: AltitudeChartProps): React.JSX.Element {
+export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title, event }: AltitudeChartProps): React.JSX.Element {
   const { t, lang } = useI18n();
   const geo = useMemo(() => {
     const all = lines.flatMap((l) => l.timeline);
     if (all.length === 0) return null;
     const x0 = Math.min(...lines.map((l) => dayOf(l.timeline[0]!.date)));
-    const x1 = Math.max(...lines.map((l) => dayOf(l.timeline[l.timeline.length - 1]!.date)));
+    // extend the axis to the event (+30 d) so a reentry before the storm shows the gap
+    const x1 = Math.max(...lines.map((l) => dayOf(l.timeline[l.timeline.length - 1]!.date)), event ? dayOf(event.date) + 30 : -Infinity);
     let ymax = 0;
     for (const d of all) ymax = Math.max(ymax, d.altitudeKm);
     ymax = Math.ceil((ymax + 20) / 50) * 50;
@@ -46,7 +49,7 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
     const sx = (day: number) => PAD.l + ((day - x0) / Math.max(1, x1 - x0)) * (W - PAD.l - PAD.r);
     const sy = (km: number) => PAD.t + (1 - (km - ymin) / (ymax - ymin)) * (H - PAD.t - PAD.b);
     return { x0, x1, ymin, ymax, sx, sy };
-  }, [lines]);
+  }, [lines, event]);
 
   if (!geo) return <div className="sp-chart-empty type-small">{t('chart.empty')}</div>;
   const { x0, x1, ymin, ymax, sx, sy } = geo;
@@ -145,6 +148,16 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
             className="sp-chart-burn"
           />
         )}
+        {event && (
+          <g className="sp-chart-event">
+            <line x1={sx(dayOf(event.date))} x2={sx(dayOf(event.date))} y1={PAD.t} y2={H - PAD.b} className="sp-chart-event-line" />
+            <text x={sx(dayOf(event.date)) + 4} y={PAD.t + 12} className="sp-chart-axis">{event.label}</text>
+            {event.looks.map((l, i) => (
+              <line key={i} x1={sx(dayOf(l.date))} x2={sx(dayOf(l.date))} y1={H - PAD.b} y2={H - PAD.b - 12}
+                className={l.usable ? 'sp-chart-pass sp-chart-pass--ok' : 'sp-chart-pass sp-chart-pass--blocked'} />
+            ))}
+          </g>
+        )}
         <text x={PAD.l} y={PAD.t - 4} className="sp-chart-axis">
           {t('chart.km')}
         </text>
@@ -157,6 +170,7 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
         ))}
         {gapFill && <span className="sp-legend sp-legend--gap">{t('chart.gap')}</span>}
         {fDay !== undefined && <span className="sp-legend sp-legend--forecast">{t('chart.forecast')}</span>}
+        {event && <span className="sp-legend sp-legend--event">{t('jeddah.chart.legend', { ok: event.looks.filter((l) => l.usable).length, blocked: event.looks.filter((l) => !l.usable).length })}</span>}
       </figcaption>
     </figure>
   );

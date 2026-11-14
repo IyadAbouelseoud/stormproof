@@ -1,5 +1,5 @@
 /** Cause chain: 3..5 ordered causes, each with a numeric effect, ending in the verdict. */
-import type { Cause, Outcome, SimMode } from './contracts';
+import type { Cause, EventReplay, Outcome, SimMode } from './contracts';
 import { msg, r1 } from './msg';
 
 export interface CauseInputs {
@@ -20,6 +20,8 @@ export interface CauseInputs {
   climbKm: number;
   outcome: Outcome;
   lifetimeDays: number;
+  /** Event replay (prompt E2), or null when the scenario has no event. */
+  event?: { camera: 'optical' | 'radar'; replay: EventReplay } | null;
 }
 
 const MAX_CAUSES = 5;
@@ -71,6 +73,19 @@ export function causeChain(x: CauseInputs): Cause[] {
       : { id: 'propulsion', sun: false, effect: { value: 0, unit: 'm/s' }, label: msg('cause.no.fuel', 'No propulsion: 0 m/s to climb back up.', { dv: 0 }) },
   );
 
+  // Event cause (prompt E2): what cloud did to the looks inside the window.
+  const ev = x.event;
+  if (ev && ev.replay.looks.length > 0) {
+    const looks = ev.replay.looks;
+    if (ev.camera === 'radar') {
+      const nOk = looks.filter((l) => l.usable).length;
+      out.push({ id: 'cloud', sun: false, effect: { value: nOk, unit: 'looks' }, label: msg('cause.radar_cloud', `The radar saw through cloud on ${n(nOk, 'look', 'looks')} after the flood.`, { looks: nOk }) });
+    } else {
+      const nBlocked = looks.filter((l) => !l.usable).length;
+      out.push({ id: 'cloud', sun: false, effect: { value: -nBlocked, unit: 'looks' }, label: msg('cause.cloud', `Cloud or a missing image blocked ${n(nBlocked, 'optical look', 'optical looks')} of ${looks.length} after the flood.`, { blocked: nBlocked, looks: looks.length }) });
+    }
+  }
+
   const o = x.outcome;
   const verdict: Cause =
     o.kind === 'reentered'
@@ -79,10 +94,10 @@ export function causeChain(x: CauseInputs): Cause[] {
         ? { id: 'verdict', sun: true, effect: { value: x.lifetimeDays, unit: 'days' }, label: msg('cause.verdict.alive', `Still flying on ${o.asOf}; on NASA's forecast Sun it reenters about ${o.predictedReentry} (${x.lifetimeDays} days).`, { asOf: o.asOf, date: o.predictedReentry, days: x.lifetimeDays }) }
         : { id: 'verdict', sun: false, effect: { value: o.minYears, unit: 'years' }, label: msg('cause.verdict.forecast-end', `Still in orbit when the forecast ends (${o.asOf}): at least ${o.minYears} years.`, { asOf: o.asOf, years: o.minYears }) };
 
-  // Keep at most MAX_CAUSES: drop the design cause first, then the storm.
+  // Keep at most MAX_CAUSES: drop the design cause first, then the storm, then the slip.
   while (out.length + 1 > MAX_CAUSES) {
-    const i = out.findIndex((c) => c.id === 'propulsion');
-    out.splice(i >= 0 ? i : out.findIndex((c) => c.id === 'storm'), 1);
+    const i = ['propulsion', 'storm', 'launch-slip'].map((id) => out.findIndex((c) => c.id === id)).find((j) => j >= 0) ?? 1;
+    out.splice(i, 1);
   }
   out.push(verdict);
   return out;

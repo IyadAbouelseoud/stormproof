@@ -33,7 +33,13 @@ export const BATTERY_DOD = 0.3;
 export const REBOOST_DROP_KM = 10;
 export const FORECAST_END = '2041-10-15';
 
+/** Density table altitude range, km (read-only, for the Orbit screen; G2). */
+export const DENSITY_MIN_ALT_KM = 150;
+export const DENSITY_MAX_ALT_KM = 800;
+
 export const SOURCES: Record<string, string> = {
+  DENSITY_MIN_ALT_KM: 'AGENTS.md s5 (NRLMSIS 2.1 table 150-800 km, 10 km steps)',
+  DENSITY_MAX_ALT_KM: 'AGENTS.md s5 (NRLMSIS 2.1 table 150-800 km, 10 km steps)',
   MU_KM3_S2: 'WGS 84 / EGM96 Earth gravitational parameter',
   R_EARTH_KM: 'WGS 84 equatorial radius',
   J2: 'EGM2008 J2 (Vallado, Fundamentals of Astrodynamics, 4th ed.)',

@@ -1,0 +1,16 @@
+{
+  "id": "jeddah-flood",
+  "textId": "jeddah",
+  "name": "Jeddah flood watch",
+  "budgetUsd": 1900000,
+  "revisitMaxDays": 5,
+  "gsdMaxM": 30,
+  "dataDeliveredMinGB": 100,
+  "lifetimeMinDays": 365,
+  "targetLatDeg": 21.5,
+  "targetLonDeg": 39.2,
+  "lookWindowDays": 2,
+  "event": { "id": "jeddah-2022-11-24", "date": "2022-11-24", "label": "event.jeddah.label", "cloudTagsFile": "jeddah-cloud-2022-11" },
+  "requirementSet": ["revisit", "gsd", "data-delivered", "lifetime", "cost", "event-look"],
+  "src": "game-balanced (all targets, calibrated in content/evidence/jeddah-balance.md); target point approximate (jeddah-target); event date jeddah-flood-2022"
+}

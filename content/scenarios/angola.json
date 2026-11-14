@@ -1,0 +1,1 @@
+{ "id": "angola", "name": "Angola drought mapping", "budgetUsd": 1500000, "revisitMaxDays": 10, "gsdMaxM": 30, "dataDeliveredMinGB": 500, "lifetimeMinDays": 1095, "targetLatDeg": -16.0, "targetLonDeg": 13.5, "src": "game-balanced (targets); target point approximate" }

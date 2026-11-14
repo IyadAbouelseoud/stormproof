@@ -60,6 +60,30 @@ export function revisitDays(swathKmAtAlt: number, altKm: number, latDeg: number)
   return parallel / (swathKmAtAlt * orbitsPerDay);
 }
 
+/**
+ * One day of the circular ground track at 30 s steps (same geometry and epoch as fundaPasses),
+ * decimated to at most maxPoints [latDeg, lonDeg] pairs. Deterministic. (G2: SimResult.groundTrack)
+ */
+export function groundTrack(type: OrbitType, altKm: number, maxPoints = 720): [number, number][] {
+  const a = semiMajorAxisKm(altKm);
+  const inc = inclinationDeg(type, altKm) * DEG;
+  const n = (2 * Math.PI) / periodS(altKm);
+  const raanDot = (-1.5 * J2 * R_EARTH_KM * R_EARTH_KM * Math.sqrt(MU_KM3_S2) * Math.cos(inc)) / Math.pow(a, 3.5);
+  const steps = 86400 / 30;
+  const every = Math.ceil((steps + 1) / maxPoints);
+  const out: [number, number][] = [];
+  for (let k = 0; k <= steps; k += every) {
+    const t = k * 30;
+    const u = n * t;
+    const raan = raanDot * t - OMEGA_EARTH_RAD_S * t;
+    const x = Math.cos(raan) * Math.cos(u) - Math.sin(raan) * Math.cos(inc) * Math.sin(u);
+    const y = Math.sin(raan) * Math.cos(u) + Math.cos(raan) * Math.cos(inc) * Math.sin(u);
+    const z = Math.sin(inc) * Math.sin(u);
+    out.push([Math.round(Math.asin(z) / DEG * 100) / 100, Math.round(Math.atan2(y, x) / DEG * 100) / 100]);
+  }
+  return out;
+}
+
 export interface PassStats {
   passesPerDay: number;
   contactMinPerDay: number;

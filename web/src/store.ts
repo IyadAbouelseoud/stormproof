@@ -52,6 +52,8 @@ export interface MissionState {
   setTeamMode: (on: boolean) => void;
   setName: (role: RoleId, name: string) => void;
   loadDesign: (d: MissionDesign) => void;
+  /** Switch scenario: loads that scenario's starting design (F1). */
+  setScenario: (id: string) => void;
 }
 
 const truthOf = (d: MissionDesign): MissionDesign => ({ ...d, mode: 'truth' });
@@ -160,6 +162,11 @@ export const useMission = create<MissionState>((set, get) => {
     clearBaseline: () => set({ baseline: null }),
     setTeamMode: (on) => set({ teamMode: on }),
     setName: (role, name) => set({ names: { ...get().names, [role]: name } }),
+    setScenario: (id) => {
+      if (get().design.scenarioId === id) return;
+      const d = defaultDesign(id);
+      set({ design: d, result: simulate(truthOf(d)), prevResult: null, lastChange: null, flight: null, baseline: null });
+    },
     loadDesign: (d) => {
       set({ design: d, result: simulate(truthOf(d)), prevResult: null, lastChange: null, flight: null });
     },

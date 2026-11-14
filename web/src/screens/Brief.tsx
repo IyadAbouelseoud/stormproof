@@ -3,10 +3,13 @@ import { useI18n } from '../i18n';
 import { fmtNum } from '../format';
 import { useMission, ROLES } from '../store';
 import { useNavigation } from '../navigation';
-import { scenario, scenarioText, sunMonths, useEngineStatus } from '../engineAdapter';
+import { scenario, sunMonths, useEngineStatus } from '../engineAdapter';
 import { Button, RoleChip, SrcTag, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
 import { SunStripe } from '../ui/SunStripe';
+import { artAlt, scenarioText, tx } from '../content';
+import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
+import { fmtUsd } from '../format';
 import { ScreenFrame } from './ScreenFrame';
 
 export function Brief(): React.JSX.Element {
@@ -19,30 +22,37 @@ export function Brief(): React.JSX.Element {
   const setName = useMission((s) => s.setName);
   const status = useEngineStatus((s) => s.status);
   const sc = scenario(result.design.scenarioId);
-  const text = scenarioText(result.design.scenarioId);
+  const st = scenarioText(result.design.scenarioId);
+  const reqs = result.score.requirements;
+  const event = result.eventReplay !== undefined;
+  const REQ_TEXT: Record<string, string> = { 'data-delivered': 'data' };
+  const params = sc
+    ? { revisit_days: fmtNum(lang, sc.revisitMaxDays), gsd_m: fmtNum(lang, sc.gsdMaxM), data_gb: fmtNum(lang, sc.dataDeliveredMinGB), lifetime_days: fmtNum(lang, sc.lifetimeMinDays), budget: fmtUsd(lang, sc.budgetUsd), look_days: fmtNum(lang, sc.lookWindowDays ?? 0) }
+    : {};
+  const fill = (s: string) => s.replace(/\{(\w+)\}/g, (m, k: string) => String((params as Record<string, string>)[k] ?? m));
+  const hero = 'art-p1-title-hero-v1.webp';
   const months = sunMonths();
-  // the three numeric requirements of the brief: revisit, ground resolution, lifetime (targets from the result)
-  const reqs = result.score.requirements.filter((r) => r.id === 'revisit' || r.id === 'gsd' || r.id === 'lifetime');
 
   return (
     <ScreenFrame id="Brief">
-      {/* Hook banner */}
       <div className="brief-hook-card">
         <p className="type-heading brief-game-desc">{t('brief.game_desc')}</p>
         <p className="type-body brief-hook-text">{t('brief.hook')}</p>
       </div>
-
+      <ScenarioPicker />
       <div className="brief-layout">
         <div className="brief-text">
           <p className="type-label brief-kicker">{t('brief.kicker')}</p>
-          <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{t(text.titleKey)}</h3>
-          <p className="type-body brief-story">{t(text.storyKey)}</p>
-          <Illustration id="p2" src="img/art/art-p2-angola-drought-v1.webp" alt={t(text.titleKey)} className="brief-scenario-art" />
-          {text.stub && <p className="type-small brief-stub">{t('brief.story_stub')}</p>}
+          <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{tx(st?.title, lang, sc?.name ?? '')}</h3>
+          {st?.story.map((b) => (
+            <p key={b.beat} className="type-body brief-story">{tx(b.text, lang)}</p>
+          ))}
+          {st && <p className="type-body brief-story"><strong>{tx(st.mission, lang)}</strong></p>}
           <ul className="brief-reqs">
             {reqs.map((r) => (
               <li key={r.id} className="brief-req">
-                <span className="type-label">{t(`req.${r.id}`)}</span>
+                <span className="type-label">{tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.label, lang, t(`req.${r.id}`))}</span>
+                <span className="type-small">{fill(tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.why, lang))}</span>
                 <span className="type-data-l">
                   {r.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, r.target)}
                   <span className="type-data sp-unit"> {unitText(t, r.unit)}</span>
@@ -58,11 +68,10 @@ export function Brief(): React.JSX.Element {
           {status === 'mock' && <p className="type-small brief-stub">{t('engine.mock_notice')}</p>}
         </div>
         <div className="brief-hero">
-          <Illustration id="p1" src="img/art/art-p1-title-hero-v1.webp" alt={t('brief.kicker')} />
+          <Illustration id="p1" src={`${import.meta.env.BASE_URL}img/art/${hero}`} alt={artAlt(hero, lang)} />
+          <p className="type-small">{t('art.note')}</p>
         </div>
       </div>
-
-      {/* Sun Stripe always visible without scrolling */}
       {months && (
         <section className="brief-sunstripe-section" aria-label={t('sun.legend')}>
           <div className="brief-sunstripe-box">
@@ -73,13 +82,13 @@ export function Brief(): React.JSX.Element {
           </p>
         </section>
       )}
-
-      {/* Big Start Mission CTA */}
       <div className="brief-start-cta">
         <Button className="brief-start-btn" onClick={() => setScreen('Build')}>
           <span className="type-display-l">{t('brief.start_mission')}</span>
         </Button>
       </div>
+      {event && <EventCard />}
+      <Limits scenarioId={result.design.scenarioId} />
 
       <section className="team-setup" aria-labelledby="team-setup-h">
         <h3 id="team-setup-h" className="type-heading">{t('team.title')}</h3>

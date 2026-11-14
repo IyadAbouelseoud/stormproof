@@ -1,0 +1,26 @@
+{
+  "_note": "Engine catalog (engine/src/catalog.ts Part). Ids match content/text/parts.json. Every number is game-balanced unless src names a sources.csv id. Part names here are English fallbacks; the UI shows content/text/parts.json.",
+  "parts": [
+    { "id": "camera-budget", "slot": "camera", "name": "Budget camera", "massKg": 0.5, "powerW": 2.0, "costUsd": 120000, "units": 1, "gsdAt500M": 30, "swathAt500Km": 120, "dataMBPerDay": 600, "cameraType": "optical", "src": "game-balanced" },
+    { "id": "camera-standard", "slot": "camera", "name": "Standard camera", "massKg": 0.9, "powerW": 3.0, "costUsd": 230000, "units": 1.5, "gsdAt500M": 10, "swathAt500Km": 60, "dataMBPerDay": 1200, "cameraType": "optical", "src": "game-balanced" },
+    { "id": "camera-sharp", "slot": "camera", "name": "Sharp camera", "massKg": 1.2, "powerW": 4.0, "costUsd": 350000, "units": 2, "gsdAt500M": 5, "swathAt500Km": 30, "dataMBPerDay": 1800, "cameraType": "optical", "src": "game-balanced" },
+    { "id": "camera-radar", "slot": "camera", "name": "Radar imager (design study)", "massKg": 4.0, "powerW": 9.0, "costUsd": 900000, "units": 2.5, "gsdAt500M": 15, "swathAt500Km": 100, "dataMBPerDay": 2500, "cameraType": "radar", "scenarios": ["jeddah-flood"], "src": "cam-radar-study" },
+    { "id": "panels-small", "slot": "panels", "name": "Small panels", "massKg": 0.3, "powerW": 0, "costUsd": 40000, "units": 0, "effectiveAreaM2": 0.045, "src": "game-balanced" },
+    { "id": "panels-medium", "slot": "panels", "name": "Medium panels", "massKg": 0.6, "powerW": 0, "costUsd": 90000, "units": 0, "effectiveAreaM2": 0.08, "src": "game-balanced" },
+    { "id": "panels-large", "slot": "panels", "name": "Large panels", "massKg": 0.9, "powerW": 0, "costUsd": 150000, "units": 0, "effectiveAreaM2": 0.11, "src": "game-balanced" },
+    { "id": "battery-small", "slot": "battery", "name": "Small battery", "massKg": 0.3, "powerW": 0, "costUsd": 15000, "units": 0.5, "capacityWh": 38, "src": "game-balanced" },
+    { "id": "battery-medium", "slot": "battery", "name": "Medium battery", "massKg": 0.6, "powerW": 0, "costUsd": 28000, "units": 1, "capacityWh": 77, "src": "game-balanced" },
+    { "id": "battery-large", "slot": "battery", "name": "Large battery", "massKg": 0.9, "powerW": 0, "costUsd": 40000, "units": 1.5, "capacityWh": 115, "src": "game-balanced" },
+    { "id": "radio-slow", "slot": "radio", "name": "Slow radio", "massKg": 0.1, "powerW": 1.0, "costUsd": 10000, "units": 0.25, "downlinkMbps": 0.0096, "src": "game-balanced" },
+    { "id": "radio-standard", "slot": "radio", "name": "Standard radio", "massKg": 0.2, "powerW": 2.0, "costUsd": 45000, "units": 0.5, "downlinkMbps": 2, "src": "game-balanced" },
+    { "id": "radio-fast", "slot": "radio", "name": "Fast radio", "massKg": 0.3, "powerW": 3.0, "costUsd": 90000, "units": 0.5, "downlinkMbps": 25, "src": "game-balanced" },
+    { "id": "computer-basic", "slot": "computer", "name": "Basic computer", "massKg": 0.1, "powerW": 0.5, "costUsd": 12000, "units": 0.25, "storageMB": 2000, "src": "game-balanced" },
+    { "id": "computer-standard", "slot": "computer", "name": "Standard computer", "massKg": 0.1, "powerW": 0.8, "costUsd": 25000, "units": 0.25, "storageMB": 8000, "src": "game-balanced" },
+    { "id": "computer-large", "slot": "computer", "name": "Large computer", "massKg": 0.2, "powerW": 1.5, "costUsd": 45000, "units": 0.5, "storageMB": 32000, "src": "game-balanced" },
+    { "id": "pointing-basic", "slot": "pointing", "name": "Basic pointing", "massKg": 0.2, "powerW": 0.5, "costUsd": 20000, "units": 0.25, "offNadirFactor": 1, "src": "game-balanced" },
+    { "id": "pointing-standard", "slot": "pointing", "name": "Standard pointing", "massKg": 0.5, "powerW": 1.2, "costUsd": 80000, "units": 0.5, "offNadirFactor": 3, "src": "game-balanced" },
+    { "id": "pointing-precise", "slot": "pointing", "name": "Precise pointing", "massKg": 0.9, "powerW": 2.0, "costUsd": 160000, "units": 0.5, "offNadirFactor": 6, "src": "game-balanced" },
+    { "id": "fuel-small", "slot": "fuel", "name": "Small fuel tank", "massKg": 0.4, "powerW": 0.1, "costUsd": 60000, "units": 0.5, "deltaVMs": 10, "src": "game-balanced" },
+    { "id": "fuel-large", "slot": "fuel", "name": "Large fuel tank", "massKg": 0.8, "powerW": 0.2, "costUsd": 120000, "units": 1, "deltaVMs": 20, "src": "game-balanced" }
+  ]
+}

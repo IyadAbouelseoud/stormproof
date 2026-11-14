@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -93,3 +94,24 @@ def test_data_files_under_4mb():
     total = sum(p.stat().st_size for p in files)
     print("data:", {p.name: p.stat().st_size for p in files}, "total", total)
     assert total < 4 * 1024 * 1024
+
+
+# ---- Prompt E4: Jeddah GIBS frames ----
+GIBS = Path(__file__).resolve().parent.parent / "web" / "public" / "img" / "gibs"
+JEDDAH_FILES = [f"jeddah_modis_202211{d}.jpg" for d in (23, 24, 25, 26, 27)] + [
+    f"jeddah_imerg_20221124_{h}z.jpg" for h in ("03", "05", "07", "09", "12")] + ["jeddah_imerg_20221125_03z.jpg"]
+
+
+@pytest.mark.parametrize("fn", JEDDAH_FILES)
+def test_jeddah_gibs_file_exists_and_bounded(fn):
+    p = GIBS / fn
+    assert p.exists(), fn
+    assert 1_000 < p.stat().st_size < 400_000
+    assert p.read_bytes()[:2] == b"\xff\xd8"  # JPEG
+
+
+def test_jeddah_gibs_credits_present():
+    credits = {c["file"]: c for c in json.loads((GIBS / "credits.json").read_text(encoding="utf-8"))}
+    for fn in JEDDAH_FILES:
+        c = credits[fn]
+        assert c["credit"].startswith("NASA") and c["layer"] and c["date"] and c["url"].startswith("https://gibs.earthdata.nasa.gov/")
