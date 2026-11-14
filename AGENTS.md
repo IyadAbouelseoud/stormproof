@@ -8,6 +8,8 @@ Read this file fully before any task. Update HANDOFF.md at every checkpoint.
 ## 1. Hard rules
 1. Honesty: every number is sourced (cite in content/sources.csv), computed, or labelled "game-balanced". Never invent data. Disclose failing checks; never hide or loosen golden tests.
 2. AI (SI) disclosure: AI-generated images carry a visible "SI-generated" tag. SI code and data are acknowledged in README.
+   - Untagged art is in web/public/img/art (the app overlays `.sp-si-tag`); tagged copies for slides/video are in content/pitch-art/*-si.webp.
+   - The art is illustration only: never present it as real places, data or satellite imagery. Real imagery comes from the GIBS slot on the Report screen. See web/public/img/art/README.md.
 3. No people in images, no likeness of anyone under 18.
 4. Credit NASA data everywhere it is used. No NASA logos, flags or insignia. Never modify or place the Space Apps logo.
 5. NRLMSIS 2.x is non-commercial: ship only pre-computed tables, state it in README.
