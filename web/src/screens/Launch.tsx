@@ -6,6 +6,7 @@ import { useNavigation } from '../navigation';
 import { sunMonths, useEngineStatus } from '../engineAdapter';
 import { Button } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
+import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
 function RocketSvg({ liftoff }: { liftoff: boolean }): React.JSX.Element {
@@ -135,11 +136,13 @@ export function Launch(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Launch">
+      <Illustration id="p8" src="img/art/art-p8-launch-header-v1.webp" alt={t('launch.go')} className="launch-header-art" />
       <section aria-labelledby="date-h">
         <h3 id="date-h" className="type-label section-label">
           {t('launch.date')}
         </h3>
         <p className="type-data-l">{fmtDate(lang, design.launchDate)}</p>
+        <Illustration id="p11" src="img/art/art-p11-solar-storm-v1.webp" alt={t('sun.legend')} className="launch-storm-art" />
         {months ? (
           <SunStripe
             months={months}

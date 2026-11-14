@@ -5,6 +5,7 @@ import { fmtNum } from '../format';
 import { useMission } from '../store';
 import { ALT_MAX_KM, ALT_MIN_KM, altitudeBands, rockets, useEngineStatus, type AltitudeBands } from '../engineAdapter';
 import { Button, SrcTag, VerdictStamp } from '../ui/components';
+import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
 export function FitVerdicts(): React.JSX.Element {
@@ -127,6 +128,7 @@ export function Orbit(): React.JSX.Element {
             </Button>
           ))}
         </div>
+        <Illustration id="p3" src="img/art/art-p3-ground-station-v1.webp" alt={t('map.station')} className="orbit-ground-art" />
       </section>
 
       <section aria-labelledby="rocket-h">

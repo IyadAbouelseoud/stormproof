@@ -171,6 +171,26 @@ main:focus { outline: none; }
   object-fit: cover;
   display: block;
 }
+.brief-scenario-art {
+  margin-block: var(--space-12);
+  max-inline-size: 24rem;
+}
+.orbit-ground-art {
+  margin-block-start: var(--space-12);
+  max-inline-size: 24rem;
+}
+.launch-header-art,
+.flight-header-art {
+  margin-block-end: var(--space-16);
+}
+.report-verdict-art {
+  margin-block: var(--space-16);
+  max-inline-size: 28rem;
+}
+.report-backdrop-art {
+  margin-block-start: var(--space-24);
+  max-inline-size: 32rem;
+}
 .build-exploded-chips {
   list-style: none;
   display: flex;

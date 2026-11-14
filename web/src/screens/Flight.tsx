@@ -9,6 +9,7 @@ import { AltitudeChart } from '../ui/AltitudeChart';
 import { GroundMap } from '../ui/GroundMap';
 import { Button, RoleChip } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
+import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
 const EMPTY_TL: TimelineDay[] = [];
@@ -224,6 +225,7 @@ export function Flight(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Flight">
+      <Illustration id="p9" src="img/art/art-p9-flight-header-v1.webp" alt={t('flight.map')} className="flight-header-art" />
       <div className="flight-controls">
         <Button onClick={() => (ended ? restart() : setPlaying((p) => !p))} disabled={alert !== null} aria-label={playing ? t('flight.pause') : t('flight.play')}>
           {ended ? t('flight.replay') : playing ? t('flight.pause') : t('flight.play')}

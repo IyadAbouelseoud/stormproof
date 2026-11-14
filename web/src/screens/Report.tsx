@@ -6,6 +6,7 @@ import { useMission } from '../store';
 import { useNavigation } from '../navigation';
 import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
+import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
 function CountUp({ target, durationMs = 600 }: { target: number; durationMs?: number }): React.JSX.Element {
@@ -108,6 +109,8 @@ export function Report(): React.JSX.Element {
     gibsImages().then((l) => setGibs(l.find((g) => g.file.includes('angola') && g.resolutionM <= 30) ?? null));
   }, []);
   const r = flight?.truth ?? live;
+  const life = r.score.requirements.find((q) => q.id === 'lifetime');
+  const lived = life?.met ?? false;
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
@@ -116,6 +119,12 @@ export function Report(): React.JSX.Element {
     <ScreenFrame id="Report">
       {!flight && <p className="type-small brief-stub">{t('report.not_flown')}</p>}
       <MainVerdict r={r} />
+      <Illustration
+        id={lived ? 'p12' : 'p10'}
+        src={lived ? 'img/art/art-p12-mission-flown-v1.webp' : 'img/art/art-p10-reentry-lost-v1.webp'}
+        alt={lived ? t('verdict.lived') : t('verdict.died')}
+        className="report-verdict-art"
+      />
 
       <section className="sun-took" aria-labelledby="sun-took-h">
         <h3 id="sun-took-h" className="type-label section-label">
@@ -216,6 +225,8 @@ export function Report(): React.JSX.Element {
       </div>
 
       <MissionTicket code={r.missionCode} />
+
+      <Illustration id="p6" src="img/art/art-p6-pitch-backdrop-v1.webp" alt={t('report.sources_title')} className="report-backdrop-art" />
 
       <details className="sources">
         <summary className="type-label">{t('report.sources', { n: sources.length })}</summary>

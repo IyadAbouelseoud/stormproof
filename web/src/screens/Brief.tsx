@@ -4,6 +4,7 @@ import { fmtNum } from '../format';
 import { useMission, ROLES } from '../store';
 import { scenario, scenarioText, useEngineStatus } from '../engineAdapter';
 import { Button, RoleChip, SrcTag, unitText } from '../ui/components';
+import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
 
 export function Brief(): React.JSX.Element {
@@ -26,6 +27,7 @@ export function Brief(): React.JSX.Element {
           <p className="type-label brief-kicker">{t('brief.kicker')}</p>
           <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{t(text.titleKey)}</h3>
           <p className="type-body brief-story">{t(text.storyKey)}</p>
+          <Illustration id="p2" src="img/art/art-p2-angola-drought-v1.webp" alt={t(text.titleKey)} className="brief-scenario-art" />
           {text.stub && <p className="type-small brief-stub">{t('brief.story_stub')}</p>}
           <ul className="brief-reqs">
             {reqs.map((r) => (
@@ -46,9 +48,7 @@ export function Brief(): React.JSX.Element {
           {status === 'mock' && <p className="type-small brief-stub">{t('engine.mock_notice')}</p>}
         </div>
         <div className="brief-hero">
-          <div className="art-slot" role="img" aria-label={t('art.placeholder')}>
-            <span className="type-label">{t('art.placeholder')}</span>
-          </div>
+          <Illustration id="p1" src="img/art/art-p1-title-hero-v1.webp" alt={t('brief.kicker')} />
         </div>
       </div>
 
