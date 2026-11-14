@@ -77,6 +77,37 @@ main:focus { outline: none; }
 .art-slot--small { min-block-size: calc(var(--space-64) * 2); }
 
 /* ---------- Brief ---------- */
+.brief-hook-card {
+  background-color: var(--color-ground-raised);
+  border: 1px solid var(--color-rule);
+  border-inline-start: 4px solid var(--color-sol);
+  padding: var(--space-16);
+  border-radius: var(--radius-2);
+  margin-block-end: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.brief-game-desc {
+  color: var(--color-sol-ink);
+  font-weight: 600;
+}
+.brief-hook-text {
+  color: var(--color-ink);
+}
+.brief-sunstripe-section {
+  margin-block: var(--space-16);
+}
+.brief-start-cta {
+  display: flex;
+  justify-content: center;
+  margin-block: var(--space-24);
+}
+.brief-start-btn {
+  padding-block: var(--space-16);
+  padding-inline: var(--space-48);
+}
+
 .brief-layout {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
