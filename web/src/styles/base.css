@@ -26,3 +26,33 @@ button {
 button:hover {
   opacity: 0.9;
 }
+
+/* Scrollbars: slim, themed, same look everywhere (page and inner panels). Colours from tokens only. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule) transparent;
+}
+*::-webkit-scrollbar {
+  inline-size: 8px;
+  block-size: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-rule);
+  border-radius: var(--radius-2);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-ink-muted);
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+*::-webkit-scrollbar-button {
+  display: none;
+  block-size: 0;
+  inline-size: 0;
+}
