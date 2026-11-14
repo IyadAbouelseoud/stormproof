@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./web/public/data/**)",
+      "Read(./pipeline/raw/**)",
+      "Read(**/.env)",
+      "Bash(cat:*.env)",
+      "Bash(echo $NASA_API_KEY)",
+      "Bash(git push --force:*)",
+      "Bash(rm -rf:*)"
+    ],
+    "allow": [
+      "Bash(pnpm:*)",
+      "Bash(uv:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ]
+  }
+}

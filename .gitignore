@@ -1,0 +1,22 @@
+# secrets
+.env
+**/.env
+!**/.env.example
+
+# deps and builds
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+coverage/
+
+# raw downloaded NASA data (only derived tables ship)
+pipeline/raw/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
