@@ -28,3 +28,6 @@ Additive only; Angola results byte-identical (engine/test/angola-regression.test
 - Score weight: with N requirements each is worth 80/N (Angola N=5: 16, unchanged; Jeddah N=6: 13.33).
 - Cause chain: new cause id `cloud` (optical: looks blocked; radar: looks through cloud). Trimming order to keep <= 5: propulsion, storm, launch-slip.
 - Radar event revisit is halved (it also images on night crossings). game-balanced, in sources.csv cam-radar-study.
+
+## 2026-11-14 Prompt E4: IMERG layer id
+`IMERG_Rain_Rate` (named in prompt E) is NOT in the GIBS WMS capabilities. pipeline/fetch_gibs.py --jeddah falls back to `IMERG_Precipitation_Rate_30min` (30-minute IMERG, about 10 km) and records the layer actually used in credits.json. Frames: 24 Nov 2022 03/05/07/09/12 UTC and 25 Nov 03 UTC (chosen around the reported 6-hour storm on the morning of 24 Nov, local time UTC+3). Black = no rain (JPEG, no transparency). MODIS Terra true colour 23-27 Nov 2022 also fetched (26 Nov shows the swath gap, matching the "no-image" tag). Nothing faked.
