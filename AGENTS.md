@@ -82,11 +82,11 @@ After each task: tests green, commit, add a HANDOFF line. At about 85% of the us
 Done / In progress / Next (resume prompt) / Blocked and disclosed limits. See HANDOFF.md.
 
 ## 8. Release checklist
-- [ ] All golden tests pass or limits disclosed in README
-- [ ] README fields: project name, challenge, one-paragraph summary, how to run, NASA datasets used, team members, AI use, NRLMSIS licence note
-- [ ] content/sources.csv complete; every number sourced, computed or "game-balanced"
-- [ ] No keys in repo or git history; no runtime external calls; fonts self-hosted
-- [ ] SI tags on AI images; no NASA logos; credits.json for GIBS
-- [ ] axe: zero serious/critical at 390x844 and 1440x900, EN and AR, Paper and Night
+- [x] All golden tests pass or limits disclosed in README (golden 1 and 3 pass; golden 2 is 18 of 21 with 3 known fails in README "Disclosed limits"; qa/TRACK1.md)
+- [x] README fields: project name, challenge, one-paragraph summary, how to run, NASA datasets used, team members, AI use, NRLMSIS licence note (all present; qa/TRACK3.md s7)
+- [x] content/sources.csv complete; every number sourced, computed or "game-balanced" (85 rows, unique ids, all 21 part sources resolve; open hygiene items: GIBS pictures are credited in credits.json, not the csv; two `src` fields are sentences; qa/FUNCTIONAL.md)
+- [x] No keys in repo or git history; no runtime external calls; fonts self-hosted (qa/TRACK3.md s4-s5; smoke walk: no external requests)
+- [x] SI tags on AI images; no NASA logos; credits.json for GIBS (27 art files viewed, no NASA marks, no people; qa/TRACK3.md s3)
+- [x] axe: zero serious/critical at 390x844 and 1440x900, EN and AR, Paper and Night (16 combinations, both scenarios; qa/TRACK2.md s2)
 - [ ] Deployed URL opens in a private window with no login
 - [ ] Tag v1.0-rc, then v1.0 by Sun 12:30; code freeze Sun 13:00
