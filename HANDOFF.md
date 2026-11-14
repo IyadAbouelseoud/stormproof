@@ -75,3 +75,4 @@ Updated by the agent at every checkpoint (tests green, committed).
 - simulate() runs on content-stub.json until content/parts.json, rockets.json, scenarios/angola.json land (game-balanced stub). With the stub the Angola revisit requirement is unmeetable (30 km swath -> about 84 d vs 10 d target): content balance, not engine.
 - Storm cause = 2-day altitude loss x (1 - baseline density / storm density) at fixed altitude; an estimate, labelled "more than normal decay".
 - Closest-design list has only FACSAT-2 (the one sourced reference mission).
+- 2026-11-14 13:40: game-feel plan added. prompts/G-game-feel.md (motion, sound, art wiring, tasks G1-G9), prompts/D2-extra-art-gemini.md (Dua: P8-P12), prompts/C now has Track 5 (audit and fill gaps). design/README.md art cap 7 to 12. Renad can run G1-G5 now; Fable only verifies.

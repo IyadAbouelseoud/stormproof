@@ -70,4 +70,4 @@ SunStripe, Gauge, PartCard, CauseChain, RoleChip, Button, VerdictStamp, MissionT
 Peak: the turn to Night on launch and the reentry burn. End: the Autopsy card and Re-fly side by side. Loss framing: "the Sun took N days".
 
 ## Visual rules
-Draw visuals in code (SVG/Canvas from tokens and real data). AI art is limited to about 7 hero/accent images, each tagged. Arabic + English UI; one ornament per screen; no NASA branding.
+Draw visuals in code (SVG/Canvas from tokens and real data). AI art is limited to about 12 hero/accent images (P1-P12), each tagged; UI icons, motion and empty states are drawn in code. Arabic + English UI; one ornament per screen; no NASA branding.
