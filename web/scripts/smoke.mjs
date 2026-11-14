@@ -66,29 +66,39 @@ try {
         await page.waitForTimeout(200);
         if (process.env.HEAP) console.log(tag, 'play heap', Math.round(await page.evaluate(() => performance.memory.usedJSHeapSize / 1e6)), 'MB', await page.locator('.flight-clock').innerText());
       }
-      // storm card may have paused play: vote / continue until the flight ends
+      let tookStormShot = false;
       for (let i = 0; i < 40; i++) {
         const storm = page.locator('.storm-card .sp-btn').first();
-        if (await storm.count()) await storm.click();
+        if (await storm.count()) {
+          if (!tookStormShot) {
+            await shot('flight-storm');
+            tookStormShot = true;
+          }
+          await storm.click();
+        }
         if (await page.locator('.reentry').count()) break;
-        await page.click('.flight-controls .sp-btn >> nth=4').catch(() => {}); // skip to end
+        await page.click('.flight-controls .sp-btn--quiet', { timeout: 1000 }).catch(() => {}); // skip to end
         await page.waitForTimeout(300);
+      }
+      if (await page.locator('.reentry').count()) {
+        await shot('reentry');
       }
       await shot('flight');
       await page.click('.reentry .sp-btn');
       await page.waitForSelector('.screen--report');
       await page.waitForTimeout(800);
       await shot('report');
+      await shot('verdict');
       await page.click('.screen--report .btn-row .sp-btn >> nth=0'); // change one thing -> Build
       await page.locator('.sp-btn:has-text("3U"), .sp-btn:has-text("6U")').first().click();
       await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
       await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
       await page.click('.launch-btn');
-      await page.click('.flight-controls .sp-btn >> nth=4');
+      await page.click('.flight-controls .sp-btn--quiet', { timeout: 1000 }).catch(() => {});
       for (let i = 0; i < 10 && !(await page.locator('.reentry').count()); i++) {
         const storm = page.locator('.storm-card .sp-btn').first();
         if (await storm.count()) await storm.click();
-        await page.click('.flight-controls .sp-btn >> nth=4').catch(() => {});
+        await page.click('.flight-controls .sp-btn--quiet', { timeout: 1000 }).catch(() => {});
       }
       await page.evaluate(() => window.scrollTo(0, 0));
       await page.click('.nav-controls-bar .sp-btn-nav >> nth=1').catch(() => {});

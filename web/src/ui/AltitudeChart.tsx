@@ -52,8 +52,11 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
   const { x0, x1, ymin, ymax, sx, sy } = geo;
 
   const limit = (tl: TimelineDay[], i: number): TimelineDay[] => {
-    if (!reveal || cursor === undefined) return tl;
-    const cutDay = dayOf(lines[0]!.timeline[Math.min(i, lines[0]!.timeline.length - 1)]!.date);
+    if (!reveal || cursor === undefined || !lines[0]?.timeline?.length) return tl;
+    const idx = Math.max(0, Math.min(Math.floor(i), lines[0].timeline.length - 1));
+    const target = lines[0].timeline[idx];
+    if (!target) return tl;
+    const cutDay = dayOf(target.date);
     return tl.filter((d) => dayOf(d.date) <= cutDay);
   };
   const pathOf = (tl: TimelineDay[]): string =>
@@ -93,7 +96,10 @@ export function AltitudeChart({ lines, gapFill, cursor, reveal, burn, title }: A
   for (let y = y0 + 1; y <= y1; y += every) yearTicks.push({ day: dayOf(`${y}-01-01`), y: String(y) });
 
   const first = lines[0]!;
-  const cur = cursor !== undefined ? first.timeline[Math.min(cursor, first.timeline.length - 1)] : undefined;
+  const curIdx = cursor !== undefined && first.timeline.length > 0
+    ? Math.max(0, Math.min(Math.floor(cursor), first.timeline.length - 1))
+    : undefined;
+  const cur = curIdx !== undefined ? first.timeline[curIdx] : undefined;
   const last = first.timeline[first.timeline.length - 1]!;
 
   return (

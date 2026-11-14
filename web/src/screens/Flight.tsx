@@ -212,7 +212,16 @@ export function Flight(): React.JSX.Element {
       </ScreenFrame>
     );
 
-  const day = tl[Math.min(cursor, n - 1)]!;
+  const safeIdx = Math.max(0, Math.min(Math.floor(cursor), n - 1));
+  const day = tl[safeIdx] ?? tl[0];
+  if (!day) {
+    console.error('DEBUG: No day available!', { cursor, safeIdx, n, tlLen: tl.length });
+    return (
+      <ScreenFrame id="Flight">
+        <EmptyState icon="flight" text={t('flight.empty')} />
+      </ScreenFrame>
+    );
+  }
   const flightOutcome = flight.truth.outcome;
   const storage = (partById(flight.design.parts.computer) as unknown as { storageMB?: number } | undefined)?.storageMB;
   const ci = Math.min(cursor, n - 1);
