@@ -7,6 +7,7 @@ import { sunMonths, useEngineStatus } from '../engineAdapter';
 import { Button } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
+import { playLaunchTick } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 function RocketSvg({ liftoff }: { liftoff: boolean }): React.JSX.Element {
@@ -97,6 +98,7 @@ export function Launch(): React.JSX.Element {
       finishLaunch();
       return;
     }
+    playLaunchTick();
     setCeremony('countdown');
     setCount(3);
   };
@@ -112,7 +114,10 @@ export function Launch(): React.JSX.Element {
     let timer: number;
     if (ceremony === 'countdown') {
       if (count > 1) {
-        timer = window.setTimeout(() => setCount((c) => c - 1), 240);
+        timer = window.setTimeout(() => {
+          playLaunchTick();
+          setCount((c) => c - 1);
+        }, 240);
       } else {
         timer = window.setTimeout(() => {
           setCeremony('liftoff');

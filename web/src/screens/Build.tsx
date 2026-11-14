@@ -5,6 +5,7 @@ import { fmtSigned, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partsFor } from '../engineAdapter';
 import { Button, Gauge, PartCard, SlotIcon, unitText } from '../ui/components';
+import { playPartSnap } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 const FRAMES: FormFactor[] = ['1U', '3U', '6U'];
@@ -145,7 +146,15 @@ export function Build(): React.JSX.Element {
           </h3>
           <div className="part-grid">
             {partsFor(slot).map((p) => (
-              <PartCard key={p.id} part={p} selected={design.parts[slot] === p.id} onSelect={() => setPart(slot, p.id)} />
+              <PartCard
+                key={p.id}
+                part={p}
+                selected={design.parts[slot] === p.id}
+                onSelect={() => {
+                  playPartSnap();
+                  setPart(slot, p.id);
+                }}
+              />
             ))}
           </div>
         </section>

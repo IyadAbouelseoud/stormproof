@@ -8,6 +8,7 @@ import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
+import { playStampThud, playSuccessChord } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 function CountUp({ target, durationMs = 600 }: { target: number; durationMs?: number }): React.JSX.Element {
@@ -115,6 +116,15 @@ export function Report(): React.JSX.Element {
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
+
+  useEffect(() => {
+    playStampThud();
+    if (r.score.requirementsMet === r.score.requirements.length) {
+      const timer = window.setTimeout(playSuccessChord, 300);
+      return () => window.clearTimeout(timer);
+    }
+    return undefined;
+  }, [r]);
 
   return (
     <ScreenFrame id="Report">

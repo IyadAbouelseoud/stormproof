@@ -6,6 +6,7 @@ import { NavigationControls } from './ui/NavigationControls';
 import { useNavigation, type ScreenId } from './navigation';
 import { useMission } from './store';
 import { loadEngine, useEngineStatus } from './engineAdapter';
+import { isSoundEnabled, setSoundEnabled, playPartSnap } from './sound';
 import { reducedMotion } from './format';
 import { Brief, Build, Orbit, Launch, Flight, Report, Refly } from './screens';
 import { Gallery } from './screens/Gallery';
@@ -17,6 +18,37 @@ const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = { Brief, Build,
 type View = 'mission' | 'gallery' | 'tokens';
 const viewOf = (hash: string): View =>
   hash === '#gallery' ? 'gallery' : hash === '#tokens' || hash === '#swatches' ? 'tokens' : 'mission';
+
+function SoundToggle(): React.JSX.Element {
+  const { t } = useI18n();
+  const [enabled, setEnabled] = useState(isSoundEnabled);
+
+  const toggle = () => {
+    const next = !enabled;
+    setEnabled(next);
+    setSoundEnabled(next);
+    if (next) playPartSnap();
+  };
+
+  return (
+    <button
+      type="button"
+      className="sound-toggle-btn type-label"
+      onClick={toggle}
+      aria-label={t('sound.toggle')}
+      aria-pressed={enabled}
+    >
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" className="sound-icon">
+        {enabled ? (
+          <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9 5 A4 4 0 0 1 9 11 M11 3 A7 7 0 0 1 11 13" stroke="currentColor" strokeWidth="1.2" fill="none" />
+        ) : (
+          <path d="M6 3 L3 5.5 L1 5.5 L1 10.5 L3 10.5 L6 13 Z M9.5 6.5 L13.5 10.5 M13.5 6.5 L9.5 10.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+        )}
+      </svg>
+      <span>{enabled ? t('sound.on') : t('sound.off')}</span>
+    </button>
+  );
+}
 
 export default function App(): React.JSX.Element {
   const { t } = useI18n();
@@ -84,6 +116,7 @@ export default function App(): React.JSX.Element {
         <div className="header-controls">
           {status === 'loading' && <span className="type-label engine-status">{t('engine.loading')}</span>}
           {status === 'mock' && <span className="type-label engine-status engine-status--mock">{t('engine.mock')}</span>}
+          <SoundToggle />
           <LanguageToggle />
         </div>
       </header>

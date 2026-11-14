@@ -11,6 +11,7 @@ import { Button, RoleChip } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
+import { playReentryLowTone } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 const EMPTY_TL: TimelineDay[] = [];
@@ -131,6 +132,9 @@ export function Flight(): React.JSX.Element {
     if (!ended) {
       setVerdictVisible(false);
       return;
+    }
+    if (outcome?.kind === 'reentered') {
+      playReentryLowTone();
     }
     if (reducedMotion() || outcome?.kind !== 'reentered') {
       setVerdictVisible(true);
