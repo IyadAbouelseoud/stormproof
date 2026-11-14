@@ -109,3 +109,29 @@ describe('plan and truth are identical when the Sun data is identical', () => {
     }
   });
 });
+
+declare function btoa(s: string): string;
+describe('mission code: tampered codes are rejected cleanly (final pass, Track 6 finding)', () => {
+  const d = randomDesign(3);
+  const body = (fields: string[]) => 'SP1-' + btoa(fields.join('~')).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const fields = (over: Record<number, string>) => {
+    const f = [d.scenarioId, ...Object.values(d.parts), d.formFactor, 'S', '500', d.rocketId, '2023-04-15', 't', '1', '', ''];
+    for (const [i, v] of Object.entries(over)) f[Number(i)] = v;
+    return body(f);
+  };
+  it('the hand-built code decodes when untouched', () => {
+    expect(decodeMission(fields({})).orbit.altitudeKm).toBe(500);
+  });
+  it.each([
+    ['a broken percent escape in an id', { 0: 'ango%ZZla' }, 'mission code: bad text'],
+    ['a launch year far outside the timeline', { 12: '2619-12-19' }, 'mission code: bad date'],
+    ['a date that is not on the calendar', { 12: '2023-02-31' }, 'mission code: bad date'],
+    ['a negative altitude', { 10: '-500' }, 'mission code: bad number'],
+    ['an exponent altitude', { 10: '5e9' }, 'mission code: bad number'],
+  ] as [string, Record<number, string>, string][])('%s', (_name, over, message) => {
+    expect(() => decodeMission(fields(over))).toThrow(message);
+  });
+  it('encoding a design outside the launch timeline gives a code that does not decode', () => {
+    expect(() => decodeMission(encodeMission({ ...d, launchDate: '2041-12-01' }))).toThrow('mission code: bad date');
+  });
+});

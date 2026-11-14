@@ -63,7 +63,19 @@ function b64urlDecode(s: string): string {
 
 /** Free-text fields (ids, names) are percent-encoded so they can never contain the separator. */
 const enc = (s: string): string => encodeURIComponent(s).replace(/~/g, '%7E');
-const dec = (s: string): string => decodeURIComponent(s);
+const dec = (s: string): string => {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    throw new Error('mission code: bad text');
+  }
+};
+/** A real calendar date inside the contract's launch timeline (MissionDesign.launchDate, 2015-01-01..2026-12-31). */
+const validLaunchDate = (d: string): boolean => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d) || d < '2015-01-01' || d > '2026-12-31') return false;
+  const t = Date.parse(`${d}T00:00:00Z`);
+  return Number.isFinite(t) && new Date(t).toISOString().slice(0, 10) === d;
+};
 
 export function encodeMission(d: MissionDesign): string {
   const roles = d.roles ? ROLES.map((r) => (d.roles![r] === undefined ? '' : '=' + enc(d.roles![r]!))).join(',') : '';
@@ -99,8 +111,8 @@ export function decodeMission(code: string): MissionDesign {
   if (!orbitType || !simMode) throw new Error('mission code: bad orbit or mode');
   const altitudeKm = Number(alt);
   const seedN = Number(seed);
-  if (!Number.isFinite(altitudeKm) || !/^\d+$/.test(seed!) || seedN > 0xffffffff) throw new Error('mission code: bad number');
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date!)) throw new Error('mission code: bad date');
+  if (!/^\d+(\.\d+)?$/.test(alt!) || !Number.isFinite(altitudeKm) || !/^\d+$/.test(seed!) || seedN > 0xffffffff) throw new Error('mission code: bad number');
+  if (!validLaunchDate(date!)) throw new Error('mission code: bad date');
 
   const parts = Object.fromEntries(SLOTS.map((s, i) => [s, dec(partIds[i]!)])) as MissionDesign['parts'];
   const design: MissionDesign = {
