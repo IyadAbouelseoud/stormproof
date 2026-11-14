@@ -50,7 +50,7 @@ Updated by the agent at every checkpoint (tests green, committed).
 - Plan Sun before Dec 2019 = real OMNI; cycle 26 in plan = cycle-25 shape +11 y (game-balanced).
 - Orbit average: 12 points/orbit; SSO 2 UTs, ISS 4 node local times. MSIS storm under-response: only Feb 2022 x1.875 corrected.
 - Golden 1 fit disclosed: unfitted beta 72.3 reentered 2025-12-26 (+60 d, 6.6% long) and missed the 2025-10-02 waypoint (350 vs 300 km); fitted plan/truth ratio 1.44 vs paper 1.52.
-- Golden 2: 3 known fails (see Done); 550 km systematically short; reference values are chart-read, not DAS output; deck's launch day-of-year and slide 20 inputs unknown.
+- Golden 2: 3 known fails (see Done); 550 km systematically short; reference values are chart-read, not DAS output; slide 20 inputs read (identical to slide 19 except 550 km, matching our assumption); launch day-of-year, eccentricity, Cd and mass not on the slides.
 - @types/node install was blocked by the permission classifier; tests use engine/test/node-shim.d.ts instead (no new dependency).
 - Local Node is v24; CI targets Node 22 LTS.
 - simulate() runs on content-stub.json until content/parts.json, rockets.json, scenarios/angola.json land (game-balanced stub). With the stub the Angola revisit requirement is unmeetable (30 km swath -> about 84 d vs 10 d target): content balance, not engine.
