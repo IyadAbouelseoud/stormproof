@@ -183,6 +183,64 @@ main:focus { outline: none; }
 .launch-warn { color: var(--color-warn); }
 .launch-btn { padding-block: var(--space-16); padding-inline: var(--space-48); }
 
+/* Launch Ceremony */
+.launch-ceremony {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-32);
+  padding-inline: var(--space-24);
+  background-color: var(--color-ground-raised);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  gap: var(--space-16);
+  min-block-size: 240px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.launch-ceremony-rocket-box {
+  position: relative;
+  inline-size: 64px;
+  block-size: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.launch-rocket-svg {
+  inline-size: 48px;
+  block-size: 120px;
+  transition: transform var(--dur-launch) ease-in, opacity var(--dur-launch) ease-in;
+}
+.launch-ceremony--liftoff .launch-rocket-svg {
+  transform: translateY(-120px);
+  opacity: 0.2;
+}
+.launch-countdown-num {
+  font-family: var(--font-mono);
+  color: var(--color-ink);
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+  animation: countdown-pulse var(--dur-base) ease-out;
+}
+@keyframes countdown-pulse {
+  0% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .launch-countdown-num {
+    animation: none;
+  }
+  .launch-rocket-svg {
+    transition: none;
+  }
+}
+.launch-ceremony-skip {
+  color: var(--color-ink-muted);
+}
+
 /* ---------- Flight ---------- */
 .flight-controls {
   display: flex;

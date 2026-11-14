@@ -1,0 +1,81 @@
+{
+  "art": [
+    {
+      "id": "p1",
+      "alt": {
+        "en": "Editorial illustration of a satellite mission in orbit near the Sun",
+        "ar": "رسم توضيحي لمهمة قمر اصطناعي في المدار بالقرب من الشمس"
+      }
+    },
+    {
+      "id": "p2",
+      "alt": {
+        "en": "Editorial illustration of the Cunene river basin in Angola",
+        "ar": "رسم توضيحي لحوض نهر كونيني في أنغولا"
+      }
+    },
+    {
+      "id": "p3",
+      "alt": {
+        "en": "Editorial illustration of Funda satellite ground station dish antenna",
+        "ar": "رسم توضيحي لهوائي محطة فوندا الأرضية للأقمار الاصطناعية"
+      }
+    },
+    {
+      "id": "p5",
+      "alt": {
+        "en": "Exploded technical diagram of a six unit CubeSat structure and subsystems",
+        "ar": "مخطط فني تفصيلي لهيكل قمر كيوبسات بست وحدات وأنظمته الفرعية"
+      }
+    },
+    {
+      "id": "p6",
+      "alt": {
+        "en": "Editorial illustration of satellite orbital trajectory data report",
+        "ar": "رسم توضيحي لتقرير بيانات مسار القمر الاصطناعي المداري"
+      }
+    },
+    {
+      "id": "p7",
+      "alt": {
+        "en": "Editorial illustration of storm clouds and flood basin near Jeddah",
+        "ar": "رسم توضيحي لسحب العواصف وحوض تصريف السيول قرب جدة"
+      }
+    },
+    {
+      "id": "p8",
+      "alt": {
+        "en": "Editorial illustration of two stage rocket on launch pad at dusk",
+        "ar": "رسم توضيحي لصاروخ إطلاق ذي مرحلتين على منصة الإطلاق عند الغسق"
+      }
+    },
+    {
+      "id": "p9",
+      "alt": {
+        "en": "Editorial illustration of small satellite in Earth orbit",
+        "ar": "رسم توضيحي لقمر اصطناعي صغير في مدار الأرض"
+      }
+    },
+    {
+      "id": "p10",
+      "alt": {
+        "en": "Editorial illustration of satellite atmospheric reentry descent path",
+        "ar": "رسم توضيحي لمسار هبوط القمر الاصطناعي أثناء العودة للغلاف الجوي"
+      }
+    },
+    {
+      "id": "p11",
+      "alt": {
+        "en": "Editorial illustration of solar storm emission rings towards Earth",
+        "ar": "رسم توضيحي لحلقات انبعاثات العاصفة الشمسية باتجاه الأرض"
+      }
+    },
+    {
+      "id": "p12",
+      "alt": {
+        "en": "Editorial illustration of successful satellite mission completion in orbit",
+        "ar": "رسم توضيحي لاكتمال مهمة القمر الاصطناعي بنجاح في مداره"
+      }
+    }
+  ]
+}
