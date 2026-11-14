@@ -12,6 +12,19 @@
   --font-text-ar: "IBM Plex Sans Arabic", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
+  /* Font Sizes */
+  --font-size-micro: 10px;
+  --font-size-title-sm: 40px;
+  --font-size-display-xl: 88px;
+  --font-size-display-l: 56px;
+  --font-size-display-ar: 48px;
+  --font-size-heading: 22px;
+  --font-size-body: 16px;
+  --font-size-small: 13px;
+  --font-size-data-l: 32px;
+  --font-size-data: 14px;
+  --font-size-label: 11px;
+
   /* Spacing */
   --space-4: 4px;
   --space-8: 8px;

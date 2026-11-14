@@ -148,7 +148,7 @@
   gap: var(--space-4);
 }
 .sp-gauge-value .type-data:first-child {
-  font-size: 22px;
+  font-size: var(--font-size-heading);
   font-weight: 500;
 }
 .sp-gauge-track {
@@ -474,7 +474,7 @@
   inset-block-end: 0;
   block-size: var(--space-16);
   color: var(--color-ink-muted);
-  font-size: 11px;
+  font-size: var(--font-size-label);
 }
 .sp-sunstripe-years span {
   position: absolute;
@@ -553,7 +553,7 @@
 .sp-chart-axis {
   fill: var(--color-ink-muted);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--font-size-small);
 }
 .sp-chart-reentry {
   stroke: var(--color-fail);

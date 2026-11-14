@@ -22,7 +22,18 @@ let css = `/**
   --font-text-ar: ${tokens.fonts['text-ar']};
   --font-mono: ${tokens.fonts.mono};
 
-  /* Spacing */
+  /* Font Sizes */
+  --font-size-micro: 10px;
+  --font-size-title-sm: 40px;
+`;
+
+for (const [key, rules] of Object.entries(tokens.typography)) {
+  if (rules.fontSize) {
+    css += `  --font-size-${key}: ${rules.fontSize};\n`;
+  }
+}
+
+css += `\n  /* Spacing */
 `;
 
 for (const [key, val] of Object.entries(tokens.spacing)) {

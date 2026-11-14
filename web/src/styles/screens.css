@@ -347,7 +347,7 @@ main:focus { outline: none; }
 .launch-countdown-num {
   font-family: var(--font-mono);
   color: var(--color-ink);
-  font-size: 32px;
+  font-size: var(--font-size-data-l);
   line-height: 1;
   font-weight: 500;
   animation: countdown-pulse var(--dur-base) ease-out;
@@ -492,8 +492,8 @@ main:focus { outline: none; }
 @media (max-width: 760px) {
   .app-container { padding-inline: var(--space-12); padding-block: var(--space-12); }
   .screen-card { padding-inline: var(--space-12); padding-block: var(--space-16); }
-  .app-title { font-size: 40px; }
-  .type-display-xl { font-size: 56px; }
+  .app-title { font-size: var(--font-size-title-sm); }
+  .type-display-xl { font-size: var(--font-size-display-l); }
   .brief-layout,
   .flight-grid,
   .report-split,
@@ -507,7 +507,7 @@ main:focus { outline: none; }
   .team-role-row { grid-template-columns: minmax(0, 1fr); }
   .fit-item { grid-template-columns: var(--space-48) minmax(0, 1fr); }
   .fit-item > :last-child { grid-column: 1 / -1; }
-  .cml-step-label { font-size: 10px; }
+  .cml-step-label { font-size: var(--font-size-micro); }
   .flight-clock { margin-inline-start: 0; }
   .data-stats { grid-template-columns: minmax(0, 1fr); }
 }
