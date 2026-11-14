@@ -32,6 +32,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - Fonts: Reem Kufi removed at Iyad's request (hard to read). Arabic display is now IBM Plex Sans Arabic 700 (already shipped): design/tokens.json display-ar -> regenerated tokens.css; Reem Kufi @font-face, woff2 files, OFL txt and download entries removed; AGENTS.md s3 and design/README.md updated. Renad: do not reintroduce it.
 
+- Pages check (Sat ~09:40): test-and-deploy run 43567151355 green (build + deploy); https://iyadabouelseoud.github.io/stormproof/ serves the Vite app, JS, data/*.json and fonts return 200. lane/renad has nothing new to merge. Content (Dua) not landed yet. Tests: engine 79 + 3 expected fail + 6 skipped, pipeline 14/14, web i18n pass.
+
 ## In progress
 -
 
@@ -40,6 +42,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 - Renad (web/): "Read AGENTS.md, HANDOFF.md, and prompts/B-renad-ui-gemini-flash.md. Continue Renad's lane at STEP U1d (shell, routing and CML rail)."
 
 ## Blocked / disclosed limits
+- Pages Source is still "Deploy from a branch" (build_type legacy, main /), so a Jekyll pages-build-deployment runs on every push and races the Actions deploy (last finisher wins). Iyad: set Settings > Pages > Source to "GitHub Actions" (or `gh api -X PUT repos/IyadAbouelseoud/stormproof/pages -f build_type=workflow`).
+- CI annotation: actions/* v4 target Node 20 (deprecated, forced to Node 24); works today.
 - contracts.ts adds `stormPolicy?: 'ride-out' | 'safe-mode'` (needed by T1.4 events.ts; not listed in s4) and an i18n `Msg` {key, params, en} for all plain-language text.
 - OMNI has no SSN for Oct 2026 (29 nulls in sun_daily.ssn; F10.7/Ap complete).
 - Forecast join: first forecast month F10.7 is +9% vs the last 27 OMNI days (13-month smoothed prediction).
