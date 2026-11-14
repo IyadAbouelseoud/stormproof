@@ -9,6 +9,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T0.3 test_pipeline.py: obs/adj F10.7 1.034 (4 Jan) and 0.967 (4 Jul); 500 km min->max x18.7 (sso and iss); no NaN; join +9.0%; data 2.72 MB < 4 MB. 14/14.
 
+- T1.1 rng.ts (mulberry32), constants.ts (SOURCES tag per constant, test-enforced), orbit.ts (period, J2 SSO incl., eclipse@beta0, GSD/swath, revisit, Funda passes 30 s ground track, mask 10 deg game-balanced). Engine 14/14.
+
 ## In progress
 -
 
