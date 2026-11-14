@@ -17,11 +17,13 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T1.4 rules.ts (gauge states vs CML 35%, FCC 5 y / NASA 25 y disposal, lower-bound case), events.ts (seeded slip 0-12 mo skewed short, DONKI Kp>=7 alerts, stormPolicy vote: safe-mode = payload off, ride-out = 20% buffer-reset chance, game-balanced), score.ts (requirements in contract order, 16 pts each + 20 Sun-resilience, game-balanced). Engine 35 + 1 todo.
 
+- T1.5 (= prompt A T1.3 rest + T1.4) flight.ts simulate(design, data): plan/truth/truth-no-slip flights, seeded slip (truth only; timeline[0] = actual launch), DONKI storm flags + vote, daily power/data/battery timeline, outcomes reentered / alive (predicted on forecast Sun) / alive-at-forecast-end (>= N y), gauges, disposal, score. causes.ts (sun days, density x, slip, storm km over baseline, propulsion, verdict; 3..5). closest.ts (FACSAT-2 only, sourced). mission-code.ts ("SP1-" + base64url, pure ES, no DOM/Node). decay.ts reboost (fuel dv -> da = 2a dv/v). index.ts: createEngine(engineDataFrom(raw)) or setEngineData + simulate(design). content/sources.csv created (engine constants + golden refs). Engine 47 + 1 todo; 5-60 ms per simulate.
+
 ## In progress
 -
 
 ## Next (resume prompt)
-- "Read AGENTS.md and HANDOFF.md. Continue Iyad's lane at T0.2 (pipeline fetch/build scripts) per prompts in HANDOFF."
+- "Read AGENTS.md, HANDOFF.md, ISSUES.md and prompts/A-iyad-claude-code-opus.md. Engine simulate() is done (HANDOFF T1.5). Continue Iyad's lane at prompt A T1.5 (tell Renad to switch her adapter; see ISSUES 'Engine wiring'), then T1.6 Pages deploy workflow, T1.7 README."
 
 ## Blocked / disclosed limits
 - contracts.ts adds `stormPolicy?: 'ride-out' | 'safe-mode'` (needed by T1.4 events.ts; not listed in s4) and an i18n `Msg` {key, params, en} for all plain-language text.
@@ -33,3 +35,6 @@ Updated by the agent at every checkpoint (tests green, committed).
 - Golden 2 (NASA DAS 6U 430/550 km) not run: needs DAS output values from Iyad/Dua.
 - @types/node install was blocked by the permission classifier; tests use engine/test/node-shim.d.ts instead (no new dependency).
 - Local Node is v24; CI targets Node 22 LTS.
+- simulate() runs on content-stub.json until content/parts.json, rockets.json, scenarios/angola.json land (game-balanced stub). With the stub the Angola revisit requirement is unmeetable (30 km swath -> about 84 d vs 10 d target): content balance, not engine.
+- Storm cause = 2-day altitude loss x (1 - baseline density / storm density) at fixed altitude; an estimate, labelled "more than normal decay".
+- Closest-design list has only FACSAT-2 (the one sourced reference mission).

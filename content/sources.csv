@@ -1,0 +1,41 @@
+id,value,unit,tag,source,note
+facsat2,497,km,sourced,"AGENTS.md s5 golden 1: FACSAT-2 6U, launched 2023-04-15, reentered 2025-10-27",Closest-design reference (engine/src/closest.ts); waypoints 450 km 2024-08-29; 400 km 2025-03-03; 300 km 2025-10-02
+facsat2-beta,72.3,kg/m2,sourced,AGENTS.md s5 golden 1 (ballistic coefficient +/-20%),
+facsat2-beta-fit,68.43,kg/m2,computed,engine/test/golden.test.ts (one allowed Cd*A/m fit),-5.3% vs 72.3; disclosed in README
+starlink-feb2022,210,km,sourced,AGENTS.md s5 golden 3; Fang et al. 2022,Circular orbit on 2022-02-03
+storm-feb2022-factor,1.875,x,sourced,Fang et al. 2022,Truth density on 2022-02-03..05 only
+mu,398600.4418,km3/s2,sourced,WGS 84 / EGM96,
+r-earth,6378.137,km,sourced,WGS 84 equatorial radius,
+j2,1.08262668e-3,-,sourced,"EGM2008 (Vallado, Fundamentals of Astrodynamics, 4th ed.)",
+omega-earth,7.2921159e-5,rad/s,sourced,WGS 84,
+tropical-year,365.2422,days,sourced,IAU tropical year,
+solar-constant,1361,W/m2,sourced,Kopp & Lean 2011,
+cell-efficiency,0.30,-,sourced,AGENTS.md s5 (triple-junction cells),
+cd,2.2,-,sourced,AGENTS.md s5,
+am-1u,0.014,m2/kg,sourced,NASA LSP CubeSat area-to-mass median,
+am-3u,0.010,m2/kg,sourced,NASA LSP CubeSat area-to-mass median,
+am-6u,0.007,m2/kg,sourced,NASA LSP CubeSat area-to-mass median,
+reentry-alt,120,km,sourced,AGENTS.md s5,
+hourly-below,250,km,sourced,AGENTS.md s5 (integrator step switch),
+gsd-ref-alt,500,km,sourced,AGENTS.md s5 (GSD scales with h/500),
+funda-lat,-8.9,deg,sourced,AGENTS.md s5,Approximate location; labelled approximate in UI
+funda-lon,13.2,deg,sourced,AGENTS.md s5,Approximate location; labelled approximate in UI
+elevation-mask,10,deg,game-balanced,,
+target-lat,-16.0,deg,game-balanced,,Centre of the Cunene/Namibe drought area (approximate)
+cml-margin,35,%,sourced,JPL Concept Maturity Level 4 design margins (AGENTS.md s5),Mass and power and energy
+fcc-disposal,5,years,sourced,FCC 22-74,
+nasa-disposal,25,years,sourced,NASA-STD-8719.14C,
+omni-end,2026-10-29,date,sourced,NASA GSFC SPDF OMNIWeb (last daily value),
+forecast-end,2041-10-15,date,sourced,NASA Oct 2026 solar-cycle prediction (last monthly row),
+storm-alert-kp,7,Kp,game-balanced,,NOAA G3 threshold
+battery-dod,0.3,-,game-balanced,,Usable depth of discharge
+reboost-drop,10,km,game-balanced,,Thruster raises the orbit back after this drop
+reboost-dv,"da = 2a dv / v",-,computed,"Vallado, Fundamentals of Astrodynamics, 4th ed. (small Hohmann raise)",
+launch-slip,0-12,months,game-balanced,,floor(13 u^2): skewed to short slips
+reset-chance,0.2,-,game-balanced,,Ride-out storm: chance the computer reset wipes the buffer
+score-per-req,16,points,game-balanced,,
+score-sun,20,points,game-balanced,,Sun-resilience bonus = 20 x truth/plan life
+closest-distance,"50 km = 1 y = form factor",-,game-balanced,,Closest-design metric
+electron-capacity,200,kg,sourced,AGENTS.md s5 (Electron to 500 km SSO),
+bus-mass,"0.5/1.4/2.6",kg,game-balanced,,1U/3U/6U structure+EPS+harness (engine/src/catalog.ts)
+cds-max-mass,"2/6/12",kg,sourced,CubeSat Design Specification Rev 14.1 (Cal Poly),1U/3U/6U

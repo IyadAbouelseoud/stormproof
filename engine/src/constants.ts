@@ -30,6 +30,8 @@ export const NASA_DISPOSAL_YEARS = 25;
 export const OMNI_END = '2026-10-29';
 export const STORM_ALERT_KP = 7;
 export const BATTERY_DOD = 0.3;
+export const REBOOST_DROP_KM = 10;
+export const FORECAST_END = '2041-10-15';
 
 export const SOURCES: Record<string, string> = {
   MU_KM3_S2: 'WGS 84 / EGM96 Earth gravitational parameter',
@@ -54,4 +56,6 @@ export const SOURCES: Record<string, string> = {
   OMNI_END: 'AGENTS.md s5 (last NASA OMNI day)',
   STORM_ALERT_KP: 'game-balanced (alert at Kp >= 7, NOAA G3)',
   BATTERY_DOD: 'game-balanced (usable depth of discharge for LEO cycling)',
+  REBOOST_DROP_KM: 'game-balanced (thruster raises the orbit back once it has dropped this far)',
+  FORECAST_END: 'AGENTS.md s5 (NASA Oct 2026 prediction runs to Oct 2041; last monthly table row)',
 };

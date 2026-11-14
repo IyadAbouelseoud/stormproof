@@ -20,6 +20,8 @@ export interface DecayResult {
   daily: DecayDay[];
   /** Fractional day number of reentry, or null if still in orbit at endDay. */
   reentryDay: number | null;
+  /** Total altitude regained by reboosts, km (0 without propulsion). */
+  climbedKm: number;
 }
 
 /** Altitude rate in km/day. */
@@ -33,8 +35,28 @@ export function dadtKmPerDay(tab: DensityTable, day: number, altKm: number, cdAm
  * Integrate from startDay at altKm until reentry or endDay.
  * @param cdAm Cd * A / m in m^2/kg (= 1 / ballistic coefficient).
  */
-export function decay(tab: DensityTable, startDay: number, altKm: number, cdAm: number, endDay: number): DecayResult {
+export interface Reboost {
+  /** Burn when altitude falls to this, km. */
+  triggerKm: number;
+  /** Raise the orbit back to this, km. */
+  targetKm: number;
+  /** Total altitude gain the propellant allows, km (see climbKmFromDeltaV). */
+  budgetKm: number;
+}
+
+/**
+ * Altitude gain from delta-v for a small two-burn (Hohmann) raise of a circular orbit:
+ * dv_total = v * da / (2a)  =>  da = 2 a dv / v. Computed (Vallado, Fundamentals of Astrodynamics, 4th ed.).
+ */
+export function climbKmFromDeltaV(altKm: number, deltaVMs: number): number {
+  const a = R_EARTH_KM + altKm;
+  const vKmS = Math.sqrt(MU_KM3_S2 / a);
+  return (2 * a * (deltaVMs / 1000)) / vKmS;
+}
+
+export function decay(tab: DensityTable, startDay: number, altKm: number, cdAm: number, endDay: number, reboost?: Reboost): DecayResult {
   const daily: DecayDay[] = [];
+  let budget = reboost?.budgetKm ?? 0;
   let t = startDay;
   let h = altKm;
   let nextSample = startDay;
@@ -53,10 +75,15 @@ export function decay(tab: DensityTable, startDay: number, altKm: number, cdAm: 
       const reentryDay = t + frac * step;
       daily.push({ day: Math.floor(reentryDay), altKm: REENTRY_ALT_KM, rhoKgM3: densityAt(tab, reentryDay, REENTRY_ALT_KM) });
       if (daily.length > 1 && daily[daily.length - 2]!.day === Math.floor(reentryDay)) daily.splice(daily.length - 2, 1);
-      return { daily, reentryDay };
+      return { daily, reentryDay, climbedKm: (reboost?.budgetKm ?? 0) - budget };
     }
     t += step;
     h = hNext;
+    if (reboost && budget > 0 && h <= reboost.triggerKm) {
+      const climb = Math.min(budget, reboost.targetKm - h);
+      h += climb;
+      budget -= climb;
+    }
   }
-  return { daily, reentryDay: null };
+  return { daily, reentryDay: null, climbedKm: (reboost?.budgetKm ?? 0) - budget };
 }
