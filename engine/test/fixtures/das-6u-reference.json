@@ -22,7 +22,8 @@
     "argument_of_perigee_deg": 0,
     "altitude": "'Perigee altitude' 430 km (slide 19) and 550 km (slide 20); whether the orbit is circular is not stated on the slide",
     "launch_date_within_year": "NOT STATED on the slides; the x axis is Launch Year (one point per year, 2021 to 2044)",
-    "slide_20_inputs": "slide 20 inputs not read yet; assumed identical except altitude"
+    "slide_20_inputs": "READ: identical to slide 19 except perigee altitude 550 km (DAS 3.2.3, F10 release 20230927, inclination 51.6 deg, RAAN 0 deg, argument of perigee 0 deg)",
+    "not_on_slides": "eccentricity/apogee, launch date inside the year, drag coefficient and mass: not shown. The slide notes in the original PowerPoint may list them; the PDF we have is a print-to-PDF without notes."
   },
   "spacecraft": {
     "form": "6U",
