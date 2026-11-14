@@ -11,7 +11,7 @@ Read AGENTS.md and design/README.md first. They stay binding:
 - Every animation: transform/opacity only, honours prefers-reduced-motion (cross-fade or none), mirrors in RTL (arrows, slides, chains), never blocks input, never delays the result number.
 - Numbers shown are always the real SimResult values; animation only reveals them (count-up ends exactly on the true value).
 - No change to engine/, contracts, content numbers. UI strings go through i18n (en and ar). New art: SI tag visible, alt text in content/text/art-alt.json (en and ar).
-- Budget: bundle +60 kB gzip max, art folder under 4 MB total, all images lazy-loaded, Lighthouse performance stays at 85 or more.
+- Budget: bundle +60 kB gzip max, art folder under 6 MB total, all images lazy-loaded, Lighthouse performance stays at 85 or more.
 </rules>
 
 <tasks>

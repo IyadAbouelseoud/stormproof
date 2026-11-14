@@ -74,7 +74,7 @@ Problem: the live site reads as a report, not a game. The specs are prompts/G-ga
 - Audit first: for each of G1-G9 and X1-X8 mark done / partly / missing from the code and the live URL (screenshots in qa/screens/). Do not redo what exists.
 - Implement the missing items in this priority: G1 launch ceremony, G2 flight motion, G3 verdict stamp and count-up, G9 first screen, G6 art wiring, G4 build feedback, G5 transitions, G7 empty states, G8 optional sound (last; drop it first).
 - Hard rules from G apply: no gradients, glows, emoji, confetti (only the shared `ui/Starfield` backdrop; G3 rules apply); sol only for the Sun; durations from tokens; transform/opacity only; reduced motion honoured; RTL mirrored; animation only reveals real SimResult values; no new dependency; engine, contracts, numbers untouched.
-- Conformance gate before commit: Playwright walk with reduced motion on and off; axe serious/critical still zero; Lighthouse performance still >= 85; bundle +60 kB gzip max; art folder < 4 MB, lazy-loaded; every AI image shows the SI tag and has en and ar alt text in content/text/art-alt.json.
+- Conformance gate before commit: Playwright walk with reduced motion on and off; axe serious/critical still zero; Lighthouse performance still >= 85; bundle +60 kB gzip max; art folder < 6 MB, lazy-loaded; every AI image shows the SI tag and has en and ar alt text in content/text/art-alt.json.
 - Missing art (P8-P12 not delivered) is not a blocker: skip those placements, do not draw stand-ins.
 - Re-record the two demo missions (FAIL and FIX) after Track 5 and confirm DEMO.md numbers and codes are unchanged; update DEMO.md with the new timings (launch countdown, reentry hold) so the 3-minute demo still fits.
 
