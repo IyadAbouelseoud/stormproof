@@ -1,0 +1,229 @@
+{
+ "orbit": [
+  {
+   "altKm": 210,
+   "periodS": 5321.755443764945,
+   "ssoInclinationDeg": 96.36125808086427,
+   "eclipseFraction": 0.4194150622173046
+  },
+  {
+   "altKm": 430,
+   "periodS": 5590.535507640386,
+   "ssoInclinationDeg": 97.14011020390065,
+   "eclipseFraction": 0.3862639936253876
+  },
+  {
+   "altKm": 497,
+   "periodS": 5673.264288116681,
+   "ssoInclinationDeg": 97.39045117366209,
+   "eclipseFraction": 0.37822608601745283
+  },
+  {
+   "altKm": 550,
+   "periodS": 5738.992815014797,
+   "ssoInclinationDeg": 97.59295481299085,
+   "eclipseFraction": 0.3723108248304016
+  }
+ ],
+ "decay": {
+  "facsat2_truth": {
+   "table": "sso_truth",
+   "launch": "2023-04-15",
+   "altKm": 497,
+   "cdAm": 0.014613473622680109,
+   "lifetimeDays": 925.9557809262333,
+   "waypoints": [
+    [
+     "2024-08-29",
+     454.40780943167294
+    ],
+    [
+     "2025-03-03",
+     403.42639076349985
+    ],
+    [
+     "2025-10-02",
+     294.87482920254206
+    ]
+   ]
+  },
+  "facsat2_plan": {
+   "table": "sso_plan",
+   "launch": "2023-04-15",
+   "altKm": 497,
+   "cdAm": 0.014613473622680109,
+   "lifetimeDays": 1334.074144361879,
+   "waypoints": []
+  },
+  "das_430_2021": {
+   "table": "iss_truth",
+   "launch": "2021-01-01",
+   "altKm": 430,
+   "cdAm": 0.015400000000000002,
+   "lifetimeDays": 746.1818863883273,
+   "waypoints": []
+  },
+  "das_550_2021": {
+   "table": "iss_truth",
+   "launch": "2021-01-01",
+   "altKm": 550,
+   "cdAm": 0.015400000000000002,
+   "lifetimeDays": 3581.0078030969853,
+   "waypoints": []
+  },
+  "starlink_truth": {
+   "table": "sso_truth",
+   "launch": "2022-02-03",
+   "altKm": 210,
+   "cdAm": 0.015400000000000002,
+   "lifetimeDays": 1.2693232619894843,
+   "waypoints": []
+  },
+  "starlink_plan": {
+   "table": "sso_plan",
+   "launch": "2022-02-03",
+   "altKm": 210,
+   "cdAm": 0.015400000000000002,
+   "lifetimeDays": 2.7972243071490084,
+   "waypoints": []
+  }
+ },
+ "simulate": {
+  "sixU_497_plan": {
+   "design": {
+    "scenarioId": "angola",
+    "parts": {
+     "camera": "camera-standard",
+     "panels": "panels-large",
+     "battery": "battery-medium",
+     "radio": "radio-fast",
+     "computer": "computer-standard",
+     "pointing": "pointing-standard",
+     "fuel": "fuel-small"
+    },
+    "formFactor": "6U",
+    "orbit": {
+     "type": "SSO",
+     "altitudeKm": 497
+    },
+    "rocketId": "electron",
+    "launchDate": "2023-04-15",
+    "mode": "plan",
+    "seed": 1
+   },
+   "gauges": {
+    "mass": {
+     "value": 6.3,
+     "limit": 12
+    },
+    "power": {
+     "value": 8.1,
+     "limit": 27.93
+    },
+    "budget": {
+     "value": 1149250,
+     "limit": 1500000
+    },
+    "data": {
+     "value": 1200,
+     "limit": 2718.8
+    },
+    "comms": {
+     "value": 6.4,
+     "limit": 14.5
+    },
+    "time": {
+     "value": 1637,
+     "limit": 1095
+    }
+   },
+   "fit": {
+    "mass": true,
+    "volume": true,
+    "power": true,
+    "energy": true,
+    "budget": true,
+    "data": true,
+    "comms": true,
+    "rocket-capacity": true,
+    "rocket-orbit": true,
+    "launch-window": true,
+    "disposal": true
+   },
+   "lifetimeDays": 1637,
+   "planLifetimeDays": 1637,
+   "outcome": {
+    "kind": "reentered",
+    "date": "2027-10-08"
+   }
+  },
+  "oversized_1U": {
+   "design": {
+    "scenarioId": "angola",
+    "parts": {
+     "camera": "camera-sharp",
+     "panels": "panels-large",
+     "battery": "battery-large",
+     "radio": "radio-fast",
+     "computer": "computer-large",
+     "pointing": "pointing-precise",
+     "fuel": "fuel-large"
+    },
+    "formFactor": "1U",
+    "orbit": {
+     "type": "SSO",
+     "altitudeKm": 500
+    },
+    "rocketId": "electron",
+    "launchDate": "2021-06-01",
+    "mode": "plan",
+    "seed": 1
+   },
+   "gauges": {
+    "mass": {
+     "value": 5.7,
+     "limit": 2
+    },
+    "power": {
+     "value": 10.7,
+     "limit": 27.94
+    },
+    "budget": {
+     "value": 1228750,
+     "limit": 1500000
+    },
+    "data": {
+     "value": 1800,
+     "limit": 2718.8
+    },
+    "comms": {
+     "value": 9.6,
+     "limit": 14.5
+    },
+    "time": {
+     "value": 1486,
+     "limit": 1095
+    }
+   },
+   "fit": {
+    "mass": false,
+    "volume": false,
+    "power": true,
+    "energy": true,
+    "budget": true,
+    "data": true,
+    "comms": true,
+    "rocket-capacity": true,
+    "rocket-orbit": true,
+    "launch-window": true,
+    "disposal": true
+   },
+   "lifetimeDays": 1486,
+   "planLifetimeDays": 1486,
+   "outcome": {
+    "kind": "reentered",
+    "date": "2025-06-26"
+   }
+  }
+ }
+}
