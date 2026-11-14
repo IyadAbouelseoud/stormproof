@@ -43,10 +43,108 @@
     "en": "Illustration of Earth seen from above with orbit rings and a small CubeSat.",
     "ar": "رسم توضيحي للأرض مع حلقات مدارية وقمر كيوبسات صغير."
   },
-  "art-p1-title-hero-v1.webp": { "en": "Illustration of a small satellite above the Earth, made with AI; not a real image.", "ar": "رسم توضيحي لقمر صغير فوق الأرض، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية." },
-  "art-p2-angola-drought-v1.webp": { "en": "Illustration of dry land and a dry riverbed, made with AI; not a real place or image.", "ar": "رسم توضيحي لأرض جافة ومجرى نهر جاف، صُنع بالذكاء الاصطناعي؛ ليس مكانًا أو صورة حقيقية." },
-  "art-p3-ground-station-v1.webp": { "en": "Illustration of a ground station dish under the sky, made with AI; not a real image.", "ar": "رسم توضيحي لطبق محطة أرضية تحت السماء، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية." },
-  "art-p5-6u-exploded-v1.webp": { "en": "Illustration of a 6U satellite with its parts pulled apart, made with AI; not a real design.", "ar": "رسم توضيحي لقمر 6U وأجزاؤه مفصولة، صُنع بالذكاء الاصطناعي؛ ليس تصميمًا حقيقيًا." },
-  "art-p6-pitch-backdrop-v1.webp": { "en": "Illustration of the Sun and a satellite orbit, made with AI; not real data.", "ar": "رسم توضيحي للشمس ومدار قمر، صُنع بالذكاء الاصطناعي؛ ليس بيانات حقيقية." },
-  "art-p7-jeddah-flood-v1.webp": { "en": "Illustration of a flooded coastal city street under storm cloud, made with AI; not a real image of Jeddah.", "ar": "رسم توضيحي لشارع مدينة ساحلية غمرته المياه تحت سحب العاصفة، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية لجدة." }
+  "art-p1-title-hero-v1.webp": {
+    "en": "Illustration of a small satellite above the Earth, made with AI; not a real image.",
+    "ar": "رسم توضيحي لقمر صغير فوق الأرض، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية."
+  },
+  "art-p2-angola-drought-v1.webp": {
+    "en": "Illustration of dry land and a dry riverbed, made with AI; not a real place or image.",
+    "ar": "رسم توضيحي لأرض جافة ومجرى نهر جاف، صُنع بالذكاء الاصطناعي؛ ليس مكانًا أو صورة حقيقية."
+  },
+  "art-p3-ground-station-v1.webp": {
+    "en": "Illustration of a ground station dish under the sky, made with AI; not a real image.",
+    "ar": "رسم توضيحي لطبق محطة أرضية تحت السماء، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية."
+  },
+  "art-p5-6u-exploded-v1.webp": {
+    "en": "Illustration of a 6U satellite with its parts pulled apart, made with AI; not a real design.",
+    "ar": "رسم توضيحي لقمر 6U وأجزاؤه مفصولة، صُنع بالذكاء الاصطناعي؛ ليس تصميمًا حقيقيًا."
+  },
+  "art-p6-pitch-backdrop-v1.webp": {
+    "en": "Illustration of the Sun and a satellite orbit, made with AI; not real data.",
+    "ar": "رسم توضيحي للشمس ومدار قمر، صُنع بالذكاء الاصطناعي؛ ليس بيانات حقيقية."
+  },
+  "art-p7-jeddah-flood-v1.webp": {
+    "en": "Illustration of a flooded coastal city street under storm cloud, made with AI; not a real image of Jeddah.",
+    "ar": "رسم توضيحي لشارع مدينة ساحلية غمرته المياه تحت سحب العاصفة، صُنع بالذكاء الاصطناعي؛ ليس صورة حقيقية لجدة."
+  },
+  "art-p13-mission-emblem-v1": {
+    "en": "Illustration of a mission emblem: a Sun, an orbit and a small satellite inside an astrolabe ring.",
+    "ar": "رسم توضيحي لشعار المهمة: شمس ومدار وقمر صغير داخل حلقة أسطرلاب."
+  },
+  "art-p14-medals-v1": {
+    "en": "Illustration of a brass medal.",
+    "ar": "رسم توضيحي لميدالية نحاسية."
+  },
+  "art-p15-orbit-header-v1": {
+    "en": "Illustration of the layers of the upper atmosphere with satellites at different heights.",
+    "ar": "رسم توضيحي لطبقات الغلاف الجوي العليا مع أقمار على ارتفاعات مختلفة."
+  },
+  "art-p16-role-emblems-v1": {
+    "en": "Illustration of a role emblem for the team.",
+    "ar": "رسم توضيحي لشعار دور في الفريق."
+  },
+  "art-p17-autopsy-plate-v1": {
+    "en": "Illustration of a CubeSat seen from above with empty callout circles.",
+    "ar": "رسم توضيحي لقمر كيوبسات من الأعلى مع دوائر توضيح فارغة."
+  },
+  "art-p18-rocket-light-v1": {
+    "en": "Illustration of a small launch rocket, generic and not a real vehicle.",
+    "ar": "رسم توضيحي لصاروخ إطلاق صغير، عام وليس مركبة حقيقية."
+  },
+  "art-p19-rocket-heavy-v1": {
+    "en": "Illustration of a heavy launch rocket with side boosters, generic and not a real vehicle.",
+    "ar": "رسم توضيحي لصاروخ إطلاق ثقيل بمعززات جانبية، عام وليس مركبة حقيقية."
+  },
+  "art-p20-refly-diptych-v1": {
+    "en": "Illustration comparing a satellite that falls early with one that stays in orbit.",
+    "ar": "رسم توضيحي يقارن بين قمر يسقط مبكرًا وآخر يبقى في مداره."
+  },
+  "art-p21-debrief-plate-v1": {
+    "en": "Illustration of a ground station dish linked to a satellite, with three empty dials.",
+    "ar": "رسم توضيحي لطبق محطة أرضية مرتبط بقمر، مع ثلاثة مؤشرات فارغة."
+  },
+  "art-p22-empty-orbit-v1": {
+    "en": "Illustration of a small satellite above the Earth on a curved orbit.",
+    "ar": "رسم توضيحي لقمر صغير فوق الأرض على مدار منحنٍ."
+  },
+  "art-p14-medal-plan-v1": {
+    "en": "Illustration of a brass medal.",
+    "ar": "رسم توضيحي لميدالية نحاسية."
+  },
+  "art-p14-medal-sun-v1": {
+    "en": "Illustration of a brass medal.",
+    "ar": "رسم توضيحي لميدالية نحاسية."
+  },
+  "art-p14-medal-storm-v1": {
+    "en": "Illustration of a brass medal.",
+    "ar": "رسم توضيحي لميدالية نحاسية."
+  },
+  "art-p16-role-systems-v1": {
+    "en": "Illustration of a role emblem for the team.",
+    "ar": "رسم توضيحي لشعار دور في الفريق."
+  },
+  "art-p16-role-science-v1": {
+    "en": "Illustration of a role emblem for the team.",
+    "ar": "رسم توضيحي لشعار دور في الفريق."
+  },
+  "art-p16-role-power-v1": {
+    "en": "Illustration of a role emblem for the team.",
+    "ar": "رسم توضيحي لشعار دور في الفريق."
+  },
+  "art-p16-role-comms-v1": {
+    "en": "Illustration of a role emblem for the team.",
+    "ar": "رسم توضيحي لشعار دور في الفريق."
+  },
+  "art-p18-rocket-light-card-v1": {
+    "en": "Illustration of a small launch rocket, generic and not a real vehicle.",
+    "ar": "رسم توضيحي لصاروخ إطلاق صغير، عام وليس مركبة حقيقية."
+  },
+  "art-p19-rocket-heavy-card-v1": {
+    "en": "Illustration of a heavy launch rocket with side boosters, generic and not a real vehicle.",
+    "ar": "رسم توضيحي لصاروخ إطلاق ثقيل بمعززات جانبية، عام وليس مركبة حقيقية."
+  },
+  "art-p23-log-border-v1": {
+    "en": "Decorative border strip.",
+    "ar": "شريط زخرفي."
+  }
 }
