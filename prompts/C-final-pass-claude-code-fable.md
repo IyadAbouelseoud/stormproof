@@ -7,7 +7,7 @@
 
 <context>
 You are the release engineer, QA lead and independent reviewer for Stormproof, our NASA Space Apps 2026 entry ("Space Mission Design Game"). Other agents built it today: Opus 5.5 built the engine and data, and Hydrogen 4 in Antigravity built the UI. Treat their claims as unverified until a tool result proves them.
-Read first: AGENTS.md (binding), HANDOFF.md, ISSUES.md (mentor and playtest findings), design/README.md, prompts/G-game-feel.md, README.md, then `git log --oneline -60`.
+Read first: AGENTS.md (binding), HANDOFF.md, ISSUES.md (mentor and playtest findings), design/README.md, prompts/G-game-feel.md, prompts/G2-game-feel-round2.md, README.md, then `git log --oneline -60`.
 Judging: Impact, Creativity, Validity (including usability), Relevance (NASA data must be core), Presentation. Local submission Sun 14:30 Riyadh; code freeze Sun 13:00. The pitch demo is one scripted mission that fails, then succeeds after a re-design.
 Goal: the strongest honest v1.0 we can ship from what exists, with fixes and polish only, and evidence for every claim we will make to judges.
 </context>
@@ -28,7 +28,7 @@ Open items from HANDOFF.md and ISSUES.md that the earlier agents left to this pa
 </carryover>
 
 <task>
-Run these five tracks (after the <carryover> start-state check; carryover item 1, the Flight crash, goes first). Tracks 1-3 are independent: give each to its own subagent (model: sonnet for tracks 2 and 3; keep track 1's judgement calls in this session). Merge the findings, then fix in priority order: correctness > rule compliance > broken UX > polish.
+Run these six tracks (after the <carryover> start-state check; carryover item 1, the Flight crash, goes first). Order: 1, 6, 2, 3, 4, 5. Correctness and function come before polish; Track 5 is cut first if the limit protocol triggers. Tracks 1-3 are independent: give each to its own subagent (model: sonnet for tracks 2 and 3; keep track 1's judgement calls in this session). Merge the findings, then fix in priority order: correctness > rule compliance > broken UX > polish.
 
 TRACK 1: Physics and validity (independent recomputation)
 - Write `qa/independent_check.py`, a separate Python implementation (not importing engine/) of period, SSO inclination, eclipse fraction, decay with the shipped density tables, and the launch-fit check. Run it and the engine on 5 designs (FACSAT-2 golden; 6U at 430 and 550 km launched 2021; a 210 km Starlink-trap case; one oversized design that must fail the fit check). Report the deltas; anything over 5% (or over 10% for lifetime) is a bug to fix or a limit to disclose.
@@ -55,9 +55,23 @@ TRACK 4 (after tracks 1-3, in this session): Judge walkthrough and demo script
 - Write `qa/JUDGE_ANSWERS.md` with honest, evidence-backed answers to the four questions the Saudi guide says judges ask: which NASA data, and what breaks without it; what is real and what is a mock-up; who would use it and how it differs from what exists; the hardest problems, and what's next.
 - Polish budget: up to 10 small quality fixes (copy clarity, spacing, motion timing, empty states, loading states), each under about 30 changed lines, no new features.
 
+TRACK 6 (functional and data integrity; Iyad's bar is "all data and all functionality sound and perfect"; use a sonnet subagent for the matrix, keep judgement in this session)
+Functional matrix, Playwright, production build, EN and AR, 390 and 1440, mouse and keyboard-only:
+- Every button, slider, toggle, chip, hotspot, link and form field on all 8 screens (including the Jeddah screens and the Build exploded view): record screen, control, action, expected, actual in qa/FUNCTIONAL.md. A control that does nothing, throws, or leaves stale state is a bug.
+- Flows: solo and team (names, roles, storm vote both policies); Back/Next and every direct jump; browser reload and hash routing keep or cleanly reset state; language and theme switch mid-flow keep the design; Re-fly baseline and deltas; scenario switch (Angola to Jeddah and back) resets nothing it should not and leaves no Jeddah state in Angola.
+- Mission code: copy, paste, decode and re-simulate for 100 random designs (result hash identical); empty, truncated, wrong-prefix and tampered codes show an inline error and never crash or change the design.
+- Edge designs: 1U with oversized parts, 6U maximum parts, 150 km, 800 km, launch dates at both ends of the timeline (2015-01 and 2026-10), a rocket that cannot reach the orbit, zero fuel, every camera including radar. Each must give a clear verdict or fit-check message, no NaN, no negative bucket, no blank panel.
+- Fuzz: 500 random valid designs through simulate(): no exception, no NaN or Infinity anywhere in SimResult, gauges consistent with the timeline, outcome consistent with lifetime days, score between 0 and 100, causes ordered and non-empty when the mission died.
+Data audit:
+- Every file in web/public/data and content/*.json parses; densities finite and monotone in altitude for sampled days; density_meta matches the .bin sizes; the Sun Stripe months equal sun_daily monthly means for 5 spot-checked months (compute them yourself from the file).
+- Every id in content/text, content/parts.json, rockets.json, scenarios/*.json, art-alt.json and every `src` resolves in content/sources.csv or is "game-balanced"; no orphan or duplicate ids; every image file referenced exists and every shipped image has a sources row and en/ar alt text.
+- Every number on screen in the demo path (both Angola codes, the three Jeddah codes) is traced to SimResult or a source; units, rounding and thousands separators consistent in EN and AR; dates formatted per language; no "undefined", "NaN", "[object" or untranslated key text anywhere (grep the rendered DOM text of every screen).
+- Offline: with the network blocked after first load (Playwright route abort for all non-local hosts), the whole demo still works and no request leaves the origin.
+Output: qa/FUNCTIONAL.md with the matrix, the fuzz and audit results, the bugs found, fixed or disclosed. Fix bugs in priority order; each fix gets a regression test where the engine or adapter is involved.
+
 TRACK 5 (game feel, after track 4; budget about 20% of the window, cut first if the limit protocol triggers)
-Problem: the live site reads as a report, not a game. The spec is prompts/G-game-feel.md (tasks G1-G9); Renad or a worker may already have done some of it.
-- Audit first: for each of G1-G9 mark done / partly / missing from the code and the live URL (screenshots in qa/screens/). Do not redo what exists.
+Problem: the live site reads as a report, not a game. The specs are prompts/G-game-feel.md (G1-G9) and prompts/G2-game-feel-round2.md (X1-X8: mission-control header, briefing-style Brief, dial gauges, medals, orbit mini-diagram; the Build exploded-view hotspots already shipped on main); Renad or a worker may already have done some of it. Extra illustrations from prompts/D2 and D3 (P8-P17) are wired where G/G2 say; missing files are skipped, never replaced by stand-ins. Sound defaults to OFF (never plays before a user tap); fix it if it is on.
+- Audit first: for each of G1-G9 and X1-X8 mark done / partly / missing from the code and the live URL (screenshots in qa/screens/). Do not redo what exists.
 - Implement the missing items in this priority: G1 launch ceremony, G2 flight motion, G3 verdict stamp and count-up, G9 first screen, G6 art wiring, G4 build feedback, G5 transitions, G7 empty states, G8 optional sound (last; drop it first).
 - Hard rules from G apply: no gradients, glows, emoji, starfield, confetti; sol only for the Sun; durations from tokens; transform/opacity only; reduced motion honoured; RTL mirrored; animation only reveals real SimResult values; no new dependency; engine, contracts, numbers untouched.
 - Conformance gate before commit: Playwright walk with reduced motion on and off; axe serious/critical still zero; Lighthouse performance still >= 85; bundle +60 kB gzip max; art folder < 4 MB, lazy-loaded; every AI image shows the SI tag and has en and ar alt text in content/text/art-alt.json.
@@ -76,8 +90,8 @@ Then: tick AGENTS.md section 8 item by item with evidence, update README (run st
 </constraints>
 
 <output_format>
-After each track (1 to 5): `TRACK <n>: <issues found> found, <fixed> fixed, <disclosed> disclosed | evidence: <files/commands> | commit <sha>`.
-Final release report (at most 30 lines; include G1-G9 status and Lighthouse before/after): the section 8 checklist (each item ✅ or ❌ with evidence); golden-test numbers; Lighthouse scores; disclosed limits; unfixed items ranked; the two demo mission codes; the live URL; the tag.
+After each track (1 to 6): `TRACK <n>: <issues found> found, <fixed> fixed, <disclosed> disclosed | evidence: <files/commands> | commit <sha>`.
+Final release report (at most 30 lines; include G1-G9 and X1-X8 status, the qa/FUNCTIONAL.md result and Lighthouse before/after): the section 8 checklist (each item ✅ or ❌ with evidence); golden-test numbers; Lighthouse scores; disclosed limits; unfixed items ranked; the two demo mission codes; the live URL; the tag.
 </output_format>
 
 ---
