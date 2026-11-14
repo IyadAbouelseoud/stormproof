@@ -15,6 +15,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T1.3 dates.ts, drag.ts (log-linear density lookup over daily+monthly rows), decay.ts (RK2, 1 d / 1 h below 250 km, 120 km reentry). Golden 1 PASS after the one allowed fit: beta 72.3 -> 68.43 kg/m2 (-5.3%), reentry 2025-10-26, waypoints 454/403/295 km. Golden 3 PASS: 210 km truth 1.27 d vs plan 2.80 d; storm costs 0.066% of life at 500 km. Golden 2 = todo (needs DAS reference values). Engine 29 + 1 todo.
 
+- T1.4 rules.ts (gauge states vs CML 35%, FCC 5 y / NASA 25 y disposal, lower-bound case), events.ts (seeded slip 0-12 mo skewed short, DONKI Kp>=7 alerts, stormPolicy vote: safe-mode = payload off, ride-out = 20% buffer-reset chance, game-balanced), score.ts (requirements in contract order, 16 pts each + 20 Sun-resilience, game-balanced). Engine 35 + 1 todo.
+
 ## In progress
 -
 
