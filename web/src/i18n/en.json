@@ -86,7 +86,7 @@
   "brief.story_stub": "Placeholder story: the scenario has no story text yet (content request in HANDOFF).",
   "brief.targets_from": "Targets from the scenario:",
   "build.empty": "Your satellite has no parts yet. Choose one to start.",
-  "build.exploded_hint": "Hover subsystem labels to explore anatomy",
+  "build.exploded_hint": "Hover or tap a dot to see what each part does",
   "build.exploded_title": "6U CubeSat subsystems",
   "build.frame": "Frame",
   "causes.title": "What happened, in order",
@@ -404,5 +404,14 @@
   "jeddah.variant.earlier": "Launch a year earlier",
   "req.event-look": "Event look",
   "req.none": "none",
-  "jeddah.limit.anchors": "Real anchors: ICEYE radar satellites weigh about 85 kg (ESA); NASA JPL RainCube, a 6U Ka-band rain radar, weighs about 12 kg, uses 22 W while transmitting, looks straight down and makes rain profiles, not pictures."
+  "jeddah.limit.anchors": "Real anchors: ICEYE radar satellites weigh about 85 kg (ESA); NASA JPL RainCube, a 6U Ka-band rain radar, weighs about 12 kg, uses 22 W while transmitting, looks straight down and makes rain profiles, not pictures.",
+  "build.exploded_change": "Change this part",
+  "build.exploded_empty": "Pick a subsystem. The rest of the satellite dims so you can see where it sits.",
+  "slot.camera.does": "The camera sets how sharp your pictures are and how much ground you cover.",
+  "slot.panels.does": "Panels turn sunlight into power. Too small and the battery runs dry in eclipse.",
+  "slot.battery.does": "The battery carries the satellite through the dark part of each orbit.",
+  "slot.radio.does": "The radio decides how much data you can send down in each pass over Funda.",
+  "slot.computer.does": "The computer stores and handles your images before they are sent.",
+  "slot.pointing.does": "Pointing aims the camera. Better aiming widens the strip you can reach.",
+  "slot.fuel.does": "Fuel lets you lift the orbit back up. Each push adds days of life."
 }

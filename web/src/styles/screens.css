@@ -549,3 +549,24 @@ main:focus { outline: none; }
 .sp-chart-pass--blocked { stroke: var(--color-fail); }
 .sp-legend--event::before { border-block-start: 2px dashed var(--color-lapis); }
 .jd-before-after img { max-block-size: 420px; object-fit: cover; }
+
+/* ---------- Build exploded view: live hotspots (game feel) ---------- */
+.xd-frame { aspect-ratio: 1578 / 1600; max-inline-size: 640px; inline-size: 100%; }
+.xd-img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: contain; }
+.xd-dim { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; opacity: 0; transition: opacity var(--dur-base) ease; }
+.xd-dim--on { opacity: 1; }
+.xd-dim-fill { fill: var(--color-ground); fill-opacity: 0.62; }
+.xd-spot { position: absolute; inline-size: 48px; block-size: 48px; transform: translate(-50%, -50%); background: none; border: 0; padding: 0; cursor: pointer; display: grid; place-items: center; }
+[dir="rtl"] .xd-spot { transform: translate(50%, -50%); }
+.xd-dot { inline-size: 14px; block-size: 14px; border-radius: 50%; background: var(--color-lapis); border: 2px solid var(--color-ground-raised); transition: transform var(--dur-fast) ease; position: relative; }
+.xd-dot::after { content: ''; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--color-lapis); animation: xd-ping 2.4s ease-out infinite; }
+.xd-spot--on .xd-dot { transform: scale(1.5); }
+.xd-spot--on .xd-dot::after { animation-duration: 1.2s; }
+.xd-spot:focus-visible { outline: 2px solid var(--color-lapis); outline-offset: 2px; border-radius: 50%; }
+@keyframes xd-ping { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+.xd-side { display: flex; flex-direction: column; gap: var(--space-16); }
+.xd-card { border: 1px solid var(--color-rule); border-radius: var(--radius-2); background: var(--color-ground); padding: var(--space-12); display: flex; flex-direction: column; gap: var(--space-8); min-block-size: 168px; animation: xd-card-in var(--dur-base) ease; }
+.xd-card-slot { color: var(--color-brass); display: flex; align-items: center; gap: var(--space-8); }
+.xd-card-nums { color: var(--color-ink-muted); }
+@keyframes xd-card-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .xd-dot::after, .xd-card { animation: none; } .xd-dim { transition: none; } }

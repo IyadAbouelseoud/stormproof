@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { FormFactor } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { fmtSigned, reducedMotion } from '../format';
+import { fmtNum, fmtSigned, reducedMotion } from '../format';
+import { partName } from '../content';
 import { useMission } from '../store';
-import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partsFor } from '../engineAdapter';
+import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partById, partsFor } from '../engineAdapter';
 import { Button, Gauge, PartCard, SlotIcon, unitText } from '../ui/components';
 import { playPartSnap } from '../sound';
 import { CameraTrade } from '../ui/Jeddah';
@@ -11,55 +12,104 @@ import { ScreenFrame } from './ScreenFrame';
 
 const FRAMES: FormFactor[] = ['1U', '3U', '6U'];
 
-function ExplodedDiagram(): React.JSX.Element {
-  const { t } = useI18n();
-  const [activeSlot, setActiveSlot] = useState<string | null>(null);
+/** Where each subsystem sits on art-p5 (percent of the image); panels appear twice. */
+const HOTSPOTS: Record<string, { x: number; y: number }[]> = {
+  camera: [{ x: 20.8, y: 64.4 }],
+  panels: [{ x: 23.6, y: 34.4 }, { x: 85, y: 69.4 }],
+  battery: [{ x: 81.6, y: 31.1 }],
+  radio: [{ x: 64.8, y: 15.6 }],
+  computer: [{ x: 72, y: 65.6 }],
+  pointing: [{ x: 50.1, y: 18.9 }],
+  fuel: [{ x: 43.4, y: 80.6 }],
+};
+const SLOT_IDS = ['camera', 'panels', 'battery', 'radio', 'computer', 'pointing', 'fuel'];
 
-  const subsystems = [
-    { id: 'camera', label: 'camera' },
-    { id: 'panels', label: 'panels' },
-    { id: 'battery', label: 'battery' },
-    { id: 'radio', label: 'radio' },
-    { id: 'computer', label: 'computer' },
-    { id: 'pointing', label: 'pointing' },
-    { id: 'fuel', label: 'fuel' },
-  ];
+function ExplodedDiagram(): React.JSX.Element {
+  const { t, lang } = useI18n();
+  const design = useMission((s) => s.design);
+  const [hover, setHover] = useState<string | null>(null);
+  const [pinned, setPinned] = useState<string | null>(null);
+  const active = hover ?? pinned;
+  const part = active ? partById(design.parts[active as keyof typeof design.parts] as string) : undefined;
+  const spots = (active ? HOTSPOTS[active] : undefined) ?? [];
+  const toggle = (id: string) => setPinned((p) => (p === id ? null : id));
+  const jump = (id: string) =>
+    document.getElementById(`slot-${id}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
 
   return (
     <section className="build-exploded" aria-labelledby="exploded-h">
       <div className="build-exploded-header">
-        <h3 id="exploded-h" className="type-label section-label">
-          {t('build.exploded_title')}
-        </h3>
+        <h3 id="exploded-h" className="type-label section-label">{t('build.exploded_title')}</h3>
         <p className="type-small build-exploded-hint">{t('build.exploded_hint')}</p>
       </div>
       <div className="build-exploded-media">
-        <div className="art-frame aspect-16-9">
-          <img
-            src="img/art/art-p5-6u-exploded-v1.webp"
-            alt={t('build.exploded_title')}
-            loading="lazy"
-            className="art-img"
-          />
+        <div className="art-frame xd-frame" onMouseLeave={() => setHover(null)}>
+          <img src={`${import.meta.env.BASE_URL}img/art/art-p5-6u-exploded-v1.webp`} alt={t('build.exploded_title')} loading="lazy" className="xd-img" />
+          <svg className={`xd-dim ${active ? 'xd-dim--on' : ''}`} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <mask id="xd-mask">
+                <rect width="100" height="100" fill="white" />
+                {spots.map((h, i) => <circle key={i} cx={h.x} cy={h.y} r="11" fill="black" />)}
+              </mask>
+            </defs>
+            <rect width="100" height="100" className="xd-dim-fill" mask="url(#xd-mask)" />
+          </svg>
+          {SLOT_IDS.flatMap((id) =>
+            (HOTSPOTS[id] ?? []).map((h, i) => (
+              <button
+                key={`${id}${i}`}
+                type="button"
+                className={`xd-spot ${active === id ? 'xd-spot--on' : ''}`}
+                style={{ insetInlineStart: `${h.x}%`, insetBlockStart: `${h.y}%` }}
+                aria-label={t(`slot.${id}`)}
+                aria-pressed={pinned === id}
+                onMouseEnter={() => setHover(id)}
+                onFocus={() => setHover(id)}
+                onBlur={() => setHover(null)}
+                onClick={() => toggle(id)}
+              >
+                <span className="xd-dot" />
+              </button>
+            )),
+          )}
           <span className="sp-si-tag type-label">SI-generated</span>
         </div>
-        <ul className="build-exploded-chips" aria-label={t('build.exploded_title')}>
-          {subsystems.map((s) => (
-            <li key={s.id}>
-              <button
-                type="button"
-                className={`exploded-chip type-small ${activeSlot === s.id ? 'exploded-chip--active' : ''}`}
-                onMouseEnter={() => setActiveSlot(s.id)}
-                onMouseLeave={() => setActiveSlot(null)}
-                onFocus={() => setActiveSlot(s.id)}
-                onBlur={() => setActiveSlot(null)}
-              >
-                <SlotIcon slot={s.id} />
-                <span>{t(`slot.${s.label}`)}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="xd-side">
+          <ul className="build-exploded-chips" aria-label={t('build.exploded_title')}>
+            {SLOT_IDS.map((id) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  className={`exploded-chip type-small ${active === id ? 'exploded-chip--active' : ''}`}
+                  aria-pressed={pinned === id}
+                  onMouseEnter={() => setHover(id)}
+                  onMouseLeave={() => setHover(null)}
+                  onFocus={() => setHover(id)}
+                  onBlur={() => setHover(null)}
+                  onClick={() => toggle(id)}
+                >
+                  <SlotIcon slot={id} />
+                  <span>{t(`slot.${id}`)}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="xd-card" aria-live="polite">
+            {active && part ? (
+              <>
+                <p className="type-label xd-card-slot"><SlotIcon slot={active} /> {t(`slot.${active}`)}</p>
+                <p className="type-heading">{partName(part.id, lang, part.name)}</p>
+                <p className="type-small">{t(`slot.${active}.does`)}</p>
+                <p className="type-data xd-card-nums">
+                  {fmtNum(lang, part.massKg, 4)} {unitText(t, 'kg')} · {fmtNum(lang, part.powerW, 4)} {unitText(t, 'W')} · {fmtNum(lang, part.costUsd, 4)} {unitText(t, 'USD')}
+                </p>
+                <Button variant="secondary" onClick={() => jump(active)}>{t('build.exploded_change')}</Button>
+              </>
+            ) : (
+              <p className="type-small">{t('build.exploded_empty')}</p>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
