@@ -100,7 +100,7 @@ export function OrbitScene({ altitudeKm, orbitType, bands }: OrbitSceneProps): R
           <circle cx="0" cy="0" r="14" fill="var(--color-sol)" />
           <path d="M -18 0 L -24 0 M 18 0 L 24 0 M 0 -18 L 0 -24 M 0 18 L 0 24" stroke="var(--color-sol)" strokeWidth="1.5" />
           <text x="0" y="28" textAnchor="middle" className="type-label" fill="var(--color-ink-muted)">
-            SOL
+            {t('orbit.sun_label')}
           </text>
         </g>
 

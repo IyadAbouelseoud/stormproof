@@ -112,7 +112,8 @@ describe('engineAdapter', () => {
     const r = A.simulate(d);
     expect(r.groundTrack!.length).toBeGreaterThan(100);
     const engine = new Set(r.groundTrack!.map(([lat, lon]) => `${lat},${lon}`));
-    for (const start of [0, 15, 4000]) {
+    // NaN, negative and fractional starts must never index outside the engine track (crash-walk finding).
+    for (const start of [0, 15, 4000, 12345.678, -3, Number.NaN, Number.POSITIVE_INFINITY]) {
       const pts = A.trackFromResult(r, d, 3, start).flat();
       expect(pts.length).toBeGreaterThan(50);
       for (const p of pts) expect(engine.has(`${p.lat},${p.lon}`)).toBe(true);

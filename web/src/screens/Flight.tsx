@@ -338,7 +338,7 @@ export function Flight(): React.JSX.Element {
           <div className={`hud-metric ${isStorm ? 'hud-metric--storm' : ''}`}>
             <span className="type-label hud-label">{t('flight.storm_alert')}</span>
             <span className="hud-val">
-              {day.stormKp !== null ? `Kp ${fmtNum(lang, day.stormKp)}` : 'NOMINAL'}
+              {day.stormKp !== null ? `Kp ${fmtNum(lang, day.stormKp)}` : t('flight.nominal')}
             </span>
           </div>
 

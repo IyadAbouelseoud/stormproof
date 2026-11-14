@@ -37,7 +37,7 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
       date: first.date,
       icon: 'launch',
       title: t('log.insertion'),
-      detail: `${fmtNum(lang, first.altitudeKm)} km ${result.design.orbit.type}`,
+      detail: `${fmtNum(lang, first.altitudeKm)} ${t('unit.km')} ${t(`orbit.${result.design.orbit.type}`)}`,
       state: 'ok',
       dayIndex: 0,
     });
