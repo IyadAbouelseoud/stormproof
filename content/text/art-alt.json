@@ -1,0 +1,22 @@
+{
+  "art-p8-launch-header-v1": {
+    "en": "Illustration: a generic two-stage rocket on a launch pad at dusk, with the sea and a low crescent Sun behind it.",
+    "ar": "رسم توضيحي: صاروخ عام من مرحلتين على منصة إطلاق عند الغروب، وخلفه البحر وهلال الشمس قرب الأفق."
+  },
+  "art-p9-flight-header-v1": {
+    "en": "Illustration: a small CubeSat flying along a dotted orbit above the Earth, with the Sun at the top corner.",
+    "ar": "رسم توضيحي: قمر صناعي صغير من نوع كيوبسات يتحرك على مدار منقّط فوق الأرض، والشمس في الزاوية العليا."
+  },
+  "art-p10-reentry-lost-v1": {
+    "en": "Illustration: a CubeSat breaking apart as it falls toward the Earth, with thin streaks behind it.",
+    "ar": "رسم توضيحي: قمر كيوبسات يتفكك أثناء سقوطه نحو الأرض وخلفه خطوط رفيعة."
+  },
+  "art-p11-solar-storm-v1": {
+    "en": "Illustration: the Sun drawn as orange concentric rings on an old astronomical plate, with Earth as a small blue dot far to the right.",
+    "ar": "رسم توضيحي: الشمس على هيئة حلقات برتقالية متداخلة على لوحة فلكية قديمة، والأرض نقطة زرقاء صغيرة إلى اليمين."
+  },
+  "art-p12-mission-flown-v1": {
+    "en": "Illustration: the Earth seen from above the north pole, with orbit rings, a small CubeSat and a check mark.",
+    "ar": "رسم توضيحي: الأرض من فوق القطب الشمالي مع حلقات مدارية وقمر كيوبسات صغير وعلامة صح."
+  }
+}
