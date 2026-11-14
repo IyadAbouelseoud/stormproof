@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import type { OrbitType } from '@stormproof/engine';
 import { useI18n } from '../i18n';
+import { rocketName } from '../content';
+import { AliveIndicator } from '../ui/Jeddah';
 import { fmtNum } from '../format';
 import { useMission } from '../store';
 import { ALT_MAX_KM, ALT_MIN_KM, altitudeBands, rockets, useEngineStatus, type AltitudeBands } from '../engineAdapter';
@@ -43,6 +45,7 @@ export function Orbit(): React.JSX.Element {
   const setAltitude = useMission((s) => s.setAltitude);
   const setOrbitType = useMission((s) => s.setOrbitType);
   const setRocket = useMission((s) => s.setRocket);
+  const result = useMission((s) => s.result);
   const status = useEngineStatus((s) => s.status);
   const [bands, setBands] = useState<AltitudeBands | null>(null);
   const [alt, setAlt] = useState(design.orbit.altitudeKm);
@@ -143,7 +146,7 @@ export function Orbit(): React.JSX.Element {
               onClick={() => setRocket(r.id)}
             >
               <span className="sp-part-head">
-                <span className="type-body sp-part-name">{r.name}</span>
+                <span className="type-body sp-part-name">{rocketName(r.id, lang, r.name)}</span>
                 <SrcTag src={r.src} />
               </span>
               <span className="sp-part-stats">
@@ -163,18 +166,30 @@ export function Orbit(): React.JSX.Element {
                   <span className="type-small sp-part-label">{t('rocket.orbits')}</span>
                   <span className="type-data">{r.orbits.map((o) => t(`orbit.${o}`)).join(' / ')}</span>
                 </span>
-                <span className="sp-part-row">
-                  <span className="type-small sp-part-label">{t('rocket.price')}</span>
-                  <span className="type-data">
-                    {fmtNum(lang, r.priceUsdPerKg)} <span className="sp-unit">{t('unit.USD/kg')}</span>
+                {r.minPriceUsd !== undefined ? (
+                  <span className="sp-part-row">
+                    <span className="type-small sp-part-label">{t('rocket.price_flat')}</span>
+                    <span className="type-data">
+                      {fmtNum(lang, r.minPriceUsd)} <span className="sp-unit">{t('unit.USD')}</span>{' '}
+                      <span className="sp-src-tag sp-src-tag--gb type-label">{t('tag.estimate_not_quote')}</span>
+                    </span>
                   </span>
-                </span>
+                ) : (
+                  <span className="sp-part-row">
+                    <span className="type-small sp-part-label">{t('rocket.price')}</span>
+                    <span className="type-data">
+                      {fmtNum(lang, r.priceUsdPerKg)} <span className="sp-unit">{t('unit.USD/kg')}</span>{' '}
+                      {/price game-balanced/.test(r.src) && <span className="sp-src-tag sp-src-tag--gb type-label">{t('tag.game_balanced')}</span>}
+                    </span>
+                  </span>
+                )}
               </span>
             </button>
           ))}
         </div>
       </section>
 
+      <AliveIndicator result={result} />
       <FitVerdicts />
     </ScreenFrame>
   );

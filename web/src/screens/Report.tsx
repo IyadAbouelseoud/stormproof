@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
+import { EventReport } from '../ui/Jeddah';
 import { fmtDate, fmtNum } from '../format';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
@@ -109,6 +110,8 @@ export function Report(): React.JSX.Element {
         </p>
       </section>
 
+      <EventReport result={r} />
+
       <section aria-labelledby="req-h">
         <h3 id="req-h" className="type-label section-label">
           {t('report.requirements')}
@@ -122,7 +125,7 @@ export function Report(): React.JSX.Element {
               title={`${t(`req.${q.id}`)}: ${q.met ? t('req.met') : t('req.missed')}`}
               detail={
                 <span className="type-data">
-                  {fmtNum(lang, q.value)} {unitText(t, q.unit)} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
+                  {q.id === 'event-look' && q.value < 0 ? t('req.none') : `${fmtNum(lang, q.value)} ${unitText(t, q.unit)}`} {q.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, q.target)} {unitText(t, q.unit)}
                 </span>
               }
             />

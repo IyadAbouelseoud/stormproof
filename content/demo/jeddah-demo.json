@@ -1,0 +1,83 @@
+{
+  "_note": "Prompt E demo: three Jeddah missions for the 3-minute demo. Codes decode with decodeMission (engine/test/demo.test.ts checks the outcomes).",
+  "missions": [
+    {
+      "id": "optical-fails",
+      "expect": "event-look FAILS: the only pass in the window is on 24 Nov 2022, storm cloud blocks the optical camera",
+      "design": {
+        "scenarioId": "jeddah-flood",
+        "parts": {
+          "camera": "camera-budget",
+          "panels": "panels-large",
+          "battery": "battery-medium",
+          "radio": "radio-fast",
+          "computer": "computer-standard",
+          "pointing": "pointing-precise",
+          "fuel": "fuel-small"
+        },
+        "formFactor": "6U",
+        "orbit": {
+          "type": "SSO",
+          "altitudeKm": 500
+        },
+        "rocketId": "spacex-rideshare",
+        "launchDate": "2021-06-01",
+        "mode": "truth",
+        "seed": 1
+      },
+      "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1idWRnZXR-cGFuZWxzLWxhcmdlfmJhdHRlcnktbWVkaXVtfnJhZGlvLWZhc3R-Y29tcHV0ZXItc3RhbmRhcmR-cG9pbnRpbmctcHJlY2lzZX5mdWVsLXNtYWxsfjZVflN-NTAwfnNwYWNleC1yaWRlc2hhcmV-MjAyMS0wNi0wMX50fjF-fg"
+    },
+    {
+      "id": "radar-over-budget",
+      "expect": "event-look PASSES (radar sees through cloud) but the budget is busted (and the volume)",
+      "design": {
+        "scenarioId": "jeddah-flood",
+        "parts": {
+          "camera": "camera-radar",
+          "panels": "panels-large",
+          "battery": "battery-medium",
+          "radio": "radio-fast",
+          "computer": "computer-standard",
+          "pointing": "pointing-precise",
+          "fuel": "fuel-small"
+        },
+        "formFactor": "6U",
+        "orbit": {
+          "type": "SSO",
+          "altitudeKm": 500
+        },
+        "rocketId": "spacex-rideshare",
+        "launchDate": "2021-06-01",
+        "mode": "truth",
+        "seed": 1
+      },
+      "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1yYWRhcn5wYW5lbHMtbGFyZ2V-YmF0dGVyeS1tZWRpdW1-cmFkaW8tZmFzdH5jb21wdXRlci1zdGFuZGFyZH5wb2ludGluZy1wcmVjaXNlfmZ1ZWwtc21hbGx-NlV-U341MDB-c3BhY2V4LXJpZGVzaGFyZX4yMDIxLTA2LTAxfnR-MX5-"
+    },
+    {
+      "id": "lean-radar-recovery",
+      "expect": "event-look PASSES and every fit check passes (lean radar build)",
+      "design": {
+        "scenarioId": "jeddah-flood",
+        "parts": {
+          "camera": "camera-radar",
+          "panels": "panels-medium",
+          "battery": "battery-small",
+          "radio": "radio-fast",
+          "computer": "computer-basic",
+          "pointing": "pointing-standard",
+          "fuel": "fuel-small"
+        },
+        "formFactor": "6U",
+        "orbit": {
+          "type": "SSO",
+          "altitudeKm": 500
+        },
+        "rocketId": "spacex-rideshare",
+        "launchDate": "2021-06-01",
+        "mode": "truth",
+        "seed": 1
+      },
+      "code": "SP1-amVkZGFoLWZsb29kfmNhbWVyYS1yYWRhcn5wYW5lbHMtbWVkaXVtfmJhdHRlcnktc21hbGx-cmFkaW8tZmFzdH5jb21wdXRlci1iYXNpY35wb2ludGluZy1zdGFuZGFyZH5mdWVsLXNtYWxsfjZVflN-NTAwfnNwYWNleC1yaWRlc2hhcmV-MjAyMS0wNi0wMX50fjF-fg"
+    }
+  ]
+}

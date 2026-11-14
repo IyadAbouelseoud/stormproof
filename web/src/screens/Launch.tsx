@@ -6,6 +6,7 @@ import { useNavigation } from '../navigation';
 import { sunMonths, useEngineStatus } from '../engineAdapter';
 import { Button } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
+import { AliveIndicator } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
 
 export function PlanTruthNote(): React.JSX.Element {
@@ -89,6 +90,7 @@ export function Launch(): React.JSX.Element {
         <p className="type-small">{t('ptn.explain')}</p>
       </section>
 
+      <AliveIndicator result={result} />
       <section className="launch-go">
         {blocked.length > 0 && <p className="type-small launch-warn">{t('launch.blocked', { n: blocked.length })}</p>}
         <Button className="launch-btn" onClick={go}>

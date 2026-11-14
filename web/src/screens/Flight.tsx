@@ -225,6 +225,7 @@ export function Flight(): React.JSX.Element {
             reveal={!ended}
             cursor={cursor}
             burn={ended && outcome.kind === 'reentered' && !reducedMotion()}
+            event={flight.truth.eventReplay ? { date: flight.truth.eventReplay.date, label: t('jeddah.chart.event'), looks: flight.truth.eventReplay.looks } : undefined}
           />
         </section>
         <section className="flight-map" aria-labelledby="map-h">

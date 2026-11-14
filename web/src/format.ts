@@ -24,5 +24,10 @@ export function fmtMonth(lang: Language, ym: string): string {
   return new Intl.DateTimeFormat(loc(lang), { year: 'numeric', month: 'short', timeZone: 'UTC' }).format(d);
 }
 
+/** Currency per language (UI formats money; the engine passes plain numbers). */
+export function fmtUsd(lang: Language, v: number): string {
+  return new Intl.NumberFormat(loc(lang), { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(v);
+}
+
 export const reducedMotion = (): boolean =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;

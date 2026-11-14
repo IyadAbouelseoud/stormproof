@@ -2,8 +2,11 @@ import React from 'react';
 import { useI18n } from '../i18n';
 import { fmtNum } from '../format';
 import { useMission, ROLES } from '../store';
-import { scenario, scenarioText, useEngineStatus } from '../engineAdapter';
-import { Button, RoleChip, SrcTag, unitText } from '../ui/components';
+import { scenario, useEngineStatus } from '../engineAdapter';
+import { Button, RoleChip, SiTag, SrcTag, unitText } from '../ui/components';
+import { artAlt, scenarioText, tx } from '../content';
+import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
+import { fmtUsd } from '../format';
 import { ScreenFrame } from './ScreenFrame';
 
 export function Brief(): React.JSX.Element {
@@ -15,22 +18,32 @@ export function Brief(): React.JSX.Element {
   const setName = useMission((s) => s.setName);
   const status = useEngineStatus((s) => s.status);
   const sc = scenario(result.design.scenarioId);
-  const text = scenarioText(result.design.scenarioId);
-  // the three numeric requirements of the brief: revisit, ground resolution, lifetime (targets from the result)
-  const reqs = result.score.requirements.filter((r) => r.id === 'revisit' || r.id === 'gsd' || r.id === 'lifetime');
+  const st = scenarioText(result.design.scenarioId);
+  const reqs = result.score.requirements;
+  const event = result.eventReplay !== undefined;
+  const REQ_TEXT: Record<string, string> = { 'data-delivered': 'data' };
+  const params = sc
+    ? { revisit_days: fmtNum(lang, sc.revisitMaxDays), gsd_m: fmtNum(lang, sc.gsdMaxM), data_gb: fmtNum(lang, sc.dataDeliveredMinGB), lifetime_days: fmtNum(lang, sc.lifetimeMinDays), budget: fmtUsd(lang, sc.budgetUsd), look_days: fmtNum(lang, sc.lookWindowDays ?? 0) }
+    : {};
+  const fill = (s: string) => s.replace(/\{(\w+)\}/g, (m, k: string) => String((params as Record<string, string>)[k] ?? m));
+  const hero = 'art-p1-title-hero-v1.webp';
 
   return (
     <ScreenFrame id="Brief">
+      <ScenarioPicker />
       <div className="brief-layout">
         <div className="brief-text">
           <p className="type-label brief-kicker">{t('brief.kicker')}</p>
-          <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{t(text.titleKey)}</h3>
-          <p className="type-body brief-story">{t(text.storyKey)}</p>
-          {text.stub && <p className="type-small brief-stub">{t('brief.story_stub')}</p>}
+          <h3 className={lang === 'ar' ? 'type-display-ar' : 'type-display-l'}>{tx(st?.title, lang, sc?.name ?? '')}</h3>
+          {st?.story.map((b) => (
+            <p key={b.beat} className="type-body brief-story">{tx(b.text, lang)}</p>
+          ))}
+          {st && <p className="type-body brief-story"><strong>{tx(st.mission, lang)}</strong></p>}
           <ul className="brief-reqs">
             {reqs.map((r) => (
               <li key={r.id} className="brief-req">
-                <span className="type-label">{t(`req.${r.id}`)}</span>
+                <span className="type-label">{tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.label, lang, t(`req.${r.id}`))}</span>
+                <span className="type-small">{fill(tx(st?.requirements[REQ_TEXT[r.id] ?? r.id]?.why, lang))}</span>
                 <span className="type-data-l">
                   {r.sense === 'max' ? '≤' : '≥'} {fmtNum(lang, r.target)}
                   <span className="type-data sp-unit"> {unitText(t, r.unit)}</span>
@@ -46,11 +59,15 @@ export function Brief(): React.JSX.Element {
           {status === 'mock' && <p className="type-small brief-stub">{t('engine.mock_notice')}</p>}
         </div>
         <div className="brief-hero">
-          <div className="art-slot" role="img" aria-label={t('art.placeholder')}>
-            <span className="type-label">{t('art.placeholder')}</span>
-          </div>
+          <figure className="jd-card-art brief-art">
+            <img src={`${import.meta.env.BASE_URL}img/art/${hero}`} alt={artAlt(hero, lang)} />
+            <SiTag />
+          </figure>
+          <p className="type-small">{t('art.note')}</p>
         </div>
       </div>
+      {event && <EventCard />}
+      <Limits scenarioId={result.design.scenarioId} />
 
       <section className="team-setup" aria-labelledby="team-setup-h">
         <h3 id="team-setup-h" className="type-heading">{t('team.title')}</h3>

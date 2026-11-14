@@ -325,3 +325,41 @@ main:focus { outline: none; }
   .flight-clock { margin-inline-start: 0; }
   .data-stats { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---- Jeddah flood watch (prompt E F1-F7). Tokens only; sol stays reserved for the Sun. ---- */
+.jd-picker { display: flex; flex-direction: column; gap: var(--space-12); margin-block-end: var(--space-24); }
+.jd-picker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--space-16); }
+.jd-card { display: flex; flex-direction: column; gap: var(--space-8); text-align: start; }
+.jd-card-art { position: relative; display: block; margin: 0; }
+.jd-card-art img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-2); }
+.jd-card-art .sp-si-tag { position: absolute; inset-block-start: var(--space-8); inset-inline-start: var(--space-8); }
+.brief-art img { aspect-ratio: 4 / 3; }
+.jd-tags { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-8); }
+.jd-event, .jd-limits, .jd-trade, .jd-alive, .jd-report {
+  display: flex; flex-direction: column; gap: var(--space-8);
+  padding: var(--space-16); border: 1px solid var(--color-rule); border-radius: var(--radius-2);
+  background: var(--color-ground-raised); margin-block: var(--space-16);
+}
+.jd-limits ul, .jd-passes { margin: 0; padding-inline-start: var(--space-16); display: flex; flex-direction: column; gap: var(--space-4); }
+.jd-trade { border-inline-start: 4px solid var(--color-lapis); }
+.jd-pass--ok { color: var(--color-ink); }
+.jd-pass--blocked { color: var(--color-ink-muted); }
+.jd-fig { margin: 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.jd-fig img { display: block; inline-size: 100%; block-size: auto; border-radius: var(--radius-2); background: var(--color-ground-sunken); }
+.jd-rain img { max-inline-size: 512px; }
+.jd-scrub { display: flex; flex-direction: column; gap: var(--space-4); max-inline-size: 512px; }
+.jd-scrub input { inline-size: 100%; min-block-size: 48px; accent-color: var(--color-lapis); }
+.jd-strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-8); }
+.jd-day { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-4); border: 1px solid var(--color-rule); border-radius: var(--radius-2); min-inline-size: 0; }
+.jd-day img { aspect-ratio: 1; object-fit: cover; }
+.jd-day--cloudy, .jd-day--no-image { border-color: var(--color-fail); }
+.jd-day--clear, .jd-day--partly { border-color: var(--color-ok); }
+@media (max-width: 600px) {
+  .jd-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .jd-before-after { grid-template-columns: minmax(0, 1fr); }
+}
+.sp-chart-event-line { stroke: var(--color-lapis); stroke-width: 2; stroke-dasharray: 4 4; }
+.sp-chart-pass { stroke-width: 4; }
+.sp-chart-pass--ok { stroke: var(--color-ok); }
+.sp-chart-pass--blocked { stroke: var(--color-fail); }
+.sp-legend--event::before { border-block-start: 2px dashed var(--color-lapis); }

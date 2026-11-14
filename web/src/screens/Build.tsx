@@ -5,6 +5,7 @@ import { fmtSigned, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partsFor } from '../engineAdapter';
 import { Button, Gauge, PartCard, unitText } from '../ui/components';
+import { CameraTrade } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
 
 const FRAMES: FormFactor[] = ['1U', '3U', '6U'];
@@ -66,6 +67,7 @@ export function Build(): React.JSX.Element {
   const design = useMission((s) => s.design);
   const setPart = useMission((s) => s.setPart);
   const setFormFactor = useMission((s) => s.setFormFactor);
+  const event = useMission((s) => s.result.eventReplay !== undefined);
 
   return (
     <ScreenFrame id="Build">
@@ -87,8 +89,9 @@ export function Build(): React.JSX.Element {
           <h3 id={`slot-${slot}`} className="type-label section-label">
             {t(`slot.${slot}`)}
           </h3>
+          {slot === 'camera' && event && <CameraTrade />}
           <div className="part-grid">
-            {partsFor(slot).map((p) => (
+            {partsFor(slot, design.scenarioId).map((p) => (
               <PartCard key={p.id} part={p} selected={design.parts[slot] === p.id} onSelect={() => setPart(slot, p.id)} />
             ))}
           </div>

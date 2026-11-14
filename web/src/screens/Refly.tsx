@@ -7,6 +7,8 @@ import { useNavigation } from '../navigation';
 import { AltitudeChart } from '../ui/AltitudeChart';
 import { Button, VerdictStamp } from '../ui/components';
 import { MainVerdict } from './Report';
+import { ReflyVariants } from '../ui/Jeddah';
+import type { MissionDesign } from '@stormproof/engine';
 import { ScreenFrame } from './ScreenFrame';
 
 function RunColumn({ label, r }: { label: string; r: SimResult }): React.JSX.Element {
@@ -38,7 +40,16 @@ export function Refly(): React.JSX.Element {
   const keepBaseline = useMission((s) => s.keepBaseline);
   const clearBaseline = useMission((s) => s.clearBaseline);
   const setScreen = useNavigation((s) => s.setScreen);
+  const loadDesign = useMission((s) => s.loadDesign);
+  const launch = useMission((s) => s.launch);
   const same = baseline && flight && baseline.truth === flight.truth;
+
+  /** F7: one-tap variant: keep this flight as the baseline, fly the variant, compare here. */
+  const flyVariant = (d: MissionDesign) => {
+    if (!baseline) keepBaseline();
+    loadDesign(d);
+    launch();
+  };
 
   const changeOne = () => {
     keepBaseline();
@@ -77,6 +88,7 @@ export function Refly(): React.JSX.Element {
           <RunColumn label={t('refly.first')} r={flight.truth} />
         </>
       )}
+      {flight.truth.eventReplay && <ReflyVariants onFly={flyVariant} />}
       <div className="btn-row">
         <Button onClick={changeOne}>{t('refly.change_one')}</Button>
         {baseline && (

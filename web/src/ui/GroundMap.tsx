@@ -1,12 +1,14 @@
 import React from 'react';
 import { useI18n } from '../i18n';
-import { CONSTANTS, type TrackPoint } from '../engineAdapter';
+import { CONSTANTS, scenario, type TrackPoint } from '../engineAdapter';
+import { useMission } from '../store';
 
 /**
  * 2D equirectangular map (no globe): graticule, equator, the ground track, the Funda ground station
  * (approximate) and the target latitude. No coastline data ships yet (content request in HANDOFF).
  */
 export function GroundMap({ track, title }: { track: TrackPoint[][]; title: string }): React.JSX.Element {
+  const targetLat = useMission((s) => scenario(s.design.scenarioId)?.targetLatDeg ?? CONSTANTS.targetLatDeg);
   const { t } = useI18n();
   const x = (lon: number) => lon + 180;
   const y = (lat: number) => 90 - lat;
@@ -23,7 +25,7 @@ export function GroundMap({ track, title }: { track: TrackPoint[][]; title: stri
           <line key={`a${l}`} x1="0" x2="360" y1={y(l)} y2={y(l)} className="sp-map-grid" />
         ))}
         <line x1="0" x2="360" y1="90" y2="90" className="sp-map-equator" />
-        <line x1="0" x2="360" y1={y(CONSTANTS.targetLatDeg)} y2={y(CONSTANTS.targetLatDeg)} className="sp-map-target" />
+        <line x1="0" x2="360" y1={y(targetLat)} y2={y(targetLat)} className="sp-map-target" />
         {track.map((seg, i) => (
           <polyline key={i} points={seg.map((p) => `${x(p.lon).toFixed(2)},${y(p.lat).toFixed(2)}`).join(' ')} className="sp-map-track" />
         ))}
