@@ -1,0 +1,192 @@
+/* Build screen, track 7: part detail panel, bigger part-card type, filled grid. Tokens only. Loaded after components.css and screens.css. */
+
+.pd-sr {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Build screen: nothing under 13 px (the shared label and dial-unit sizes are 11 px elsewhere). */
+.screen--build :is(.type-label, .sp-dial-unit, .sp-si-tag) { font-size: var(--font-size-small); }
+
+/* ---------- (c) part-card grid (auto-fit, so a slot with fewer cards than columns still fills the row) , (b) card type ---------- */
+.part-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: var(--space-16);
+  align-items: stretch;
+}
+.part-group { gap: var(--space-12); margin-block-end: var(--space-16); }
+.sp-part {
+  border-width: 2px;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  outline: none;
+}
+.sp-part--selected {
+  border-color: var(--color-lapis);
+  box-shadow: none;
+  background-color: var(--color-lapis-tint);
+}
+[dir='rtl'] .sp-part--selected { box-shadow: none; }
+.sp-part:focus-visible { outline: 2px solid var(--color-lapis); outline-offset: 2px; }
+.sp-part-head { flex-direction: column; align-items: flex-start; gap: var(--space-8); }
+.sp-part-name { display: flex; align-items: center; gap: var(--space-8); font-size: var(--font-size-card-title); line-height: 1.2; }
+.sp-part-check { flex: none; color: var(--color-lapis); }
+.sp-part-stats { margin-block-start: auto; gap: var(--space-4); }
+.sp-part-row { align-items: baseline; padding-block: var(--space-4); }
+.sp-part-label { font-size: var(--font-size-body); line-height: 1.4; }
+.sp-part-row .type-data { font-size: var(--font-size-body); font-family: var(--font-mono); }
+.sp-src-tag { font-size: var(--font-size-small); line-height: 1.3; letter-spacing: 0.04em; padding-block: var(--space-4); padding-inline: var(--space-8); color: var(--color-ink-muted); }
+.sp-part--selected .sp-src-tag { color: var(--color-ink); }
+
+.slot-heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  inline-size: 100%;
+  font-size: var(--font-size-label-l);
+  line-height: 1.2;
+  padding-block-end: var(--space-8);
+  border-block-end: 1px solid var(--color-rule);
+}
+.slot-heading .slot-icon { inline-size: 24px; block-size: 24px; flex: none; }
+
+/* ---------- (b) exploded view chip list ---------- */
+.exploded-chip {
+  min-block-size: 48px;
+  font-size: var(--font-size-body-l);
+  line-height: 1.3;
+  gap: var(--space-12);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-12);
+}
+.exploded-chip .slot-icon { inline-size: 24px; block-size: 24px; flex: none; }
+.exploded-chip[aria-expanded='true'] { border-color: var(--color-lapis); background-color: var(--color-lapis-tint); }
+.build-exploded-hint, .xd-card .type-small { font-size: var(--font-size-small); }
+
+/* hotspot: 14 px dot, >= 44 px hit area (48 px) */
+.xd-spot { min-inline-size: 44px; min-block-size: 44px; }
+.xd-ring { fill: none; stroke: var(--color-lapis); stroke-width: 0.6; vector-effect: non-scaling-stroke; }
+.xd-spot[aria-expanded='true'] .xd-dot { transform: scale(1.5); }
+
+/* Pinning must not move the drawing (the hotspot under the cursor would change): the layout is the same open or closed. Below 900 px the side column stacks under the drawing. */
+@media (max-width: 900px) {
+  .build-exploded-media { grid-template-columns: 1fr; }
+  .xd-frame { margin-inline: auto; }
+}
+
+/* ---------- (a) detail panel ---------- */
+.pd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  color: var(--color-ink);
+  background-color: var(--color-ground);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-16);
+  animation: pd-in var(--dur-base) ease;
+  min-inline-size: 0;
+}
+.pd--card { border-inline-start: 2px solid var(--color-lapis); max-block-size: min(60vh, 560px); overflow-y: auto; overscroll-behavior: contain; }
+/* The side column can be taller than the drawing: keep the drawing at the top, next to the slot list (no blank band above it). */
+.build-exploded-media { align-items: start; }
+[data-theme='night'] .pd { background-color: var(--color-ground-raised); }
+@keyframes pd-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.pd--sheet {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 60;
+  max-block-size: 88dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius-4) var(--radius-4) 0 0;
+  border-inline: 0;
+  border-block-end: 0;
+  border-block-start: 2px solid var(--color-lapis);
+  background-color: var(--color-ground-raised);
+  animation: pd-sheet-in var(--dur-base) ease;
+}
+@keyframes pd-sheet-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+.pd-backdrop { position: fixed; inset: 0; z-index: 59; background-color: var(--color-ground-sunken); opacity: 0.7; }
+
+.pd-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-12); }
+.pd-head-main { display: flex; flex-direction: column; gap: var(--space-4); min-inline-size: 0; }
+.pd-kicker { display: flex; align-items: center; gap: var(--space-8); color: var(--color-ink-muted); }
+.pd-kicker .slot-icon { inline-size: 24px; block-size: 24px; flex: none; }
+.pd-title { margin: 0; overflow-wrap: anywhere; outline: none; }
+.pd-title:focus-visible { outline: 2px solid var(--color-lapis); outline-offset: 2px; }
+.pd-close {
+  flex: none;
+  inline-size: 44px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  background: none;
+  color: var(--color-ink);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  cursor: pointer;
+}
+.pd-close:hover { border-color: var(--color-lapis); background-color: var(--color-lapis-tint); }
+.pd-close:focus-visible, .pd-choose:focus-visible { outline: 2px solid var(--color-lapis); outline-offset: 2px; }
+
+.pd-does, .pd-why { margin: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+.pd-k { color: var(--color-ink-muted); }
+.pd-h { margin: 0 0 var(--space-8); color: var(--color-ink-muted); font-size: var(--font-size-label-l); }
+.pd-empty { margin: 0; color: var(--color-ink-muted); }
+.pd-mono { font-family: var(--font-mono); font-size: var(--font-size-body); font-variant-numeric: tabular-nums; }
+
+.pd-nums { margin: 0; display: flex; flex-direction: column; }
+.pd-num-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-12); padding-block: var(--space-4); border-block-end: 1px dotted var(--color-rule); }
+.pd-num-row dt { color: var(--color-ink-muted); }
+.pd-num-row dd { margin: 0; text-align: end; }
+.pd-source { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-8); }
+.pd-src-id { color: var(--color-ink-muted); }
+
+.pd-alts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-16); }
+.pd-alt { display: flex; flex-direction: column; gap: var(--space-8); border: 1px solid var(--color-rule); border-radius: var(--radius-2); padding: var(--space-12); }
+.pd-alt-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-8); }
+.pd-alt-name { margin: 0; font-weight: 600; }
+.pd-table { border-collapse: collapse; inline-size: 100%; }
+.pd-table th { text-align: start; font-weight: 400; color: var(--color-ink-muted); padding-block: var(--space-4); padding-inline-end: var(--space-8); }
+.pd-table td { padding-block: var(--space-4); border-block-end: 1px dotted var(--color-rule); }
+.pd-table tr > * { border-block-end: 1px dotted var(--color-rule); }
+.pd-diff { text-align: end; white-space: nowrap; }
+.pd-verdict { text-align: end; padding-inline-start: var(--space-8); font-weight: 600; white-space: nowrap; }
+.pd-verdict--better { color: var(--color-ok); }
+.pd-verdict--worse { color: var(--color-fail); }
+.pd-verdict--none { color: var(--color-ink-muted); font-weight: 400; }
+
+.pd-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-8); }
+.pd-chip { display: flex; flex-direction: column; gap: var(--space-4); border: 1px solid var(--color-rule); border-radius: var(--radius-2); padding: var(--space-8) var(--space-12); background-color: var(--color-ground-raised); }
+.pd-chip-name { color: var(--color-ink-muted); }
+.pd-chip--fail { border-color: var(--color-fail); }
+.pd-chip--warn { border-color: var(--color-warn); }
+.pd-chip--fail .pd-chip-state { color: var(--color-fail); }
+.pd-chip--warn .pd-chip-state { color: var(--color-warn); }
+.pd-chip-state { font-weight: 600; }
+[dir='rtl'] .pd-arrow { display: inline-block; transform: scaleX(-1); }
+.pd-choose { align-self: flex-start; min-block-size: 44px; font-size: var(--font-size-body); }
+
+/* Arabic gets about 10% more line height */
+:lang(ar) .sp-part *, :lang(ar) .pd *, :lang(ar) .exploded-chip, :lang(ar) .slot-heading { line-height: 1.65; }
+:lang(ar) .sp-part-name, :lang(ar) .pd-title { line-height: 1.35; }
+
+@media (max-width: 600px) {
+  .part-grid { gap: var(--space-12); }
+  .pd-chips { flex-direction: column; }
+  .pd-chip { flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd, .pd--sheet { animation: none; }
+}

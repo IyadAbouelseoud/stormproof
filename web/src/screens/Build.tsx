@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import type { FormFactor } from '@stormproof/engine';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
+import type { FormFactor, PartSlot } from '@stormproof/engine';
 import { useI18n } from '../i18n';
-import { fmtNum, fmtSigned, reducedMotion } from '../format';
+import { fmtSigned, reducedMotion } from '../format';
 import { partName } from '../content';
 import { useMission } from '../store';
 import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partById, partsFor } from '../engineAdapter';
 import { Button, Gauge, PartCard, SlotIcon, unitText } from '../ui/components';
+import { PartDetail } from '../ui/PartDetail';
 import { playPartSnap } from '../sound';
 import { CameraTrade } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
@@ -24,17 +26,80 @@ const HOTSPOTS: Record<string, { x: number; y: number }[]> = {
 };
 const SLOT_IDS = ['camera', 'panels', 'battery', 'radio', 'computer', 'pointing', 'fuel'];
 
+function useSheet(): boolean {
+  const q = '(max-width: 600px)';
+  const [m, setM] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(q);
+    const on = () => setM(mq.matches);
+    mq.addEventListener('change', on);
+    on();
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return m;
+}
+
 function ExplodedDiagram(): React.JSX.Element {
   const { t, lang } = useI18n();
   const design = useMission((s) => s.design);
   const [hover, setHover] = useState<string | null>(null);
   const [pinned, setPinned] = useState<string | null>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const sheet = useSheet();
   const active = hover ?? pinned;
   const part = active ? partById(design.parts[active as keyof typeof design.parts] as string) : undefined;
   const spots = (active ? HOTSPOTS[active] : undefined) ?? [];
-  const toggle = (id: string) => setPinned((p) => (p === id ? null : id));
-  const jump = (id: string) =>
-    document.getElementById(`slot-${id}`)?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+  const nameOf = (id: string): string => {
+    const p = partById(design.parts[id as keyof typeof design.parts] as string);
+    return p ? partName(p.id, lang, p.name) : '';
+  };
+
+  const close = useCallback(() => {
+    setPinned(null);
+    setHover(null);
+    const el = opener.current;
+    opener.current = null;
+    if (el && el.isConnected) requestAnimationFrame(() => el.focus());
+  }, []);
+  const open = (id: string, el: HTMLElement) => {
+    if (pinned === id) {
+      close();
+      return;
+    }
+    opener.current = el;
+    setPinned(id);
+  };
+
+  // Esc closes; a pointer-down outside the panel and the hotspots/chips closes (the sheet has its own backdrop).
+  useEffect(() => {
+    if (!pinned) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+    };
+    const onDown = (e: PointerEvent) => {
+      const el = e.target as Element | null;
+      if (el?.closest('.pd, .xd-spot, .exploded-chip')) return;
+      setPinned(null);
+      setHover(null);
+      opener.current = null;
+    };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onDown);
+    };
+  }, [pinned, close]);
+
+  const hotspotProps = (id: string) => ({
+    'aria-expanded': pinned === id,
+    onMouseEnter: () => setHover(id),
+    onFocus: () => setHover(id),
+    onBlur: () => setHover(null),
+    onClick: (e: React.MouseEvent<HTMLElement>) => open(id, e.currentTarget),
+  });
+
+  const panel = pinned ? <PartDetail slot={pinned as PartSlot} sheet={sheet} onClose={close} /> : null;
 
   return (
     <section className="build-exploded" aria-labelledby="exploded-h">
@@ -42,7 +107,10 @@ function ExplodedDiagram(): React.JSX.Element {
         <h3 id="exploded-h" className="type-label section-label">{t('build.exploded_title')}</h3>
         <p className="type-small build-exploded-hint">{t('build.exploded_hint')}</p>
       </div>
-      <div className="build-exploded-media">
+      <p className="pd-sr" role="status" aria-live="polite">
+        {pinned ? t('pd.announce', { slot: t(`slot.${pinned}`), part: nameOf(pinned) }) : ''}
+      </p>
+      <div className={`build-exploded-media`}>
         <div className="art-frame xd-frame" dir="ltr" onMouseLeave={() => setHover(null)}>
           <img src={`${import.meta.env.BASE_URL}img/art/art-p5-6u-exploded-v1.webp`} alt={t('build.exploded_title')} loading="lazy" className="xd-img" />
           <svg className={`xd-dim ${active ? 'xd-dim--on' : ''}`} viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -53,6 +121,7 @@ function ExplodedDiagram(): React.JSX.Element {
               </mask>
             </defs>
             <rect width="100" height="100" className="xd-dim-fill" mask="url(#xd-mask)" />
+            {spots.map((h, i) => <circle key={`r${i}`} cx={h.x} cy={h.y} r="11" className="xd-ring" data-slot={active ?? undefined} />)}
           </svg>
           {SLOT_IDS.flatMap((id) =>
             (HOTSPOTS[id] ?? []).map((h, i) => (
@@ -61,12 +130,9 @@ function ExplodedDiagram(): React.JSX.Element {
                 type="button"
                 className={`xd-spot ${active === id ? 'xd-spot--on' : ''}`}
                 style={{ left: `${h.x}%`, top: `${h.y}%` }}
-                aria-label={t(`slot.${id}`)}
-                aria-pressed={pinned === id}
-                onMouseEnter={() => setHover(id)}
-                onFocus={() => setHover(id)}
-                onBlur={() => setHover(null)}
-                onClick={() => toggle(id)}
+                data-slot={id}
+                aria-label={t('pd.spot', { slot: t(`slot.${id}`), part: nameOf(id) })}
+                {...hotspotProps(id)}
               >
                 <span className="xd-dot" />
               </button>
@@ -80,13 +146,9 @@ function ExplodedDiagram(): React.JSX.Element {
               <li key={id}>
                 <button
                   type="button"
-                  className={`exploded-chip type-small ${active === id ? 'exploded-chip--active' : ''}`}
-                  aria-pressed={pinned === id}
-                  onMouseEnter={() => setHover(id)}
-                  onMouseLeave={() => setHover(null)}
-                  onFocus={() => setHover(id)}
-                  onBlur={() => setHover(null)}
-                  onClick={() => toggle(id)}
+                  className={`exploded-chip type-body-l ${active === id ? 'exploded-chip--active' : ''}`}
+                  data-slot={id}
+                  {...hotspotProps(id)}
                 >
                   <SlotIcon slot={id} />
                   <span>{t(`slot.${id}`)}</span>
@@ -94,23 +156,33 @@ function ExplodedDiagram(): React.JSX.Element {
               </li>
             ))}
           </ul>
-          <div className="xd-card" aria-live="polite">
-            {active && part ? (
-              <>
-                <p className="type-label xd-card-slot"><SlotIcon slot={active} /> {t(`slot.${active}`)}</p>
-                <p className="type-heading">{partName(part.id, lang, part.name)}</p>
-                <p className="type-small">{t(`slot.${active}.does`)}</p>
-                <p className="type-data xd-card-nums">
-                  {fmtNum(lang, part.massKg, 4)} {unitText(t, 'kg')} · {fmtNum(lang, part.powerW, 4)} {unitText(t, 'W')} · {fmtNum(lang, part.costUsd, 4)} {unitText(t, 'USD')}
-                </p>
-                <Button variant="secondary" onClick={() => jump(active)}>{t('build.exploded_change')}</Button>
-              </>
-            ) : (
-              <p className="type-small">{t('build.exploded_empty')}</p>
-            )}
-          </div>
+          {pinned && !sheet ? (
+            panel
+          ) : (
+            <div className="xd-card" aria-live="polite">
+              {active && part ? (
+                <>
+                  <p className="type-label xd-card-slot"><SlotIcon slot={active} /> {t(`slot.${active}`)}</p>
+                  <p className="type-heading">{partName(part.id, lang, part.name)}</p>
+                  <p className="type-small">{t(`slot.${active}.does`)}</p>
+                  <p className="type-small xd-card-nums">{t('pd.click_hint')}</p>
+                </>
+              ) : (
+                <p className="type-small">{t('build.exploded_empty')}</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
+      {pinned && sheet
+        ? createPortal(
+            <>
+              <div className="pd-backdrop" onClick={close} aria-hidden="true" />
+              {panel}
+            </>,
+            document.body,
+          )
+        : null}
     </section>
   );
 }

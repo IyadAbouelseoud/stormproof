@@ -403,7 +403,14 @@ export function PartCard({ part, selected, onSelect }: PartCardProps): React.JSX
       onClick={onSelect}
     >
       <span className="sp-part-head">
-        <span className="type-body sp-part-name">{partName(part.id, lang, part.name)}</span>
+        <span className="type-card-title sp-part-name">
+          {selected && (
+            <svg className="sp-part-check" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" role="img" aria-label={t("pd.selected")}>
+              <polyline points="4,12.5 9.5,18 20,6" />
+            </svg>
+          )}
+          {partName(part.id, lang, part.name)}
+        </span>
         {part.cameraType === 'radar' ? (
           <span className="sp-src-tag sp-src-tag--gb type-label">{t('tag.design_study_not_6u')}</span>
         ) : (
