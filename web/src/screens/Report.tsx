@@ -116,6 +116,7 @@ export function Report(): React.JSX.Element {
   const gsd = r.score.requirements.find((q) => q.id === 'gsd');
   const sources = reportSources(r, gibs);
   const p = r.planVsTruth;
+  const sunResilience = Math.max(0, Math.min(20, r.score.total - r.score.requirementsMet * 16));
 
   useEffect(() => {
     playStampThud();
@@ -174,12 +175,12 @@ export function Report(): React.JSX.Element {
         <div className="sun-resilience-panel">
           <div className="sun-resilience-head">
             <span className="type-label">{t('report.sun_resilience')}</span>
-            <span className="type-data">{fmtNum(lang, r.score.sunResilience)} / 20</span>
+            <span className="type-data">{fmtNum(lang, sunResilience)} / 20</span>
           </div>
           <div className="sun-resilience-track" aria-hidden="true">
             <div
               className="sun-resilience-fill"
-              style={{ '--fill': `${r.score.sunResilience / 20}` } as React.CSSProperties}
+              style={{ '--fill': `${sunResilience / 20}` } as React.CSSProperties}
             />
           </div>
         </div>
