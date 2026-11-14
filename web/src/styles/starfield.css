@@ -1,19 +1,33 @@
 /* Space backdrop (Night theme only). Decorative, fixed, GPU-only motion, no gradients, no glow. */
-.sp-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; }
+.sp-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; --px: 0; --py: 0; }
 [data-theme="paper"] .sp-stars { display: none; }
-.sp-stars-layer { position: absolute; inset-inline-start: 0; inset-block-start: 0; background: transparent; will-change: transform; }
+.sp-par { position: absolute; inset: 0; will-change: transform; transition: transform 240ms ease-out; }
+.sp-par-1 { transform: translate3d(calc(var(--px) * -6px), calc(var(--py) * -6px), 0); }
+.sp-par-2 { transform: translate3d(calc(var(--px) * -16px), calc(var(--py) * -16px), 0); }
+.sp-par-3 { transform: translate3d(calc(var(--px) * -34px), calc(var(--py) * -34px), 0); }
+.sp-stars-layer { position: absolute; inset-inline-start: 0; inset-block-start: 0; background: transparent; will-change: transform; box-shadow: var(--sh); }
 .sp-stars-layer::after { content: ''; position: absolute; inset-inline-start: 0; inset-block-start: 1600px; inline-size: inherit; block-size: inherit; box-shadow: var(--sh); }
-.sp-stars-layer { box-shadow: var(--sh); }
-.sp-stars-1 { inline-size: 1px; block-size: 1px; opacity: 0.7; animation: sp-drift 220s linear infinite; }
-.sp-stars-2 { inline-size: 2px; block-size: 2px; border-radius: 50%; opacity: 0.85; animation: sp-drift 140s linear infinite, sp-twinkle 5s ease-in-out infinite alternate; }
-.sp-stars-3 { inline-size: 3px; block-size: 3px; border-radius: 50%; animation: sp-drift 90s linear infinite, sp-twinkle 3.2s ease-in-out infinite alternate; animation-delay: 0s, 1.4s; }
+.sp-stars-1 { inline-size: 2px; block-size: 2px; opacity: 0.8; animation: sp-drift 200s linear infinite; }
+.sp-stars-2 { inline-size: 3px; block-size: 3px; border-radius: 50%; animation: sp-drift 120s linear infinite, sp-twinkle 4s ease-in-out infinite alternate; }
+.sp-stars-3 { inline-size: 4px; block-size: 4px; border-radius: 50%; animation: sp-drift 75s linear infinite, sp-twinkle 2.6s ease-in-out infinite alternate; animation-delay: 0s, 1.2s; }
 @keyframes sp-drift { to { transform: translate3d(0, -1600px, 0); } }
-@keyframes sp-twinkle { from { opacity: 0.35; } to { opacity: 1; } }
-.sp-shoot { position: absolute; inline-size: 110px; block-size: 1px; background: var(--color-ink); opacity: 0; transform: rotate(24deg); }
-.sp-shoot-a { inset-block-start: 14%; inset-inline-start: 62%; animation: sp-shoot 23s linear infinite; }
-.sp-shoot-b { inset-block-start: 46%; inset-inline-start: 18%; animation: sp-shoot 37s linear infinite; animation-delay: 11s; }
-@keyframes sp-shoot { 0%, 93% { opacity: 0; transform: translate3d(0, 0, 0) rotate(24deg); } 94% { opacity: 0.9; } 100% { opacity: 0; transform: translate3d(-260px, 120px, 0) rotate(24deg); } }
-@media (prefers-reduced-motion: reduce) { .sp-stars-layer, .sp-shoot { animation: none; } .sp-shoot { display: none; } }
+@keyframes sp-twinkle { from { opacity: 0.45; } to { opacity: 1; } }
+/* four-point sparkle: two crossed hairline bars */
+.sp-hero { position: absolute; opacity: 0.9; animation: sp-pulse 4.5s ease-in-out infinite; }
+.sp-hero::before, .sp-hero::after { content: ''; position: absolute; background: currentColor; inset-block-start: 50%; inset-inline-start: 0; inline-size: 100%; block-size: 2px; transform: translateY(-50%); }
+.sp-hero::after { inset-inline-start: 50%; inset-block-start: 0; inline-size: 2px; block-size: 100%; transform: translateX(-50%); }
+.sp-hero--ink { color: var(--color-ink); }
+.sp-hero--brass { color: var(--color-brass); }
+.sp-hero--lapis { color: var(--color-lapis); }
+@keyframes sp-pulse { 0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); } 50% { opacity: 1; transform: scale(1.15) rotate(45deg); } }
+.sp-shoot { position: absolute; inline-size: 150px; block-size: 2px; background: var(--color-ink); opacity: 0; transform: rotate(24deg); border-radius: 1px; }
+.sp-shoot-a { inset-block-start: 14%; inset-inline-start: 62%; animation: sp-shoot 11s linear infinite; }
+.sp-shoot-b { inset-block-start: 46%; inset-inline-start: 24%; animation: sp-shoot 17s linear infinite; animation-delay: 5s; background: var(--color-brass); }
+.sp-shoot-c { inset-block-start: 28%; inset-inline-start: 82%; animation: sp-shoot 23s linear infinite; animation-delay: 9s; background: var(--color-lapis); }
+@keyframes sp-shoot { 0%, 90% { opacity: 0; transform: translate3d(0, 0, 0) rotate(24deg); } 91% { opacity: 1; } 100% { opacity: 0; transform: translate3d(-340px, 150px, 0) rotate(24deg); } }
+/* warp burst on every screen change: stars stretch vertically for 600 ms */
+.sp-stars--warp .sp-par { transform: scaleY(1.6); transition: transform 600ms ease-in; }
+@media (prefers-reduced-motion: reduce) { .sp-stars-layer, .sp-shoot, .sp-hero { animation: none; } .sp-shoot { display: none; } .sp-par { transform: none; transition: none; } .sp-stars--warp .sp-par { transform: none; } }
 /* Stars show through the whole app: shell, rail and cards are see-through; text stays on >=60% panels */
 [data-theme="night"] .app-container { position: relative; z-index: 1; background: transparent; }
 [data-theme="night"] .cml-rail { background-color: color-mix(in srgb, var(--color-ground-raised) 55%, transparent); }
