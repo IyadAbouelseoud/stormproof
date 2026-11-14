@@ -29,6 +29,7 @@ export const NASA_DISPOSAL_YEARS = 25;
 
 export const OMNI_END = '2026-10-29';
 export const STORM_ALERT_KP = 7;
+export const BATTERY_DOD = 0.3;
 
 export const SOURCES: Record<string, string> = {
   MU_KM3_S2: 'WGS 84 / EGM96 Earth gravitational parameter',
@@ -52,4 +53,5 @@ export const SOURCES: Record<string, string> = {
   NASA_DISPOSAL_YEARS: 'NASA-STD-8719.14C (25-year rule)',
   OMNI_END: 'AGENTS.md s5 (last NASA OMNI day)',
   STORM_ALERT_KP: 'game-balanced (alert at Kp >= 7, NOAA G3)',
+  BATTERY_DOD: 'game-balanced (usable depth of discharge for LEO cycling)',
 };

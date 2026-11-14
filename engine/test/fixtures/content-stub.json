@@ -1,0 +1,26 @@
+{
+  "_note": "TEST STUB until content/ lands (Dua's lane). Every value game-balanced unless src says otherwise.",
+  "parts": [
+    { "id": "cam-ms-5m", "slot": "camera", "name": "Multispectral imager 5 m", "massKg": 1.2, "powerW": 4.0, "costUsd": 350000, "units": 2, "gsdAt500M": 5, "swathAt500Km": 30, "dataMBPerDay": 1800, "src": "game-balanced" },
+    { "id": "cam-wide-30m", "slot": "camera", "name": "Wide imager 30 m", "massKg": 0.5, "powerW": 2.0, "costUsd": 120000, "units": 1, "gsdAt500M": 30, "swathAt500Km": 120, "dataMBPerDay": 600, "src": "game-balanced" },
+    { "id": "panels-body", "slot": "panels", "name": "Body-mounted panels", "massKg": 0.3, "powerW": 0, "costUsd": 40000, "units": 0, "effectiveAreaM2": 0.045, "src": "game-balanced" },
+    { "id": "panels-deploy-4", "slot": "panels", "name": "Deployable 4-wing panels", "massKg": 0.9, "powerW": 0, "costUsd": 150000, "units": 0, "effectiveAreaM2": 0.11, "src": "game-balanced" },
+    { "id": "batt-38wh", "slot": "battery", "name": "Battery 38 Wh", "massKg": 0.3, "powerW": 0, "costUsd": 15000, "units": 0.5, "capacityWh": 38, "src": "game-balanced" },
+    { "id": "batt-77wh", "slot": "battery", "name": "Battery 77 Wh", "massKg": 0.6, "powerW": 0, "costUsd": 28000, "units": 1, "capacityWh": 77, "src": "game-balanced" },
+    { "id": "radio-uhf", "slot": "radio", "name": "UHF radio", "massKg": 0.1, "powerW": 1.0, "costUsd": 10000, "units": 0.25, "downlinkMbps": 0.0096, "src": "game-balanced" },
+    { "id": "radio-xband", "slot": "radio", "name": "X-band transmitter", "massKg": 0.3, "powerW": 3.0, "costUsd": 90000, "units": 0.5, "downlinkMbps": 25, "src": "game-balanced" },
+    { "id": "obc-standard", "slot": "computer", "name": "Flight computer, 8 GB", "massKg": 0.1, "powerW": 0.8, "costUsd": 25000, "units": 0.25, "storageMB": 8000, "src": "game-balanced" },
+    { "id": "adcs-mag", "slot": "pointing", "name": "Magnetorquers only", "massKg": 0.2, "powerW": 0.5, "costUsd": 20000, "units": 0.25, "src": "game-balanced" },
+    { "id": "adcs-3axis", "slot": "pointing", "name": "3-axis reaction wheels", "massKg": 0.9, "powerW": 2.0, "costUsd": 160000, "units": 0.5, "src": "game-balanced" },
+    { "id": "none", "slot": "fuel", "name": "No propulsion", "massKg": 0, "powerW": 0, "costUsd": 0, "units": 0, "deltaVMs": 0, "src": "game-balanced" },
+    { "id": "coldgas-20", "slot": "fuel", "name": "Cold-gas thruster 20 m/s", "massKg": 0.8, "powerW": 0.2, "costUsd": 120000, "units": 1, "deltaVMs": 20, "src": "game-balanced" }
+  ],
+  "rockets": [
+    { "id": "electron", "name": "Electron", "capacityKg": 200, "orbits": ["SSO"], "minAltKm": 300, "maxAltKm": 700, "priceUsdPerKg": 37500, "firstFlight": "2018-01-21", "src": "AGENTS.md s5 (200 kg to 500 km SSO); price game-balanced" },
+    { "id": "falcon9-rideshare", "name": "Falcon 9 rideshare", "capacityKg": 830, "orbits": ["SSO"], "minAltKm": 450, "maxAltKm": 600, "priceUsdPerKg": 6000, "firstFlight": "2018-12-03", "src": "game-balanced" },
+    { "id": "iss-deploy", "name": "ISS deployer (cargo flight)", "capacityKg": 48, "orbits": ["ISS51.6"], "minAltKm": 380, "maxAltKm": 420, "priceUsdPerKg": 20000, "firstFlight": "2015-01-01", "src": "game-balanced" }
+  ],
+  "scenarios": [
+    { "id": "angola", "name": "Angola drought mapping", "budgetUsd": 1500000, "revisitMaxDays": 10, "gsdMaxM": 30, "dataDeliveredMinGB": 500, "lifetimeMinDays": 1095, "src": "game-balanced" }
+  ]
+}
