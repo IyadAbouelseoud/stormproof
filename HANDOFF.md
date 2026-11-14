@@ -3,6 +3,7 @@
 Updated by the agent at every checkpoint (tests green, committed).
 
 ## Done
+- Merged lane/renad into main (e0ecfe4) after Renad's real-browser playtest passed (no crash, no console errors, 2026-11-14). Merged tests: engine 79 + 3 expected fail + 6 skipped, web i18n + shell + vitest 9/9, build ok. Next: Renad/Iyad release and tag v1.0-rc.
 - U1e-U8 (Renad's lane, run on Claude Code Opus 5.5 at Renad's request; prompt B fallback, Iyad to be told). One pass, all on lane/renad:
   - Data: web/src/engineAdapter.ts is the ONLY data gateway. It runs the real engine (engine/src read-only, `@stormproof/engine` workspace dep) on web/public/data, and falls back to mock-result.json until the data loads or if it fails (header shows "Sample data"). Catalog = engine/test/fixtures/content-stub.json until content/*.json lands (swap one import in the adapter). Store: web/src/store.ts (design, live truth result, flight = truth+plan runs, re-fly baseline, team mode, storm votes).
   - U1e components (web/src/ui/components.tsx + styles/components.css, tokens only): Button, Gauge, PartCard, RoleChip, VerdictStamp, MissionTicket, CauseChain, SI tag (`sp-si-tag`), source tags; SunStripe, AltitudeChart, GroundMap (SVG). Gallery at #gallery (Paper and Night side by side); old swatch page moved to #tokens.
