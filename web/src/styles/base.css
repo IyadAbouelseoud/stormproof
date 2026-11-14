@@ -1,0 +1,28 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  transition: background-color var(--dur-base) ease, color var(--dur-base) ease;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid var(--color-rule);
+  background-color: var(--color-lapis);
+  color: var(--color-on-lapis);
+  border-radius: var(--radius-2);
+  font-family: inherit;
+  font-size: inherit;
+  transition: opacity var(--dur-fast) ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
