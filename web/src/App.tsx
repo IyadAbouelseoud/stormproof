@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useI18n } from './i18n';
 import { LanguageToggle } from './ui/LanguageToggle';
+import { CmlRail } from './ui/CmlRail';
+import { NavigationControls } from './ui/NavigationControls';
+import { useNavigation, ScreenId } from './navigation';
+import {
+  Brief,
+  Build,
+  Orbit,
+  Launch,
+  Flight,
+  Report,
+  Refly,
+} from './screens';
+
+const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = {
+  Brief,
+  Build,
+  Orbit,
+  Launch,
+  Flight,
+  Report,
+  Refly,
+};
 
 const COLOR_TOKENS = [
   { name: 'ground', descKey: 'token.color.ground' },
@@ -90,22 +112,55 @@ const TYPOGRAPHY_SAMPLES = [
 
 export default function App(): React.JSX.Element {
   const [theme, setTheme] = useState<'paper' | 'night'>('paper');
+  const [showSwatches, setShowSwatches] = useState<boolean>(() => {
+    return (
+      typeof window !== 'undefined' &&
+      (window.location.hash === '#tokens' || window.location.hash === '#swatches')
+    );
+  });
   const { t } = useI18n();
+  const { currentScreen } = useNavigation();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    const handleHash = () => {
+      setShowSwatches(
+        window.location.hash === '#tokens' || window.location.hash === '#swatches'
+      );
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'paper' ? 'night' : 'paper'));
   };
 
+  const toggleSwatches = () => {
+    const nextState = !showSwatches;
+    setShowSwatches(nextState);
+    if (nextState) {
+      window.location.hash = '#tokens';
+    } else {
+      window.history.pushState(
+        '',
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
+  };
+
+  const ActiveScreen = SCREEN_COMPONENTS[currentScreen];
+
   return (
-    <main className="app-container">
+    <main className="app-container" data-theme={theme}>
       <header className="app-header">
-        <div>
-          <h1 className="type-display-l">{t('app.title')}</h1>
-          <p className="type-body">{t('app.subtitle')}</p>
+        <div className="app-title-group">
+          <h1 className="type-display-l app-title">{t('app.title')}</h1>
+          <p className="type-body app-pitch">{t('app.pitch')}</p>
         </div>
         <div className="header-controls">
           <LanguageToggle />
@@ -114,60 +169,80 @@ export default function App(): React.JSX.Element {
             onClick={toggleTheme}
             className="theme-toggle-btn type-label"
           >
-            {theme === 'paper' ? t('theme.switch_to_night') : t('theme.switch_to_paper')}
+            {theme === 'paper'
+              ? t('theme.switch_to_night')
+              : t('theme.switch_to_paper')}
           </button>
         </div>
       </header>
 
-      <section>
-        <h2 className="type-heading section-title">{t('theme.palette_title', { theme })}</h2>
-        <div className="swatch-grid">
-          {COLOR_TOKENS.map((token) => (
-            <div key={token.name} className="swatch-card">
-              <div
-                className="swatch-preview"
-                style={{ backgroundColor: `var(--color-${token.name})` }}
-              />
-              <div className="swatch-info">
-                <span className="type-data swatch-name">--{token.name}</span>
-                <span className="type-small swatch-desc">{t(token.descKey)}</span>
+      {showSwatches ? (
+        <section>
+          <h2 className="type-heading section-title">
+            {t('theme.palette_title', { theme })}
+          </h2>
+          <div className="swatch-grid">
+            {COLOR_TOKENS.map((token) => (
+              <div key={token.name} className="swatch-card">
+                <div
+                  className="swatch-preview"
+                  style={{ backgroundColor: `var(--color-${token.name})` }}
+                />
+                <div className="swatch-info">
+                  <span className="type-data swatch-name">--{token.name}</span>
+                  <span className="type-small swatch-desc">{t(token.descKey)}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
 
-      <section>
-        <h2 className="type-heading section-title">{t('theme.sunstripe_title')}</h2>
-        <div className="swatch-grid">
-          {SUNSTRIPE_TOKENS.map((token) => (
-            <div key={token.name} className="swatch-card">
-              <div
-                className="swatch-preview"
-                style={{ backgroundColor: `var(--${token.name})` }}
-              />
-              <div className="swatch-info">
-                <span className="type-data swatch-name">--{token.name}</span>
-                <span className="type-small swatch-desc">{t(token.descKey)}</span>
+          <h2 className="type-heading section-title">{t('theme.sunstripe_title')}</h2>
+          <div className="swatch-grid">
+            {SUNSTRIPE_TOKENS.map((token) => (
+              <div key={token.name} className="swatch-card">
+                <div
+                  className="swatch-preview"
+                  style={{ backgroundColor: `var(--${token.name})` }}
+                />
+                <div className="swatch-info">
+                  <span className="type-data swatch-name">--{token.name}</span>
+                  <span className="type-small swatch-desc">{t(token.descKey)}</span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
 
-      <section>
-        <h2 className="type-heading section-title">{t('theme.typography_title')}</h2>
-        <div className="type-specimen-list">
-          {TYPOGRAPHY_SAMPLES.map((item) => (
-            <div key={item.name} className="type-specimen-card">
-              <div className="type-label type-specimen-meta">
-                {item.name} — {item.desc}
+          <h2 className="type-heading section-title">{t('theme.typography_title')}</h2>
+          <div className="type-specimen-list">
+            {TYPOGRAPHY_SAMPLES.map((item) => (
+              <div key={item.name} className="type-specimen-card">
+                <div className="type-label type-specimen-meta">
+                  {item.name} — {item.desc}
+                </div>
+                <div className={item.className}>{t(item.sampleKey)}</div>
               </div>
-              <div className={item.className}>{t(item.sampleKey)}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="mission-flow-container">
+          <CmlRail />
+          <ActiveScreen />
+          <NavigationControls />
+        </section>
+      )}
+
+      <footer className="app-footer">
+        <button
+          type="button"
+          onClick={toggleSwatches}
+          className="view-toggle-btn type-label"
+        >
+          {showSwatches
+            ? t('shell.switch_to_mission')
+            : t('shell.switch_to_swatches')}
+        </button>
+      </footer>
     </main>
   );
 }

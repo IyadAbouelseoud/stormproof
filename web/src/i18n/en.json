@@ -69,5 +69,11 @@
   "demo.typography.small": "Pre-computed NRLMSIS 2.1 neutral density orbit-averaged per day x altitude 150-800 km.",
   "demo.typography.data_l": "497 KM / 936 DAYS",
   "demo.typography.data": "F10.7 = 158.4 sfu | rho = 3.42e-12 kg/m³ | Cd = 2.2",
-  "demo.typography.label": "BALLISTIC COEFFICIENT / DISPOSAL RULE FCC 22-74"
+  "demo.typography.label": "BALLISTIC COEFFICIENT / DISPOSAL RULE FCC 22-74",
+  "cml.rail_label": "CML Progress Rail",
+  "screens.step_counter": "Screen {current} of {total}",
+  "screens.placeholder_desc": "Placeholder screen for {name} ({segment} segment). Full implementation in subsequent steps.",
+  "screens.current_segment": "Segment: {segment}",
+  "shell.switch_to_swatches": "View Token Swatches",
+  "shell.switch_to_mission": "Return to Mission Flow"
 }

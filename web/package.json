@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "tokens": "node scripts/make-tokens.mjs",
     "fonts": "node scripts/download-fonts.mjs",
-    "test": "node scripts/test-i18n.mjs"
+    "test": "node scripts/test-i18n.mjs && node scripts/test-shell.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",

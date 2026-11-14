@@ -69,5 +69,11 @@
   "demo.typography.small": "كثافة الغلاف الجوي المحايدة المحسوبة مسبقاً بنموذج NRLMSIS 2.1 بمتوسط مداري لكل يوم × الارتفاع 150-800 كم.",
   "demo.typography.data_l": "497 كم / 936 يوماً",
   "demo.typography.data": "F10.7 = 158.4 sfu | rho = 3.42e-12 kg/m³ | Cd = 2.2",
-  "demo.typography.label": "المعامل البالستي / قاعدة التخلص FCC 22-74"
+  "demo.typography.label": "المعامل البالستي / قاعدة التخلص FCC 22-74",
+  "cml.rail_label": "شريط تقدم نضج المفهوم",
+  "screens.step_counter": "الشاشة {current} من {total}",
+  "screens.placeholder_desc": "شاشة نائبة لـ {name} (قطاع {segment}). سيتم تفعيل الوظائف الكاملة في الخطوات القادمة.",
+  "screens.current_segment": "القطاع: {segment}",
+  "shell.switch_to_swatches": "عرض عينات الرموز",
+  "shell.switch_to_mission": "العودة إلى مسار المهمة"
 }
