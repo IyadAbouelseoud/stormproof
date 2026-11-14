@@ -13,6 +13,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - T1.2 catalog.ts (content schema, CDS Rev 14.1 masses, BUS game-balanced), power.ts (1361 W/m2 x 30% x area x sunlit; CML 35% power+energy, DoD 0.3 game-balanced), comms.ts (downlink MB/day, overflowing bucket), launch.ts (resolveDesign + 10 fit checks with Msg reasons). content stub fixture + ISSUES.md schema note. Engine 21/21.
 
+- T1.3 dates.ts, drag.ts (log-linear density lookup over daily+monthly rows), decay.ts (RK2, 1 d / 1 h below 250 km, 120 km reentry). Golden 1 PASS after the one allowed fit: beta 72.3 -> 68.43 kg/m2 (-5.3%), reentry 2025-10-26, waypoints 454/403/295 km. Golden 3 PASS: 210 km truth 1.27 d vs plan 2.80 d; storm costs 0.066% of life at 500 km. Golden 2 = todo (needs DAS reference values). Engine 29 + 1 todo.
+
 ## In progress
 -
 
@@ -25,4 +27,7 @@ Updated by the agent at every checkpoint (tests green, committed).
 - Forecast join: first forecast month F10.7 is +9% vs the last 27 OMNI days (13-month smoothed prediction).
 - Plan Sun before Dec 2019 = real OMNI; cycle 26 in plan = cycle-25 shape +11 y (game-balanced).
 - Orbit average: 12 points/orbit; SSO 2 UTs, ISS 4 node local times. MSIS storm under-response: only Feb 2022 x1.875 corrected.
+- Golden 1 fit disclosed: unfitted beta 72.3 reentered 2025-12-26 (+60 d, 6.6% long) and missed the 2025-10-02 waypoint (350 vs 300 km); fitted plan/truth ratio 1.44 vs paper 1.52.
+- Golden 2 (NASA DAS 6U 430/550 km) not run: needs DAS output values from Iyad/Dua.
+- @types/node install was blocked by the permission classifier; tests use engine/test/node-shim.d.ts instead (no new dependency).
 - Local Node is v24; CI targets Node 22 LTS.
