@@ -30,6 +30,8 @@ Updated by the agent at every checkpoint (tests green, committed).
 
 - Golden 2 (NASA DAS 6U, 51.6 deg, iss_truth table, 1 Jan launches, Cd*A/m 0.0154, no fit) from Iyad's chart-read fixture das-6u-reference.json: 18/21 checkable points within +/-30%; 3 KNOWN FAIL (it.fails, decided by Iyad): 430/2039 0.67, 550/2033 0.69, 550/2034 0.55. 550 km runs 0.69-0.88 for 2027-2033. 10 lower-bound points (alive at Oct 2041) checked <= DAS +30%; 6 launches after table end skipped; 2021-2026 informational. 3 shape checks pass. Engine 79 + 3 expected fail + 6 skipped.
 
+- Fonts: Reem Kufi removed at Iyad's request (hard to read). Arabic display is now IBM Plex Sans Arabic 700 (already shipped): design/tokens.json display-ar -> regenerated tokens.css; Reem Kufi @font-face, woff2 files, OFL txt and download entries removed; AGENTS.md s3 and design/README.md updated. Renad: do not reintroduce it.
+
 ## In progress
 -
 
