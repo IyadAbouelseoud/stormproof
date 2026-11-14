@@ -29,6 +29,65 @@ const SUNSTRIPE_TOKENS = [
   { name: 'sunstripe-5', desc: 'Extreme (>220 sfu)' },
 ];
 
+const TYPOGRAPHY_SAMPLES = [
+  {
+    className: 'type-display-xl',
+    name: 'display-xl',
+    desc: 'Big Shoulders Display 800, 88px / 0.92, UPPERCASE',
+    sample: 'STORMPROOF ALMANAC',
+  },
+  {
+    className: 'type-display-l',
+    name: 'display-l',
+    desc: 'Big Shoulders Display 800, 56px / 0.95, UPPERCASE',
+    sample: 'SOLAR CYCLE 25 MISSION LOG',
+  },
+  {
+    className: 'type-display-ar',
+    name: 'display-ar',
+    desc: 'Reem Kufi 700, 48px / 1.2, Arabic Display',
+    sample: 'سجل مهمة العواصف الشمسية',
+  },
+  {
+    className: 'type-heading',
+    name: 'heading',
+    desc: 'IBM Plex Sans 600, 22px / 1.2',
+    sample: 'Orbital Parameters & Atmospheric Drag Analysis',
+  },
+  {
+    className: 'type-body',
+    name: 'body',
+    desc: 'IBM Plex Sans 400, 16px / 1.5',
+    sample:
+      'The Sun you launch into decides how long your satellite lives. FACSAT-2 was planned for the forecast Sun, met the real one, and fell 2.5 years early.',
+  },
+  {
+    className: 'type-small',
+    name: 'small',
+    desc: 'IBM Plex Sans 400, 13px / 1.4',
+    sample:
+      'Pre-computed NRLMSIS 2.1 neutral density orbit-averaged per day x altitude 150-800 km.',
+  },
+  {
+    className: 'type-data-l',
+    name: 'data-l',
+    desc: 'IBM Plex Mono 500, 32px / 1',
+    sample: '497 KM / 936 DAYS',
+  },
+  {
+    className: 'type-data',
+    name: 'data',
+    desc: 'IBM Plex Mono 400, 14px / 1.35',
+    sample: 'F10.7 = 158.4 sfu | rho = 3.42e-12 kg/m³ | Cd = 2.2',
+  },
+  {
+    className: 'type-label',
+    name: 'label',
+    desc: 'IBM Plex Sans 600, 11px / 1.2, UPPERCASE, 0.08em tracking',
+    sample: 'BALLISTIC COEFFICIENT / DISPOSAL RULE FCC 22-74',
+  },
+];
+
 export default function App(): React.JSX.Element {
   const [theme, setTheme] = useState<'paper' | 'night'>('paper');
 
@@ -87,6 +146,20 @@ export default function App(): React.JSX.Element {
                 <span className="type-data swatch-name">--{token.name}</span>
                 <span className="type-small swatch-desc">{token.desc}</span>
               </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="type-heading section-title">Typography Hierarchy (9 Type Styles)</h2>
+        <div className="type-specimen-list">
+          {TYPOGRAPHY_SAMPLES.map((item) => (
+            <div key={item.name} className="type-specimen-card">
+              <div className="type-label type-specimen-meta">
+                {item.name} — {item.desc}
+              </div>
+              <div className={item.className}>{item.sample}</div>
             </div>
           ))}
         </div>

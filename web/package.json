@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tokens": "node scripts/make-tokens.mjs"
+    "tokens": "node scripts/make-tokens.mjs",
+    "fonts": "node scripts/download-fonts.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
