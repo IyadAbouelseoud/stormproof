@@ -83,3 +83,5 @@ Never loosen a tolerance and never hide a failing check; disclose it in README a
 <limit_protocol>
 After each task: tests green, commit "E<n>: ...", one HANDOFF.md line. At about 85% of the usage window or on a usage warning, finish the task, commit "checkpoint: E<n>", write a resume prompt in HANDOFF.md, stop. Order of work: E1, E2, E3, E4, F1, F2, F3, F4, F5, F6, F7, demo file, F8, README lines. Reply format after each task: five lines maximum.
 </limit_protocol>
+
+**Update 2026-11-14 (cloud tags are in, no longer placeholder):** `content/evidence/jeddah-cloud-2022-11.json` now holds Dua's read-by-eye tags; set no `_placeholder` flag. Tag values are `clear|partly|cloudy|no-image`. `no-image` (26 Nov) is NOT usable for optical (unknown, conservative) and the UI says 'no image'. Evidence screenshots: `content/evidence/jeddah-cloud-2022-11-DD.jpg`. Contract change `event-look` is APPROVED by Iyad (2026-11-14 11:32); log it in ISSUES.md.

@@ -1,0 +1,13 @@
+{
+  "_status": "READ BY EYE",
+  "_note": "Tags are one MODIS Terra morning pass per day, judged by eye at the Jeddah pin (21.49 N, 39.18 E). They describe cloud at the Terra overpass, not the whole day. Haze over land looks like dust and was not counted as cloud. 'no-image' = Terra swath missed Jeddah (black no-data area); engine must treat it as NOT usable for optical (conservative, unknown) and the UI must say 'no image'.",
+  "layer": "MODIS_Terra_CorrectedReflectance_TrueColor",
+  "taggedBy": "Dua (screenshots 2026-11-14 11:52-11:55 Asia/Riyadh); tags confirmed by Claude review, final call Iyad",
+  "days": [
+    { "date": "2022-11-23", "tag": "partly",   "evidence": "jeddah-cloud-2022-11-23.jpg", "note": "Clear over the city; cloud masses offshore to the west and south-west." },
+    { "date": "2022-11-24", "tag": "cloudy",   "evidence": "jeddah-cloud-2022-11-24.jpg", "note": "Solid cloud deck over the coast and the pin (flood day)." },
+    { "date": "2022-11-25", "tag": "clear",    "evidence": "jeddah-cloud-2022-11-25.jpg", "note": "Clear at the pin; cloud bands only offshore bottom-left and a plume to the south-east." },
+    { "date": "2022-11-26", "tag": "no-image", "evidence": "jeddah-cloud-2022-11-26.jpg", "note": "Black no-data swath covers Jeddah; no usable Terra image." },
+    { "date": "2022-11-27", "tag": "clear",    "evidence": "jeddah-cloud-2022-11-27.jpg", "note": "Clear at the pin; small cumulus offshore." }
+  ]
+}
