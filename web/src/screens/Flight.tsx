@@ -7,7 +7,7 @@ import { useNavigation } from '../navigation';
 import { CONSTANTS, trackFromResult, partById, sunMonths } from '../engineAdapter';
 import { AltitudeChart } from '../ui/AltitudeChart';
 import { GroundMap } from '../ui/GroundMap';
-import { Button, RoleChip } from '../ui/components';
+import { Button, CheckMark, RoleChip } from '../ui/components';
 import { SunStripe } from '../ui/SunStripe';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
@@ -116,15 +116,16 @@ function StormCard({ kp, date, onDone }: { kp: number; date: string; onDone: () 
           </p>
         </div>
       ) : (
-        <div className="btn-row">
+        <div className="storm-choices">
           {policies.map((p) => (
-            <Button key={p} onClick={() => choose(p)}>
-              {t(`policy.${p}`)}
-            </Button>
+            <div key={p} className="storm-choice">
+              <Button onClick={() => choose(p)}>{t(`policy.${p}`)}</Button>
+              <p className="type-small">{t(`policy.${p}.then`)}</p>
+            </div>
           ))}
         </div>
       )}
-      <p className="type-small storm-explain">{t('storm.explain')}</p>
+      <p className="type-small storm-explain">{t('storm.once')}</p>
     </div>
   );
 }
@@ -140,6 +141,8 @@ export function Flight(): React.JSX.Element {
   const [alert, setAlert] = useState<number | null>(null);
   const [verdictVisible, setVerdictVisible] = useState(false);
   const seen = useRef(new Set<number>());
+  const [slipSeen, setSlipSeen] = useState(false);
+  const stormVoted = useMission((s) => s.stormVoted);
 
   useEffect(() => {
     if (!flight) launch();
@@ -210,6 +213,8 @@ export function Flight(): React.JSX.Element {
 
   // Play loop
   const pos = useRef(0);
+  const stormVotedRef = useRef(stormVoted);
+  stormVotedRef.current = stormVoted;
   useEffect(() => {
     if (!playing || n === 0) return;
     let raf = 0;
@@ -219,7 +224,7 @@ export function Flight(): React.JSX.Element {
       const dt = (now - last) / 1000;
       last = now;
       const next = Math.min(n - 1, pos.current + dt * SPEEDS[speed]!.dps);
-      const hit = alerts.find((i) => i > pos.current && i <= next && !seen.current.has(i));
+      const hit = stormVotedRef.current ? undefined : alerts.find((i) => i > pos.current && i <= next && !seen.current.has(i));
       if (hit !== undefined) {
         seen.current.add(hit);
         pos.current = hit;
@@ -280,6 +285,11 @@ export function Flight(): React.JSX.Element {
   };
 
   const densityStr = day.densityKgM3 ? day.densityKgM3.toExponential(2) : '—';
+  const prevDay = tl[Math.max(0, safeIdx - 1)] ?? day;
+  const fallingM = Math.max(0, (prevDay.altitudeKm - day.altitudeKm) * 1000);
+  const slip = flight.truth.causes.find((c) => c.id === 'launch-slip');
+  const reqData = flight.truth.score.requirements.find((q) => q.id === 'data-delivered');
+  const reqLife = flight.truth.score.requirements.find((q) => q.id === 'lifetime');
 
   return (
     <ScreenFrame id="Flight">
@@ -355,12 +365,46 @@ export function Flight(): React.JSX.Element {
             </span>
           </div>
 
+          <div className="hud-metric">
+            <span className="type-label hud-label">{t('flight.falling')}</span>
+            <span className="hud-val" data-testid="hud-falling">{t('flight.falling_val', { m: fmtNum(lang, fallingM, fallingM < 10 ? 1 : 0) })}</span>
+          </div>
+
           {day.forecast && <span className="flight-forecast type-label">{t('sun.forecast')}</span>}
         </div>
+        <ul className="hud-goals">
+          {reqData && (
+            <li className={`hud-goal ${delivered / 1000 >= reqData.target ? 'hud-goal--ok' : ''}`}>
+              <span className="type-small">{t('req.data-delivered')}</span>
+              <span className="type-data">{fmtNum(lang, delivered / 1000, 0)} / {fmtNum(lang, reqData.target)} {t('unit.GB')}</span>
+              <span aria-hidden="true">{delivered / 1000 >= reqData.target ? <CheckMark /> : null}</span>
+            </li>
+          )}
+          {reqLife && (
+            <li className={`hud-goal ${safeIdx >= reqLife.target ? 'hud-goal--ok' : ''}`}>
+              <span className="type-small">{t('req.lifetime')}</span>
+              <span className="type-data">{fmtNum(lang, safeIdx)} / {fmtNum(lang, reqLife.target)} {t('unit.days')}</span>
+              <span aria-hidden="true">{safeIdx >= reqLife.target ? <CheckMark /> : null}</span>
+            </li>
+          )}
+        </ul>
       </div>
 
+      {slip && !slipSeen && (
+        <section className="slip-card console-panel" role="status" data-testid="slip-card">
+          <h3 className="type-heading">{t('slip.title', { months: fmtNum(lang, Number(slip.label.params.months ?? slip.effect.value)) })}</h3>
+          <p className="type-body">
+            {t('slip.body', { planned: fmtDate(lang, flight.design.launchDate), actual: fmtDate(lang, tl[0]!.date) })}{' '}
+            {t(Number(slip.label.params.days ?? 0) >= 0 ? 'slip.gained' : 'slip.lost', { days: fmtNum(lang, Math.abs(Number(slip.label.params.days ?? 0))) })}
+          </p>
+          <Button variant="secondary" onClick={() => setSlipSeen(true)}>{t('slip.ok')}</Button>
+        </section>
+      )}
+
       {alert !== null && tl[alert] && (
-        <StormCard kp={tl[alert]!.stormKp ?? 0} date={tl[alert]!.date} onDone={() => { setAlert(null); setPlaying(true); }} />
+        <div className="storm-overlay">
+          <StormCard kp={tl[alert]!.stormKp ?? 0} date={tl[alert]!.date} onDone={() => { setAlert(null); setPlaying(true); }} />
+        </div>
       )}
 
       {/* Row 1: Top Linked Instruments (Altitude Chart & Sun Stripe) */}
@@ -414,6 +458,7 @@ export function Flight(): React.JSX.Element {
         <MissionLog
           result={flight.truth}
           currentDayIndex={safeIdx}
+          ended={ended}
           onSelectDay={(idx) => setCursor(idx)}
         />
 

@@ -5,7 +5,9 @@ import { EventReport } from '../ui/Jeddah';
 import { fmtDate, fmtNum, reducedMotion } from '../format';
 import { useMission } from '../store';
 import { useNavigation } from '../navigation';
-import { gibsImages, reportSources, type GibsImage } from '../engineAdapter';
+import { bestNextFix, gibsImages, partById, reportSources, simulate, type GibsImage } from '../engineAdapter';
+import { Stars } from '../ui/Cadet';
+import { partName } from '../content';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
@@ -147,6 +149,44 @@ export function Report(): React.JSX.Element {
     return undefined;
   }, [r]);
 
+  const [allCauses, setAllCauses] = useState(false);
+  const [fixApplied, setFixApplied] = useState(false);
+  const fix = React.useMemo(() => (flight ? bestNextFix(r.design, r) : { best: null, runs: 0 }), [flight, r]);
+  const fixLabel = (() => {
+    const b = fix.best;
+    if (!b) return '';
+    if (b.kind === 'alt_up' || b.kind === 'alt_down') return t(`fix.${b.kind}`, { km: fmtNum(lang, b.design.orbit.altitudeKm) });
+    if (b.kind === 'pointing') {
+      const p = partById(b.design.parts.pointing);
+      return t('fix.pointing', { part: p ? partName(p.id, lang, p.name) : b.design.parts.pointing });
+    }
+    return t('fix.launch', { date: fmtDate(lang, b.design.launchDate) });
+  })();
+  const applyFix = () => {
+    if (!fix.best) return;
+    keepBaseline();
+    loadDesign({ ...fix.best.design, mode: 'truth' });
+    setFixApplied(true);
+    setScreen('Launch');
+  };
+  // Storm choice: the same design flown with the other standing policy (pure engine call).
+  const stormChoice = React.useMemo(() => {
+    if (!flight || !r.timeline.some((d) => d.stormKp !== null && d.stormKp >= 7)) return null;
+    const mine = r.design.stormPolicy ?? 'ride-out';
+    const other = mine === 'ride-out' ? 'safe-mode' : 'ride-out';
+    const o = simulate({ ...r.design, stormPolicy: other });
+    const sum = (x: SimResult) => x.timeline.reduce((acc, d) => acc + d.dataDownlinkedMB, 0) / 1000;
+    return { mine, other, gb: sum(r) - sum(o), days: r.lifetimeDays - o.lifetimeDays };
+  }, [flight, r]);
+  const stormVerdict = (() => {
+    if (!stormChoice) return '';
+    const sameData = Math.abs(stormChoice.gb) < 0.05;
+    if (sameData && stormChoice.days === 0) return t('report.storm_same');
+    const data = sameData ? '' : t(stormChoice.gb > 0 ? 'report.storm_more_data' : 'report.storm_less_data', { gb: fmtNum(lang, Math.abs(stormChoice.gb), 1) });
+    const days = stormChoice.days === 0 ? '' : t('report.storm_days', { sign: stormChoice.days > 0 ? '+' : '-', days: fmtNum(lang, Math.abs(stormChoice.days)) });
+    return data + days;
+  })();
+
   const handleApplyClosest = () => {
     loadDesign({
       ...r.design,
@@ -175,7 +215,45 @@ export function Report(): React.JSX.Element {
               <CountUp target={r.score.total} />
               <span className="type-small sp-unit"> / 100</span>
             </span>
+            <Stars score={r.score.total} />
           </div>
+        </div>
+
+        {flight && (
+          <div className="report-next">
+            <p className="type-label">{t('report.best_fix')}</p>
+            {fix.best ? (
+              <Button className="report-fix-btn" onClick={applyFix} data-testid="best-fix">
+                {t('report.best_fix_do', { change: fixLabel, sign: '+', pts: fmtNum(lang, fix.best.gain) })}
+              </Button>
+            ) : (
+              <p className="type-small">{t('report.best_fix_none')}</p>
+            )}
+            <p className="type-small report-fix-note">{fixApplied ? t('report.best_fix_applied') : t('report.best_fix_note', { n: fix.runs })}</p>
+            <div className="btn-row">
+              <Button variant="secondary" onClick={() => { keepBaseline(); setScreen('Build'); }}>
+                {t('refly.change_one')}
+              </Button>
+              <Button variant="secondary" onClick={() => setScreen('Refly')}>
+                {t('screens.refly')}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        <div className="report-why">
+          <h3 className="type-label section-label">{t('report.why')}</h3>
+          <CauseChain causes={allCauses ? r.causes : r.causes.slice(0, 2)} />
+          {r.causes.length > 2 && (
+            <Button variant="quiet" aria-expanded={allCauses} onClick={() => setAllCauses((v) => !v)}>
+              {allCauses ? t('report.show_less') : t('report.show_all')}
+            </Button>
+          )}
+          {stormChoice && (
+            <p className="type-small report-storm-choice" data-testid="storm-choice">
+              {t('report.storm_choice', { policy: t(`policy.${stormChoice.mine}`), other: t(`policy.${stormChoice.other}`), verdict: stormVerdict })}
+            </p>
+          )}
         </div>
 
         <Illustration
@@ -192,15 +270,6 @@ export function Report(): React.JSX.Element {
 
       {/* Two-Column Debrief Console Grid */}
       <div className="report-console-grid">
-        {/* Card 1: Cause Chain */}
-        <section className="report-card console-panel" aria-labelledby="causes-h">
-          <div className="console-panel-header">
-            <h3 id="causes-h" className="type-label section-label">
-              {t('causes.title')}
-            </h3>
-          </div>
-          <CauseChain causes={r.causes} />
-        </section>
 
         {/* Card 2: Plan vs Truth Twin Gauges */}
         <section className="report-card console-panel" aria-labelledby="twin-h">

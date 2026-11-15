@@ -3,6 +3,7 @@ import { useI18n } from '../i18n';
 import { SCREEN_METADATA, SCREEN_OWNER, type ScreenId } from '../navigation';
 import { useMission } from '../store';
 import { RoleChip } from '../ui/components';
+import { CoachMark } from '../ui/CoachMark';
 
 export function ScreenFrame({ id, children, aside }: { id: ScreenId; children: React.ReactNode; aside?: React.ReactNode }): React.JSX.Element {
   const { t } = useI18n();
@@ -23,6 +24,7 @@ export function ScreenFrame({ id, children, aside }: { id: ScreenId; children: R
           <span className="segment-tag type-label">{t(meta.segmentKey)}</span>
         </div>
       </header>
+      <CoachMark screen={id} />
       {children}
     </article>
   );

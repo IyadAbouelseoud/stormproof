@@ -198,6 +198,7 @@ export function Launch(): React.JSX.Element {
           </h3>
           <p className="type-data-l">{fmtDate(lang, design.launchDate)}</p>
         </div>
+        <p className="type-small launch-slip-note">{t('launch.slip_note')}</p>
 
         <Illustration id="p11" src="img/art/art-p11-solar-storm-v1.webp" alt={t('sun.legend')} className="launch-storm-art" />
         {months ? (

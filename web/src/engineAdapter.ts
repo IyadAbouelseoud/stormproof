@@ -618,3 +618,60 @@ export const photoWidthKm = (part: Part, altKm: number): number => swathKm(part.
 /** Total orbit raise the tank's delta-v allows at this altitude, km (engine decay.ts). */
 export const climbKm = (part: Part, altKm: number): number => climbKmFromDeltaV(altKm, part.deltaVMs ?? 0);
 export const batteryDod = BATTERY_DOD;
+
+// ---------------------------------------------------------------------------
+// H5 Report: "Best next fix" (a few one-step changes flown through the engine, same seed)
+// ---------------------------------------------------------------------------
+
+export interface FixCandidate {
+  kind: 'alt_up' | 'alt_down' | 'pointing' | 'launch';
+  design: MissionDesign;
+  score: number;
+  gain: number;
+}
+
+/** Up to 5 one-step changes (altitude +/-10 km, pointing up a tier, launch +/-1 year); the best gain, or null. Pure. */
+export function bestNextFix(design: MissionDesign, base: SimResult): { best: FixCandidate | null; runs: number } {
+  const d = { ...design, mode: 'truth' as const };
+  const cands: { kind: FixCandidate['kind']; design: MissionDesign }[] = [];
+  const alt = d.orbit.altitudeKm;
+  if (alt + 10 <= ALT_MAX_KM) cands.push({ kind: 'alt_up', design: { ...d, orbit: { ...d.orbit, altitudeKm: alt + 10 } } });
+  if (alt - 10 >= ALT_MIN_KM) cands.push({ kind: 'alt_down', design: { ...d, orbit: { ...d.orbit, altitudeKm: alt - 10 } } });
+  const pts = partsFor('pointing', d.scenarioId).sort((a, b) => (a.offNadirFactor ?? 1) - (b.offNadirFactor ?? 1));
+  const pi = pts.findIndex((p) => p.id === d.parts.pointing);
+  if (pi >= 0 && pi + 1 < pts.length) cands.push({ kind: 'pointing', design: { ...d, parts: { ...d.parts, pointing: pts[pi + 1]!.id } } });
+  const y = Number(d.launchDate.slice(0, 4));
+  for (const dy of [1, -1]) {
+    const ny = y + dy;
+    if (ny >= 2015 && ny <= 2026) cands.push({ kind: 'launch', design: { ...d, launchDate: `${ny}${d.launchDate.slice(4)}` } });
+  }
+  let best: FixCandidate | null = null;
+  for (const c of cands.slice(0, 12)) {
+    const r = simulate(c.design);
+    const gain = r.score.total - base.score.total;
+    if (gain > 0 && (!best || gain > best.gain)) best = { ...c, score: r.score.total, gain };
+  }
+  return { best, runs: cands.length };
+}
+
+/**
+ * H6 Orbit "green zone": altitudes (10 km grid) where every tracked requirement passes and the FCC 5-year rule holds,
+ * scanned only between the drag and disposal band edges (so a handful of engine runs). Null when none or not loaded.
+ */
+export function greenZone(design: MissionDesign, bands: AltitudeBands): { lo: number; hi: number } | null {
+  if (!engine || bands.basis !== 'computed') return null;
+  const lo0 = bands.dragBelowKm ?? ALT_MIN_KM;
+  const hi0 = bands.disposalAboveKm ?? ALT_MAX_KM;
+  let lo: number | null = null;
+  let hi: number | null = null;
+  let runs = 0;
+  for (let a = lo0; a <= hi0 && runs < 40; a += ALT_STEP_KM, runs++) {
+    const r = simulate({ ...design, mode: 'truth', orbit: { ...design.orbit, altitudeKm: a } });
+    const ok = r.score.requirements.every((q) => q.met) && r.disposal.fcc.pass;
+    if (ok) {
+      if (lo === null) lo = a;
+      hi = a;
+    } else if (lo !== null) break;
+  }
+  return lo === null || hi === null ? null : { lo, hi };
+}

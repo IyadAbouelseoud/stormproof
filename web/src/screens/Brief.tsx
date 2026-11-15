@@ -9,7 +9,7 @@ import { MissionEmblem } from '../ui/MissionEmblem';
 import { SunStripe } from '../ui/SunStripe';
 import { scenarioText, tx } from '../content';
 import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
-import { playPartSnap } from '../sound';
+import { isSoundEnabled, playPartSnap, setSoundEnabled } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
 
 export function Brief(): React.JSX.Element {
@@ -21,6 +21,7 @@ export function Brief(): React.JSX.Element {
   const setTeamMode = useMission((s) => s.setTeamMode);
   const setName = useMission((s) => s.setName);
   const status = useEngineStatus((s) => s.status);
+  const [soundOn, setSoundOn] = React.useState(isSoundEnabled);
   const sc = scenario(result.design.scenarioId);
   const st = scenarioText(result.design.scenarioId);
   const reqs = result.score.requirements;
@@ -155,6 +156,22 @@ export function Brief(): React.JSX.Element {
           </span>
         </Button>
       </div>
+
+      {!soundOn && (
+        <div className="brief-sound-chip-row">
+          <button
+            type="button"
+            className="sp-btn sp-btn--quiet brief-sound-chip type-small"
+            onClick={() => {
+              setSoundEnabled(true);
+              setSoundOn(true);
+              playPartSnap();
+            }}
+          >
+            {t('sound.chip')}
+          </button>
+        </div>
+      )}
 
       <ScenarioPicker />
       {event && <EventCard />}

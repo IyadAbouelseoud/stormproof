@@ -19,10 +19,12 @@ interface LogEntry {
 interface MissionLogProps {
   result: SimResult;
   currentDayIndex: number;
+  /** Show the outcome row (the flight has reached its end). */
+  ended?: boolean;
   onSelectDay?: (dayIdx: number) => void;
 }
 
-export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogProps): React.JSX.Element {
+export function MissionLog({ result, currentDayIndex, ended = false, onSelectDay }: MissionLogProps): React.JSX.Element {
   const { t, lang } = useI18n();
   const tl = result.timeline;
 
@@ -42,20 +44,31 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
       dayIndex: 0,
     });
 
-    // 2. Storm events from timeline
+    // 2. Storm events from timeline, grouped by month ("storm season") so one month is one row
+    const months = new Map<string, { first: number; last: number; n: number; maxKp: number }>();
     tl.forEach((d: TimelineDay, i: number) => {
       if (d.stormKp !== null && d.stormKp >= CONSTANTS.stormAlertKp) {
-        list.push({
-          id: `storm-${i}`,
-          date: d.date,
-          icon: 'storm',
-          title: t('log.storm'),
-          detail: t('log.storm_detail', { kp: fmtNum(lang, d.stormKp) }),
-          state: 'warn',
-          dayIndex: i,
-        });
+        const m = d.date.slice(0, 7);
+        const g = months.get(m);
+        if (g) {
+          g.n++;
+          g.last = i;
+          g.maxKp = Math.max(g.maxKp, d.stormKp);
+        } else months.set(m, { first: i, last: i, n: 1, maxKp: d.stormKp });
       }
     });
+    for (const [m, g] of months) {
+      const d = tl[g.first]!;
+      list.push({
+        id: `storm-${m}`,
+        date: d.date,
+        icon: 'storm',
+        title: g.n > 1 ? t('log.storm_season', { n: fmtNum(lang, g.n) }) : t('log.storm'),
+        detail: t('log.storm_detail', { kp: fmtNum(lang, g.maxKp) }),
+        state: 'warn',
+        dayIndex: g.first,
+      });
+    }
 
     // 3. Events from eventReplay (Jeddah flood scenario if applicable)
     if (result.eventReplay) {
@@ -133,7 +146,7 @@ export function MissionLog({ result, currentDayIndex, onSelectDay }: MissionLogP
       <Illustration id="art-p23-log-border-v1" src="img/art/art-p23-log-border-v1.webp" alt="Log border" className="log-border-art" />
 
       <div className="mission-log-stream" role="feed" aria-label={t('flight.log_title')}>
-        {entries.map((e) => {
+        {entries.filter((e) => (e.id.startsWith('outcome') ? ended : e.dayIndex <= currentDayIndex)).map((e) => {
           const isSelected = Math.abs(e.dayIndex - currentDayIndex) <= 2;
           return (
             <article
