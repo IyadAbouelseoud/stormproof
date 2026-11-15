@@ -52,6 +52,11 @@ function ScoreCountUp({ target }: { target: number }): React.JSX.Element {
 function SoundToggle(): React.JSX.Element {
   const { t } = useI18n();
   const [enabled, setEnabled] = useState(isSoundEnabled);
+  useEffect(() => {
+    const on = (e: Event) => setEnabled(Boolean((e as CustomEvent<boolean>).detail));
+    window.addEventListener('sp-sound', on);
+    return () => window.removeEventListener('sp-sound', on);
+  }, []);
   const [showTooltip, setShowTooltip] = useState(() => {
     if (typeof window === 'undefined') return false;
     try {

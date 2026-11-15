@@ -1,0 +1,259 @@
+### node scripts/demo-walk.mjs http://localhost:4172/
+0.4 s  1 Brief ready
+3.1 s  2 Build: Precise Pointing chosen in the detail panel
+4.8 s  3 Orbit: 480 km
+6.3 s  4 Launch: checklist done, button unlocked
+8.4 s  fail: flight ended (storm votes asked: 0)
+10.4 s  5 FAIL report
+11.5 s  fix: flight ended (storm votes asked: 0)
+13.5 s  7 FIX report
+14.8 s  8 Re-fly side by side
+RESULT: 0 wrong numbers, 0 console/network problems
+exit 0
+### node scripts/demo-walk.mjs http://localhost:4172/
+0.3 s  1 Brief ready
+1.7 s  2 Build: Precise Pointing chosen in the detail panel
+3.2 s  3 Orbit: 480 km
+4.7 s  4 Launch: checklist done, button unlocked
+6.8 s  fail: flight ended (storm votes asked: 0)
+8.8 s  5 FAIL report
+10.0 s  fix: flight ended (storm votes asked: 0)
+11.9 s  7 FIX report
+13.2 s  8 Re-fly side by side
+RESULT: 0 wrong numbers, 0 console/network problems
+exit 0
+### node scripts/demo-walk.mjs http://localhost:4172/
+0.4 s  1 Brief ready
+2.5 s  2 Build: Precise Pointing chosen in the detail panel
+4.0 s  3 Orbit: 480 km
+5.4 s  4 Launch: checklist done, button unlocked
+7.6 s  fail: flight ended (storm votes asked: 0)
+9.6 s  5 FAIL report
+10.6 s  fix: flight ended (storm votes asked: 0)
+12.6 s  7 FIX report
+13.9 s  8 Re-fly side by side
+RESULT: 0 wrong numbers, 0 console/network problems
+exit 0
+### node scripts/demo-walk.mjs http://localhost:4172/
+0.4 s  1 Brief ready
+1.3 s  2 Build: Precise Pointing chosen in the detail panel
+2.8 s  3 Orbit: 480 km
+2.9 s  4 Launch: checklist done, button unlocked
+3.3 s  fail: flight ended (storm votes asked: 0)
+5.3 s  5 FAIL report
+5.8 s  fix: flight ended (storm votes asked: 0)
+7.7 s  7 FIX report
+9.0 s  8 Re-fly side by side
+RESULT: 0 wrong numbers, 0 console/network problems
+exit 0
+### node scripts/mode-check.mjs
+projected 79, report 79
+RESULT: mode check passed
+exit 0
+### node scripts/teen-walk.mjs
+Brief CTA: Your first draft misses 1 goal. Can you fix it?
+Build tracker revisit chip: Comes back every… 14.1 / 10 days
+after the fix: revisit met, projected 79 -> 95
+Orbit: Green zone: 500 to 510 km, every tracked goal passes
+Report: score 95, revisit stamp met: true
+RESULT: teen walk passed
+exit 0
+### node scripts/teen-walk.mjs
+Brief CTA: Your first draft misses 1 goal. Can you fix it?
+Build tracker revisit chip: Comes back every… 14.1 / 10 days
+after the fix: revisit met, projected 79 -> 95
+Orbit: Green zone: 500 to 510 km, every tracked goal passes
+Report: score 95, revisit stamp met: true
+RESULT: teen walk passed
+exit 0
+### node scripts/teen-walk.mjs
+Brief CTA: مسودتك الأولى تفوّت 1 هدف. هل تستطيع إصلاحها؟
+Build tracker revisit chip: يعود كل… 14.1 / 10 يوم
+after the fix: revisit met, projected 79 -> 95
+Orbit: المنطقة الخضراء: من 500 إلى 510 كم، كل الأهداف تتحقق
+Report: score 95, revisit stamp met: true
+RESULT: teen walk passed
+exit 0
+### node scripts/smoke.mjs
+390-en: engine ready in 346 ms
+390-ar: engine ready in 429 ms
+1440-en: engine ready in 421 ms
+1440-ar: engine ready in 386 ms
+SMOKE OK: no console errors, no external requests, no overflow
+exit 0
+### node scripts/smoke.mjs
+390-en: engine ready in 367 ms
+390-ar: engine ready in 433 ms
+1440-en: engine ready in 386 ms
+1440-ar: engine ready in 409 ms
+SMOKE OK: no console errors, no external requests, no overflow
+exit 0
+### node scripts/smoke-jeddah.mjs
+jeddah-390-en: event verdict = EVENT LOOK: MISSED
+jeddah-390-ar: event verdict = صورة الحدث: فاتت
+jeddah-1440-en: event verdict = EVENT LOOK: MISSED
+jeddah-1440-ar: event verdict = صورة الحدث: فاتت
+JEDDAH SMOKE OK
+exit 0
+### node scripts/judge-walk.mjs
+altitude now 480
+launch ceremony ms 1458
+REPORT TEXT
+Report
+GROUND
+SI-GENERATED
+DIED
+reentered Aug 25, 2025 · the Sun took 386 days
+MISSION SCORE
+78 / 100
+BEST NEXT FIX
+Apply: launch Apr 15, 2024 (+2 pts)
+Found by flying 4 small changes through the engine (same seed).
+Change one thing
+Re-fly
+WHY
+1
+The real Sun was stronger than the 2019 forecast: it took 398 days of life.
+Try a different launch year.
+-398 days
+2
+Air at 480 km was on average 1.6 times as dense as planned.
+1.6 ×
+Show all causes
+Your storm choice (Ride it out) sent 16.8 GB more photos compared with Safe mode.
+SI-GENERATED
+MISSION MEDALS
+PLAN FLOWN
+LOCKED
+Every requirement met in the real Sun.
+4 of 5 goals; fix Stays up for to unlock
+SUN SURVIVOR
+LOCKED
+Outlived the 2019 forecast Sun lifetime in truth mode.
+Real life 833 of planned 1,219 days; outlive the plan to unlock
+STORM RIDER
+LOCKED
+Flew and survived through the severe 3-5 Feb 2022 solar storm.
+Fly through 3 to 5 Feb 2022 to unlock
+PLAN VS TRUTH TWIN GAUGES
+REAL LIFE
+833 days
+PLANNED LIFE
+1219 days
+THE SUN TOOK
+386 DAYS
+Planned on the 2019 forecast Sun: 1,219 days. Flown on the real Sun: 833 days.
+Launching on the planned date, the Sun would have taken 398 days. The launch slip gave 12 days back: 386 days net.
+REQUIREMENTS
+4 / 5 met
+COMES BACK EVERY…: MET
+7.3 days ≤ 10 days
+SMALLEST THING YOU CAN SEE: MET
+9.6 m ≤ 30 m
+PHOTOS SENT HOME: MET
+992 GB ≥ 500 GB
+STAYS UP FOR: MISSED
+833 days ≥ 1,095 days
+TOTAL COST: MET
+1,343,000 USD ≤ 1,500,000 USD
+SUN RESILIENCE
+14 / 20
+ORBITAL DISPOSAL VERDICT
+CLEAN-SPACE 5 Y
+NASA 25 Y
+2.3
+years
+0y
+30y+
+Clean-space 5 y (FCC 22-74)
+NASA 25 y (STD-8719.14)
+Reenters after 2.3 years: meets the FCC 5-year and NASA 25-year rules.
+CLOSEST REAL MISSION
+Apply design
+FACSAT-2
+Size
+6U
+Altitude
+497 km
+Launched
+Apr 15, 2023
+Reentered
+Oct 27, 2025
+Closest real mission: FACSAT-2, a 6U launched 2023-04-15 at 497 km; it reentered on 2025-10-27 after 926 days. Your design flies 17 km lower.
+WHAT YOUR CAMERA SEES
+Your camera (9.6 m) is sharper than this 30 m image, shown at 30 m. Image: NASA EOSDIS GIBS / Worldview; HLS: NASA/USGS Harmonized Landsat Sentinel-2, 2024-08-13.
+MISSION PASSPORT
+MISSION PATCH
+Watch the Cunene
+78/100
+MISSION CODE
+SP1-YW5nb2xhfmNhbWVyYS1zdGFuZGFyZH5wYW5lbHMtbGFyZ2V-YmF0dGVyeS1tZWRpdW1-cmFkaW8tZmFzdH5jb21wdXRlci1zdGFuZGFyZH5wb2ludGluZy1wcmVjaXNlfmZ1ZWwtc21hbGx-NlV-U340ODB-c3BhY2V4LXJpZGVzaGFyZX4yMDIzLTA0LTE1fnR-MjAyMzA0MTV-fg
+Copy code
+Load
+SI-GENERATED
+SOURCES FOR EVERY NUMBER (33)
+Change one thing
+Re-fly
+REFLY TEXT
+1 IDEA
+2 ROUGH CHECK
+3 COMPARE
+4 FINAL DESIGN
+Re-fly
+USER
+SI-GENERATED
+SEED 20230415
+Change one thing and fly again with the same seed to see what it bought you.
+FIRST FLIGHT
+DIED
+reentered Aug 25, 2025 · the Sun took 386 days
+6U · Sun-synchronous 480 km · Apr 15, 2023
+COMES BACK EVERY…
+SMALLEST THING YOU CAN SEE
+PHOTOS SENT HOME
+STAYS UP FOR
+TOTAL COST
+4 of 5 requirements met. Score 78 (game-balanced).
+TRY NEXT TWEAKS
+Raise orbit altitude by +50 km
+Upgrade battery capacity
+Align with FACSAT-2 heritage orbit
+FLY AGAIN
+Change one thing
+BACK
+Screen 7 of 7
+NEXT
+errors 0 [] total ms 33505
+exit 0
+### node scripts/byte-budget.mjs
+  144.9 KB  new            img/space/space-backdrop-1920.webp
+   60.7 KB  bundle growth  assets/*.js
+   56.5 KB  new            img/space/space-backdrop-1280.webp
+   53.6 KB  new            img/space/space-backdrop-portrait-720.webp
+   13.9 KB  new            img/art/parts/battery-medium.webp
+   13.2 KB  bundle growth  assets/*.css
+   12.0 KB  new            img/art/parts/pointing-precise.webp
+   10.9 KB  new            img/art/parts/camera-radar.webp
+   10.6 KB  new            img/art/parts/battery-large.webp
+   10.4 KB  new            img/art/parts/pointing-standard.webp
+   10.1 KB  new            img/art/parts/radio-fast.webp
+    9.9 KB  new            img/art/parts/computer-large.webp
+    8.8 KB  new            img/art/parts/camera-standard.webp
+    8.5 KB  new            img/art/parts/fuel-large.webp
+    8.4 KB  new            img/art/parts/fuel-small.webp
+    8.0 KB  new            img/art/parts/camera-sharp.webp
+    7.9 KB  new            img/art/parts/camera-budget.webp
+    7.1 KB  new            img/art/parts/computer-standard.webp
+    6.6 KB  new            img/art/parts/panels-large.webp
+    6.5 KB  new            img/art/parts/radio-standard.webp
+    6.3 KB  new            img/art/parts/computer-basic.webp
+    6.1 KB  new            img/art/parts/battery-small.webp
+    4.6 KB  new            img/art/parts/panels-medium.webp
+    3.7 KB  new            img/art/parts/panels-small.webp
+    3.6 KB  new            img/art/parts/pointing-basic.webp
+    3.0 KB  new            img/art/parts/radio-slow.webp
+    0.3 KB  grew           img/art/README.md
+dist before 10675.3 KB, after 11171.3 KB
+NEW SHIPPED BYTES: 496.0 KB (limit 900.0 KB)
+exit 0
+ALLDONE

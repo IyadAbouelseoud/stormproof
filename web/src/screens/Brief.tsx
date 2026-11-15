@@ -23,6 +23,11 @@ export function Brief(): React.JSX.Element {
   const setName = useMission((s) => s.setName);
   const status = useEngineStatus((s) => s.status);
   const [soundOn, setSoundOn] = React.useState(isSoundEnabled);
+  React.useEffect(() => {
+    const on = (e: Event) => setSoundOn(Boolean((e as CustomEvent<boolean>).detail));
+    window.addEventListener('sp-sound', on);
+    return () => window.removeEventListener('sp-sound', on);
+  }, []);
   const sc = scenario(result.design.scenarioId);
   const st = scenarioText(result.design.scenarioId);
   const reqs = result.score.requirements;

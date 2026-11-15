@@ -112,7 +112,8 @@ export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): Re
       aria-label={t(`gauge.${gauge.id}`)}
     >
       <div className="sp-gauge-head">
-        <span className="type-label sp-gauge-name">{t(`gauge.${gauge.id}`)}{gauge.id === 'comms' && <Term id="comms" />}</span>
+        <span className="type-label sp-gauge-name">{t(`gauge.${gauge.id}`)}</span>
+        {gauge.id === 'comms' && <Term id="comms" />}
         <span className="type-label sp-gauge-state">{t(`state.${gauge.state}`)}</span>
       </div>
 

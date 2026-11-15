@@ -461,3 +461,5 @@
 }
 .mission-patch-text { display: flex; flex-direction: column; gap: var(--space-4); }
 .mission-patch-name { font-weight: 600; }
+.sp-gauge-head .term { margin-inline-end: auto; }
+.orbit-tile--selected .orbit-tile-desc { color: var(--color-ink); }
