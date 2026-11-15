@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigation } from '../navigation';
 import '../styles/starfield.css';
 
-/** Seeded star field (same every load). Pure CSS drift/twinkle on the GPU; the only JS is a throttled pointer parallax and a warp flag on screen change. */
+/** Space backdrop: a real NASA ISS photo (Milky Way over Earth's night side) that drifts slowly like the view from orbit, plus a seeded star field (warm-white, realistic sizes) that twinkles on the GPU, and two faint satellites crossing. Pure CSS motion; the only JS is a throttled pointer parallax and a warp flag on screen change. */
 function rng(seed: number): () => number {
   let a = seed >>> 0;
   return () => {
@@ -28,23 +28,17 @@ const INK = 'var(--color-ink)';
 const LAPIS = 'var(--color-lapis)';
 const BRASS = 'var(--color-brass)';
 const SHADOWS = {
-  s1: layer(260, 11, [INK, INK, INK, LAPIS]),
-  s2: layer(110, 23, [INK, LAPIS, INK, BRASS]),
-  s3: layer(36, 37, [INK, LAPIS, BRASS, INK]),
+  s1: layer(220, 11, [INK]),
+  s2: layer(90, 23, [INK, INK, INK, LAPIS]),
+  s3: layer(28, 37, [INK, INK, BRASS, LAPIS]),
 };
-/** Hero stars: four-point sparkles at fixed seeded spots (percent of viewport). */
-const HERO = (() => {
-  const r = rng(71);
-  const cols = ['ink', 'brass', 'lapis'] as const;
-  return Array.from({ length: 16 }, (_, i) => ({
-    x: 4 + r() * 92,
-    y: 4 + r() * 92,
-    s: 10 + Math.floor(r() * 12),
-    c: cols[i % 3] as string,
-    d: (r() * 6).toFixed(1),
-  }));
-})();
-
+/** Absolute URLs: a relative url() inside a CSS variable resolves against the stylesheet (assets/), not the page. */
+const abs = (path: string): string => new URL(`${import.meta.env.BASE_URL}${path}`, document.baseURI).href;
+const BACKDROP = {
+  ['--bd-l' as string]: `url(${abs('img/space/space-backdrop-1920.webp')})`,
+  ['--bd-m' as string]: `url(${abs('img/space/space-backdrop-1280.webp')})`,
+  ['--bd-p' as string]: `url(${abs('img/space/space-backdrop-portrait-720.webp')})`,
+};
 export function Starfield(): React.JSX.Element {
   const currentScreen = useNavigation((s) => s.currentScreen);
   const [warp, setWarp] = useState(0);
@@ -97,21 +91,14 @@ export function Starfield(): React.JSX.Element {
 
   return (
     <div ref={root} className={`sp-stars${warp ? ' sp-stars--warp' : ''}`} aria-hidden="true">
+      <div className="sp-par sp-par-0"><div className="sp-backdrop" style={BACKDROP} /></div>
       <div className="sp-par sp-par-1"><div className="sp-stars-layer sp-stars-1" style={{ ['--sh' as string]: SHADOWS.s1 }} /></div>
       <div className="sp-par sp-par-2"><div className="sp-stars-layer sp-stars-2" style={{ ['--sh' as string]: SHADOWS.s2 }} /></div>
       <div className="sp-par sp-par-3">
         <div className="sp-stars-layer sp-stars-3" style={{ ['--sh' as string]: SHADOWS.s3 }} />
-        {HERO.map((h, i) => (
-          <span
-            key={i}
-            className={`sp-hero sp-hero--${h.c}`}
-            style={{ insetInlineStart: `${h.x}%`, insetBlockStart: `${h.y}%`, inlineSize: h.s, blockSize: h.s, animationDelay: `${h.d}s` }}
-          />
-        ))}
       </div>
-      <span className="sp-shoot sp-shoot-a" />
-      <span className="sp-shoot sp-shoot-b" />
-      <span className="sp-shoot sp-shoot-c" />
+      <span className="sp-sat sp-sat-a" />
+      <span className="sp-sat sp-sat-b" />
     </div>
   );
 }

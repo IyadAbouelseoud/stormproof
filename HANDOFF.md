@@ -3,6 +3,7 @@
 Updated by the agent at every checkpoint (tests green, committed).
 
 ## Done
+- **2026-11-15 06:50 (Claude, for Iyad):** Night backdrop = real NASA ISS photo iss073e0516005 (1920/1280/portrait-720 webp, 148/58/55 KB) with slow orbit drift, breathing dim layer, realistic warm-white stars, two satellites; cartoon sparkles/shooting stars removed; reduced-motion stops all. 21 Build part illustrations in web/public/img/art/parts/ (171 KB, not yet wired: prompt H3). Credits in sources.csv/README. FACSAT-2 wording A confirmed final by Iyad. Next: prompts/H-final-polish-opus.md.
 - **Final pass (prompt C, Fable 5.2), 2026-11-14: DONE, release candidate tagged v1.0-rc2.** Reports: qa/TRACK1.md, TRACK2.md, TRACK3.md, TRACK5.md, FUNCTIONAL.md, JUDGE_ANSWERS.md, DEMO.md.
   - Track 1: independent Python recomputation, 51 comparisons, 0 over the limit (max 0.34%); Sun-data rules re-checked on shipped files (0 failed; Feb 2022 x1.875 confirmed with pymsis). Golden 1 and 3 pass; golden 2 = 18 of 21, the same 3 disclosed fails, nothing loosened.
   - Track 2: 20/20 crash walks clean on the release build; axe 0 serious/critical in 16 combinations (both scenarios, 390/1440, EN/AR, Night/Paper); 192 dial readouts inside their dials; Lighthouse desktop 100 / 100 / 100 / 83.

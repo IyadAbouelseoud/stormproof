@@ -1,33 +1,52 @@
-/* Space backdrop (Night theme only). Decorative, fixed, GPU-only motion, no gradients, no glow. */
-.sp-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; --px: 0; --py: 0; }
+/* Space backdrop (Night theme only). A real NASA ISS photo (Milky Way over Earth at night) drifting like the view from orbit,
+   warm-white CSS stars with realistic sizes that twinkle, two faint satellites crossing. Decorative, fixed, GPU-only motion
+   (transform/opacity), no CSS gradients, no glow. Everything stops under prefers-reduced-motion. */
+.sp-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; contain: strict; --px: 0; --py: 0; background-color: var(--color-ground); }
 [data-theme="paper"] .sp-stars { display: none; }
 .sp-par { position: absolute; inset: 0; will-change: transform; transition: transform 240ms ease-out; }
+.sp-par-0 { transform: translate3d(calc(var(--px) * -10px), calc(var(--py) * -10px), 0); }
 .sp-par-1 { transform: translate3d(calc(var(--px) * -6px), calc(var(--py) * -6px), 0); }
 .sp-par-2 { transform: translate3d(calc(var(--px) * -16px), calc(var(--py) * -16px), 0); }
-.sp-par-3 { transform: translate3d(calc(var(--px) * -34px), calc(var(--py) * -34px), 0); }
-.sp-stars-layer { position: absolute; inset-inline-start: 0; inset-block-start: 0; background: transparent; will-change: transform; box-shadow: var(--sh); }
-.sp-stars-layer::after { content: ''; position: absolute; inset-inline-start: 0; inset-block-start: 1600px; inline-size: inherit; block-size: inherit; box-shadow: var(--sh); }
-.sp-stars-1 { inline-size: 2px; block-size: 2px; opacity: 0.8; animation: sp-drift 200s linear infinite; }
-.sp-stars-2 { inline-size: 3px; block-size: 3px; border-radius: 50%; animation: sp-drift 120s linear infinite, sp-twinkle 4s ease-in-out infinite alternate; }
-.sp-stars-3 { inline-size: 4px; block-size: 4px; border-radius: 50%; animation: sp-drift 75s linear infinite, sp-twinkle 2.6s ease-in-out infinite alternate; animation-delay: 0s, 1.2s; }
+.sp-par-3 { transform: translate3d(calc(var(--px) * -28px), calc(var(--py) * -28px), 0); }
+
+/* The photo: oversized so the slow orbit drift never shows an edge. */
+.sp-backdrop { position: absolute; inset: -8%; background-image: var(--bd-l); background-size: cover; background-position: 40% 70%; background-repeat: no-repeat; will-change: transform; animation: sp-orbit 150s ease-in-out infinite alternate; }
+@media (max-width: 1280px) { .sp-backdrop { background-image: var(--bd-m); } }
+@media (max-width: 900px) and (orientation: portrait) { .sp-backdrop { background-image: var(--bd-p); background-position: 50% 80%; } }
+/* flat dimming layer (keeps text >= 4.5:1 on see-through panels); breathes a little, like light changing in orbit */
+.sp-backdrop::after { content: ''; position: absolute; inset: 0; background-color: var(--color-ground); opacity: 0.34; animation: sp-breathe 14s ease-in-out infinite alternate; }
+@keyframes sp-orbit {
+  0% { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
+  50% { transform: translate3d(-2.5%, 1%, 0) scale(1.07) rotate(-0.8deg); }
+  100% { transform: translate3d(-4%, 2.5%, 0) scale(1.1) rotate(-1.4deg); }
+}
+@keyframes sp-breathe { from { opacity: 0.28; } to { opacity: 0.42; } }
+
+/* Stars: many faint 1 px, fewer 1.5 px, a handful of bright 2 px that twinkle. */
+.sp-stars-layer { position: absolute; inset-inline-start: 0; inset-block-start: 0; background: transparent; will-change: transform; box-shadow: var(--sh); border-radius: 50%; }
+.sp-stars-layer::after { content: ''; position: absolute; inset-inline-start: 0; inset-block-start: 1600px; inline-size: inherit; block-size: inherit; box-shadow: var(--sh); border-radius: 50%; }
+.sp-stars-1 { inline-size: 1px; block-size: 1px; opacity: 0.5; animation: sp-drift 260s linear infinite; }
+.sp-stars-2 { inline-size: 1.5px; block-size: 1.5px; opacity: 0.7; animation: sp-drift 170s linear infinite, sp-twinkle 5.5s ease-in-out infinite alternate; }
+.sp-stars-3 { inline-size: 2px; block-size: 2px; animation: sp-drift 110s linear infinite, sp-twinkle 2.8s ease-in-out infinite alternate; animation-delay: 0s, 1.3s; }
 @keyframes sp-drift { to { transform: translate3d(0, -1600px, 0); } }
-@keyframes sp-twinkle { from { opacity: 0.45; } to { opacity: 1; } }
-/* four-point sparkle: two crossed hairline bars */
-.sp-hero { position: absolute; opacity: 0.9; animation: sp-pulse 4.5s ease-in-out infinite; }
-.sp-hero::before, .sp-hero::after { content: ''; position: absolute; background: currentColor; inset-block-start: 50%; inset-inline-start: 0; inline-size: 100%; block-size: 2px; transform: translateY(-50%); }
-.sp-hero::after { inset-inline-start: 50%; inset-block-start: 0; inline-size: 2px; block-size: 100%; transform: translateX(-50%); }
-.sp-hero--ink { color: var(--color-ink); }
-.sp-hero--brass { color: var(--color-brass); }
-.sp-hero--lapis { color: var(--color-lapis); }
-@keyframes sp-pulse { 0%, 100% { opacity: 0.35; transform: scale(0.8) rotate(0deg); } 50% { opacity: 1; transform: scale(1.15) rotate(45deg); } }
-.sp-shoot { position: absolute; inline-size: 150px; block-size: 2px; background: var(--color-ink); opacity: 0; transform: rotate(24deg); border-radius: 1px; }
-.sp-shoot-a { inset-block-start: 14%; inset-inline-start: 62%; animation: sp-shoot 11s linear infinite; }
-.sp-shoot-b { inset-block-start: 46%; inset-inline-start: 24%; animation: sp-shoot 17s linear infinite; animation-delay: 5s; background: var(--color-brass); }
-.sp-shoot-c { inset-block-start: 28%; inset-inline-start: 82%; animation: sp-shoot 23s linear infinite; animation-delay: 9s; background: var(--color-lapis); }
-@keyframes sp-shoot { 0%, 90% { opacity: 0; transform: translate3d(0, 0, 0) rotate(24deg); } 91% { opacity: 1; } 100% { opacity: 0; transform: translate3d(-340px, 150px, 0) rotate(24deg); } }
-/* warp burst on every screen change: stars stretch vertically for 600 ms */
-.sp-stars--warp .sp-par { transform: scaleY(1.6); transition: transform 600ms ease-in; }
-@media (prefers-reduced-motion: reduce) { .sp-stars-layer, .sp-shoot, .sp-hero { animation: none; } .sp-shoot { display: none; } .sp-par { transform: none; transition: none; } .sp-stars--warp .sp-par { transform: none; } }
+@keyframes sp-twinkle { from { opacity: 0.35; } to { opacity: 1; } }
+
+/* Satellites: steady moving points, no tail (that is how real satellites look from orbit). */
+.sp-sat { position: absolute; inline-size: 2px; block-size: 2px; border-radius: 50%; background: var(--color-ink); opacity: 0; will-change: transform, opacity; }
+.sp-sat-a { inset-block-start: 18%; inset-inline-start: 0; animation: sp-sat-a 46s linear infinite; animation-delay: 4s; }
+.sp-sat-b { inset-block-start: 62%; inset-inline-start: 0; animation: sp-sat-b 71s linear infinite; animation-delay: 23s; }
+@keyframes sp-sat-a { 0% { opacity: 0; transform: translate3d(-2vw, 0, 0); } 3% { opacity: 0.85; } 55% { opacity: 0.85; } 58% { opacity: 0; transform: translate3d(104vw, -14vh, 0); } 100% { opacity: 0; transform: translate3d(104vw, -14vh, 0); } }
+@keyframes sp-sat-b { 0% { opacity: 0; transform: translate3d(104vw, 0, 0); } 3% { opacity: 0.7; } 40% { opacity: 0.7; } 43% { opacity: 0; transform: translate3d(-2vw, -22vh, 0); } 100% { opacity: 0; transform: translate3d(-2vw, -22vh, 0); } }
+
+/* Screen change: the view eases in a touch, like a camera refocusing (short). */
+.sp-stars--warp .sp-par-0 { transform: scale(1.025); transition: transform 450ms ease-out; }
+.sp-stars--warp .sp-par-1, .sp-stars--warp .sp-par-2, .sp-stars--warp .sp-par-3 { transform: scaleY(1.25); transition: transform 300ms ease-in; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-backdrop, .sp-backdrop::after, .sp-stars-layer, .sp-sat { animation: none; }
+  .sp-sat { display: none; }
+  .sp-par, .sp-stars--warp .sp-par, .sp-stars--warp .sp-par-0 { transform: none; transition: none; }
+}
 /* Stars show through the whole app: shell, rail and cards are see-through; text stays on >=75% panels for >=4.5:1 contrast */
 [data-theme="night"] .app-container { position: relative; z-index: 1; background: transparent; }
 [data-theme="night"] .cml-rail { background-color: color-mix(in srgb, var(--color-ground-raised) 70%, transparent); }

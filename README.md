@@ -95,6 +95,7 @@ QA reports from the final pass: `qa/TRACK1.md` (physics), `qa/TRACK2.md` (crash 
 - **Orbit averaging:** densities are averaged over 12 points per orbit (SSO: 2 UT times; 51.6 deg: 4 node local times). The Funda ground station position is approximate.
 - **Map:** the 2D map has no coastline (no offline coastline source shipped). It draws a graticule, the ground track, the target latitude and the ground station only.
 - **Illustrations:** every picture in `web/public/img/art` is AI-generated and tagged "SI-generated" on screen. They are illustration only, never data or real places. Real imagery is the NASA GIBS pictures on the Report screen.
+- **Night background:** a real NASA ISS photo, iss073e0516005 (images.nasa.gov/details/iss073e0516005), public domain; cropped and darkened. Not AI-generated.
 - **Launch slip:** truth flights include a seeded launch slip of 0-12 months, so the headline "the Sun took N days" is net of the slip; the Report prints both numbers.
 - **Pictures offline:** pictures load on demand; without a network the hosted site cannot fetch a picture it has not shown yet. Served locally, nothing needs the network.
 - **Sources table on the Report** covers the Report's numbers. Part and rocket numbers carry their tag on the cards; GIBS pictures are credited in `web/public/img/gibs/credits.json` rather than in `content/sources.csv`.

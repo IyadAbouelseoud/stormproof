@@ -12,3 +12,6 @@ The scenes (Angola drought, ground station, Jeddah floods, Earth, spacecraft) ar
 
 ## Added 2026-11-14 (D3/D4 batch, P13-P23)
 Full sheets (P14 medals, P16 role emblems, P18/P19 rockets) live only in `content/pitch-art/*-si.webp`; the app uses the crops: `art-p14-medal-{plan,sun,storm}`, `art-p16-role-{systems,science,power,comms}`, `art-p18/p19-rocket-*-card` (3:4). P23 is a strip crop for the mission-log border. P15 uses soft tonal bands (a gradient look) against the no-gradient rule: use it only as a small header, flag in the final pass if it reads as a gradient. P17 and P16/P13 are on a Paper ground (use in Paper cards or with a frame on Night).
+
+## Added 2026-11-15 (prompt H)
+`parts/<part-id>.webp`: 21 Build-card illustrations (Gemini, ink engraving on paper), one per part id in content/parts.json; show with `.sp-si-tag`. The Night backdrop in `web/public/img/space/` is NOT AI art: it is NASA ISS photo iss073e0516005 (public domain).
