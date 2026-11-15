@@ -45,7 +45,7 @@ web/src/{screens/{Brief,Build,Orbit,Launch,Flight,Report,Refly},ui,styles}
 web/public/{data,img/gibs,img/art,fonts}
 content/             parts.json, rockets.json, scenarios/angola.json, i18n/, sources.csv, evidence/
 design/              brief + generated tokens
-qa/  prompts/  .github/workflows/
+qa/  .github/workflows/
 ```
 Data files (built by pipeline): sun_daily.json, sun_forecast.json, sun_plan2019.json, density_{sso,iss}_{truth,plan}.bin, density_meta.json, storms.json, GIBS JPEGs + credits.json.
 

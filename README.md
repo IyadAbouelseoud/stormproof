@@ -1,11 +1,22 @@
 # STORMPROOF
 
-**NASA Space Apps Challenge 2026, Jeddah. Challenge: Space Mission Design Game.**
+**NASA Space Apps Challenge 2026 · Jeddah · Challenge: Space Mission Design Game**
 
 *The Sun you launch into decides how long your satellite lives. Plan with the forecast, fly with the truth.*
 
+**Play it:** https://iyadabouelseoud.github.io/stormproof/ (free, no login, English and Arabic, laptop or phone). Release: `v1.0.1`.
+
 ## Summary
-Stormproof is a satellite-design game where the real Sun decides how long your satellite lives. Your team designs a 1U, 3U or 6U CubeSat to map drought in Angola's Cunene and Namibe provinces: you pick the camera, panels, battery, radio, computer, pointing and fuel, the orbit, the rocket and a launch date between 2015 and 2026. The game then flies it twice: once through the Sun the 2019 forecast promised (plan) and once through the Sun that really happened, from NASA OMNIWeb data and NASA DONKI storms (truth). Atmospheric drag comes from pre-computed NRLMSIS 2.1 density tables driven by NASA OMNIWeb solar and geomagnetic indices, so a stronger Sun means thicker air and an earlier reentry. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days (about 2.5 years, against a forecast-Sun scenario that promised about 1.5 times longer); the report shows how many days the Sun took from your mission, step by step, and whether you met the FCC 5-year and NASA 25-year disposal rules.
+Stormproof is a satellite-design game where the real Sun decides how long your satellite lives. Your team designs a 1U, 3U or 6U CubeSat to map drought in Angola's Cunene and Namibe provinces: you pick the camera, panels, battery, radio, computer, pointing and fuel, the orbit, the rocket and a launch date between 2015 and 2026. The game then flies it twice: once through the Sun the 2019 forecast promised (plan) and once through the Sun that really happened, from NASA OMNIWeb data and NASA DONKI storms (truth). Atmospheric drag comes from pre-computed NRLMSIS 2.1 density tables driven by NASA OMNIWeb solar and geomagnetic indices, so a stronger Sun means thicker air and an earlier reentry. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days (the paper's forecast-Sun scenario gives a lifetime about 1.5 times longer); the report shows how many days the Sun took from your mission, step by step, and whether you met the FCC 5-year and NASA 25-year disposal rules.
+
+## What you do in the game
+1. **Pick a mission.** Angola drought watch (Cunene), Jeddah flood watch, or one of three engine-verified challenges: fly past 2027 on 1.2 million USD, launch into the 2024 solar maximum, launch into the February 2022 storm. Play solo or as a team of four (hot-seat roles).
+2. **Build in the equipment bay.** Seven part slots and a 1U/3U/6U frame. Each option shows what it fixes or breaks before you equip it, and six gauges track mass, power, money, data, comms and lifetime. A live goal tracker shows your projected score and stars. The Part lab shows what each camera would really see.
+3. **Choose the orbit and the rocket.** A green zone marks the altitudes where every goal passes and the satellite still clears orbit within 5 years. Fit checks confirm the rocket can carry it there.
+4. **Pick the launch date** on the Sun Stripe, the real solar activity of 2015 to 2026. Rideshare launches can slip (seeded).
+5. **Fly.** The planned and the real altitude lines separate day by day. A real storm from NASA's DONKI log stops the clock once and makes you choose: ride it out or safe mode.
+6. **Read the report.** Lived or died, the score and stars, the cause chain in days, a "Best next fix" found by flying small changes through the engine, medals, a mission patch and a shareable mission code.
+7. **Re-fly.** Change one thing and compare both flights side by side.
 
 **Two modes (header switch):** *Cadet* (default) uses plain words ("Photo width" for swath, "Sun activity: High" for F10.7, "Storm strength 7 of 9" for Kp), a one-line "why it matters" under every gauge, "?" help on each term, first-run tips and a goal tracker. *Engineer* shows the original engineering terms. Both modes run the same engine with the same requirements, targets and scoring: Cadet changes words, hints and visuals only. The Build "Part lab" previews each option at your orbit (camera views from the real NASA GIBS HLS 30 m image blurred to that camera's resolution, power, eclipse battery, pass, storage, pointing reach, fuel), all computed by the engine's own formulas or engine runs.
 
@@ -48,6 +59,13 @@ Deploy: every push to `main` runs `.github/workflows/pages.yml` (engine and pipe
 
 Every number in the game is sourced, computed or labelled "game-balanced" in `content/sources.csv`.
 
+## Repository map
+- `engine/`: the deterministic simulation (TypeScript, Vitest), with golden and demo tests
+- `web/`: the game (Vite, React 19, English and Arabic) and scripts that walk the demo in a browser
+- `pipeline/`: Python scripts that fetch NASA data and pre-compute the density tables
+- `content/`: parts, rockets, scenarios, demo and challenge codes, `sources.csv`
+- `qa/`: test and review reports; `DEMO.md`: the scripted pitch mission
+
 ## Team
 - **Iyad**: team owner; engine, data pipeline, deploy
 - **Renad**: user interface (web/)
@@ -68,8 +86,7 @@ Honest limits of the Jeddah scenario:
 9. The dry Jeddah picture is an HLS 30 m baseline from 4 Jul 2024, not the flood. The flood-day picture is MODIS Terra, 24 Nov 2022, and shows cloud.
 
 ## AI use
-Interface and story text drafted with ChatGPT and edited with Claude; all facts come from content/sources.csv and AGENTS.md; numbers come from the engine.
-We used AI (SI) tools for research, brainstorming and coding: Claude Code (Anthropic) wrote most of the engine, pipeline and tests under our review, Antigravity built parts of the UI, and Gemini helped with content and art. AI-generated images carry a visible "SI-generated" tag. Every physics number was checked against its source, and the golden tests below compare the engine with real missions.
+We used AI (SI) tools for research, brainstorming, coding, text and art, under our review: Claude Code (Anthropic) wrote most of the engine, pipeline and tests; Antigravity built parts of the UI; ChatGPT drafted interface and story text, edited with Claude; Gemini made the illustrations. Every AI-generated image carries a visible "SI-generated" tag. Facts come from `content/sources.csv`, numbers come from the engine, and the golden tests below compare the engine with real missions. `AGENTS.md` and `HANDOFF.md` keep the build log of that process.
 
 ## Licences
 - **NRLMSIS 2.1** (U.S. Naval Research Laboratory, run via pymsis) is licensed for non-commercial use only. We ship only pre-computed density tables, never the model.
