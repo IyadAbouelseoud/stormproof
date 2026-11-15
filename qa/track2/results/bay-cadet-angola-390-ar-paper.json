@@ -1,0 +1,2505 @@
+{
+ "axe": [
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "id": "landmark-no-duplicate-banner",
+   "impact": "moderate",
+   "n": 1,
+   "help": "Document should not have more than one banner landmark",
+   "sample": [
+    ".app-header ::   Document has more than one banner landmark"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "id": "landmark-unique",
+   "impact": "moderate",
+   "n": 1,
+   "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+   "sample": [
+    ".app-header ::   The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    "figure ::   ARIA role img is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "section.bay",
+   "sw": 340,
+   "cw": 338,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "div.bay-head",
+   "sw": 328,
+   "cw": 314,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "ul.mini-gauges",
+   "sw": 238,
+   "cw": 225,
+   "text": "الوزن6.3 كغسليمالطاقة8.1 واطسليمالمال1.2"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 54,
+   "cw": 52,
+   "text": "8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 82,
+   "cw": 68,
+   "text": "المال1.26M دولارسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 74,
+   "cw": 52,
+   "text": "1.26M دولار"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 105,
+   "cw": 68,
+   "text": "البيانات المرسلة1,200 م.ب/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 80,
+   "cw": 52,
+   "text": "البيانات المرسلة"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 97,
+   "cw": 52,
+   "text": "1,200 م.ب/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 95,
+   "cw": 68,
+   "text": "وقت الاتصال6.4 دقيقة/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 65,
+   "cw": 52,
+   "text": "وقت الاتصال"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 87,
+   "cw": 52,
+   "text": "6.4 دقيقة/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 76,
+   "cw": 68,
+   "text": "العمر1,313 يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 68,
+   "cw": 52,
+   "text": "1,313 يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "scrollable",
+   "sel": "div.bay-tabs",
+   "sw": 612,
+   "cw": 314,
+   "text": "الكاميرايمكنه إصلاح هدف فائتالألواح الشم"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "scrollable",
+   "sel": "div.bay-cards",
+   "sw": 778,
+   "cw": 314,
+   "text": "مولّد بالذكاء الاصطناعيكاميرا اقتصادية+1"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 178,
+   "cw": 1,
+   "text": "الكاميرا: تم اختيار كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "section.bay",
+   "sw": 340,
+   "cw": 338,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "div.bay-head",
+   "sw": 328,
+   "cw": 314,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "ul.mini-gauges",
+   "sw": 238,
+   "cw": 225,
+   "text": "الوزن6.3 كغسليمالطاقة8.1 واطسليمالمال1.2"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 54,
+   "cw": 52,
+   "text": "8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 82,
+   "cw": 68,
+   "text": "المال1.26M دولارسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 74,
+   "cw": 52,
+   "text": "1.26M دولار"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 105,
+   "cw": 68,
+   "text": "البيانات المرسلة1,200 م.ب/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 80,
+   "cw": 52,
+   "text": "البيانات المرسلة"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 97,
+   "cw": 52,
+   "text": "1,200 م.ب/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 95,
+   "cw": 68,
+   "text": "وقت الاتصال6.4 دقيقة/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 65,
+   "cw": 52,
+   "text": "وقت الاتصال"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 87,
+   "cw": 52,
+   "text": "6.4 دقيقة/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 76,
+   "cw": 68,
+   "text": "العمر1,313 يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 68,
+   "cw": 52,
+   "text": "1,313 يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 16,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 21,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "scrollable",
+   "sel": "div.bay-tabs",
+   "sw": 612,
+   "cw": 314,
+   "text": "الكاميرايمكنه إصلاح هدف فائتالألواح الشم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "scrollable",
+   "sel": "div.bay-cards",
+   "sw": 778,
+   "cw": 314,
+   "text": "مولّد بالذكاء الاصطناعيكاميرا اقتصادية+1"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 178,
+   "cw": 1,
+   "text": "الكاميرا: تم اختيار كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "section.bay",
+   "sw": 340,
+   "cw": 338,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "div.bay-head",
+   "sw": 328,
+   "cw": 314,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "ul.mini-gauges",
+   "sw": 238,
+   "cw": 225,
+   "text": "الوزن6.3 كغسليمالطاقة8.1 واطسليمالمال1.2"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 54,
+   "cw": 52,
+   "text": "8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 82,
+   "cw": 68,
+   "text": "المال1.26M دولارسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 74,
+   "cw": 52,
+   "text": "1.26M دولار"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 105,
+   "cw": 68,
+   "text": "البيانات المرسلة1,200 م.ب/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 80,
+   "cw": 52,
+   "text": "البيانات المرسلة"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 97,
+   "cw": 52,
+   "text": "1,200 م.ب/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 95,
+   "cw": 68,
+   "text": "وقت الاتصال6.4 دقيقة/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 65,
+   "cw": 52,
+   "text": "وقت الاتصال"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 87,
+   "cw": 52,
+   "text": "6.4 دقيقة/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 76,
+   "cw": 68,
+   "text": "العمر1,313 يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 68,
+   "cw": 52,
+   "text": "1,313 يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.xd-spot.xd-spot--on.xd-spot--hot",
+   "sw": 51,
+   "cw": 48,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 23,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "scrollable",
+   "sel": "div.bay-tabs",
+   "sw": 612,
+   "cw": 314,
+   "text": "الكاميرايمكنه إصلاح هدف فائتالألواح الشم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "scrollable",
+   "sel": "div.bay-cards",
+   "sw": 778,
+   "cw": 314,
+   "text": "مولّد بالذكاء الاصطناعيكاميرا اقتصادية+1"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 178,
+   "cw": 1,
+   "text": "الكاميرا: تم اختيار كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "section.bay",
+   "sw": 340,
+   "cw": 338,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "div.bay-head",
+   "sw": 328,
+   "cw": 314,
+   "text": "حجرة المعداتالوزن6.3 كغسليمالطاقة8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "ul.mini-gauges",
+   "sw": 238,
+   "cw": 225,
+   "text": "الوزن6.3 كغسليمالطاقة8.1 واطسليمالمال1.2"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 54,
+   "cw": 52,
+   "text": "8.1 واط"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 82,
+   "cw": 68,
+   "text": "المال1.26M دولارسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 74,
+   "cw": 52,
+   "text": "1.26M دولار"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 105,
+   "cw": 68,
+   "text": "البيانات المرسلة1,200 م.ب/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 80,
+   "cw": 52,
+   "text": "البيانات المرسلة"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 97,
+   "cw": 52,
+   "text": "1,200 م.ب/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 95,
+   "cw": 68,
+   "text": "وقت الاتصال6.4 دقيقة/يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.type-label.mini-gauge-name",
+   "sw": 65,
+   "cw": 52,
+   "text": "وقت الاتصال"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 87,
+   "cw": 52,
+   "text": "6.4 دقيقة/يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "li.mini-gauge.mini-gauge--ok",
+   "sw": 76,
+   "cw": 68,
+   "text": "العمر1,313 يومسليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.type-data.mini-gauge-val",
+   "sw": 68,
+   "cw": 52,
+   "text": "1,313 يوم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 32,
+   "cw": 1,
+   "text": "سليم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 22,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "scrollable",
+   "sel": "div.bay-tabs",
+   "sw": 612,
+   "cw": 314,
+   "text": "الكاميرايمكنه إصلاح هدف فائتالألواح الشم"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 143,
+   "cw": 1,
+   "text": "يمكنه إصلاح هدف فائت"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "scrollable",
+   "sel": "div.bay-cards",
+   "sw": 778,
+   "cw": 314,
+   "text": "مولّد بالذكاء الاصطناعيكاميرا اقتصادية+1"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 178,
+   "cw": 1,
+   "text": "الكاميرا: تم اختيار كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 133,
+   "cw": 1,
+   "text": "الفرق عن كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 133,
+   "cw": 1,
+   "text": "الفرق عن كاميرا قياسية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 29,
+   "cw": 1,
+   "text": "إلى"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:12",
+   "b": "figcaption.type-small:كاميرا اقتصادية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:+90.5%",
+   "b": "figcaption.type-small:كاميرا اقتصادية"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:35%",
+   "b": "p.type-small.lab-text:هذا المربع = 50"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "p.type-small.sp-gauge-why:كل قطعة تضيف وز",
+   "b": "p.type-small.lab-text:عرض الصورة 60 ك"
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:27.9",
+   "b": "figcaption.type-small:كاميرا قياسية: "
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:+244.9%",
+   "b": "figcaption.type-small:كاميرا قياسية: "
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "kind": "NUM-OVERLAP",
+   "a": "span.type-data:35%",
+   "b": "p.type-small.lab-text:هذا المربع = 50"
+  },
+  {
+   "key": "angola-390-ar-paper-orbit",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "div.console-panel-header",
+   "sw": 317,
+   "cw": 306,
+   "text": "مخاطر الشمس والعمر المداريقاعدة الفضاء ا"
+  },
+  {
+   "key": "angola-390-ar-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-launch",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1327,
+   "cw": 314,
+   "text": "يعود كل…14.1 / 10 يومأصغر شيء تراه10 / 3"
+  },
+  {
+   "key": "angola-390-ar-paper-launch",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-launch",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?كثافة الهواء عند القمر: 6."
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 319,
+   "cw": 1,
+   "text": "كثافة الهواء عند القمر: 6.77e-13 كغ/م³"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?طبيعي"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?كثافة الهواء عند القمر: 1."
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 319,
+   "cw": 1,
+   "text": "كثافة الهواء عند القمر: 1.29e-12 كغ/م³"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric.hud-metric--storm",
+   "sw": 103,
+   "cw": 101,
+   "text": "تنبيه عاصفة ?عاصفة 7 من 9"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 103,
+   "cw": 101,
+   "text": "تنبيه عاصفة ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?كثافة الهواء عند القمر: 1."
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 319,
+   "cw": 1,
+   "text": "كثافة الهواء عند القمر: 1.19e-12 كغ/م³"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?طبيعي"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?كثافة الهواء عند القمر: 7."
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 99,
+   "cw": 96,
+   "text": "كثافة الهواء ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 311,
+   "cw": 1,
+   "text": "كثافة الهواء عند القمر: 7.06e-9 كغ/م³"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?طبيعي"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 103,
+   "cw": 92,
+   "text": "تنبيه عاصفة ?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "scrollable",
+   "sel": "table.sources-table.type-small",
+   "sw": 366,
+   "cw": 306,
+   "text": "الرقمالقيمةالوسمالمصدرالعمر (الشمس الفعل"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:1730 d",
+   "b": "div.nav-status.type-data:الشاشة 6 من 7"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:5 y",
+   "b": "p.type-small.footer-credit:بيانات NASA OMN"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td:FCC 22-74 (5-ye",
+   "b": "p.type-small.footer-credit:بيانات NASA OMN"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td.type-data:25 y",
+   "b": "p.type-small.footer-credit:الخلفية: صورة N"
+  },
+  {
+   "key": "angola-390-ar-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td:NASA-STD-8719.1",
+   "b": "p.type-small.footer-credit:الخلفية: صورة N"
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.3 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.3 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.3 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "كغ",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "واط",
+   "sw": 19,
+   "cw": 19,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1.3 مليون",
+   "sw": 86,
+   "cw": 86,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "دولار",
+   "sw": 22,
+   "cw": 22,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "م.ب/يوم",
+   "sw": 43,
+   "cw": 43,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "دقيقة/يوم",
+   "sw": 49,
+   "cw": 49,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-390-ar-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "يوم",
+   "sw": 16,
+   "cw": 16,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": []
+}

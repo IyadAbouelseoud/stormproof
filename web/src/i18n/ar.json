@@ -725,5 +725,20 @@
   "challenge.not_yet": "ليس بعد. غيّر التصميم وطِر مجددًا.",
   "challenge.loaded": "تم تحميل التحدي: {title}",
   "patch.title": "شارة المهمة",
-  "patch.label": "شارة المهمة: {name}، النتيجة {score} من 100، {stars} من 3 نجوم"
+  "patch.label": "شارة المهمة: {name}، النتيجة {score} من 100، {stars} من 3 نجوم",
+  "bench.title": "حجرة المعدات",
+  "bench.equip": "ركّب {part}",
+  "bench.equipped": "مركّب",
+  "bench.inspect": "افحص",
+  "bench.inspect_part": "افحص {part} في مختبر القطع",
+  "bench.if_equip": "إذا ركّبته",
+  "bench.fixes": "يصلح: {goal}",
+  "bench.breaks": "يفسد: {goal}",
+  "bench.no_change": "لا تغيير",
+  "bench.pts": "نقطة",
+  "bench.hot": "يمكنه إصلاح هدف فائت",
+  "bench.map_hint": "اضغط على قطعة في القمر أو على تبويب، ثم ركّب خيارًا. النقطة الحمراء تعني أن هذه الخانة يمكنها إصلاح هدف فائت.",
+  "bench.back": "عودة إلى الخيارات",
+  "refly.fly_again_hint": "التصميم نفسه والبذرة نفسها: شاهده يطير مجددًا.",
+  "refly.change_one_hint": "احتفظ بهذه الرحلة وغيّر قطعة أو إعدادًا واحدًا للمقارنة."
 }

@@ -35,8 +35,10 @@ export function goToMover(mover: string, setScreen: (s: ScreenId) => void, curre
   const { screen, el } = targetOf(mover);
   if (screen !== current) setScreen(screen);
   window.setTimeout(() => {
-    const node = document.getElementById(el);
-    node?.scrollIntoView({ block: 'center', behavior: 'auto' });
+    // Build: the equipment bay shows one slot at a time; ask it to open this one, then bring the bay into view.
+    if (SLOTS.has(mover)) window.dispatchEvent(new CustomEvent('sp-slot', { detail: mover }));
+    const node = SLOTS.has(mover) ? document.querySelector('.bay') : document.getElementById(el);
+    node?.scrollIntoView({ block: 'start', behavior: 'auto' });
   }, screen !== current ? 160 : 0);
 }
 

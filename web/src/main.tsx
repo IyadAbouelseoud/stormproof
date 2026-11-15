@@ -10,6 +10,7 @@ import './styles/screens.css';
 import './styles/part-detail.css';
 import './styles/final-pass.css';
 import './styles/polish.css';
+import './styles/bay.css';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {

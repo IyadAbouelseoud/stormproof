@@ -128,7 +128,8 @@ for (const scen of ['angola', 'jeddah'])
       await next(); await page.waitForTimeout(500); await I('build');
       const chipBad = page.locator('.tracker-chip--fail').first();
       if (await chipBad.count()) { await chipBad.click(); await page.waitForTimeout(300); await I('build-tracker-hint'); await page.keyboard.press('Escape'); }
-      await page.locator('.xd-spot[data-slot="camera"]').first().click(); await page.waitForTimeout(1200); await I('build-partlab');
+      await page.locator('.xd-spot[data-slot="camera"]').first().click(); await page.waitForTimeout(400); await I('build-bay');
+      await page.locator('.bench-inspect').first().click(); await page.waitForTimeout(1200); await I('build-partlab');
       await page.keyboard.press('Escape'); await page.waitForTimeout(300);
       await next(); await page.waitForTimeout(1500); await I('orbit');
       await next();

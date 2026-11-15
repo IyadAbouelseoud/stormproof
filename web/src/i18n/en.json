@@ -725,5 +725,20 @@
   "challenge.not_yet": "Not yet. Change the design and fly again.",
   "challenge.loaded": "Challenge loaded: {title}",
   "patch.title": "Mission patch",
-  "patch.label": "Mission patch: {name}, score {score} of 100, {stars} of 3 stars"
+  "patch.label": "Mission patch: {name}, score {score} of 100, {stars} of 3 stars",
+  "bench.title": "Equipment bay",
+  "bench.equip": "Equip {part}",
+  "bench.equipped": "Equipped",
+  "bench.inspect": "Inspect",
+  "bench.inspect_part": "Inspect {part} in the Part lab",
+  "bench.if_equip": "If you equip it",
+  "bench.fixes": "Fixes: {goal}",
+  "bench.breaks": "Breaks: {goal}",
+  "bench.no_change": "No change",
+  "bench.pts": "pts",
+  "bench.hot": "Can fix a missed goal",
+  "bench.map_hint": "Tap a part on the satellite or a tab, then equip an option. A red dot means that slot can fix a missed goal.",
+  "bench.back": "Back to the options",
+  "refly.fly_again_hint": "Same design, same seed: watch it fly again.",
+  "refly.change_one_hint": "Keep this flight and change one part or setting to compare."
 }

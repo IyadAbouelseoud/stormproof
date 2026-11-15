@@ -20,6 +20,7 @@ await p.waitForTimeout(1500);
 await shot('1-brief');
 await shot('1-brief-full', true);
 await next();
+await p.locator('.bay-tab[data-slot="pointing"]').click();
 await p.locator('.sp-part[data-part="pointing-precise"]').click();
 await shot('2-build');
 await next();

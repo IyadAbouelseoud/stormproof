@@ -1,0 +1,2069 @@
+{
+ "axe": [
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    "figure ::   ARIA role img is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-1440-en-night-brief",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1572,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-brief",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1572,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1568,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1572,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 15,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 254,
+   "cw": 1,
+   "text": "Camera: Standard Camera selected"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1576,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1572,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 14,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 254,
+   "cw": 1,
+   "text": "Camera: Standard Camera selected"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1576,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1572,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 14,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 13,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 254,
+   "cw": 1,
+   "text": "Camera: Standard Camera selected"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1573,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1573,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 21,
+   "cw": 1,
+   "text": "OK"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 14,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 150,
+   "cw": 1,
+   "text": "Can fix a missed goal"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 240,
+   "cw": 1,
+   "text": "Difference from Standard Camera"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 240,
+   "cw": 1,
+   "text": "Difference from Standard Camera"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 254,
+   "cw": 1,
+   "text": "Camera: Standard Camera selected"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1568,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1573,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "overflow-visible",
+   "sel": "div.console-panel-header",
+   "sw": 520,
+   "cw": 509,
+   "text": "Sun Risk & LifetimeClean-space rule met:"
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-orbit",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1569,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1573,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "scrollable",
+   "sel": "ul.tracker-chips",
+   "sw": 1414,
+   "cw": 1300,
+   "text": "Comes back every…14.1 / 10 daysSmallest "
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-launch",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1574,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1574,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?Air density at the satell"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 370,
+   "cw": 1,
+   "text": "Air density at the satellite: 6.77e-13 k"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1579,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1574,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?Air density at the satell"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 370,
+   "cw": 1,
+   "text": "Air density at the satellite: 1.29e-12 k"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric.hud-metric--storm",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Storm 7 of 9"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1576,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1575,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?Air density at the satell"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 370,
+   "cw": 1,
+   "text": "Air density at the satellite: 1.91e-12 k"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1578,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1576,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?Air density at the satell"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 155,
+   "cw": 144,
+   "text": "Air thickness ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 361,
+   "cw": 1,
+   "text": "Air density at the satellite: 7.06e-9 kg"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1580,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1576,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td:AGENTS.md s5; J",
+   "b": "p.type-small.footer-credit:NASA OMNIWeb da"
+  },
+  {
+   "key": "angola-1440-en-night-refly",
+   "kind": "CLIPPED",
+   "sel": "div.sp-stars",
+   "sw": 1580,
+   "cw": 1440,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-night-refly",
+   "kind": "overflow-visible",
+   "sel": "div.sp-par.sp-par-0",
+   "sw": 1577,
+   "cw": 1440,
+   "text": ""
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-bay",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-night-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": [
+  "comprehension {\"found\":true,\"cls\":\"brief-sunstripe-section\",\"bottom\":1080.1875,\"h1\":\"STORMPROOF\",\"ps\":[]}"
+ ]
+}
