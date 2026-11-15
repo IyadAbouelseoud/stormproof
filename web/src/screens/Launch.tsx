@@ -11,6 +11,8 @@ import { Illustration } from '../ui/Illustration';
 import { playLaunchTick } from '../sound';
 import { AliveIndicator } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
+import { ReqTracker } from '../ui/ReqTracker';
+import { Term } from '../ui/Cadet';
 
 function RocketSvg({ liftoff }: { liftoff: boolean }): React.JSX.Element {
   return (
@@ -185,6 +187,7 @@ export function Launch(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Launch">
+      <div className="tracker-sticky"><ReqTracker /></div>
       <Illustration id="p8" src="img/art/art-p8-launch-header-v1.webp" alt={t('launch.go')} className="launch-header-art" />
 
       {/* Launch Date & Solar Stripe section */}
@@ -195,6 +198,7 @@ export function Launch(): React.JSX.Element {
           </h3>
           <p className="type-data-l">{fmtDate(lang, design.launchDate)}</p>
         </div>
+        <p className="type-small launch-slip-note">{t('launch.slip_note')}</p>
 
         <Illustration id="p11" src="img/art/art-p11-solar-storm-v1.webp" alt={t('sun.legend')} className="launch-storm-art" />
         {months ? (
@@ -211,7 +215,7 @@ export function Launch(): React.JSX.Element {
           <div className="art-slot type-small">{t('engine.loading')}</div>
         )}
         <p className="type-small sun-legend">
-          {t('sun.legend')} <span className="type-data">{t('sun.steps')}</span>
+          {t('sun.legend')} <span className="type-data">{t('sun.steps')}</span> <Term id="sun" />
         </p>
 
         <PlanTruthNote />

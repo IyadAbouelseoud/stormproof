@@ -1,6 +1,6 @@
 // Pitch demo gate (DEMO.md): performs the scripted demo click by click and checks the numbers on screen.
 // Usage (cwd web/, after `pnpm build`, with `pnpm preview --port 4172`): node scripts/demo-walk.mjs [BASE]
-// env: W, H (viewport), LANG=ar, SHOTS=1 (screenshots to qa/screens/demo-*.png)
+// env: W, H (viewport), LANG=ar, SHOTS=1 (screenshots to qa/screens/demo-*.png), MODE=cadet (default engineer: the judges' demo)
 import { chromium } from '@playwright/test';
 const BASE = process.argv[2] ?? 'http://localhost:4172/';
 const W = Number(process.env.W ?? 1440), H = Number(process.env.H ?? 900);
@@ -11,6 +11,8 @@ const bad = [];
 p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
 p.on('pageerror', (e) => errs.push('pageerror ' + e.message));
 p.on('request', (r) => !r.url().startsWith(BASE) && !r.url().startsWith('data:') && errs.push('EXTERNAL ' + r.url()));
+const MODE = process.env.MODE ?? 'engineer';
+await p.addInitScript((m) => { try { localStorage.setItem('sp-mode', m); } catch {} }, MODE);
 const t0 = Date.now();
 const lap = (name) => console.log(`${((Date.now() - t0) / 1000).toFixed(1)} s  ${name}`);
 const shot = async (name) => { if (process.env.SHOTS === '1') { await p.waitForTimeout(600); await p.screenshot({ path: `../qa/screens/demo-${W}-${name}.png` }); } };

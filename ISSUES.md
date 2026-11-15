@@ -54,3 +54,9 @@ Additive only; Angola results byte-identical (engine/test/angola-regression.test
 - Fuzz finding, fixed (a84278d): decodeMission leaked a raw URIError for broken percent escapes, and accepted launch dates outside 2015-2026 (or off the calendar) that made simulate() throw. Tampered codes now fail with a clean "mission code:" error; the web shows the inline "invalid code" message. No contract change.
 - mock-result.json (shared contract fixture) still carries the old hint text "about 2.5 years early". It is shown only if the data files fail to load ("Sample data" fallback, English). Not edited (fixture); the live hint comes from engine/src/closest.ts and states days.
 - Track 3 note for Iyad: `.claude/settings.json` allows `Bash(echo $NASA_API_KEY)`. Consider removing that permission; no key was found in the tree or in git history.
+
+## 2026-11-15 Prompt H (final polish)
+- P6 "Sun survivor" medal (truth life > plan life): reachable, so its condition is unchanged. Scan of 576 Angola designs (SSO and 51.6 deg, 300-600 km, launches Jan/Apr/Jul/Oct 2015-2026, default parts): 112 earn it; the largest gain is 51.6 deg, 500 km, Oct 2024 (+1,087 days). At the default 500 km SSO / Apr 2023 it is locked (the real Sun was stronger); the medal now shows progress text instead of a bare "Locked".
+- Storm vote: the player now decides once (the first Kp >= 7 storm, full-screen card); later storms no longer pause playback and appear in the log grouped by month. Engine and policy semantics unchanged (the vote always stood for the whole flight).
+- demo-walk.mjs runs in Engineer mode by default (the judges' demo). In Cadet mode the same numbers show; only two labels differ ("Lifetime" reads "Stays up for").
+- No engine, golden, content-number, sources.csv-row or demo-code change. New content file: content/text/couplings.json (which parts/settings move each requirement; no numbers).

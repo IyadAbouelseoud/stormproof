@@ -1,0 +1,1419 @@
+{
+ "axe": [
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    ".sp-chart ::   ARIA role slider is not allowed for given element"
+   ]
+  },
+  {
+   "key": "angola-1440-en-paper-report",
+   "id": "aria-allowed-role",
+   "impact": "minor",
+   "n": 1,
+   "help": "ARIA role should be appropriate for the element",
+   "sample": [
+    "figure ::   ARIA role img is not allowed for given element"
+   ]
+  }
+ ],
+ "overflow": [
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "div.type-small.sp-gauge-foot",
+   "sw": 201,
+   "cw": 196,
+   "text": "Limit 12Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span",
+   "sw": 201,
+   "cw": 190,
+   "text": "Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "div.type-small.sp-gauge-foot",
+   "sw": 201,
+   "cw": 196,
+   "text": "Limit 12Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span",
+   "sw": 201,
+   "cw": 190,
+   "text": "Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 19,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "div.type-small.sp-gauge-foot",
+   "sw": 201,
+   "cw": 196,
+   "text": "Limit 12Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span",
+   "sw": 201,
+   "cw": 190,
+   "text": "Margin +90.5% (need 35%)?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "p.pd-sr",
+   "sw": 254,
+   "cw": 1,
+   "text": "Camera: Standard Camera selected"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 20,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.xd-dot",
+   "sw": 17,
+   "cw": 10,
+   "text": ""
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 240,
+   "cw": 1,
+   "text": "Difference from Standard Camera"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "caption.pd-sr",
+   "sw": 240,
+   "cw": 1,
+   "text": "Difference from Standard Camera"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "CLIPPED",
+   "sel": "span.pd-sr",
+   "sw": 19,
+   "cw": 1,
+   "text": "to"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "div.console-panel-header",
+   "sw": 520,
+   "cw": 509,
+   "text": "Sun Risk & LifetimeFCC 5-Year Rule Met ("
+  },
+  {
+   "key": "angola-1440-en-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-orbit",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-launch",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-launch",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 155,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-start",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric.hud-metric--storm",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Kp 7"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-storm",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-mid",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "CLIPPED-Y",
+   "sel": "span.odometer-digit-box",
+   "sh": 154,
+   "ch": 15,
+   "text": "0123456789"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "div.hud-metric",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?Nominal"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.type-label.hud-label",
+   "sw": 140,
+   "cw": 129,
+   "text": "Storm Alert ?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "span.term",
+   "sw": 35,
+   "cw": 24,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-flight-reentry",
+   "kind": "overflow-visible",
+   "sel": "button.term-btn",
+   "sw": 34,
+   "cw": 22,
+   "text": "?"
+  },
+  {
+   "key": "angola-1440-en-paper-report",
+   "kind": "NUM-OVERLAP",
+   "a": "td:AGENTS.md s5; J",
+   "b": "p.type-small.footer-credit:NASA OMNIWeb da"
+  }
+ ],
+ "dials": [
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-tracker-hint",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.3",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "kg",
+   "sw": 14,
+   "cw": 14,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "8.1",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "W",
+   "sw": 12,
+   "cw": 12,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "1.3M",
+   "sw": 53,
+   "cw": 53,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "USD",
+   "sw": 25,
+   "cw": 25,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,200",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "MB/day",
+   "sw": 45,
+   "cw": 45,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data ",
+   "text": "6.4",
+   "sw": 40,
+   "cw": 40,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "min/day",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-num type-data sp-dial-num--sm",
+   "text": "1,313",
+   "sw": 48,
+   "cw": 48,
+   "inside": true
+  },
+  {
+   "key": "angola-1440-en-paper-build-partlab",
+   "cls": "sp-dial-unit type-small",
+   "text": "days",
+   "sw": 27,
+   "cw": 27,
+   "inside": true
+  }
+ ],
+ "errors": [],
+ "arText": {},
+ "misc": []
+}

@@ -65,3 +65,9 @@ No. One small satellite revisits every few days; the storm lasted hours. NASA GP
 
 **Did AI write this?**
 AI tools helped with research, brainstorming, code, text drafts and all illustrations. People reviewed the physics; the golden tests compare the engine with real missions. See README "AI use".
+
+**Is Cadet mode easier?**
+No. Cadet and Engineer run the same engine with the same requirements, targets, physics and scoring. Cadet only changes words ("Photo width" instead of "Swath"), adds hints, a goal tracker and first-run tips. A design scores the same in both modes (tested: `web/scripts/mode-check.mjs`).
+
+**Where do the camera previews come from?**
+From the real NASA GIBS HLS image of the target area (30 m, NASA/USGS Harmonized Landsat Sentinel-2), blurred in the browser to each camera's ground resolution at your altitude (GSD scales with altitude). Cameras sharper than 30 m are shown at 30 m and say so; we never invent detail.

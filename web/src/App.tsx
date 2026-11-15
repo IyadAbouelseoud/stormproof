@@ -15,6 +15,7 @@ import { Handover } from './screens/Handover';
 import { Starfield } from './ui/Starfield';
 import { HeaderOrbitScene } from './ui/HeaderOrbitScene';
 import { TokenSwatches } from './screens/TokenSwatches';
+import { ModeToggle } from './ui/Cadet';
 
 const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = { Brief, Build, Orbit, Launch, Flight, Report, Refly };
 
@@ -51,6 +52,11 @@ function ScoreCountUp({ target }: { target: number }): React.JSX.Element {
 function SoundToggle(): React.JSX.Element {
   const { t } = useI18n();
   const [enabled, setEnabled] = useState(isSoundEnabled);
+  useEffect(() => {
+    const on = (e: Event) => setEnabled(Boolean((e as CustomEvent<boolean>).detail));
+    window.addEventListener('sp-sound', on);
+    return () => window.removeEventListener('sp-sound', on);
+  }, []);
   const [showTooltip, setShowTooltip] = useState(() => {
     if (typeof window === 'undefined') return false;
     try {
@@ -219,6 +225,7 @@ export default function App(): React.JSX.Element {
           {status === 'mock' && <span className="type-label engine-status engine-status--mock">{t('engine.mock')}</span>}
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <SoundToggle />
+          <ModeToggle />
           <LanguageToggle />
         </div>
       </header>
@@ -250,6 +257,7 @@ export default function App(): React.JSX.Element {
           </a>
         </nav>
         <p className="type-small footer-credit">{t('shell.credit')}</p>
+        <p className="type-small footer-credit" data-testid="backdrop-credit">{t('footer.backdrop')}</p>
       </footer>
     </div>
     </>

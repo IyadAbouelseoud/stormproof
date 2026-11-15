@@ -9,8 +9,9 @@ import { MissionEmblem } from '../ui/MissionEmblem';
 import { SunStripe } from '../ui/SunStripe';
 import { scenarioText, tx } from '../content';
 import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
-import { playPartSnap } from '../sound';
+import { isSoundEnabled, playPartSnap, setSoundEnabled } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
+import { ChallengeCards } from '../ui/Challenges';
 
 export function Brief(): React.JSX.Element {
   const { t, lang } = useI18n();
@@ -21,9 +22,16 @@ export function Brief(): React.JSX.Element {
   const setTeamMode = useMission((s) => s.setTeamMode);
   const setName = useMission((s) => s.setName);
   const status = useEngineStatus((s) => s.status);
+  const [soundOn, setSoundOn] = React.useState(isSoundEnabled);
+  React.useEffect(() => {
+    const on = (e: Event) => setSoundOn(Boolean((e as CustomEvent<boolean>).detail));
+    window.addEventListener('sp-sound', on);
+    return () => window.removeEventListener('sp-sound', on);
+  }, []);
   const sc = scenario(result.design.scenarioId);
   const st = scenarioText(result.design.scenarioId);
   const reqs = result.score.requirements;
+  const missed = status === 'ready' ? reqs.filter((q) => !q.met).length : 0;
   const event = result.eventReplay !== undefined;
   const REQ_TEXT: Record<string, string> = { 'data-delivered': 'data' };
   const params = sc
@@ -69,6 +77,7 @@ export function Brief(): React.JSX.Element {
           {tx(st?.title, lang, sc?.name ?? '')}
         </h2>
         <p className="type-body brief-story-visible">{firstSentence}</p>
+        <p className="type-small brief-funda" data-testid="brief-funda">{t('brief.funda')}</p>
         <details className="brief-story-disclosure">
           <summary className="type-label">{t('brief.read_full')}</summary>
           <div className="brief-story-dropdown">
@@ -135,6 +144,11 @@ export function Brief(): React.JSX.Element {
 
       {/* Single focal CTA button: full width on mobile, RTL arrow mirroring, 1px depress + sound (X2) */}
       <div className="brief-start-cta">
+        {missed > 0 && (
+          <p className="type-heading brief-cta-line" data-testid="brief-cta-line">
+            {t(missed === 1 ? 'brief.cta_misses' : 'brief.cta_misses_many', { n: fmtNum(lang, missed) })}
+          </p>
+        )}
         <Button
           className="brief-start-btn"
           onClick={() => {
@@ -148,6 +162,24 @@ export function Brief(): React.JSX.Element {
           </span>
         </Button>
       </div>
+
+      {!soundOn && (
+        <div className="brief-sound-chip-row">
+          <button
+            type="button"
+            className="sp-btn sp-btn--quiet brief-sound-chip type-small"
+            onClick={() => {
+              setSoundEnabled(true);
+              setSoundOn(true);
+              playPartSnap();
+            }}
+          >
+            {t('sound.chip')}
+          </button>
+        </div>
+      )}
+
+      <ChallengeCards />
 
       <ScenarioPicker />
       {event && <EventCard />}

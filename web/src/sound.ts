@@ -28,6 +28,7 @@ export function setSoundEnabled(on: boolean): void {
   try {
     localStorage.setItem('sp-sound', on ? '1' : '0');
   } catch {}
+  window.dispatchEvent(new CustomEvent('sp-sound', { detail: on }));
 }
 
 function canPlay(): boolean {

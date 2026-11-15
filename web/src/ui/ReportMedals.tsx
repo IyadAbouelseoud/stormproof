@@ -1,6 +1,7 @@
 import React from 'react';
 import type { SimResult } from '@stormproof/engine';
 import { useI18n } from '../i18n';
+import { fmtNum } from '../format';
 
 export interface ReportMedalsProps {
   r: SimResult;
@@ -8,7 +9,8 @@ export interface ReportMedalsProps {
 
 /** Three mission medals (Plan flown, Sun survivor, Storm rider) computed purely from SimResult (X4 / prompt G2). */
 export function ReportMedals({ r }: { r: SimResult }): React.JSX.Element {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const missing = r.score.requirements.filter((q) => !q.met).map((q) => t(`req.${q.id}`)).join(', ');
 
   // 1. Plan flown: every requirement met
   const planFlownEarned = r.score.requirementsMet === r.score.requirements.length;
@@ -31,21 +33,21 @@ export function ReportMedals({ r }: { r: SimResult }): React.JSX.Element {
       earned: planFlownEarned,
       title: t('medal.plan_flown'),
       desc: t('medal.plan_flown_desc'),
-      calc: `${r.score.requirementsMet} / ${r.score.requirements.length}`,
+      calc: planFlownEarned ? `${r.score.requirementsMet} / ${r.score.requirements.length}` : t('medal.progress_plan', { met: r.score.requirementsMet, total: r.score.requirements.length, missing }),
     },
     {
       id: 'sun_survivor',
       earned: sunSurvivorEarned,
       title: t('medal.sun_survivor'),
       desc: t('medal.sun_survivor_desc'),
-      calc: `${r.planVsTruth.truthLifetimeDays}d vs ${r.planVsTruth.planLifetimeDays}d`,
+      calc: sunSurvivorEarned ? `${fmtNum(lang, r.planVsTruth.truthLifetimeDays)} / ${fmtNum(lang, r.planVsTruth.planLifetimeDays)}` : t('medal.progress_sun', { truth: fmtNum(lang, r.planVsTruth.truthLifetimeDays), plan: fmtNum(lang, r.planVsTruth.planLifetimeDays) }),
     },
     {
       id: 'storm_rider',
       earned: stormRiderEarned,
       title: t('medal.storm_rider'),
       desc: t('medal.storm_rider_desc'),
-      calc: spansStorm ? (stormRiderEarned ? t('medal.calc_survived') : t('medal.calc_lost')) : t('medal.calc_none'),
+      calc: spansStorm ? (stormRiderEarned ? t('medal.calc_survived') : t('medal.calc_lost')) : t('medal.progress_storm'),
     },
   ];
 

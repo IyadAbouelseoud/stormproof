@@ -1,12 +1,13 @@
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { GaugeId, Part, PartSlot } from '@stormproof/engine';
 import { useI18n } from '../i18n';
 import { fmtNum, fmtSigned } from '../format';
-import { partName } from '../content';
+import { artAlt, partName } from '../content';
+import { PartLab } from './PartLab';
 import { useMission } from '../store';
-import { knockOnTrail, partById, partsFor, simulate } from '../engineAdapter';
+import { knockOnTrail, mbPerPass, partById, partsFor, simulate } from '../engineAdapter';
 import { playPartSnap } from '../sound';
-import { SlotIcon, SrcTag, unitText } from './components';
+import { PartThumb, SlotIcon, SrcTag, unitText } from './components';
 
 interface Metric {
   key: string;
@@ -43,7 +44,8 @@ const SLOT_STATS: Record<string, Metric[]> = {
   fuel: [{ key: 'dv', label: 'part.dv', unit: 'm/s', get: num('deltaVMs'), better: 'higher' }],
 };
 
-const metricsFor = (slot: string): Metric[] => [...BASE, ...(SLOT_STATS[slot] ?? [])];
+/** P8: power is a load; panels make it and batteries store it, so their 0 W row is left out. */
+const metricsFor = (slot: string): Metric[] => [...BASE.filter((m) => !(m.key === 'power' && (slot === 'panels' || slot === 'battery'))), ...(SLOT_STATS[slot] ?? [])];
 
 const FOCUSABLE = 'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
@@ -54,7 +56,7 @@ export interface PartDetailProps {
 }
 
 export function PartDetail({ slot, sheet, onClose }: PartDetailProps): React.JSX.Element | null {
-  const { t, lang } = useI18n();
+  const { t, lang, cadet } = useI18n();
   const design = useMission((s) => s.design);
   const result = useMission((s) => s.result);
   const setPart = useMission((s) => s.setPart);
@@ -63,6 +65,8 @@ export function PartDetail({ slot, sheet, onClose }: PartDetailProps): React.JSX
 
   const current = partById(design.parts[slot]);
   const alts = partsFor(slot, design.scenarioId).filter((p) => p.id !== current?.id);
+  const [cmpId, setCmpId] = useState<string | null>(null);
+  const cmp = alts.find((a) => a.id === cmpId) ?? alts[0] ?? null;
 
   // Live knock-on: the same simulate() the store uses (truth mode), one part swapped, diffed against the live result.
   const knock = useMemo(() => {
@@ -152,6 +156,24 @@ export function PartDetail({ slot, sheet, onClose }: PartDetailProps): React.JSX
         </button>
       </header>
 
+      <div className="pd-art">
+        <PartThumb id={current.id} size="detail" alt={artAlt(current.id, lang)} />
+      </div>
+
+      <section className="pd-lab" aria-label={t('lab.title')}>
+        {alts.length > 0 && (
+          <div className="lab-pick" role="group" aria-label={t('lab.compare_with')}>
+            <span className="type-label">{t('lab.compare_with')}</span>
+            {alts.map((a) => (
+              <button key={a.id} type="button" className={`sp-btn sp-btn--secondary ${cmp?.id === a.id ? 'sp-btn--pressed' : ''}`} aria-pressed={cmp?.id === a.id} onClick={() => setCmpId(a.id)}>
+                {partName(a.id, lang, a.name)}
+              </button>
+            ))}
+          </div>
+        )}
+        <PartLab slot={slot} current={current} option={cmp} design={design} result={result} />
+      </section>
+
       <p className="type-body pd-does">
         <span className="pd-k type-label-l">{t('pd.does')}</span>
         {t(`slot.${slot}.does`)}
@@ -167,11 +189,12 @@ export function PartDetail({ slot, sheet, onClose }: PartDetailProps): React.JSX
           {metrics.map((m) => {
             const v = m.get(current);
             if (v === undefined) return null;
+            const perPass = cadet && m.key === 'dl';
             return (
               <div key={m.key} className="pd-num-row">
-                <dt className="type-body">{t(m.label)}</dt>
+                <dt className="type-body">{t(perPass ? 'part.per_pass' : m.label)}</dt>
                 <dd className="pd-mono">
-                  {fmtNum(lang, v, 4)} <span className="sp-unit">{unitText(t, m.unit)}</span>
+                  {perPass ? fmtNum(lang, mbPerPass(current, design), 0) : fmtNum(lang, v, 4)} <span className="sp-unit">{unitText(t, perPass ? 'MB/pass' : m.unit)}</span>
                 </dd>
               </div>
             );

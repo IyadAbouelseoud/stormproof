@@ -6,13 +6,17 @@ import { fmtSigned, reducedMotion } from '../format';
 import { partName } from '../content';
 import { useMission } from '../store';
 import { GAUGE_ORDER, PART_SLOTS, knockOnTrail, partById, partsFor } from '../engineAdapter';
-import { Button, Gauge, PartCard, SlotIcon, unitText } from '../ui/components';
+import { Button, Gauge, PartCard, SlotIcon, SrcTag, unitText } from '../ui/components';
+import { Term } from '../ui/Cadet';
 import { PartDetail } from '../ui/PartDetail';
 import { playPartSnap } from '../sound';
 import { CameraTrade } from '../ui/Jeddah';
 import { ScreenFrame } from './ScreenFrame';
+import { ReqTracker } from '../ui/ReqTracker';
 
 const FRAMES: FormFactor[] = ['1U', '3U', '6U'];
+/** H1 jargon help next to each slot heading. */
+const SLOT_TERMS: Record<string, string[]> = { camera: ['gsd', 'swath'], radio: ['downlink'], pointing: ['offnadir'], fuel: ['dv'] };
 
 /** Where each subsystem sits on art-p5 (percent of the image); panels appear twice. */
 const HOTSPOTS: Record<string, { x: number; y: number }[]> = {
@@ -188,7 +192,7 @@ function ExplodedDiagram(): React.JSX.Element {
 }
 
 /** Six gauges plus the knock-on trail (built only from the gauge deltas of two results). */
-export function GaugeRow(): React.JSX.Element {
+export function GaugeRow({ tracker = false }: { tracker?: boolean }): React.JSX.Element {
   const { t, lang } = useI18n();
   const result = useMission((s) => s.result);
   const prev = useMission((s) => s.prevResult);
@@ -208,6 +212,7 @@ export function GaugeRow(): React.JSX.Element {
 
   return (
     <section className="gauge-panel" aria-label={t('gauges.title')}>
+      {tracker && <ReqTracker />}
       <div className="gauge-row">
         {GAUGE_ORDER.map((id) => (
           <Gauge
@@ -248,7 +253,7 @@ export function Build(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Build">
-      <GaugeRow />
+      <GaugeRow tracker />
       <ExplodedDiagram />
       <section className="build-frame" aria-labelledby="frame-h">
         <h3 id="frame-h" className="type-label section-label">
@@ -264,16 +269,21 @@ export function Build(): React.JSX.Element {
       </section>
       {PART_SLOTS.map((slot) => (
         <section key={slot} className="part-group" aria-labelledby={`slot-${slot}`}>
-          <h3 id={`slot-${slot}`} className="type-label section-label slot-heading">
-            <SlotIcon slot={slot} />
-            <span>{t(`slot.${slot}`)}</span>
-          </h3>
+          <div className="slot-heading-row">
+            <h3 id={`slot-${slot}`} className="type-label section-label slot-heading" tabIndex={-1}>
+              <SlotIcon slot={slot} />
+              <span>{t(`slot.${slot}`)}</span>
+            </h3>
+            {(SLOT_TERMS[slot] ?? []).map((k) => <Term key={k} id={k} />)}
+            {partsFor(slot, design.scenarioId).some((p) => p.src.startsWith('game-balanced')) && <SrcTag src="game-balanced" />}
+          </div>
           {slot === 'camera' && event && <CameraTrade />}
           <div className="part-grid">
             {partsFor(slot, design.scenarioId).map((p) => (
               <PartCard
                 key={p.id}
                 part={p}
+                hideGb
                 selected={design.parts[slot] === p.id}
                 onSelect={() => {
                   playPartSnap();

@@ -1,0 +1,47 @@
+{
+  "_note": "H2 requirement tracker: which parts and settings move each requirement (static map, from the engine formulas in engine/src/flight.ts, orbit.ts, comms.ts). 'movers' are part slots or settings: altitude, launch, orbit, formFactor, rocket. No numbers here.",
+  "couplings": {
+    "revisit": {
+      "movers": ["pointing", "camera", "altitude"],
+      "hint": {
+        "en": "Better pointing looks further sideways, a wider photo covers more ground, and a higher orbit sees a wider strip.",
+        "ar": "التوجيه الأفضل ينظر أبعد جانبًا، والصورة الأعرض تغطي أرضًا أكثر، والمدار الأعلى يرى شريطًا أعرض."
+      }
+    },
+    "gsd": {
+      "movers": ["camera", "altitude"],
+      "hint": {
+        "en": "A sharper camera or a lower orbit sees smaller things.",
+        "ar": "الكاميرا الأوضح أو المدار الأدنى يرى أشياء أصغر."
+      }
+    },
+    "data-delivered": {
+      "movers": ["radio", "camera", "computer", "panels", "altitude"],
+      "hint": {
+        "en": "A faster radio sends more each pass, storage keeps photos until the next pass, and a longer life sends more in total.",
+        "ar": "الراديو الأسرع يرسل أكثر في كل مرور، والتخزين يحفظ الصور حتى المرور التالي، والعمر الأطول يرسل أكثر إجمالًا."
+      }
+    },
+    "lifetime": {
+      "movers": ["altitude", "launch", "fuel", "formFactor"],
+      "hint": {
+        "en": "Higher orbits have thinner air. A quieter Sun at launch helps too, and fuel can lift the orbit back up.",
+        "ar": "المدارات الأعلى هواؤها أرق. والشمس الأهدأ عند الإطلاق تساعد أيضًا، والوقود يرفع المدار من جديد."
+      }
+    },
+    "cost": {
+      "movers": ["camera", "pointing", "panels", "radio", "rocket"],
+      "hint": {
+        "en": "Cheaper parts or a cheaper rocket bring the total down.",
+        "ar": "القطع الأرخص أو الصاروخ الأرخص يخفض التكلفة الكلية."
+      }
+    },
+    "event-look": {
+      "movers": ["camera", "launch", "altitude", "pointing"],
+      "hint": {
+        "en": "Be in orbit on the day, with a camera that can see through cloud.",
+        "ar": "كن في المدار يوم الحدث، بكاميرا ترى عبر السحب."
+      }
+    }
+  }
+}

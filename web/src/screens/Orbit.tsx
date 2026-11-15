@@ -4,11 +4,13 @@ import { useI18n } from '../i18n';
 import { AliveIndicator } from '../ui/Jeddah';
 import { fmtNum, reducedMotion } from '../format';
 import { useMission } from '../store';
-import { ALT_MAX_KM, ALT_MIN_KM, altitudeBands, useEngineStatus, type AltitudeBands } from '../engineAdapter';
+import { ALT_MAX_KM, ALT_MIN_KM, altitudeBands, greenZone, useEngineStatus, type AltitudeBands } from '../engineAdapter';
 import { CheckMark, CrossMark, VerdictStamp } from '../ui/components';
 import { OrbitScene } from '../ui/OrbitScene';
 import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
+import { ReqTracker } from '../ui/ReqTracker';
+import { Term } from '../ui/Cadet';
 
 function CountUpNumber({ target }: { target: number }): React.JSX.Element {
   const [val, setVal] = useState(target);
@@ -104,6 +106,7 @@ export function Orbit(): React.JSX.Element {
   const result = useMission((s) => s.result);
   const status = useEngineStatus((s) => s.status);
   const [bands, setBands] = useState<AltitudeBands | null>(null);
+  const [green, setGreen] = useState<{ lo: number; hi: number } | null>(null);
   const [alt, setAlt] = useState(design.orbit.altitudeKm);
 
   useEffect(() => {
@@ -114,7 +117,12 @@ export function Orbit(): React.JSX.Element {
   const bandKey = JSON.stringify({ ...design, orbit: { ...design.orbit, altitudeKm: 0 } });
   useEffect(() => {
     setBands(null);
-    const id = window.setTimeout(() => setBands(altitudeBands(design)), 30);
+    setGreen(null);
+    const id = window.setTimeout(() => {
+      const b = altitudeBands(design);
+      setBands(b);
+      setGreen(greenZone(design, b));
+    }, 30);
     return () => window.clearTimeout(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bandKey, status]);
@@ -136,6 +144,7 @@ export function Orbit(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Orbit">
+      <div className="tracker-sticky"><ReqTracker /></div>
       <div className="orbit-table-layout">
         {/* Left 60%: Big Orbit Scene, live drag ring, and altitude controls */}
         <div className="orbit-col-scene">
@@ -159,6 +168,9 @@ export function Orbit(): React.JSX.Element {
                 {bands?.disposalAboveKm != null && (
                   <div className="alt-band-disposal" style={{ insetInlineStart: pct(bands.disposalAboveKm), insetInlineEnd: 0 }} />
                 )}
+                {green && (
+                  <div className="alt-band-green" data-testid="green-zone" style={{ insetInlineStart: pct(green.lo - 5), inlineSize: `calc(${pct(green.hi + 5)} - ${pct(green.lo - 5)})` }} />
+                )}
               </div>
               <input
                 type="range"
@@ -178,6 +190,11 @@ export function Orbit(): React.JSX.Element {
               </div>
             </div>
 
+            {bands && (
+              <p className={`type-body alt-green-text ${green ? '' : 'alt-green-text--none'}`} aria-live="polite">
+                {green ? t('orbit.green', { lo: green.lo, hi: green.hi }) : t('orbit.green_none')}
+              </p>
+            )}
             <ul className="alt-legend type-small">
               <li className="alt-legend-drag">
                 {bands === null
@@ -240,6 +257,7 @@ export function Orbit(): React.JSX.Element {
               <span className={`fcc-snap-badge type-label ${fccCompliant ? 'fcc-snap-badge--ok' : 'fcc-snap-badge--warn'}`}>
                 {fccCompliant ? t('orbit.fcc_marker_pass') : t('orbit.fcc_marker_warn')}
               </span>
+              <Term id="fcc" />
             </div>
 
             <div className="sun-risk-grid">

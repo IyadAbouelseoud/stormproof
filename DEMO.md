@@ -4,6 +4,8 @@ The live slot is 3 minutes in total. This demo takes about 75 seconds of it. Eve
 
 ## Before you start
 - Open the live URL (or `pnpm --filter @stormproof/web preview`) at 1440 x 900 or larger. English. Night theme (default). Sound is off by default; leave it off.
+- **Mode: Engineer.** The header switch defaults to *Cadet* (plain words, tips, goal tracker) for first-time players. The judges' demo below is scripted in **Engineer**: press "Engineer" next to the language button once before you start (it is remembered). Every number is the same in both modes; in Cadet two labels read differently ("Lifetime" is "Stays up for").
+- New since v1.0-rc2 (prompt H): a goal tracker strip on Build/Orbit/Launch (projected score and stars), the Part lab in each part's detail panel, one storm decision per flight, and a Report top card with "Best next fix". None of them changes a demo number; `web/scripts/demo-walk.mjs` checks them in Engineer.
 - Reload the page so the design is the default Angola mission. For a room with no Wi-Fi, serve the built site locally (`pnpm --filter @stormproof/web preview`): then nothing needs the network. There is no service worker, so the hosted site needs a connection to load pictures it has not shown yet.
 - Check: `cd web && pnpm build && pnpm preview --port 4172`, then `node scripts/demo-walk.mjs` must print `RESULT: 0 wrong numbers, 0 console/network problems`.
 
