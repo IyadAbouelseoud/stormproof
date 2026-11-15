@@ -26,7 +26,15 @@ try {
     await page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
     await page.waitForSelector('#screen-heading-build');
   };
-  const text = () => page.evaluate(() => document.body.innerText.toLowerCase());
+  const text = async () => {
+    // the equipment bay shows one slot at a time: read every tab
+    let all = '';
+    for (const s of ['camera', 'panels', 'battery', 'radio', 'computer', 'pointing', 'fuel']) {
+      if (await page.locator(`.bay-tab[data-slot="${s}"]`).count()) await page.click(`.bay-tab[data-slot="${s}"]`);
+      all += await page.evaluate(() => document.body.innerText.toLowerCase());
+    }
+    return all;
+  };
   // default is Cadet
   if ((await page.getAttribute('html', 'data-mode')) !== 'cadet') fails.push('default mode is not cadet');
   await toBuild();

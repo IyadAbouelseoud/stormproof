@@ -358,23 +358,37 @@ export function Refly(): React.JSX.Element {
       {/* Fly Again Ceremony Button */}
       <div className="refly-actions console-panel">
         {ceremony === 'idle' ? (
-          <Button className="refly-fly-again-btn" onClick={startCeremony}>
-            <span className="type-display-l">{t('refly.fly_again')}</span>
-          </Button>
+          <div className="refly-action-grid">
+            <button type="button" className="refly-action refly-action--primary" onClick={startCeremony}>
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" className="refly-action-icon">
+                <path d="M12 2 C15 5 16 9 15 14 L9 14 C8 9 9 5 12 2 Z M9 14 L6 18 L9 17 M15 14 L18 18 L15 17 M10.5 17 L12 21 L13.5 17" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+              </svg>
+              <span className="refly-action-text">
+                <span className="type-heading">{t('refly.fly_again')}</span>
+                <span className="type-small">{t('refly.fly_again_hint')}</span>
+              </span>
+            </button>
+            <button type="button" className="refly-action" onClick={changeOne}>
+              <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" className="refly-action-icon">
+                <path d="M4 20 L8 19 L19 8 L16 5 L5 16 Z M14 7 L17 10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+              </svg>
+              <span className="refly-action-text">
+                <span className="type-heading">{t('refly.change_one')}</span>
+                <span className="type-small">{t('refly.change_one_hint')}</span>
+              </span>
+            </button>
+          </div>
         ) : (
           <div className="refly-ceremony" role="status" aria-live="assertive">
             <p className="launch-countdown-num type-data-l">{count}</p>
           </div>
         )}
 
-        <div className="btn-row">
-          <Button variant="secondary" onClick={changeOne}>{t('refly.change_one')}</Button>
-          {baseline && (
-            <Button variant="quiet" onClick={clearBaseline}>
-              {t('refly.clear')}
-            </Button>
-          )}
-        </div>
+        {baseline && ceremony === 'idle' && (
+          <Button variant="quiet" onClick={clearBaseline}>
+            {t('refly.clear')}
+          </Button>
+        )}
       </div>
     </ScreenFrame>
   );

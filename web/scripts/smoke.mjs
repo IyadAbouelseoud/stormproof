@@ -51,7 +51,7 @@ try {
         if (name === 'orbit') await page.waitForTimeout(1500);
         if (name === 'build') {
           // change one part to exercise the trail
-          await page.locator('.part-group').first().locator('.sp-part').nth(1).click();
+          await page.locator('.bay-cards .sp-part').nth(1).click();
           await page.waitForTimeout(800);
         }
         await shot(name);
