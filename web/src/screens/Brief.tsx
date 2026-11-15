@@ -11,6 +11,7 @@ import { scenarioText, tx } from '../content';
 import { EventCard, Limits, ScenarioPicker } from '../ui/Jeddah';
 import { isSoundEnabled, playPartSnap, setSoundEnabled } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
+import { ChallengeCards } from '../ui/Challenges';
 
 export function Brief(): React.JSX.Element {
   const { t, lang } = useI18n();
@@ -172,6 +173,8 @@ export function Brief(): React.JSX.Element {
           </button>
         </div>
       )}
+
+      <ChallengeCards />
 
       <ScenarioPicker />
       {event && <EventCard />}

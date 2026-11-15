@@ -424,3 +424,40 @@
 }
 .brief-start-cta { flex-direction: column; align-items: center; }
 .brief-start-cta .brief-start-btn { max-inline-size: 100%; }
+
+/* ---------- H7 / H8 ---------- */
+.challenges { margin-block: var(--space-24); }
+.challenge-list {
+  list-style: none;
+  margin: var(--space-8) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+  gap: var(--space-12);
+}
+.challenge-card {
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-2);
+  background-color: var(--color-ground-raised);
+  padding: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  align-items: flex-start;
+}
+.challenge-card p { margin: 0; }
+.challenge-card--on { border-color: var(--color-lapis); border-width: 2px; }
+.challenge-name { font-weight: 600; }
+.challenge-status { margin: 0; }
+.challenge-status--ok { color: var(--color-ok); }
+.mission-patch {
+  margin: 0 0 var(--space-12);
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-12);
+  border: 1px solid var(--color-brass);
+  border-radius: var(--radius-4);
+}
+.mission-patch-text { display: flex; flex-direction: column; gap: var(--space-4); }
+.mission-patch-name { font-weight: 600; }

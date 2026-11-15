@@ -7,7 +7,8 @@ import { useMission } from '../store';
 import { useNavigation } from '../navigation';
 import { bestNextFix, gibsImages, partById, reportSources, simulate, type GibsImage } from '../engineAdapter';
 import { Stars } from '../ui/Cadet';
-import { partName } from '../content';
+import { partName, scenarioText, tx } from '../content';
+import { ChallengeStatus, MissionPatch } from '../ui/Challenges';
 import { Button, CauseChain, MissionTicket, VerdictStamp, unitText } from '../ui/components';
 import { Illustration } from '../ui/Illustration';
 import { EmptyState } from '../ui/EmptyState';
@@ -221,6 +222,7 @@ export function Report(): React.JSX.Element {
 
         {flight && (
           <div className="report-next">
+            <ChallengeStatus r={r} />
             <p className="type-label">{t('report.best_fix')}</p>
             {fix.best ? (
               <Button className="report-fix-btn" onClick={applyFix} data-testid="best-fix">
@@ -427,6 +429,7 @@ export function Report(): React.JSX.Element {
           <div className="console-panel-header">
             <span className="type-label section-label">{t('report.passport')}</span>
           </div>
+          <MissionPatch r={r} name={tx(scenarioText(r.design.scenarioId)?.title, lang, r.design.scenarioId)} />
           <MissionTicket code={r.missionCode} />
           <div className="report-p6-slot">
             <Illustration

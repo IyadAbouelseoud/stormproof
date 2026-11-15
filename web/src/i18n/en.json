@@ -717,5 +717,13 @@
   "coach.orbit": "The green zone is where every goal passes. Too low and the air drags you down; too high and you break the clean-space rule.",
   "coach.launch": "Pick a launch date on the Sun stripe. Bright months mean an active Sun and thicker air.",
   "orbit.green": "Green zone: {lo} to {hi} km, every tracked goal passes",
-  "orbit.green_none": "No altitude passes every goal with these parts. Change a part first."
+  "orbit.green_none": "No altitude passes every goal with these parts. Change a part first.",
+  "challenge.title": "Challenges",
+  "challenge.try": "Try it",
+  "challenge.active": "Challenge: {title}",
+  "challenge.done": "Challenge complete.",
+  "challenge.not_yet": "Not yet. Change the design and fly again.",
+  "challenge.loaded": "Challenge loaded: {title}",
+  "patch.title": "Mission patch",
+  "patch.label": "Mission patch: {name}, score {score} of 100, {stars} of 3 stars"
 }
