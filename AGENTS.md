@@ -89,4 +89,4 @@ Done / In progress / Next (resume prompt) / Blocked and disclosed limits. See HA
 - [x] SI tags on AI images; no NASA logos; credits.json for GIBS (27 art files viewed, no NASA marks, no people; qa/TRACK3.md s3)
 - [x] axe: zero serious/critical at 390x844 and 1440x900, EN and AR, Paper and Night (16 combinations, both scenarios; qa/TRACK2.md s2)
 - [x] Deployed URL opens in a private window with no login (fresh browser context, HTTP 200, serves the v1.0-rc2 build index-Cz58yarf.js, demo gate passes on the live URL; repo page also public)
-- [ ] Tag v1.0-rc, then v1.0 by Sun 12:30; code freeze Sun 13:00 (v1.0-rc2 tagged on 9b425f3 after the final pass; the older v1.0-rc stays on 68bfb27; v1.0 still to tag)
+- [x] Tag v1.0-rc, then v1.0 by Sun 12:30; code freeze Sun 13:00 (v1.0 tagged on 66884d5 after prompt H, deployed and checked on the live URL; v1.0-rc2 stays on 9b425f3, v1.0-rc on 68bfb27)
