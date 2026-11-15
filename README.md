@@ -6,6 +6,8 @@
 
 **Play it:** https://iyadabouelseoud.github.io/stormproof/ (free, no login, English and Arabic, laptop or phone). Release: `v1.0.1`.
 
+**Pitch deck:** [pitch/STORMPROOF-pitch-deck.pdf](pitch/STORMPROOF-pitch-deck.pdf) (7 slides; screenshots are real game output for seed 20230415).
+
 ## Summary
 Stormproof is a satellite-design game where the real Sun decides how long your satellite lives. Your team designs a 1U, 3U or 6U CubeSat to map drought in Angola's Cunene and Namibe provinces: you pick the camera, panels, battery, radio, computer, pointing and fuel, the orbit, the rocket and a launch date between 2015 and 2026. The game then flies it twice: once through the Sun the 2019 forecast promised (plan) and once through the Sun that really happened, from NASA OMNIWeb data and NASA DONKI storms (truth). Atmospheric drag comes from pre-computed NRLMSIS 2.1 density tables driven by NASA OMNIWeb solar and geomagnetic indices, so a stronger Sun means thicker air and an earlier reentry. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days (the paper's forecast-Sun scenario gives a lifetime about 1.5 times longer); the report shows how many days the Sun took from your mission, step by step, and whether you met the FCC 5-year and NASA 25-year disposal rules.
 
