@@ -1,5 +1,5 @@
 // Axe + overflow + AR text + screenshots sweep. cwd web/. Usage: node ../qa/track2/sweep.mjs [BASE]
-// env: ONLY="390-ar-paper" restricts combos; RESFILE=name.json
+// env: ONLY="390-ar-paper" restricts combos; RESFILE=name.json; MODE=cadet|engineer (prompt H; default cadet)
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -95,6 +95,7 @@ for (const scen of ['angola', 'jeddah'])
     console.log('==', tag);
     const ctx = await browser.newContext({ viewport: { width: vp[0], height: vp[1] } });
     const page = await ctx.newPage();
+    await page.addInitScript((m) => { try { localStorage.setItem('sp-mode', m); } catch {} }, process.env.MODE ?? 'cadet');
     page.on('console', (m) => m.type() === 'error' && report.errors.push(`${tag} console: ${m.text()}`));
     page.on('pageerror', (e) => report.errors.push(`${tag} pageerror: ${e.message}`));
     page.on('crash', () => report.errors.push(`${tag} CRASH`));
@@ -125,6 +126,10 @@ for (const scen of ['angola', 'jeddah'])
       }
       const next = () => page.click('.nav-controls-bar .sp-btn-nav >> nth=1');
       await next(); await page.waitForTimeout(500); await I('build');
+      const chipBad = page.locator('.tracker-chip--fail').first();
+      if (await chipBad.count()) { await chipBad.click(); await page.waitForTimeout(300); await I('build-tracker-hint'); await page.keyboard.press('Escape'); }
+      await page.locator('.xd-spot[data-slot="camera"]').first().click(); await page.waitForTimeout(1200); await I('build-partlab');
+      await page.keyboard.press('Escape'); await page.waitForTimeout(300);
       await next(); await page.waitForTimeout(1500); await I('orbit');
       await next();
       await page.waitForSelector('.launch-btn:not([disabled])', { timeout: 15000 });

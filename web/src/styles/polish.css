@@ -412,3 +412,15 @@
 .report-why .sp-btn--quiet { align-self: flex-start; }
 .report-score-box .stars { margin-block-start: var(--space-4); }
 .brief-sound-chip-row { display: flex; justify-content: center; margin-block: var(--space-8); }
+
+/* Header: the Cadet/Engineer switch made the control row wider than a phone; let it wrap. */
+.header-controls { flex-wrap: wrap; justify-content: flex-end; row-gap: var(--space-8); max-inline-size: 100%; }
+@media (max-width: 600px) {
+  .header-controls { gap: var(--space-8); justify-content: flex-start; }
+  .mode-toggle-btn { padding-inline: var(--space-8); }
+}
+@media (max-width: 600px) {
+  .sound-tooltip { display: none; }
+}
+.brief-start-cta { flex-direction: column; align-items: center; }
+.brief-start-cta .brief-start-btn { max-inline-size: 100%; }

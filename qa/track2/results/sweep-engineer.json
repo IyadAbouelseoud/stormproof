@@ -1,0 +1,25 @@
+{
+ "axe": [],
+ "overflow": [],
+ "dials": [],
+ "errors": [
+  "angola-390-en-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-390-en-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-390-ar-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-390-ar-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-1440-en-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-1440-en-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-1440-ar-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "angola-1440-ar-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-390-en-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-390-en-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-390-ar-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-390-ar-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-1440-en-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-1440-en-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-1440-ar-night walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/",
+  "jeddah-1440-ar-paper walk: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4172/"
+ ],
+ "arText": {},
+ "misc": []
+}

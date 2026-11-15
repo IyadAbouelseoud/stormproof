@@ -7,6 +7,8 @@
 ## Summary
 Stormproof is a satellite-design game where the real Sun decides how long your satellite lives. Your team designs a 1U, 3U or 6U CubeSat to map drought in Angola's Cunene and Namibe provinces: you pick the camera, panels, battery, radio, computer, pointing and fuel, the orbit, the rocket and a launch date between 2015 and 2026. The game then flies it twice: once through the Sun the 2019 forecast promised (plan) and once through the Sun that really happened, from NASA OMNIWeb data and NASA DONKI storms (truth). Atmospheric drag comes from pre-computed NRLMSIS 2.1 density tables driven by NASA OMNIWeb solar and geomagnetic indices, so a stronger Sun means thicker air and an earlier reentry. FACSAT-2 was designed for five years, flew into a stronger Sun than forecast, and lasted 926 days (about 2.5 years, against a forecast-Sun scenario that promised about 1.5 times longer); the report shows how many days the Sun took from your mission, step by step, and whether you met the FCC 5-year and NASA 25-year disposal rules.
 
+**Two modes (header switch):** *Cadet* (default) uses plain words ("Photo width" for swath, "Sun activity: High" for F10.7, "Storm strength 7 of 9" for Kp), a one-line "why it matters" under every gauge, "?" help on each term, first-run tips and a goal tracker. *Engineer* shows the original engineering terms. Both modes run the same engine with the same requirements, targets and scoring: Cadet changes words, hints and visuals only. The Build "Part lab" previews each option at your orbit (camera views from the real NASA GIBS HLS 30 m image blurred to that camera's resolution, power, eclipse battery, pass, storage, pointing reach, fuel), all computed by the engine's own formulas or engine runs.
+
 ## How to run
 Requirements: Node 22 LTS, pnpm 10, and (only to rebuild the data) Python 3.12 with uv.
 
@@ -95,7 +97,9 @@ QA reports from the final pass: `qa/TRACK1.md` (physics), `qa/TRACK2.md` (crash 
 - **Orbit averaging:** densities are averaged over 12 points per orbit (SSO: 2 UT times; 51.6 deg: 4 node local times). The Funda ground station position is approximate.
 - **Map:** the 2D map has no coastline (no offline coastline source shipped). It draws a graticule, the ground track, the target latitude and the ground station only.
 - **Illustrations:** every picture in `web/public/img/art` is AI-generated and tagged "SI-generated" on screen. They are illustration only, never data or real places. Real imagery is the NASA GIBS pictures on the Report screen.
-- **Night background:** a real NASA ISS photo, iss073e0516005 (images.nasa.gov/details/iss073e0516005), public domain; cropped and darkened. Not AI-generated.
+- **Night background:** a real NASA ISS photo, iss073e0516005 (images.nasa.gov/details/iss073e0516005), public domain; cropped and darkened. Not AI-generated. Credited in the app footer.
+- **Part illustrations:** the 21 Build part thumbnails (`web/public/img/art/parts/`) are AI-generated ink drawings, tagged "SI-generated" on screen; illustration only.
+- **Cadet wording:** the "air thickness" bar in Cadet mode is a display scale (log of density, 1e-14 to 1e-10 kg/m3); the number is in its tooltip. Star bands (60 / 80 / 95 points) are game-balanced.
 - **Launch slip:** truth flights include a seeded launch slip of 0-12 months, so the headline "the Sun took N days" is net of the slip; the Report prints both numbers.
 - **Pictures offline:** pictures load on demand; without a network the hosted site cannot fetch a picture it has not shown yet. Served locally, nothing needs the network.
 - **Sources table on the Report** covers the Report's numbers. Part and rocket numbers carry their tag on the cards; GIBS pictures are credited in `web/public/img/gibs/credits.json` rather than in `content/sources.csv`.
