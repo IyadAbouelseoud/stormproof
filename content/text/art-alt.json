@@ -146,5 +146,89 @@
   "art-p23-log-border-v1": {
     "en": "Decorative border strip.",
     "ar": "شريط زخرفي."
+  },
+  "camera-budget": {
+    "en": "Illustration of the budget camera part.",
+    "ar": "رسم توضيحي لقطعة: كاميرا اقتصادية."
+  },
+  "camera-standard": {
+    "en": "Illustration of the standard camera part.",
+    "ar": "رسم توضيحي لقطعة: كاميرا قياسية."
+  },
+  "camera-sharp": {
+    "en": "Illustration of the sharp camera part.",
+    "ar": "رسم توضيحي لقطعة: كاميرا عالية الدقة."
+  },
+  "camera-radar": {
+    "en": "Illustration of the radar camera part.",
+    "ar": "رسم توضيحي لقطعة: كاميرا رادارية."
+  },
+  "panels-small": {
+    "en": "Illustration of the small panels part.",
+    "ar": "رسم توضيحي لقطعة: ألواح صغيرة."
+  },
+  "panels-medium": {
+    "en": "Illustration of the medium panels part.",
+    "ar": "رسم توضيحي لقطعة: ألواح متوسطة."
+  },
+  "panels-large": {
+    "en": "Illustration of the large panels part.",
+    "ar": "رسم توضيحي لقطعة: ألواح كبيرة."
+  },
+  "battery-small": {
+    "en": "Illustration of the small battery part.",
+    "ar": "رسم توضيحي لقطعة: بطارية صغيرة."
+  },
+  "battery-medium": {
+    "en": "Illustration of the medium battery part.",
+    "ar": "رسم توضيحي لقطعة: بطارية متوسطة."
+  },
+  "battery-large": {
+    "en": "Illustration of the large battery part.",
+    "ar": "رسم توضيحي لقطعة: بطارية كبيرة."
+  },
+  "radio-slow": {
+    "en": "Illustration of the slow radio part.",
+    "ar": "رسم توضيحي لقطعة: راديو بطيء."
+  },
+  "radio-standard": {
+    "en": "Illustration of the standard radio part.",
+    "ar": "رسم توضيحي لقطعة: راديو قياسي."
+  },
+  "radio-fast": {
+    "en": "Illustration of the fast radio part.",
+    "ar": "رسم توضيحي لقطعة: راديو سريع."
+  },
+  "computer-basic": {
+    "en": "Illustration of the basic computer part.",
+    "ar": "رسم توضيحي لقطعة: حاسوب بسيط."
+  },
+  "computer-standard": {
+    "en": "Illustration of the standard computer part.",
+    "ar": "رسم توضيحي لقطعة: حاسوب قياسي."
+  },
+  "computer-large": {
+    "en": "Illustration of the large computer part.",
+    "ar": "رسم توضيحي لقطعة: حاسوب كبير."
+  },
+  "pointing-basic": {
+    "en": "Illustration of the basic pointing part.",
+    "ar": "رسم توضيحي لقطعة: توجيه أساسي."
+  },
+  "pointing-standard": {
+    "en": "Illustration of the standard pointing part.",
+    "ar": "رسم توضيحي لقطعة: توجيه قياسي."
+  },
+  "pointing-precise": {
+    "en": "Illustration of the precise pointing part.",
+    "ar": "رسم توضيحي لقطعة: توجيه دقيق."
+  },
+  "fuel-small": {
+    "en": "Illustration of the small fuel tank part.",
+    "ar": "رسم توضيحي لقطعة: خزان وقود صغير."
+  },
+  "fuel-large": {
+    "en": "Illustration of the large fuel tank part.",
+    "ar": "رسم توضيحي لقطعة: خزان وقود كبير."
   }
 }

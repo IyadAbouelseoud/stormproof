@@ -53,7 +53,7 @@ export function SunStripe({ months, value, onChange, label, pulseStorm }: SunStr
     .filter(({ m }) => m.month.endsWith('-01'));
 
   const valueText = sel
-    ? t('sun.cursor', { date: fmtMonth(lang, sel.month), sfu: fmtNum(lang, sel.f107) }) +
+    ? t('sun.cursor', { date: fmtMonth(lang, sel.month), sfu: fmtNum(lang, sel.f107), level: t(`sunlevel.${sunLevel(sel.f107)}`) }) +
       (sel.forecast ? ` (${t('sun.forecast')})` : '')
     : '';
 

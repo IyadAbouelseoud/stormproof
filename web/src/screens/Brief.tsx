@@ -24,6 +24,7 @@ export function Brief(): React.JSX.Element {
   const sc = scenario(result.design.scenarioId);
   const st = scenarioText(result.design.scenarioId);
   const reqs = result.score.requirements;
+  const missed = status === 'ready' ? reqs.filter((q) => !q.met).length : 0;
   const event = result.eventReplay !== undefined;
   const REQ_TEXT: Record<string, string> = { 'data-delivered': 'data' };
   const params = sc
@@ -69,6 +70,7 @@ export function Brief(): React.JSX.Element {
           {tx(st?.title, lang, sc?.name ?? '')}
         </h2>
         <p className="type-body brief-story-visible">{firstSentence}</p>
+        <p className="type-small brief-funda" data-testid="brief-funda">{t('brief.funda')}</p>
         <details className="brief-story-disclosure">
           <summary className="type-label">{t('brief.read_full')}</summary>
           <div className="brief-story-dropdown">
@@ -135,6 +137,11 @@ export function Brief(): React.JSX.Element {
 
       {/* Single focal CTA button: full width on mobile, RTL arrow mirroring, 1px depress + sound (X2) */}
       <div className="brief-start-cta">
+        {missed > 0 && (
+          <p className="type-heading brief-cta-line" data-testid="brief-cta-line">
+            {t(missed === 1 ? 'brief.cta_misses' : 'brief.cta_misses_many', { n: fmtNum(lang, missed) })}
+          </p>
+        )}
         <Button
           className="brief-start-btn"
           onClick={() => {

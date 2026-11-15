@@ -25,7 +25,8 @@ import {
   type GaugeId,
   type RequirementId,
 } from '@stormproof/engine';
-import { inclinationDeg, periodS } from '../../engine/src/orbit';
+import { eclipseFraction, fundaPasses, gsdM, inclinationDeg, periodS, swathKm } from '../../engine/src/orbit';
+import { climbKmFromDeltaV } from '../../engine/src/decay';
 import {
   FUNDA_LAT_DEG,
   FUNDA_LON_DEG,
@@ -39,6 +40,8 @@ import {
   DENSITY_MIN_ALT_KM,
   DENSITY_MAX_ALT_KM,
   SOURCES,
+  SOLAR_CONSTANT_W_M2,
+  CELL_EFFICIENCY,
 } from '../../engine/src/constants';
 import mockResultJson from '../../engine/test/fixtures/mock-result.json';
 import partsJson from '../../content/parts.json';
@@ -572,3 +575,46 @@ export function reportSources(r: SimResult, gibs: GibsImage | null): SourceRow[]
   }
   return rows;
 }
+
+// ---------------------------------------------------------------------------
+// H3 Part lab: per-part numbers at the current orbit, from the engine's own functions (computed)
+// ---------------------------------------------------------------------------
+
+export interface OrbitPhysics {
+  passesPerDay: number;
+  contactMinPerDay: number;
+  /** Mean length of one pass over Funda, minutes. */
+  passMin: number;
+  /** Minutes of Earth shadow per orbit (beta 0). */
+  eclipseMin: number;
+  periodMin: number;
+}
+
+export function orbitPhysics(design: MissionDesign): OrbitPhysics {
+  const alt = design.orbit.altitudeKm;
+  const p = fundaPasses(design.orbit.type, alt);
+  const periodMin = periodS(alt) / 60;
+  return {
+    passesPerDay: p.passesPerDay,
+    contactMinPerDay: p.contactMinPerDay,
+    passMin: p.passesPerDay > 0 ? p.contactMinPerDay / p.passesPerDay : 0,
+    eclipseMin: eclipseFraction(alt) * periodMin,
+    periodMin,
+  };
+}
+
+/** Orbit-average power a set of panels makes at this altitude, W (engine power.ts formula). */
+export function panelGenW(part: Part, altKm: number): number {
+  return SOLAR_CONSTANT_W_M2 * CELL_EFFICIENCY * (part.effectiveAreaM2 ?? 0) * (1 - eclipseFraction(altKm));
+}
+
+/** Data one pass sends down, MB (Mbps x pass seconds / 8). */
+export function mbPerPass(part: Part, design: MissionDesign): number {
+  return ((part.downlinkMbps ?? 0) * orbitPhysics(design).passMin * 60) / 8;
+}
+
+export const groundResolutionM = (part: Part, altKm: number): number => gsdM(part.gsdAt500M ?? 0, altKm);
+export const photoWidthKm = (part: Part, altKm: number): number => swathKm(part.swathAt500Km ?? 0, altKm);
+/** Total orbit raise the tank's delta-v allows at this altitude, km (engine decay.ts). */
+export const climbKm = (part: Part, altKm: number): number => climbKmFromDeltaV(altKm, part.deltaVMs ?? 0);
+export const batteryDod = BATTERY_DOD;

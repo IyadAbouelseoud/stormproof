@@ -24,9 +24,9 @@ function layer(n: number, seed: number, colors: string[]): string {
   }
   return out.join(',');
 }
-const INK = 'var(--color-ink)';
-const LAPIS = 'var(--color-lapis)';
-const BRASS = 'var(--color-brass)';
+const INK = 'var(--star-white)';
+const LAPIS = 'var(--star-cool)';
+const BRASS = 'var(--star-warm)';
 const SHADOWS = {
   s1: layer(220, 11, [INK]),
   s2: layer(90, 23, [INK, INK, INK, LAPIS]),
@@ -51,14 +51,14 @@ export function Starfield(): React.JSX.Element {
       return;
     }
     setWarp((n) => n + 1);
-    const t = window.setTimeout(() => setWarp(0), 700);
+    const t = window.setTimeout(() => setWarp(0), 300);
     return () => window.clearTimeout(t);
   }, [currentScreen]);
 
   useEffect(() => {
     const onWarp = () => {
       setWarp((n) => n + 1);
-      window.setTimeout(() => setWarp(0), 700);
+      window.setTimeout(() => setWarp(0), 300);
     };
     window.addEventListener('sp-warp', onWarp);
     return () => window.removeEventListener('sp-warp', onWarp);

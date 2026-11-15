@@ -9,6 +9,8 @@ import { CheckMark, CrossMark, VerdictStamp } from '../ui/components';
 import { OrbitScene } from '../ui/OrbitScene';
 import { Illustration } from '../ui/Illustration';
 import { ScreenFrame } from './ScreenFrame';
+import { ReqTracker } from '../ui/ReqTracker';
+import { Term } from '../ui/Cadet';
 
 function CountUpNumber({ target }: { target: number }): React.JSX.Element {
   const [val, setVal] = useState(target);
@@ -136,6 +138,7 @@ export function Orbit(): React.JSX.Element {
 
   return (
     <ScreenFrame id="Orbit">
+      <div className="tracker-sticky"><ReqTracker /></div>
       <div className="orbit-table-layout">
         {/* Left 60%: Big Orbit Scene, live drag ring, and altitude controls */}
         <div className="orbit-col-scene">
@@ -240,6 +243,7 @@ export function Orbit(): React.JSX.Element {
               <span className={`fcc-snap-badge type-label ${fccCompliant ? 'fcc-snap-badge--ok' : 'fcc-snap-badge--warn'}`}>
                 {fccCompliant ? t('orbit.fcc_marker_pass') : t('orbit.fcc_marker_warn')}
               </span>
+              <Term id="fcc" />
             </div>
 
             <div className="sun-risk-grid">

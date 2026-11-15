@@ -93,6 +93,16 @@
   --warn: #7A4F00;
   --color-fail: #A32020;
   --fail: #A32020;
+  --color-star-white: #F4F1EA;
+  --star-white: #F4F1EA;
+  --color-star-warm: #F2DDB8;
+  --star-warm: #F2DDB8;
+  --color-star-cool: #C9D4F2;
+  --star-cool: #C9D4F2;
+  --color-plate: #F2ECDF;
+  --plate: #F2ECDF;
+  --color-plate-rule: #C9BFAC;
+  --plate-rule: #C9BFAC;
 }
 
 /* Night Theme */
@@ -131,6 +141,16 @@
   --warn: #E6B04A;
   --color-fail: #FF7A7A;
   --fail: #FF7A7A;
+  --color-star-white: #F4F1EA;
+  --star-white: #F4F1EA;
+  --color-star-warm: #F2DDB8;
+  --star-warm: #F2DDB8;
+  --color-star-cool: #C9D4F2;
+  --star-cool: #C9D4F2;
+  --color-plate: #F2ECDF;
+  --plate: #F2ECDF;
+  --color-plate-rule: #C9BFAC;
+  --plate-rule: #C9BFAC;
 }
 
 /* Typography Utility Classes */

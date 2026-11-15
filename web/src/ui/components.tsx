@@ -4,6 +4,8 @@ import { useI18n } from '../i18n';
 import { messageTemplate, partName } from '../content';
 import { fmtCompact, fmtNum, fmtSigned } from '../format';
 import { useMission } from '../store';
+import { Term } from './Cadet';
+import { mbPerPass, panelGenW } from '../engineAdapter';
 
 /** Localized unit label; falls back to the raw unit when no key exists. */
 export function unitText(t: (k: string) => string, unit: string): string {
@@ -67,7 +69,7 @@ export interface GaugeProps {
 }
 
 export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): React.JSX.Element {
-  const { t, lang } = useI18n();
+  const { t, lang, cadet } = useI18n();
   const ratio = gauge.limit > 0 ? gauge.value / gauge.limit : 0;
   const fill = Math.max(0, Math.min(1, ratio));
   // tick ratio at required margin
@@ -110,7 +112,7 @@ export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): Re
       aria-label={t(`gauge.${gauge.id}`)}
     >
       <div className="sp-gauge-head">
-        <span className="type-label sp-gauge-name">{t(`gauge.${gauge.id}`)}</span>
+        <span className="type-label sp-gauge-name">{t(`gauge.${gauge.id}`)}{gauge.id === 'comms' && <Term id="comms" />}</span>
         <span className="type-label sp-gauge-state">{t(`state.${gauge.state}`)}</span>
       </div>
 
@@ -162,15 +164,17 @@ export function Gauge({ gauge, changedIndex = -1, animKey = 0 }: GaugeProps): Re
           {t('gauge.limit')} <span className="type-data">{fmtNum(lang, gauge.limit)}</span>
         </span>
         <span>
-          {t('gauge.margin')} <span className="type-data">{fmtSigned(lang, gauge.marginPct)}%</span>
+          {t(`gauge.margin.${gauge.id}`)} <span className="type-data">{fmtSigned(lang, gauge.marginPct)}%</span>
           {gauge.requiredMarginPct > 0 && (
             <span className="sp-gauge-need">
               {' '}
               ({t('gauge.need')} <span className="type-data">{fmtNum(lang, gauge.requiredMarginPct)}%</span>)
             </span>
           )}
+          {gauge.requiredMarginPct > 0 && <Term id="margin" />}
         </span>
       </div>
+      {cadet && <p className="type-small sp-gauge-why">{t(`gauge.why.${gauge.id}`)}</p>}
       {gauge.state === 'fail' && gauge.value > gauge.limit && (
         <div className="type-small sp-gauge-fail-text">
           {t('gauge.over_limit', { over: fmtNum(lang, gauge.value - gauge.limit) })}
@@ -377,6 +381,7 @@ function partStats(p: Part): [string, number, string][] {
   add('capacityWh', 'part.capacity', 'Wh');
   add('downlinkMbps', 'part.downlink', 'Mbps');
   add('storageMB', 'part.storage', 'MB');
+  add('offNadirFactor', 'part.offnadir', 'x');
   add('deltaVMs', 'part.dv', 'm/s');
   return out;
 }
@@ -385,23 +390,55 @@ export interface PartCardProps {
   part: Part;
   selected: boolean;
   onSelect?: () => void;
+  /** H3: the slot header carries the single "game-balanced" tag, so the card hides its own. */
+  hideGb?: boolean;
 }
 
-export function PartCard({ part, selected, onSelect }: PartCardProps): React.JSX.Element {
-  const { t, lang } = useI18n();
+/** H3 card thumbnail: 21 ink-engraving part illustrations (SI-generated), lazy-loaded. */
+export function PartThumb({ id, size = 'card', alt = '' }: { id: string; size?: 'card' | 'detail'; alt?: string }): React.JSX.Element {
+  const { t } = useI18n();
+  const [failed, setFailed] = useState(false);
+  if (failed) return <span className={`part-thumb part-thumb--${size} part-thumb--empty`} aria-hidden="true" />;
+  return (
+    <span className={`part-thumb part-thumb--${size}`}>
+      <img
+        src={`${import.meta.env.BASE_URL}img/art/parts/${id}.webp`}
+        alt={alt}
+        width={256}
+        height={256}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+      />
+      <span className="sp-si-tag sp-si-tag--xs type-label">{t('si.tag')}</span>
+    </span>
+  );
+}
+
+export function PartCard({ part, selected, onSelect, hideGb = false }: PartCardProps): React.JSX.Element {
+  const { t, lang, cadet } = useI18n();
+  const design = useMission((s) => s.design);
+  const alt = design.orbit.altitudeKm;
+  // P8: panels make power and batteries store it, so a "Power 0 W" row is never shown.
   const rows: [string, number, string][] = [
     ['part.mass', part.massKg, 'kg'],
-    ['part.power', part.powerW, 'W'],
+    ...(part.powerW > 0 ? ([['part.power', part.powerW, 'W']] as [string, number, string][]) : []),
     ['part.cost', part.costUsd, 'USD'],
-    ...partStats(part),
+    ...partStats(part).map((r): [string, number, string] =>
+      cadet && r[0] === 'part.downlink' ? ['part.per_pass', Math.round(mbPerPass(part, design) * 10) / 10, 'MB/pass'] : r,
+    ),
+    ...(part.effectiveAreaM2 !== undefined ? ([['part.makes', Math.round(panelGenW(part, alt) * 10) / 10, 'W']] as [string, number, string][]) : []),
   ];
+  const gb = part.src.startsWith('game-balanced');
   return (
     <button
       type="button"
       className={`sp-part ${selected ? 'sp-part--selected' : ''}`}
       aria-pressed={selected}
       onClick={onSelect}
+      data-part={part.id}
     >
+      <PartThumb id={part.id} />
       <span className="sp-part-head">
         <span className="type-card-title sp-part-name">
           {selected && (
@@ -413,7 +450,7 @@ export function PartCard({ part, selected, onSelect }: PartCardProps): React.JSX
         </span>
         {part.cameraType === 'radar' ? (
           <span className="sp-src-tag sp-src-tag--gb type-label">{t('tag.design_study_not_6u')}</span>
-        ) : (
+        ) : hideGb && gb ? null : (
           <SrcTag src={part.src} />
         )}
       </span>

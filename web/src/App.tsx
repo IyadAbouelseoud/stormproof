@@ -15,6 +15,7 @@ import { Handover } from './screens/Handover';
 import { Starfield } from './ui/Starfield';
 import { HeaderOrbitScene } from './ui/HeaderOrbitScene';
 import { TokenSwatches } from './screens/TokenSwatches';
+import { ModeToggle } from './ui/Cadet';
 
 const SCREEN_COMPONENTS: Record<ScreenId, React.ComponentType> = { Brief, Build, Orbit, Launch, Flight, Report, Refly };
 
@@ -219,6 +220,7 @@ export default function App(): React.JSX.Element {
           {status === 'mock' && <span className="type-label engine-status engine-status--mock">{t('engine.mock')}</span>}
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <SoundToggle />
+          <ModeToggle />
           <LanguageToggle />
         </div>
       </header>
@@ -250,6 +252,7 @@ export default function App(): React.JSX.Element {
           </a>
         </nav>
         <p className="type-small footer-credit">{t('shell.credit')}</p>
+        <p className="type-small footer-credit" data-testid="backdrop-credit">{t('footer.backdrop')}</p>
       </footer>
     </div>
     </>

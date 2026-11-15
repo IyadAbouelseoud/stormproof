@@ -14,6 +14,10 @@ import { EmptyState } from '../ui/EmptyState';
 import { MissionLog } from '../ui/MissionLog';
 import { playReentryLowTone } from '../sound';
 import { ScreenFrame } from './ScreenFrame';
+import { Term } from '../ui/Cadet';
+
+/** Cadet air-thickness bar: log10 density mapped from 1e-14 (empty) to 1e-10 kg/m3 (full). Display only. */
+const airFill = (rho: number): number => (rho > 0 ? Math.max(0, Math.min(1, (Math.log10(rho) + 14) / 4)) : 0);
 
 const EMPTY_TL: TimelineDay[] = [];
 
@@ -126,7 +130,7 @@ function StormCard({ kp, date, onDone }: { kp: number; date: string; onDone: () 
 }
 
 export function Flight(): React.JSX.Element {
-  const { t, lang } = useI18n();
+  const { t, lang, cadet } = useI18n();
   const flight = useMission((s) => s.flight);
   const launch = useMission((s) => s.launch);
   const setScreen = useNavigation((s) => s.setScreen);
@@ -331,14 +335,23 @@ export function Flight(): React.JSX.Element {
           </div>
 
           <div className="hud-metric">
-            <span className="type-label hud-label">{t('flight.density')}</span>
-            <span className="hud-val">{densityStr} <span className="sp-unit">kg/m³</span></span>
+            <span className="type-label hud-label">{t('flight.density')} <Term id="density" /></span>
+            {cadet ? (
+              <span className="hud-val hud-air" title={t('flight.density_tip', { v: densityStr })}>
+                <span className="hud-air-bar" aria-hidden="true">
+                  <span className="hud-air-fill" style={{ '--fill': airFill(day.densityKgM3) } as React.CSSProperties} />
+                </span>
+                <span className="pd-sr">{t('flight.density_tip', { v: densityStr })}</span>
+              </span>
+            ) : (
+              <span className="hud-val">{densityStr} <span className="sp-unit">kg/m³</span></span>
+            )}
           </div>
 
           <div className={`hud-metric ${isStorm ? 'hud-metric--storm' : ''}`}>
-            <span className="type-label hud-label">{t('flight.storm_alert')}</span>
+            <span className="type-label hud-label">{t('flight.storm_alert')} <Term id="kp" /></span>
             <span className="hud-val">
-              {day.stormKp !== null ? `Kp ${fmtNum(lang, day.stormKp)}` : t('flight.nominal')}
+              {day.stormKp !== null ? t('flight.kp', { kp: fmtNum(lang, day.stormKp) }) : t('flight.nominal')}
             </span>
           </div>
 

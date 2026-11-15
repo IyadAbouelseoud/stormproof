@@ -9,6 +9,7 @@ import './styles/components.css';
 import './styles/screens.css';
 import './styles/part-detail.css';
 import './styles/final-pass.css';
+import './styles/polish.css';
 
 const rootElement = document.getElementById('root');
 if (rootElement) {

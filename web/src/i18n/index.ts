@@ -5,6 +5,38 @@ import engineAr from './engine-ar.json';
 
 export type Language = 'en' | 'ar';
 export type Direction = 'ltr' | 'rtl';
+/** H1: Cadet (default) = plain words and hints; Engineer = the original wording. Same numbers and targets. */
+export type Mode = 'cadet' | 'engineer';
+
+const MODE_KEY = 'sp-mode';
+function savedMode(): Mode {
+  try {
+    const v = typeof localStorage !== 'undefined' ? localStorage.getItem(MODE_KEY) : null;
+    if (v === 'cadet' || v === 'engineer') return v;
+  } catch {
+    /* storage blocked */
+  }
+  return 'cadet';
+}
+
+export interface ModeState {
+  mode: Mode;
+  setMode: (m: Mode) => void;
+}
+
+export const useMode = create<ModeState>((set) => ({
+  mode: savedMode(),
+  setMode: (mode) => {
+    try {
+      localStorage.setItem(MODE_KEY, mode);
+    } catch {
+      /* storage blocked */
+    }
+    if (typeof document !== 'undefined') document.documentElement.setAttribute('data-mode', mode);
+    set({ mode });
+  },
+}));
+if (typeof document !== 'undefined') document.documentElement.setAttribute('data-mode', useMode.getState().mode);
 
 export interface I18nState {
   lang: Language;
@@ -72,11 +104,16 @@ function interpolate(template: string, params?: Record<string, string | number>)
 export function translate(
   lang: Language,
   key: string,
-  params?: Record<string, string | number>
+  params?: Record<string, string | number>,
+  mode: Mode = 'engineer',
 ): string {
   const currentDict = dictionaries[lang];
   const enDict = dictionaries.en;
-
+  // Cadet mode: a `cadet.<key>` entry replaces the Engineer wording (same params, same numbers).
+  if (mode === 'cadet') {
+    const c = currentDict?.[`cadet.${key}`] ?? enDict?.[`cadet.${key}`];
+    if (c !== undefined) return interpolate(c, params);
+  }
   const translation = currentDict?.[key] ?? enDict?.[key];
   if (translation === undefined) {
     return key;
@@ -91,7 +128,7 @@ export function translate(
  */
 export function t(key: string, params?: Record<string, string | number>): string {
   const currentLang = useI18nStore.getState().lang;
-  return translate(currentLang, key, params);
+  return translate(currentLang, key, params, useMode.getState().mode);
 }
 
 export interface TranslatableMsg {
@@ -135,14 +172,20 @@ export function useI18n() {
   const setLanguage = useI18nStore((s) => s.setLanguage);
   const toggleLanguage = useI18nStore((s) => s.toggleLanguage);
 
+  const mode = useMode((s) => s.mode);
   const tBound = (key: string, params?: Record<string, string | number>) =>
-    translate(lang, key, params);
+    translate(lang, key, params, mode);
+  /** H1 term(key): the Cadet or Engineer label of a term (`term.<key>` in i18n). */
+  const term = (key: string, params?: Record<string, string | number>) => translate(lang, `term.${key}`, params, mode);
 
   const tMsgBound = (msg: TranslatableMsg) => translateMsg(lang, msg);
 
   return {
     t: tBound,
+    term,
     tMsg: tMsgBound,
+    mode,
+    cadet: mode === 'cadet',
     lang,
     dir,
     setLanguage,
